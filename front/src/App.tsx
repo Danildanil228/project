@@ -1,84 +1,94 @@
-import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { AppShell } from "./components/AppShell";
+import { adminApi, getAdminContext } from "./lib/admin-api";
 import { authClient } from "./lib/auth-client";
+import { AdminPage } from "./pages/AdminPage";
+import { AuthPage } from "./pages/AuthPage";
+import { HomePage } from "./pages/HomePage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { ResetPasswordPage } from "./pages/ResetPasswordPage";
+import type { AdminSecurityContext, ManagedUser } from "./types/admin";
+import { unwrapAuthResult } from "./utils/auth-client-result";
 
-function App() {
+function AppRoutes() {
     const { data: session, isPending, refetch } = authClient.useSession();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [isLogin, setIsLogin] = useState(true);
-    const [error, setError] = useState("");
+    const [adminContext, setAdminContext] = useState<AdminSecurityContext | null>(null);
+    const currentUser = session?.user as ManagedUser | undefined;
+    const currentUserId = session?.user?.id;
+    const isImpersonating = Boolean((session?.session as { impersonatedBy?: string } | undefined)?.impersonatedBy);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError("");
+    useEffect(() => {
+        let ignore = false;
 
-        if (isLogin) {
-            const { error } = await authClient.signIn.email({
-                email,
-                password,
+        if (!currentUserId) return;
+
+        getAdminContext()
+            .then((context) => {
+                if (!ignore) setAdminContext(context);
+            })
+            .catch(() => {
+                if (!ignore) setAdminContext(null);
             });
-            if (error) {
-                setError(error.message || "Ошибка входа");
-            } else {
-                refetch();
-            }
-        } else {
-            const { error } = await authClient.signUp.email({
-                email,
-                password,
-                name,
-            });
-            if (error) {
-                setError(error.message || "Ошибка регистрации");
-            } else {
-                refetch();
-            }
-        }
-    };
 
-    const handleLogout = async () => {
+        return () => {
+            ignore = true;
+        };
+    }, [currentUserId]);
+
+    async function handleLogout() {
         await authClient.signOut();
-        refetch();
-    };
-
-    if (isPending) {
-        return <div>Загрузка...</div>;
+        await refetch();
     }
 
-    if (session) {
+    async function handleStopImpersonating() {
+        await unwrapAuthResult(adminApi.stopImpersonating());
+        await refetch();
+    }
+
+    if (isPending) {
+        return <main className="center-screen">Загрузка...</main>;
+    }
+
+    if (!session) {
         return (
-            <div>
-                <h1>Добро пожаловать, {session.user.name || session.user.email}!</h1>
-                <p>Email: {session.user.email}</p>
-                <button onClick={handleLogout}>Выйти</button>
-            </div>
+            <Routes>
+                <Route path="reset-password" element={<ResetPasswordPage />} />
+                <Route path="*" element={<AuthPage onAuthenticated={refetch} />} />
+            </Routes>
         );
     }
 
     return (
-        <div>
-            <h1>{isLogin ? "Вход" : "Регистрация"}</h1>
-            <form onSubmit={handleSubmit}>
-                {!isLogin && (
-                    <div>
-                        <label>Имя:</label>
-                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Ваше имя" />
-                    </div>
-                )}
-                <div>
-                    <label>Email:</label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@example.com" required />
-                </div>
-                <div>
-                    <label>Пароль:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Минимум 8 символов" required />
-                </div>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                <button type="submit">{isLogin ? "Войти" : "Зарегистрироваться"}</button>
-            </form>
-            <button onClick={() => setIsLogin(!isLogin)}>{isLogin ? "Нет аккаунта? Зарегистрироваться" : "Есть аккаунт? Войти"}</button>
-        </div>
+        <Routes>
+            <Route
+                element={
+                    <AppShell
+                        currentUser={currentUser}
+                        adminContext={adminContext}
+                        isImpersonating={isImpersonating}
+                        onLogout={handleLogout}
+                        onStopImpersonating={handleStopImpersonating}
+                    />
+                }
+            >
+                <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} />} />
+                <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} />} />
+                <Route path="admin" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} />} />
+                <Route path="admin/users/:userId" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} />} />
+                <Route path="reset-password" element={<ResetPasswordPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+            </Route>
+        </Routes>
+    );
+}
+
+function App() {
+    return (
+        <BrowserRouter>
+            <AppRoutes />
+        </BrowserRouter>
     );
 }
 
