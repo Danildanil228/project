@@ -17,10 +17,16 @@ function getInitials(user?: UserAvatarProps["user"]) {
     return source.slice(0, 2).toUpperCase();
 }
 
+function isSafeAvatarSource(value?: string) {
+    if (!value) return false;
+    if (value.startsWith("data:")) return value.length <= 50_000;
+    return true;
+}
+
 export function UserAvatar({ user, size = "md" }: UserAvatarProps) {
     const [failedImage, setFailedImage] = useState("");
     const image = user?.image?.trim();
-    const shouldShowImage = Boolean(image && image !== failedImage);
+    const shouldShowImage = Boolean(image && isSafeAvatarSource(image) && image !== failedImage);
 
     return (
         <span className={`user-avatar user-avatar-${size}`} aria-hidden="true">

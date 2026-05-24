@@ -21,6 +21,7 @@ import {
     setManagedUserRole,
     unlinkManagedAccount,
 } from "../lib/admin-api";
+import { authApi } from "../lib/auth-api";
 import type {
     AdminSecurityContext,
     AuditLogFilters,
@@ -38,7 +39,7 @@ import type {
     VerificationFilter,
     UserFormState,
 } from "../types/admin";
-import { appRoles, canManageUser, getErrorMessage, isAdminUser, isSuperAdminUser, roleText } from "../utils/admin-format";
+import { canManageUser, getErrorMessage, isSuperAdminUser, manageableRoleOptions, roleText } from "../utils/admin-format";
 import { unwrapAuthResult } from "../utils/auth-client-result";
 
 type AdminPageProps = {
@@ -62,6 +63,16 @@ const emptyCreateForm: UserFormState = {
     password: "",
     role: "user",
 };
+
+const emptyAuditLogFilters: AuditLogFilters = {
+    actorEmail: "",
+    targetEmail: "",
+    action: "",
+    from: "",
+    to: "",
+};
+
+const auditLogPageSize = 30;
 
 export function AdminPage({ currentUser, adminContext, onSessionRefresh }: AdminPageProps) {
     const navigate = useNavigate();
@@ -103,14 +114,9 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
     const [loadingDetails, setLoadingDetails] = useState(false);
     const [auditLogs, setAuditLogs] = useState<ManagedAuditLog[]>([]);
     const [selectedUserAuditLogs, setSelectedUserAuditLogs] = useState<ManagedAuditLog[]>([]);
-    const [auditLogFilters, setAuditLogFilters] = useState<AuditLogFilters>({
-        actorEmail: "",
-        targetEmail: "",
-        action: "",
-        from: "",
-        to: "",
-    });
+    const [auditLogFilters, setAuditLogFilters] = useState<AuditLogFilters>(emptyAuditLogFilters);
     const [auditLogTotal, setAuditLogTotal] = useState(0);
+    const [auditLogOffset, setAuditLogOffset] = useState(0);
     const [loadingAuditLogs, setLoadingAuditLogs] = useState(false);
 
     const selectedUser = useMemo(
@@ -118,11 +124,12 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         [selectedUserId, selectedUserOverride, users],
     );
     const roleOptions = useMemo(
-        () => (isSuperAdminUser(currentUser, adminContext) || isAdminUser(currentUser) ? [...appRoles] : ["moderator", "user"]),
+        () => manageableRoleOptions(currentUser, adminContext),
         [adminContext, currentUser],
     );
     const canManageSelectedUser = canManageUser(currentUser, selectedUser, adminContext);
     const isSelfSelected = Boolean(currentUser?.id && selectedUser?.id === currentUser.id);
+    const canUpdateSelectedProfile = canManageSelectedUser || isSelfSelected;
     const isSuperAdminSelected = isSuperAdminUser(selectedUser, adminContext);
     const superAdminUserKey = adminContext?.superAdminUserIds.join(",") ?? "";
 
@@ -189,6 +196,24 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         if (!userId) return;
         void loadSelectedUserAuditLogs(userId);
 
+        if (userId === currentUser?.id) {
+            setAdminError("");
+            setLoadingDetails(true);
+
+            try {
+                const ownSessions = await unwrapAuthResult<ManagedSession[]>(authApi.listSessions());
+                setSessions(ownSessions ?? []);
+                setAccounts([]);
+            } catch (error) {
+                setSessions([]);
+                setAccounts([]);
+                setAdminError(getErrorMessage(error));
+            } finally {
+                setLoadingDetails(false);
+            }
+            return;
+        }
+
         if (adminContext?.superAdminUserIds.includes(userId)) {
             setAdminError("");
             setLoadingDetails(false);
@@ -224,16 +249,18 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         }
     }
 
-    async function loadAuditLogs() {
+    async function loadAuditLogs(nextOffset = auditLogOffset, nextFilters = auditLogFilters) {
         setLoadingAuditLogs(true);
 
         try {
             const response = await listAuditLogs({
-                limit: 30,
-                ...auditLogFilters,
+                limit: auditLogPageSize,
+                offset: nextOffset,
+                ...nextFilters,
             });
             setAuditLogs(response.logs ?? []);
             setAuditLogTotal(response.total ?? 0);
+            setAuditLogOffset(nextOffset);
         } catch (error) {
             setAdminError(getErrorMessage(error));
         } finally {
@@ -258,6 +285,11 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         } catch (error) {
             setAdminError(getErrorMessage(error));
         }
+    }
+
+    function resetAuditFilters() {
+        setAuditLogFilters(emptyAuditLogFilters);
+        void loadAuditLogs(0, emptyAuditLogFilters);
     }
 
     function selectUser(userId: string) {
@@ -586,7 +618,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         // Initial admin data load is triggered by the authenticated user context.
         // eslint-disable-next-line react-hooks/set-state-in-effect
         void loadUsers(0);
-        void loadAuditLogs();
+        void loadAuditLogs(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser?.id]);
 
@@ -651,6 +683,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
                         selectedUserIds={selectedUserIds}
                         roleOptions={roleOptions}
                         adminContext={adminContext}
+                        currentUser={currentUser}
                         loadingUsers={loadingUsers}
                         canSelectUser={canBulkSelectUser}
                         onSearchValueChange={setSearchValue}
@@ -700,6 +733,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
                     loadingDetails={loadingDetails}
                     roleOptions={roleOptions}
                     canManageSelectedUser={canManageSelectedUser}
+                    canUpdateSelectedProfile={canUpdateSelectedProfile}
                     isSelfSelected={isSelfSelected}
                     isSuperAdminSelected={isSuperAdminSelected}
                     onEditFormChange={setEditForm}
@@ -721,9 +755,14 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
                 logs={auditLogs}
                 filters={auditLogFilters}
                 total={auditLogTotal}
+                offset={auditLogOffset}
+                pageSize={auditLogPageSize}
                 loading={loadingAuditLogs}
                 onFiltersChange={setAuditLogFilters}
-                onRefresh={loadAuditLogs}
+                onRefresh={() => loadAuditLogs(auditLogOffset)}
+                onApplyFilters={() => loadAuditLogs(0)}
+                onResetFilters={resetAuditFilters}
+                onPageChange={(nextOffset) => loadAuditLogs(nextOffset)}
                 onExportCsv={exportAuditCsv}
             />
             {dialog}

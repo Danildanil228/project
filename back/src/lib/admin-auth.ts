@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "./auth";
-import { hasElevatedAccess, hasRole, isSuperAdminId } from "./admin-roles";
+import { canManageRoleRank, hasElevatedAccess, hasRole, highestRoleRank, isSuperAdminId, roleRank } from "./admin-roles";
 import { pool } from "./db";
 
 export type SessionUser = {
@@ -58,8 +58,23 @@ export async function canManageTarget(actor: SessionUser, targetUserId: string, 
         return { allowed: false, message: "Super admin cannot be managed" };
     }
 
-    const targetIsAdmin = await isAdminTarget(targetUserId);
-    if (isModeratorOnly(actor) && (targetIsAdmin || nextRole === "admin")) {
+    const { rows } = await pool.query<{ role: string | null }>(
+        `SELECT role FROM "user" WHERE id = $1`,
+        [targetUserId],
+    );
+    const targetUser = { id: targetUserId, role: rows[0]?.role };
+    const actorRank = highestRoleRank(actor, superAdminUserIds);
+    const targetRank = highestRoleRank(targetUser, superAdminUserIds);
+
+    if (actorRank <= targetRank) {
+        return { allowed: false, message: "Users can manage only lower role users" };
+    }
+
+    if (nextRole && !canManageRoleRank(actor, nextRole, superAdminUserIds)) {
+        return { allowed: false, message: "Users can assign only lower roles" };
+    }
+
+    if (isModeratorOnly(actor) && (targetRank >= roleRank("admin") || nextRole === "admin")) {
         return { allowed: false, message: "Moderators cannot manage admin users" };
     }
 

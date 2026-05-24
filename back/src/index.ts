@@ -8,6 +8,7 @@ import { errorHandler, notFoundHandler } from './middleware/error-handler';
 import { sensitiveRateLimit } from './middleware/rate-limit';
 import { securityHeaders } from './middleware/security-headers';
 import { adminAccountsRouter } from './routes/admin-accounts';
+import { avatarUploadRouter, uploadsRoot } from './routes/avatar-upload';
 
 dotenv.config();
 
@@ -31,6 +32,12 @@ app.post('/api/auth/admin/set-role', (_req, res) => {
 });
 
 app.all('/api/auth/*splat', toNodeHandler(auth));
+app.use('/uploads', express.static(uploadsRoot, {
+    fallthrough: false,
+    immutable: true,
+    maxAge: "30d",
+}));
+app.use('/api/uploads', avatarUploadRouter);
 app.use(express.json());
 app.use('/api/admin', adminAccountsRouter);
 

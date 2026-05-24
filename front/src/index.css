@@ -320,6 +320,27 @@ td small {
   min-width: 0;
 }
 
+.user-name-line {
+  display: flex !important;
+  align-items: center;
+  gap: 8px !important;
+  flex-wrap: wrap;
+}
+
+.self-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8 !important;
+  font-size: 12px !important;
+  font-weight: 800;
+  line-height: 1;
+  padding: 4px 7px;
+}
+
 .avatar-preview span {
   font-size: 13px;
 }
@@ -630,9 +651,16 @@ tbody tr:hover {
 }
 
 .audit-count {
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   border-bottom: 1px solid #e2e8f0;
   padding: 0 16px 12px;
+}
+
+.audit-count p {
+  margin: 0;
 }
 
 .audit-list {
@@ -719,6 +747,7 @@ tbody tr:hover {
 
   .topbar,
   .panel-header,
+  .audit-count,
   .mini-card,
   .audit-item {
     display: grid;

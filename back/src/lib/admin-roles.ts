@@ -5,6 +5,7 @@ import { defaultAc } from "better-auth/plugins/admin/access";
 export const ADMIN_ROLE = "admin";
 export const MODERATOR_ROLE = "moderator";
 export const USER_ROLE = "user";
+export const SUPER_ADMIN_ROLE = "super-admin";
 
 export const elevatedRoles = [ADMIN_ROLE, MODERATOR_ROLE];
 
@@ -28,7 +29,7 @@ type UserWithRole = {
     role?: string | string[] | null;
 };
 
-function normalizeRoles(role?: string | string[] | null) {
+export function normalizeRoles(role?: string | string[] | null) {
     if (Array.isArray(role)) return role;
 
     return String(role ?? USER_ROLE)
@@ -39,6 +40,27 @@ function normalizeRoles(role?: string | string[] | null) {
 
 export function hasRole(user: UserWithRole | null | undefined, role: string) {
     return normalizeRoles(user?.role).includes(role);
+}
+
+export function roleRank(role: string) {
+    const ranks: Record<string, number> = {
+        [USER_ROLE]: 1,
+        [MODERATOR_ROLE]: 2,
+        [ADMIN_ROLE]: 3,
+        [SUPER_ADMIN_ROLE]: 4,
+    };
+
+    return ranks[role] ?? ranks[USER_ROLE];
+}
+
+export function highestRoleRank(user: UserWithRole | null | undefined, superAdminUserIds: string[] = []) {
+    if (isSuperAdmin(user, superAdminUserIds)) return roleRank(SUPER_ADMIN_ROLE);
+
+    return Math.max(...normalizeRoles(user?.role).map(roleRank), roleRank(USER_ROLE));
+}
+
+export function canManageRoleRank(actor: UserWithRole | null | undefined, targetRole: string, superAdminUserIds: string[] = []) {
+    return highestRoleRank(actor, superAdminUserIds) > roleRank(targetRole);
 }
 
 export function isSuperAdmin(user: UserWithRole | null | undefined, superAdminUserIds: string[] = []) {
@@ -66,6 +88,11 @@ function isAdminTarget(user: UserWithRole | null | undefined, superAdminUserIds:
 function roleInputIncludesAdmin(role: unknown) {
     const roles = Array.isArray(role) ? role : [role];
     return roles.some((value) => String(value).trim() === ADMIN_ROLE);
+}
+
+function highestInputRoleRank(role: unknown) {
+    const roles = Array.isArray(role) ? role : [role];
+    return Math.max(...roles.map((value) => roleRank(String(value || USER_ROLE).trim())), roleRank(USER_ROLE));
 }
 
 async function resolveTargetUser(ctx: Parameters<Parameters<typeof createAuthMiddleware>[0]>[0]) {
@@ -133,11 +160,36 @@ export function adminHierarchyGuard(superAdminUserIds: string[]): BetterAuthPlug
                             });
                         }
 
+                        if (path === "/admin/update-user" && body.userId === session.user.id && body.data?.role === undefined && body.role === undefined) {
+                            return;
+                        }
+
                         const targetUser = await resolveTargetUser(ctx);
                         if (isSuperAdmin(targetUser, superAdminUserIds)) {
                             throw new APIError("FORBIDDEN", {
                                 message: "Super admin cannot be managed",
                             });
+                        }
+
+                        const nextRole = body.role ?? body.data?.role;
+                        if ((path.endsWith("/set-role") || path === "/admin/create-user" || path === "/admin/update-user" || (path === "" && looksLikeSetRole)) && nextRole !== undefined) {
+                            const actorRank = highestRoleRank(session.user, superAdminUserIds);
+                            if (actorRank <= highestInputRoleRank(nextRole)) {
+                                throw new APIError("FORBIDDEN", {
+                                    message: "Users can assign only lower roles",
+                                });
+                            }
+                        }
+
+                        if (targetUser) {
+                            const actorRank = highestRoleRank(session.user, superAdminUserIds);
+                            const targetRank = highestRoleRank(targetUser, superAdminUserIds);
+
+                            if (actorRank <= targetRank) {
+                                throw new APIError("FORBIDDEN", {
+                                    message: "Users can manage only lower role users",
+                                });
+                            }
                         }
 
                         if (!isModeratorOnly(session.user, superAdminUserIds)) return;

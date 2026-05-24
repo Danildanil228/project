@@ -27,6 +27,7 @@ type UserTableProps = {
     selectedUserIds: string[];
     roleOptions: string[];
     adminContext?: AdminSecurityContext | null;
+    currentUser?: ManagedUser | null;
     loadingUsers: boolean;
     canSelectUser: (user: ManagedUser) => boolean;
     onSearchValueChange: (value: string) => void;
@@ -70,6 +71,7 @@ export function UserTable({
     selectedUserIds,
     roleOptions,
     adminContext,
+    currentUser,
     loadingUsers,
     canSelectUser,
     onSearchValueChange,
@@ -224,7 +226,10 @@ export function UserTable({
                                     <div className="user-cell">
                                         <UserAvatar user={user} size="sm" />
                                         <div>
-                                            <strong>{user.name || "Без имени"}</strong>
+                                            <div className="user-name-line">
+                                                <strong>{user.name || "Без имени"}</strong>
+                                                {user.id === currentUser?.id && <span className="self-badge">Это вы</span>}
+                                            </div>
                                             <span>{user.email}</span>
                                             <small>{shortId(user.id)}</small>
                                         </div>

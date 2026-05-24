@@ -5,9 +5,14 @@ type AuditLogPanelProps = {
     logs: ManagedAuditLog[];
     filters: AuditLogFilters;
     total: number;
+    offset: number;
+    pageSize: number;
     loading: boolean;
     onFiltersChange: (filters: AuditLogFilters) => void;
     onRefresh: () => void;
+    onApplyFilters: () => void;
+    onResetFilters: () => void;
+    onPageChange: (offset: number) => void;
     onExportCsv: () => void;
 };
 
@@ -53,11 +58,21 @@ export function AuditLogPanel({
     logs,
     filters,
     total,
+    offset,
+    pageSize,
     loading,
     onFiltersChange,
     onRefresh,
+    onApplyFilters,
+    onResetFilters,
+    onPageChange,
     onExportCsv,
 }: AuditLogPanelProps) {
+    const from = total ? offset + 1 : 0;
+    const to = Math.min(offset + pageSize, total);
+    const hasPreviousPage = offset > 0;
+    const hasNextPage = offset + pageSize < total;
+
     return (
         <section className="panel audit-panel">
             <div className="panel-header">
@@ -79,7 +94,7 @@ export function AuditLogPanel({
                 className="toolbar audit-toolbar"
                 onSubmit={(event) => {
                     event.preventDefault();
-                    onRefresh();
+                    onApplyFilters();
                 }}
             >
                 <input
@@ -112,9 +127,25 @@ export function AuditLogPanel({
                 <button className="secondary" type="submit">
                     Применить
                 </button>
+                <button className="link-button" type="button" onClick={onResetFilters}>
+                    Сбросить
+                </button>
             </form>
 
-            <p className="muted audit-count">Найдено записей: {total}</p>
+            <div className="audit-count">
+                <p className="muted">Найдено записей: {total}</p>
+                <div className="actions-row">
+                    <button className="secondary" type="button" disabled={!hasPreviousPage || loading} onClick={() => onPageChange(Math.max(0, offset - pageSize))}>
+                        Назад
+                    </button>
+                    <span className="muted">
+                        {from}-{to}
+                    </span>
+                    <button className="secondary" type="button" disabled={!hasNextPage || loading} onClick={() => onPageChange(offset + pageSize)}>
+                        Далее
+                    </button>
+                </div>
+            </div>
 
             <div className="audit-list">
                 {logs.map((log) => (

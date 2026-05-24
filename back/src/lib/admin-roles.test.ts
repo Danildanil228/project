@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { hasElevatedAccess, hasRole, isSuperAdmin } from "./admin-roles";
+import { canManageRoleRank, hasElevatedAccess, hasRole, highestRoleRank, isSuperAdmin, roleRank } from "./admin-roles";
 
 describe("admin role helpers", () => {
     it("reads a comma separated role list", () => {
@@ -19,5 +19,14 @@ describe("admin role helpers", () => {
         assert.equal(hasElevatedAccess({ id: "admin-1", role: "admin" }), true);
         assert.equal(hasElevatedAccess({ id: "mod-1", role: "moderator" }), true);
         assert.equal(hasElevatedAccess({ id: "user-1", role: "user" }), false);
+    });
+
+    it("orders roles strictly for management decisions", () => {
+        assert.equal(roleRank("admin") > roleRank("moderator"), true);
+        assert.equal(highestRoleRank({ id: "admin-1", role: "admin" }) > highestRoleRank({ id: "mod-1", role: "moderator" }), true);
+        assert.equal(canManageRoleRank({ id: "admin-1", role: "admin" }, "admin"), false);
+        assert.equal(canManageRoleRank({ id: "admin-1", role: "admin" }, "moderator"), true);
+        assert.equal(canManageRoleRank({ id: "mod-1", role: "moderator" }, "moderator"), false);
+        assert.equal(canManageRoleRank({ id: "mod-1", role: "moderator" }, "user"), true);
     });
 });

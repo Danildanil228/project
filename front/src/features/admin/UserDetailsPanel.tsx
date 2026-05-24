@@ -13,6 +13,7 @@ type UserDetailsPanelProps = {
     loadingDetails: boolean;
     roleOptions: string[];
     canManageSelectedUser: boolean;
+    canUpdateSelectedProfile: boolean;
     isSelfSelected: boolean;
     isSuperAdminSelected: boolean;
     onEditFormChange: (form: EditUserFormState) => void;
@@ -58,6 +59,7 @@ export function UserDetailsPanel({
     loadingDetails,
     roleOptions,
     canManageSelectedUser,
+    canUpdateSelectedProfile,
     isSelfSelected,
     isSuperAdminSelected,
     onEditFormChange,
@@ -101,11 +103,20 @@ export function UserDetailsPanel({
                         </div>
                         <label>
                             Имя
-                            <input value={editForm.name} onChange={(event) => onEditFormChange({ ...editForm, name: event.target.value })} />
+                            <input
+                                value={editForm.name}
+                                disabled={!canUpdateSelectedProfile}
+                                onChange={(event) => onEditFormChange({ ...editForm, name: event.target.value })}
+                            />
                         </label>
                         <label>
                             Email
-                            <input type="email" value={editForm.email} onChange={(event) => onEditFormChange({ ...editForm, email: event.target.value })} />
+                            <input
+                                type="email"
+                                value={editForm.email}
+                                disabled={!canUpdateSelectedProfile}
+                                onChange={(event) => onEditFormChange({ ...editForm, email: event.target.value })}
+                            />
                         </label>
                         <label>
                             Ссылка на аватар
@@ -113,6 +124,7 @@ export function UserDetailsPanel({
                                 type="url"
                                 placeholder="https://example.com/avatar.png"
                                 value={editForm.image}
+                                disabled={!canUpdateSelectedProfile}
                                 onChange={(event) => onEditFormChange({ ...editForm, image: event.target.value })}
                             />
                         </label>
@@ -130,7 +142,7 @@ export function UserDetailsPanel({
                                 ))}
                             </select>
                         </label>
-                        <button className="primary" type="submit" disabled={!canManageSelectedUser}>
+                        <button className="primary" type="submit" disabled={!canUpdateSelectedProfile}>
                             Сохранить
                         </button>
                     </form>
@@ -144,12 +156,12 @@ export function UserDetailsPanel({
                         </button>
                     </div>
 
-                    {!canManageSelectedUser && !isSuperAdminSelected && (
-                        <p className="alert warning">Модератор не может выполнять действия с администратором.</p>
+                    {!canManageSelectedUser && !isSelfSelected && !isSuperAdminSelected && (
+                        <p className="alert warning">Действия доступны только над пользователями с ролью ниже вашей. Равную или более высокую роль менять нельзя.</p>
                     )}
 
                     {isSelfSelected && (
-                        <p className="alert warning">Свою роль изменить нельзя. Это защищает аккаунт от случайной потери доступа.</p>
+                        <p className="alert warning">Свои имя, email и аватар можно менять. Свою роль и админские действия над собой менять нельзя.</p>
                     )}
 
                     {isSuperAdminSelected && (

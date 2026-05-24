@@ -1,6 +1,12 @@
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 
 export const appRoles = ["admin", "moderator", "user"] as const;
+const roleRanks: Record<string, number> = {
+    user: 1,
+    moderator: 2,
+    admin: 3,
+    "super-admin": 4,
+};
 
 export function roleText(user?: ManagedUser | null) {
     if (!user?.role) return "user";
@@ -29,6 +35,17 @@ export function displayRoleText(user?: ManagedUser | null, adminContext?: AdminS
     return isSuperAdminUser(user, adminContext) ? "super admin" : roleText(user);
 }
 
+export function highestUserRoleRank(user?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
+    if (isSuperAdminUser(user, adminContext)) return roleRanks["super-admin"];
+
+    return Math.max(
+        ...roleText(user)
+            .split(",")
+            .map((role) => roleRanks[role.trim()] ?? roleRanks.user),
+        roleRanks.user,
+    );
+}
+
 export function hasElevatedUserAccess(user?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
     const isCurrentContextUser = Boolean(user?.id && adminContext?.currentUserId === user.id);
     return Boolean(
@@ -42,10 +59,12 @@ export function hasElevatedUserAccess(user?: ManagedUser | null, adminContext?: 
 export function canManageUser(actor?: ManagedUser | null, target?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
     if (!target) return false;
     if (isSuperAdminUser(target, adminContext)) return false;
-    if (isSuperAdminUser(actor, adminContext)) return true;
-    if (isAdminUser(actor)) return true;
-    if (isModeratorUser(actor)) return !isAdminUser(target);
-    return false;
+    return highestUserRoleRank(actor, adminContext) > highestUserRoleRank(target, adminContext);
+}
+
+export function manageableRoleOptions(actor?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
+    const actorRank = highestUserRoleRank(actor, adminContext);
+    return appRoles.filter((role) => actorRank > roleRanks[role]);
 }
 
 export function formatDate(value?: string | Date | null) {
