@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { UserAvatar } from "./UserAvatar";
+import { ModeToggle } from "./mode-toggle";
 
 type AppShellProps = {
     currentUser?: ManagedUser;
@@ -46,6 +47,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             Остановить impersonation
                         </button>
                     )}
+                    <ModeToggle/>
 
                     <button className="secondary" onClick={onLogout}>
                         Выйти

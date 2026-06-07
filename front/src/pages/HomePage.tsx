@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { UserAvatar } from "../components/UserAvatar";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
+import { ModeToggle } from "../components/mode-toggle";
 
 type HomePageProps = {
     currentUser?: ManagedUser;
@@ -17,6 +18,9 @@ export function HomePage({ currentUser, adminContext }: HomePageProps) {
                 <p className="eyebrow">Аккаунт</p>
                 <h2>Добро пожаловать, {currentUser?.name || currentUser?.email}</h2>
                 <p className="muted">Это главная страница после авторизации. Отсюда пользователь переходит в доступные разделы.</p>
+            </div>
+            <div>
+                <ModeToggle/>
             </div>
 
             <div className="home-grid">
