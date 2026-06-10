@@ -3,6 +3,7 @@ import { UserAvatar } from "../components/UserAvatar";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { ModeToggle } from "../components/mode-toggle";
+import "@google/model-viewer";
 
 type HomePageProps = {
     currentUser?: ManagedUser;
@@ -20,7 +21,7 @@ export function HomePage({ currentUser, adminContext }: HomePageProps) {
                 <p className="muted">Это главная страница после авторизации. Отсюда пользователь переходит в доступные разделы.</p>
             </div>
             <div>
-                <ModeToggle/>
+                <ModeToggle />
             </div>
 
             <div className="home-grid">
@@ -60,6 +61,88 @@ export function HomePage({ currentUser, adminContext }: HomePageProps) {
                         <p className="muted">Для админ-панели нужна роль admin. Обычным пользователям этот раздел не показывается.</p>
                     </article>
                 )}
+            </div>
+            <div className="flex bg-white! flex-wrap">
+                <div className="w-100 h-100 border-4 rounded-2xl">
+                    <model-viewer
+                        src="/elcon_5997.glb"
+                        alt="Катушка"
+                        orientation="0deg 180deg 0deg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="0"
+                        exposure="1"
+                        environment-image="neutral"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
+                <div className="w-100 h-100 border-4 rounded-2xl">
+                    <model-viewer
+                        src="/elcon_5968.glb"
+                        alt="Катушка"
+                        orientation="0deg 180deg 0deg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="0"
+                        exposure="1"
+                        environment-image="neutral"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
+                <div className="w-100 h-100 border-4 rounded-2xl">
+                    <model-viewer
+                        src="/elcon_5969.glb"
+                        alt="Катушка"
+                        orientation="0deg 180deg 0deg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="0"
+                        exposure="1"
+                        environment-image="neutral"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
+                <div className="w-100 h-100 border-4 rounded-2xl">
+                    <model-viewer
+                        src="/elcon_5999.glb"
+                        alt="Катушка"
+                        orientation="0deg 180deg 0deg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="0"
+                        exposure="1"
+                        environment-image="neutral"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
+                <div className="w-100 h-100 border-4 rounded-2xl">
+                    <model-viewer
+                        src="/elcon_6000.glb"
+                        alt="Катушка"
+                        orientation="0deg 180deg 0deg"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="0"
+                        exposure="1"
+                        environment-image="neutral"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                </div>
             </div>
         </section>
     );
