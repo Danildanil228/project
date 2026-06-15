@@ -1,0 +1,206 @@
+👤 1. User (Пользователь)
+
+Назначение: базовый аккаунт системы (better-auth)
+
+Атрибуты:
+id
+имя
+email
+роль (user / moderator / admin)
+аватар
+статус (active / banned)
+датаСоздания
+Связи:
+User → Post (1:N)
+User → Comment (1:N)
+User → Reaction (1:N)
+User → Report (1:N)
+📝 2. Post (Пост — агрегат)
+
+Назначение: логическая сущность публикации (НЕ текст)
+
+Атрибуты:
+id
+authorId
+status
+(draft / pending / approved / rejected / deleted)
+currentVersionId
+createdAt
+publishedAt
+Связи:
+Post → PostVersion (1:N)
+Post → Comment (1:N)
+Post → Reaction (1:N)
+Post → Report (1:N)
+Post → ModerationCase (1:N)
+📄 3. PostVersion (Версия поста)
+
+Назначение: фиксированное состояние поста (редактирование = новая версия)
+
+Атрибуты:
+id
+postId
+versionNumber
+description (текст поста)
+🎣 Рыболовные данные:
+waterbodyId
+fishingStart
+fishingEnd
+clip
+coordinates
+incomeTotal
+incomePerHour (snapshot)
+⚖️ Модерация:
+status (pending / approved / rejected)
+rejectionReason
+Связи:
+PostVersion → PostMedia (1:N)
+PostVersion → Catch (1:N)
+PostVersion → ModerationCase (1:N)
+PostVersion → Waterbody (N:1)
+🖼 4. PostMedia (Медиа)
+
+Назначение: изображения и видео версии поста
+
+Атрибуты:
+id
+postVersionId
+type (image / video)
+url
+orderIndex
+Связи:
+PostMedia → PostVersion (N:1)
+🎣 5. Catch (ФАКТ ЛОВЛИ)
+
+Назначение: конкретные уловы внутри поста
+
+Атрибуты:
+id
+postVersionId
+fishId
+waterbodyId
+weight
+quantity
+price
+totalValue
+Связи:
+Catch → Fish (N:1)
+Catch → Waterbody (N:1)
+Catch → PostVersion (N:1)
+🐟 6. Fish (Справочник рыбы)
+
+Назначение: вся рыба в игре RR4
+
+Атрибуты:
+id
+name
+type (хищная / мирная / донная)
+rarity (common / uncommon / rare / epic / legendary)
+description
+Связи:
+Fish → Catch (1:N)
+Fish → FishHabitat (1:N)
+🌍 7. Waterbody (Водоём)
+
+Назначение: места ловли
+
+Атрибуты:
+id
+name
+type (река / озеро / море)
+region
+Связи:
+Waterbody → Catch (1:N)
+Waterbody → FishHabitat (1:N)
+Waterbody → PostVersion (1:N)
+📍 8. FishHabitat (Обитание рыбы)
+
+Назначение: где водится рыба + шанс появления
+
+Атрибуты:
+id
+fishId
+waterbodyId
+spawnRate
+seasonality (опционально)
+Связи:
+FishHabitat → Fish (N:1)
+FishHabitat → Waterbody (N:1)
+👍 9. Reaction (Лайки/дизлайки)
+
+Назначение: реакции пользователей
+
+Атрибуты:
+id
+userId
+postId
+type (like / dislike)
+createdAt
+Связи:
+Reaction → User (N:1)
+Reaction → Post (N:1)
+💬 10. Comment (Комментарии)
+
+Назначение: обсуждение постов
+
+Атрибуты:
+id
+userId
+postId
+parentId (для вложенности)
+postVersionId (опционально)
+text
+createdAt
+deletedAt
+Связи:
+Comment → User (N:1)
+Comment → Post (N:1)
+Comment → Comment (self-relation)
+🚨 11. Report (Жалобы)
+
+Назначение: сигнал модерации
+
+Атрибуты:
+id
+reporterId
+postId
+commentId
+reason
+status (open / in_review / resolved / rejected)
+createdAt
+Связи:
+Report → User (N:1)
+Report → Post (N:1)
+Report → Comment (N:1)
+⚖️ 12. ModerationCase (КЕЙС МОДЕРАЦИИ)
+
+Назначение: процесс проверки контента
+
+Атрибуты:
+id
+postId
+postVersionId
+moderatorId
+status
+(pending / in_review / approved / rejected / changes_requested)
+reason
+decisionAt
+Связи:
+ModerationCase → Post (N:1)
+ModerationCase → PostVersion (N:1)
+ModerationCase → User (moderator)
+🔔 13. Notification
+
+Назначение: события для пользователей
+
+Атрибуты:
+id
+userId
+type
+entityType
+entityId
+payload (json)
+isRead
+createdAt
+Связи:
+Notification → User (N:1)
