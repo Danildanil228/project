@@ -46,6 +46,7 @@ type AdminPageProps = {
     currentUser?: ManagedUser;
     adminContext?: AdminSecurityContext | null;
     onSessionRefresh: () => Promise<void>;
+    onOpenAuthModal: () => void;
 };
 
 type UserQueryOverrides = Partial<{
@@ -74,7 +75,7 @@ const emptyAuditLogFilters: AuditLogFilters = {
 
 const auditLogPageSize = 30;
 
-export function AdminPage({ currentUser, adminContext, onSessionRefresh }: AdminPageProps) {
+export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenAuthModal }: AdminPageProps) {
     const navigate = useNavigate();
     const { userId: routeUserId } = useParams<{ userId: string }>();
     const { confirm, dialog } = useConfirmDialog();
@@ -119,19 +120,27 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
     const [auditLogOffset, setAuditLogOffset] = useState(0);
     const [loadingAuditLogs, setLoadingAuditLogs] = useState(false);
 
-    const selectedUser = useMemo(
-        () => users.find((user) => user.id === selectedUserId) ?? selectedUserOverride,
-        [selectedUserId, selectedUserOverride, users],
-    );
-    const roleOptions = useMemo(
-        () => manageableRoleOptions(currentUser, adminContext),
-        [adminContext, currentUser],
-    );
+    const selectedUser = useMemo(() => users.find((user) => user.id === selectedUserId) ?? selectedUserOverride, [selectedUserId, selectedUserOverride, users]);
+    const roleOptions = useMemo(() => manageableRoleOptions(currentUser, adminContext), [adminContext, currentUser]);
     const canManageSelectedUser = canManageUser(currentUser, selectedUser, adminContext);
     const isSelfSelected = Boolean(currentUser?.id && selectedUser?.id === currentUser.id);
     const canUpdateSelectedProfile = canManageSelectedUser || isSelfSelected;
     const isSuperAdminSelected = isSuperAdminUser(selectedUser, adminContext);
     const superAdminUserKey = adminContext?.superAdminUserIds.join(",") ?? "";
+
+    if (!currentUser) {
+        return (
+            <section className="admin-page">
+                <div className="panel home-card" style={{ textAlign: "center" }}>
+                    <h2>Доступ ограничен</h2>
+                    <p className="muted">Для доступа к админ-панели необходимо войти в аккаунт.</p>
+                    <button className="primary" onClick={onOpenAuthModal}>
+                        Войти / Зарегистрироваться
+                    </button>
+                </div>
+            </section>
+        );
+    }
 
     function getCurrentUserQueryInput(nextOffset = offset, overrides: UserQueryOverrides = {}) {
         return {
@@ -226,10 +235,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
         setAdminError("");
 
         try {
-            const [sessionResponse, accountResponse] = await Promise.all([
-                unwrapAuthResult<{ sessions: ManagedSession[] }>(adminApi.listUserSessions({ userId })),
-                listManagedAccounts(userId),
-            ]);
+            const [sessionResponse, accountResponse] = await Promise.all([unwrapAuthResult<{ sessions: ManagedSession[] }>(adminApi.listUserSessions({ userId })), listManagedAccounts(userId)]);
 
             setSessions(sessionResponse.sessions ?? []);
             setAccounts(accountResponse.accounts ?? []);
@@ -492,9 +498,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
                 adminApi.banUser({
                     userId: selectedUser.id,
                     banReason: banForm.reason || undefined,
-                    banExpiresIn: banForm.expiresAt
-                        ? Math.max(1, Math.round((new Date(banForm.expiresAt).getTime() - Date.now()) / 1000))
-                        : undefined,
+                    banExpiresIn: banForm.expiresAt ? Math.max(1, Math.round((new Date(banForm.expiresAt).getTime() - Date.now()) / 1000)) : undefined,
                 }),
             );
         }, "Пользователь заблокирован");
@@ -615,8 +619,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
     }
 
     useEffect(() => {
-        // Initial admin data load is triggered by the authenticated user context.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         void loadUsers(0);
         void loadAuditLogs(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -624,9 +626,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
 
     useEffect(() => {
         if (!routeUserId) return;
-
-        // Deep links to a user can point outside the currently visible page.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSelectedUserId(routeUserId);
         if (!users.some((user) => user.id === routeUserId)) {
             void loadSelectedUserProfile(routeUserId);
@@ -636,9 +635,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh }: Admin
 
     useEffect(() => {
         if (!selectedUser) return;
-
-        // Local edit forms mirror the selected user and reset when selection changes.
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setEditForm({
             name: selectedUser.name ?? "",
             email: selectedUser.email ?? "",

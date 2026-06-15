@@ -1,0 +1,23 @@
+export type Reel = {
+  id: number;
+  name: string;
+  category: string;
+  brend: string;
+  size: number | null;
+  test: string;
+  protection: boolean;
+  per: string;
+  per_mod: string | null;
+  speed: string;
+  speed_mod: string | null;
+  frik: string;
+  frik_mod: string | null;
+  meh: string;
+  meh_mod: string | null;
+  lvl: number;
+  price_ser: string | null;
+  price_gold: string | null;
+  capacity: string | null;
+  photo: string | null;
+  model: string | null;
+};

@@ -9,9 +9,10 @@ type ProfilePageProps = {
     currentUser?: ManagedUser;
     adminContext?: AdminSecurityContext | null;
     onSessionRefresh: () => Promise<void>;
+    onOpenAuthModal: () => void;
 };
 
-export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: ProfilePageProps) {
+export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpenAuthModal }: ProfilePageProps) {
     const [name, setName] = useState(currentUser?.name ?? "");
     const [image, setImage] = useState(currentUser?.image ?? "");
     const [currentPassword, setCurrentPassword] = useState("");
@@ -24,7 +25,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
     async function loadSessions() {
         setLoadingSessions(true);
         setError("");
-
         try {
             const response = await unwrapAuthResult<ManagedSession[]>(authApi.listSessions());
             setSessions(response ?? []);
@@ -39,7 +39,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
         event.preventDefault();
         setNotice("");
         setError("");
-
         try {
             await unwrapAuthResult(authApi.updateUser({ name, image: image || null }));
             await onSessionRefresh();
@@ -53,7 +52,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
         event.preventDefault();
         setNotice("");
         setError("");
-
         try {
             await unwrapAuthResult(
                 authApi.changePassword({
@@ -75,7 +73,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
         if (!currentUser?.email) return;
         setNotice("");
         setError("");
-
         try {
             await unwrapAuthResult(
                 authApi.sendVerificationEmail({
@@ -92,7 +89,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
     async function revokeSession(token: string) {
         setNotice("");
         setError("");
-
         try {
             await unwrapAuthResult(authApi.revokeSession({ token }));
             await loadSessions();
@@ -105,10 +101,8 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
     async function revokeAllSessions() {
         const confirmed = window.confirm("Выйти со всех устройств? Текущая сессия тоже будет завершена.");
         if (!confirmed) return;
-
         setNotice("");
         setError("");
-
         try {
             await unwrapAuthResult(authApi.revokeSessions());
             await onSessionRefresh();
@@ -122,6 +116,20 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
             void loadSessions();
         });
     }, [currentUser?.id]);
+
+    if (!currentUser) {
+        return (
+            <section className="profile-page">
+                <div className="panel home-card" style={{ textAlign: "center" }}>
+                    <h2>Доступ ограничен</h2>
+                    <p className="muted">Для просмотра профиля необходимо войти в аккаунт.</p>
+                    <button className="primary" onClick={onOpenAuthModal}>
+                        Войти / Зарегистрироваться
+                    </button>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="profile-page">
@@ -158,12 +166,7 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
                         </label>
                         <label>
                             Ссылка на аватар
-                            <input
-                                type="url"
-                                placeholder="https://example.com/avatar.png"
-                                value={image}
-                                onChange={(event) => setImage(event.target.value)}
-                            />
+                            <input type="url" placeholder="https://example.com/avatar.png" value={image} onChange={(event) => setImage(event.target.value)} />
                         </label>
 
                         <div className="section-line">
@@ -185,22 +188,11 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
                     <h3>Пароль</h3>
                     <label>
                         Текущий пароль
-                        <input
-                            type="password"
-                            value={currentPassword}
-                            onChange={(event) => setCurrentPassword(event.target.value)}
-                            required
-                        />
+                        <input type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} required />
                     </label>
                     <label>
                         Новый пароль
-                        <input
-                            type="password"
-                            minLength={8}
-                            value={newPassword}
-                            onChange={(event) => setNewPassword(event.target.value)}
-                            required
-                        />
+                        <input type="password" minLength={8} value={newPassword} onChange={(event) => setNewPassword(event.target.value)} required />
                     </label>
                     <button className="secondary" type="submit">
                         Изменить пароль
@@ -238,7 +230,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh }: Pro
                             </button>
                         </div>
                     ))}
-
                     {!sessions.length && <p className="empty-panel muted">{loadingSessions ? "Загрузка..." : "Активных сессий нет"}</p>}
                 </div>
             </section>

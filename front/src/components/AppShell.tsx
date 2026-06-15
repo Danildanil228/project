@@ -10,11 +10,19 @@ type AppShellProps = {
     isImpersonating: boolean;
     onLogout: () => Promise<void>;
     onStopImpersonating: () => Promise<void>;
+    onOpenAuthModal: () => void;
 };
 
-export function AppShell({ currentUser, adminContext, isImpersonating, onLogout, onStopImpersonating }: AppShellProps) {
+export function AppShell({ currentUser, adminContext, isImpersonating, onLogout, onStopImpersonating, onOpenAuthModal }: AppShellProps) {
     const location = useLocation();
     const title = location.pathname.startsWith("/admin") ? "Админ панель" : "Главная";
+
+    const handleNavClick = (to: string, e: React.MouseEvent) => {
+        if (!currentUser) {
+            e.preventDefault();
+            onOpenAuthModal();
+        }
+    };
 
     return (
         <main className="app-layout">
@@ -29,15 +37,21 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                         <NavLink to="/" end>
                             Главная
                         </NavLink>
-                        <NavLink to="/profile">Профиль</NavLink>
-                        {hasElevatedUserAccess(currentUser, adminContext) && <NavLink to="/admin">Админ панель</NavLink>}
+                        <NavLink to="/profile" onClick={(e) => handleNavClick("/profile", e)}>
+                            Профиль
+                        </NavLink>
+                        {hasElevatedUserAccess(currentUser, adminContext) && (
+                            <NavLink to="/admin" onClick={(e) => handleNavClick("/admin", e)}>
+                                Админ панель
+                            </NavLink>
+                        )}
                     </nav>
 
                     <div className="current-user">
                         <UserAvatar user={currentUser} size="sm" />
                         <div>
-                            <strong>{currentUser?.name || currentUser?.email}</strong>
-                            <span>{currentUser?.email}</span>
+                            <strong>{currentUser?.name || currentUser?.email || "Гость"}</strong>
+                            <span>{currentUser?.email || "Не авторизован"}</span>
                             <span>Роль: {displayRoleText(currentUser, adminContext)}</span>
                         </div>
                     </div>
@@ -47,11 +61,17 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             Остановить impersonation
                         </button>
                     )}
-                    <ModeToggle/>
+                    <ModeToggle />
 
-                    <button className="secondary" onClick={onLogout}>
-                        Выйти
-                    </button>
+                    {currentUser ? (
+                        <button className="secondary" onClick={onLogout}>
+                            Выйти
+                        </button>
+                    ) : (
+                        <button className="primary" onClick={onOpenAuthModal}>
+                            Войти
+                        </button>
+                    )}
                 </div>
             </header>
 

@@ -4,24 +4,56 @@ import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { ModeToggle } from "../components/mode-toggle";
 import "@google/model-viewer";
+import { ReelCard } from "../components/ReelCard";
+import { useEffect, useState } from "react";
+import type { Reel } from "../types/reel";
 
 type HomePageProps = {
     currentUser?: ManagedUser;
     adminContext?: AdminSecurityContext | null;
+    onOpenAuthModal: () => void;
 };
 
-export function HomePage({ currentUser, adminContext }: HomePageProps) {
+export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePageProps) {
     const canOpenAdmin = hasElevatedUserAccess(currentUser, adminContext);
+
+    const [reels, setReels] = useState<Reel[]>([]);
+    useEffect(() => {
+    fetch("/api/reels")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Fetched data:", data);  // ← добавить
+            setReels(data.reels);
+        })
+        .catch(err => console.error("Fetch error:", err));
+}, []);
+
+    const testRequest = async () => {
+        if (!currentUser) {
+            onOpenAuthModal();
+            return;
+        }
+        try {
+            const res = await fetch("/api/admin/context", { credentials: "include" });
+            const data = await res.json();
+            alert(`Успешный запрос! Данные: ${JSON.stringify(data)}`);
+        } catch (err) {
+            alert("Ошибка запроса или вы не авторизованы");
+        }
+    };
 
     return (
         <section className="home-page">
             <div className="page-heading">
                 <p className="eyebrow">Аккаунт</p>
-                <h2>Добро пожаловать, {currentUser?.name || currentUser?.email}</h2>
-                <p className="muted">Это главная страница после авторизации. Отсюда пользователь переходит в доступные разделы.</p>
+                <h2>Добро пожаловать, {currentUser?.name || currentUser?.email || "гость"}</h2>
+                <p className="muted">Это главная страница. Для доступа к некоторым разделам требуется авторизация.</p>
             </div>
-            <div>
+            <div className="topbar-actions" style={{ marginBottom: "20px" }}>
                 <ModeToggle />
+                <button className="secondary" onClick={testRequest}>
+                    Тестовый запрос (требует авторизацию)
+                </button>
             </div>
 
             <div className="home-grid">
@@ -33,16 +65,22 @@ export function HomePage({ currentUser, adminContext }: HomePageProps) {
                     <dl className="profile-list">
                         <div>
                             <dt>Email</dt>
-                            <dd>{currentUser?.email}</dd>
+                            <dd>{currentUser?.email || "Не указан"}</dd>
                         </div>
                         <div>
                             <dt>Роль</dt>
                             <dd>{displayRoleText(currentUser, adminContext)}</dd>
                         </div>
                     </dl>
-                    <Link className="secondary nav-card-link" to="/profile">
-                        Настройки профиля
-                    </Link>
+                    {currentUser ? (
+                        <Link className="secondary nav-card-link" to="/profile">
+                            Настройки профиля
+                        </Link>
+                    ) : (
+                        <button className="secondary" onClick={onOpenAuthModal}>
+                            Войти для доступа к профилю
+                        </button>
+                    )}
                 </article>
 
                 {canOpenAdmin && (
@@ -55,29 +93,19 @@ export function HomePage({ currentUser, adminContext }: HomePageProps) {
                     </article>
                 )}
 
-                {!canOpenAdmin && (
+                {!canOpenAdmin && currentUser && (
                     <article className="panel home-card">
                         <h3>Доступ</h3>
                         <p className="muted">Для админ-панели нужна роль admin. Обычным пользователям этот раздел не показывается.</p>
                     </article>
                 )}
             </div>
-            <div className="flex bg-white! flex-wrap">
-                <div className="w-100 h-100 border-4 rounded-2xl">
-                    <model-viewer
-                        src="/elcon_5997.glb"
-                        alt="Катушка"
-                        orientation="0deg 180deg 0deg"
-                        camera-controls
-                        auto-rotate
-                        shadow-intensity="0"
-                        exposure="1"
-                        environment-image="neutral"
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                        }}
-                    />
+
+            <div className="">
+                <div className="grid gap-20">
+                    {reels.map((reel) => (
+                        <ReelCard key={reel.id} reel={reel} />
+                    ))}
                 </div>
             </div>
         </section>
