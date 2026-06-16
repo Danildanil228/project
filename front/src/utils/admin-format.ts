@@ -46,6 +46,10 @@ export function highestUserRoleRank(user?: ManagedUser | null, adminContext?: Ad
     );
 }
 
+export function canManageCatalog(user?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
+    return isAdminUser(user) || isSuperAdminUser(user, adminContext);
+}
+
 export function hasElevatedUserAccess(user?: ManagedUser | null, adminContext?: AdminSecurityContext | null) {
     const isCurrentContextUser = Boolean(user?.id && adminContext?.currentUserId === user.id);
     return Boolean(

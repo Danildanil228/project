@@ -4,11 +4,14 @@ import { randomUUID } from "node:crypto";
 import express, { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
+import { requireRole } from "../lib/admin-auth";
+import { itemMediaRoot, uploadsRoot } from "../lib/uploads";
 
 const router = Router();
 
 const maxAvatarBytes = 2 * 1024 * 1024;
-export const uploadsRoot = join(process.cwd(), "uploads");
+const maxItemImageBytes = 5 * 1024 * 1024;
+const maxItemModelBytes = 30 * 1024 * 1024;
 const avatarUploadsRoot = join(uploadsRoot, "avatars");
 
 const imageTypes = new Map([
@@ -78,6 +81,71 @@ router.post(
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
             res.json({
                 url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/avatars/${fileName}`,
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+);
+
+function isValidGlb(buffer: Buffer) {
+    return buffer.subarray(0, 4).toString("ascii") === "glTF";
+}
+
+router.post(
+    "/item-media",
+    express.raw({ limit: maxItemModelBytes, type: () => true }),
+    async (req, res, next) => {
+        try {
+            const session = await requireRole(req, res, ["admin"]);
+            if (!session) return;
+
+            const kind = String(req.query.kind ?? "");
+            const body = req.body;
+
+            if (!Buffer.isBuffer(body) || body.length === 0) {
+                res.status(400).json({ message: "Файл пустой" });
+                return;
+            }
+
+            let fileName: string;
+
+            if (kind === "image") {
+                const contentType = req.headers["content-type"]?.split(";")[0]?.trim().toLowerCase() ?? "";
+                const extension = imageTypes.get(contentType);
+
+                if (!extension) {
+                    res.status(400).json({ message: "Загрузите PNG, JPEG, WEBP или GIF" });
+                    return;
+                }
+                if (body.length > maxItemImageBytes) {
+                    res.status(400).json({ message: "Изображение больше 5 МБ" });
+                    return;
+                }
+                if (!isValidImageSignature(body, contentType)) {
+                    res.status(400).json({ message: "Содержимое не соответствует типу изображения" });
+                    return;
+                }
+
+                fileName = `${randomUUID()}.${extension}`;
+            } else if (kind === "model") {
+                if (!isValidGlb(body)) {
+                    res.status(400).json({ message: "Ожидается файл .glb (glTF binary)" });
+                    return;
+                }
+
+                fileName = `${randomUUID()}.glb`;
+            } else {
+                res.status(400).json({ message: "Укажите kind=image или kind=model" });
+                return;
+            }
+
+            await mkdir(itemMediaRoot, { recursive: true });
+            await writeFile(join(itemMediaRoot, fileName), body, { flag: "wx" });
+
+            const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
+            res.json({
+                url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/items/${fileName}`,
             });
         } catch (error) {
             next(error);

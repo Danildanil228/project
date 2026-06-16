@@ -8,7 +8,8 @@ import { errorHandler, notFoundHandler } from './middleware/error-handler';
 import { sensitiveRateLimit } from './middleware/rate-limit';
 import { securityHeaders } from './middleware/security-headers';
 import { adminAccountsRouter } from './routes/admin-accounts';
-import { avatarUploadRouter, uploadsRoot } from './routes/avatar-upload';
+import { avatarUploadRouter } from './routes/avatar-upload';
+import { uploadsRoot } from './lib/uploads';
 import { createItemsRouter } from './routes/items';
 
 dotenv.config();

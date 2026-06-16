@@ -12,6 +12,7 @@ export type CatalogItem = {
     brend: string;
     lvl: number;
     price_ser: string | null;
+    photo: string | null;
 };
 
 export type ItemListParams = {
@@ -45,6 +46,13 @@ export const itemCategories: Record<ItemType, string[]> = {
 async function readError(response: Response) {
     const data = await response.json().catch(() => null);
     return data?.message || `Запрос не выполнен (${response.status})`;
+}
+
+// Resolves a stored media value to a usable src: absolute URLs as-is, bare names from the public folder.
+export function mediaUrl(value?: string | null) {
+    if (!value) return "";
+    if (/^https?:\/\//i.test(value)) return value;
+    return `/${value.replace(/^\/+/, "")}`;
 }
 
 function buildQuery(params: ItemListParams) {

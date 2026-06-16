@@ -1,6 +1,6 @@
 import { itemCategories, type ItemType } from "./items-api";
 
-export type ItemFieldKind = "text" | "number" | "select" | "checkbox";
+export type ItemFieldKind = "text" | "number" | "select" | "checkbox" | "file";
 
 export type ItemFieldDef = {
     key: string;
@@ -8,7 +8,11 @@ export type ItemFieldDef = {
     kind: ItemFieldKind;
     required?: boolean;
     options?: string[];
+    mediaKind?: "image" | "model";
+    accept?: string;
 };
+
+const imageAccept = "image/png,image/jpeg,image/webp,image/gif";
 
 export const itemFields: Record<ItemType, ItemFieldDef[]> = {
     reels: [
@@ -30,8 +34,8 @@ export const itemFields: Record<ItemType, ItemFieldDef[]> = {
         { key: "price_ser", label: "Цена (серебро)", kind: "text" },
         { key: "price_gold", label: "Цена (золото)", kind: "text" },
         { key: "capacity", label: "Ёмкость шпули", kind: "text" },
-        { key: "photo", label: "Фото (путь)", kind: "text" },
-        { key: "model", label: "3D-модель (файл)", kind: "text" },
+        { key: "photo", label: "Фото", kind: "file", mediaKind: "image", accept: imageAccept },
+        { key: "model", label: "3D-модель (.glb)", kind: "file", mediaKind: "model", accept: ".glb,model/gltf-binary" },
     ],
     rods: [
         { key: "name", label: "Название", kind: "text", required: true },
@@ -53,6 +57,6 @@ export const itemFields: Record<ItemType, ItemFieldDef[]> = {
         { key: "lvl", label: "Уровень", kind: "number", required: true },
         { key: "price_ser", label: "Цена (серебро)", kind: "text" },
         { key: "price_gold", label: "Цена (золото)", kind: "text" },
-        { key: "photo", label: "Фото (путь)", kind: "text" },
+        { key: "photo", label: "Фото", kind: "file", mediaKind: "image", accept: imageAccept },
     ],
 };

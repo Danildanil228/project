@@ -4,7 +4,7 @@ import { ItemForm } from "../features/items/ItemForm";
 import { fetchItems, typeLabels, type ItemType } from "../lib/items-api";
 import { createItemRequest, deleteItemRequest, updateItemRequest } from "../lib/items-admin-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
-import { getErrorMessage, hasElevatedUserAccess } from "../utils/admin-format";
+import { canManageCatalog, getErrorMessage } from "../utils/admin-format";
 
 type ItemAdminPageProps = {
     currentUser?: ManagedUser;
@@ -17,7 +17,7 @@ type ItemRow = { id: number; name: string; category: string; brend: string; lvl:
 const itemTypes: ItemType[] = ["reels", "rods"];
 
 export function ItemAdminPage({ currentUser, adminContext, onOpenAuthModal }: ItemAdminPageProps) {
-    const canManage = hasElevatedUserAccess(currentUser, adminContext);
+    const canManage = canManageCatalog(currentUser, adminContext);
     const { confirm, dialog } = useConfirmDialog();
     const [type, setType] = useState<ItemType>("reels");
     const [rows, setRows] = useState<ItemRow[]>([]);
@@ -114,7 +114,7 @@ export function ItemAdminPage({ currentUser, adminContext, onOpenAuthModal }: It
             <section className="grid gap-4">
                 <div className="rounded-lg border border-border bg-card p-6 text-center">
                     <h2 className="text-xl font-bold">Доступ ограничен</h2>
-                    <p className="mt-1 text-muted-foreground">Управление снастями доступно администраторам и модераторам.</p>
+                    <p className="mt-1 text-muted-foreground">Управление снастями доступно только администраторам.</p>
                     {!currentUser && (
                         <button onClick={onOpenAuthModal} className="mt-3 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground">
                             Войти

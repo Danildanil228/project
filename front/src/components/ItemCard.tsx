@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { CatalogItem, ItemType } from "../lib/items-api";
+import { mediaUrl, type CatalogItem, type ItemType } from "../lib/items-api";
 
 type ItemCardProps = {
     type: ItemType;
@@ -12,9 +12,13 @@ export function ItemCard({ type, item }: ItemCardProps) {
             to={`/catalog/${type}/${item.id}`}
             className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-primary"
         >
-            <div className="flex aspect-[4/3] items-center justify-center bg-muted text-muted-foreground">
-                <span className="text-3xl font-bold uppercase">{item.name.slice(0, 2)}</span>
-            </div>
+            {item.photo ? (
+                <img src={mediaUrl(item.photo)} alt={item.name} className="aspect-[4/3] w-full object-cover" />
+            ) : (
+                <div className="flex aspect-[4/3] items-center justify-center bg-muted text-muted-foreground">
+                    <span className="text-3xl font-bold uppercase">{item.name.slice(0, 2)}</span>
+                </div>
+            )}
             <div className="grid gap-1 p-3">
                 <h3 className="font-bold leading-tight group-hover:text-primary">{item.name}</h3>
                 <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">

@@ -4,7 +4,8 @@ import { itemCreateSchemas, itemUpdateSchemas } from "../lib/item-schemas";
 import { itemIdParamsSchema, itemListQuerySchema, parseOrSend } from "../lib/validation";
 import { createItem, deleteItem, getItem, listItems, updateItem, type ItemType } from "../services/items-service";
 
-const itemManagerRoles = ["admin", "moderator"];
+// Catalog management is restricted to admins (super admins are always allowed by requireRole).
+const itemManagerRoles = ["admin"];
 
 export function createItemsRouter(type: ItemType): Router {
     const router = Router();

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "@google/model-viewer";
-import { fetchItem, type ItemType } from "../lib/items-api";
+import { fetchItem, mediaUrl, type ItemType } from "../lib/items-api";
 import type { Reel } from "../types/reel";
 import type { Rod } from "../types/rod";
 
@@ -78,6 +78,7 @@ export function ItemDetailPage() {
 
     const fields = type === "reels" ? reelFields : rodFields;
     const model = item && type === "reels" ? (item as Reel).model : null;
+    const photo = item ? ((item as Record<string, unknown>).photo as string | null) : null;
 
     return (
         <section className="grid gap-5">
@@ -94,7 +95,7 @@ export function ItemDetailPage() {
                     <div className="overflow-hidden rounded-lg border border-border bg-card">
                         {model ? (
                             <model-viewer
-                                src={`/${model}`}
+                                src={mediaUrl(model)}
                                 alt={item.name}
                                 camera-controls
                                 auto-rotate
@@ -102,6 +103,8 @@ export function ItemDetailPage() {
                                 environment-image="neutral"
                                 style={{ width: "100%", height: "360px" }}
                             />
+                        ) : photo ? (
+                            <img src={mediaUrl(photo)} alt={item.name} className="h-[360px] w-full bg-muted object-contain" />
                         ) : (
                             <div className="flex h-[360px] items-center justify-center bg-muted text-muted-foreground">Нет изображения</div>
                         )}

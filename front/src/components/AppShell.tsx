@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
-import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
+import { canManageCatalog, displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { UserAvatar } from "./UserAvatar";
 import { ModeToggle } from "./mode-toggle";
 
@@ -44,14 +44,14 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             Профиль
                         </NavLink>
                         {hasElevatedUserAccess(currentUser, adminContext) && (
-                            <>
-                                <NavLink to="/admin" onClick={handleNavClick}>
-                                    Админ панель
-                                </NavLink>
-                                <NavLink to="/admin/catalog" onClick={handleNavClick}>
-                                    Снасти
-                                </NavLink>
-                            </>
+                            <NavLink to="/admin" onClick={handleNavClick}>
+                                Админ панель
+                            </NavLink>
+                        )}
+                        {canManageCatalog(currentUser, adminContext) && (
+                            <NavLink to="/admin/catalog" onClick={handleNavClick}>
+                                Снасти
+                            </NavLink>
                         )}
                     </nav>
 

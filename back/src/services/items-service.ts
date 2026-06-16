@@ -1,7 +1,10 @@
+import { unlink } from "node:fs/promises";
+import { join } from "node:path";
 import type { z } from "zod";
 import { pool } from "../lib/db";
 import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
+import { itemMediaRoot } from "../lib/uploads";
 import type { itemListQuerySchema } from "../lib/validation";
 
 export type ItemType = "reels" | "rods";
@@ -144,6 +147,19 @@ function translateDbError(error: unknown): never {
     throw error;
 }
 
+// Removes a managed upload (only files under /uploads/items/); ignores legacy/public/external paths.
+async function deleteItemMediaFile(value: unknown) {
+    if (typeof value !== "string") return;
+    const marker = "/uploads/items/";
+    const index = value.indexOf(marker);
+    if (index === -1) return;
+
+    const fileName = value.slice(index + marker.length);
+    if (!fileName || fileName.includes("/") || fileName.includes("..")) return;
+
+    await unlink(join(itemMediaRoot, fileName)).catch(() => undefined);
+}
+
 export async function createItem(type: ItemType, data: Record<string, unknown>, actor: SessionUser) {
     const { sql, values } = buildInsertQuery(type, data);
 
@@ -165,11 +181,22 @@ export async function updateItem(type: ItemType, id: number, data: Record<string
         return getItem(type, id);
     }
 
+    const touchesMedia = "photo" in data || "model" in data;
+    const previous = touchesMedia ? await getItem(type, id) : null;
     const { sql, values } = buildUpdateQuery(type, id, data);
 
     try {
         const { rows } = await pool.query(sql, values);
         if (!rows[0]) return null;
+
+        if (previous) {
+            if ("photo" in data && previous.photo && previous.photo !== rows[0].photo) {
+                await deleteItemMediaFile(previous.photo);
+            }
+            if ("model" in data && previous.model && previous.model !== rows[0].model) {
+                await deleteItemMediaFile(previous.model);
+            }
+        }
 
         await writeAuditLog({
             actor,
@@ -184,13 +211,16 @@ export async function updateItem(type: ItemType, id: number, data: Record<string
 
 export async function deleteItem(type: ItemType, id: number, actor: SessionUser) {
     const config = itemConfigs[type];
-    const { rows } = await pool.query(`DELETE FROM ${config.table} WHERE id = $1 RETURNING id, name`, [id]);
+    const { rows } = await pool.query(`DELETE FROM ${config.table} WHERE id = $1 RETURNING *`, [id]);
     if (!rows[0]) return null;
+
+    await deleteItemMediaFile(rows[0].photo);
+    await deleteItemMediaFile(rows[0].model);
 
     await writeAuditLog({
         actor,
         action: `admin.${type}.delete`,
         metadata: { id, name: rows[0].name },
     });
-    return rows[0];
+    return { id: rows[0].id, name: rows[0].name };
 }
