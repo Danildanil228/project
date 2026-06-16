@@ -49,8 +49,8 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             </NavLink>
                         )}
                         {canManageCatalog(currentUser, adminContext) && (
-                            <NavLink to="/admin/catalog" onClick={handleNavClick}>
-                                Снасти
+                            <NavLink to="/admin/reference" onClick={handleNavClick}>
+                                Справочники
                             </NavLink>
                         )}
                     </nav>
