@@ -9,7 +9,7 @@ import { sensitiveRateLimit } from './middleware/rate-limit';
 import { securityHeaders } from './middleware/security-headers';
 import { adminAccountsRouter } from './routes/admin-accounts';
 import { avatarUploadRouter, uploadsRoot } from './routes/avatar-upload';
-import { reelsRouter } from './routes/reels';
+import { createItemsRouter } from './routes/items';
 
 dotenv.config();
 
@@ -52,7 +52,8 @@ app.get('/health', (_req, res) => {
     res.json({ status: "ok" });
 });
 
-app.use('/api/reels', reelsRouter);
+app.use('/api/reels', createItemsRouter('reels'));
+app.use('/api/rods', createItemsRouter('rods'));
 
 app.use('/api', notFoundHandler);
 app.use(errorHandler);

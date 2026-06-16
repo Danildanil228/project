@@ -19,9 +19,9 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
 
     const [reels, setReels] = useState<Reel[]>([]);
     useEffect(() => {
-        fetch("/api/reels")
+        fetch("/api/reels?limit=24")
             .then((res) => res.json())
-            .then((data) => setReels(data.reels))
+            .then((data) => setReels(data.items ?? []))
             .catch((err) => console.error("Fetch error:", err));
     }, []);
 

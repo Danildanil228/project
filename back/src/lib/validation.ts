@@ -59,6 +59,23 @@ export const auditLogExportQuerySchema = auditLogQuerySchema.extend({
     limit: z.coerce.number().int().min(1).max(5000).default(5000),
 });
 
+export const itemListQuerySchema = z.object({
+    search: z.string().trim().max(100).optional().default(""),
+    category: z.string().trim().max(100).optional().default(""),
+    brend: z.string().trim().max(100).optional().default(""),
+    type: z.string().trim().max(100).optional().default(""),
+    minLvl: z.coerce.number().int().min(0).max(1000).optional(),
+    maxLvl: z.coerce.number().int().min(0).max(1000).optional(),
+    sortBy: z.enum(["name", "lvl", "id"]).optional().default("name"),
+    sortDirection: z.enum(["asc", "desc"]).optional().default("asc"),
+    limit: z.coerce.number().int().min(1).max(100).default(24),
+    offset: z.coerce.number().int().min(0).default(0),
+});
+
+export const itemIdParamsSchema = z.object({
+    id: z.coerce.number().int().positive(),
+});
+
 export function parseOrSend<T>(schema: z.ZodType<T>, value: unknown, res: Response) {
     const result = schema.safeParse(value);
 

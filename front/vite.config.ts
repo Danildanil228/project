@@ -6,19 +6,7 @@ export default defineConfig({
     plugins: [react(), tailwindcss()],
     server: {
         proxy: {
-            "/api/auth": {
-                target: "http://localhost:3000",
-                changeOrigin: true,
-            },
-            "/api/admin": {
-                target: "http://localhost:3000",
-                changeOrigin: true,
-            },
-            "/api/uploads": {
-                target: "http://localhost:3000",
-                changeOrigin: true,
-            },
-            "/api/reels": {
+            "/api": {
                 target: "http://localhost:3000",
                 changeOrigin: true,
             },
