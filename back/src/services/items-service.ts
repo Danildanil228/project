@@ -1,5 +1,7 @@
 import type { z } from "zod";
 import { pool } from "../lib/db";
+import { writeAuditLog } from "../lib/audit-log";
+import type { SessionUser } from "../lib/admin-auth";
 import type { itemListQuerySchema } from "../lib/validation";
 
 export type ItemType = "reels" | "rods";
@@ -103,4 +105,92 @@ export async function getItem(type: ItemType, id: number) {
     const config = itemConfigs[type];
     const { rows } = await pool.query(`SELECT * FROM ${config.table} WHERE id = $1`, [id]);
     return rows[0] ?? null;
+}
+
+// Column names come from validated (Zod-stripped) data, so they are a safe known set.
+export function buildInsertQuery(type: ItemType, data: Record<string, unknown>) {
+    const config = itemConfigs[type];
+    const keys = Object.keys(data);
+    const columns = keys.map((key) => `"${key}"`).join(", ");
+    const placeholders = keys.map((_, index) => `$${index + 1}`).join(", ");
+
+    return {
+        sql: `INSERT INTO ${config.table} (${columns}) VALUES (${placeholders}) RETURNING *`,
+        values: keys.map((key) => data[key]),
+    };
+}
+
+export function buildUpdateQuery(type: ItemType, id: number, data: Record<string, unknown>) {
+    const config = itemConfigs[type];
+    const keys = Object.keys(data);
+    const setSql = keys.map((key, index) => `"${key}" = $${index + 1}`).join(", ");
+    const values = keys.map((key) => data[key]);
+    values.push(id);
+
+    return {
+        sql: `UPDATE ${config.table} SET ${setSql} WHERE id = $${values.length} RETURNING *`,
+        values,
+    };
+}
+
+function translateDbError(error: unknown): never {
+    const code = (error as { code?: string })?.code;
+    if (code === "23505") {
+        throw Object.assign(new Error("Предмет с таким названием уже существует"), { statusCode: 409 });
+    }
+    if (code === "23514") {
+        throw Object.assign(new Error("Значение не проходит проверку ограничений"), { statusCode: 400 });
+    }
+    throw error;
+}
+
+export async function createItem(type: ItemType, data: Record<string, unknown>, actor: SessionUser) {
+    const { sql, values } = buildInsertQuery(type, data);
+
+    try {
+        const { rows } = await pool.query(sql, values);
+        await writeAuditLog({
+            actor,
+            action: `admin.${type}.create`,
+            metadata: { id: rows[0].id, name: rows[0].name },
+        });
+        return rows[0];
+    } catch (error) {
+        translateDbError(error);
+    }
+}
+
+export async function updateItem(type: ItemType, id: number, data: Record<string, unknown>, actor: SessionUser) {
+    if (Object.keys(data).length === 0) {
+        return getItem(type, id);
+    }
+
+    const { sql, values } = buildUpdateQuery(type, id, data);
+
+    try {
+        const { rows } = await pool.query(sql, values);
+        if (!rows[0]) return null;
+
+        await writeAuditLog({
+            actor,
+            action: `admin.${type}.update`,
+            metadata: { id, fields: Object.keys(data) },
+        });
+        return rows[0];
+    } catch (error) {
+        translateDbError(error);
+    }
+}
+
+export async function deleteItem(type: ItemType, id: number, actor: SessionUser) {
+    const config = itemConfigs[type];
+    const { rows } = await pool.query(`DELETE FROM ${config.table} WHERE id = $1 RETURNING id, name`, [id]);
+    if (!rows[0]) return null;
+
+    await writeAuditLog({
+        actor,
+        action: `admin.${type}.delete`,
+        metadata: { id, name: rows[0].name },
+    });
+    return rows[0];
 }

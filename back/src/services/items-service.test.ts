@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildItemListQuery } from "./items-service";
+import { buildInsertQuery, buildItemListQuery, buildUpdateQuery } from "./items-service";
 
 test("builds a filtered reels query with search, filter and level range", () => {
     const result = buildItemListQuery("reels", {
@@ -56,4 +56,18 @@ test("ignores the type filter for reels (not a reels column)", () => {
 
     assert.equal(result.whereSql, "");
     assert.deepEqual(result.values, []);
+});
+
+test("builds a parameterised insert query in field order", () => {
+    const { sql, values } = buildInsertQuery("reels", { name: "Test", category: "Силовые", lvl: 10 });
+
+    assert.equal(sql, `INSERT INTO reels ("name", "category", "lvl") VALUES ($1, $2, $3) RETURNING *`);
+    assert.deepEqual(values, ["Test", "Силовые", 10]);
+});
+
+test("builds a parameterised update query with id as the last value", () => {
+    const { sql, values } = buildUpdateQuery("rods", 7, { brend: "Reef", lvl: 20 });
+
+    assert.equal(sql, `UPDATE rods SET "brend" = $1, "lvl" = $2 WHERE id = $3 RETURNING *`);
+    assert.deepEqual(values, ["Reef", 20, 7]);
 });
