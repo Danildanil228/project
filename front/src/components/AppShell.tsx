@@ -44,9 +44,14 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             Профиль
                         </NavLink>
                         {hasElevatedUserAccess(currentUser, adminContext) && (
-                            <NavLink to="/admin" onClick={handleNavClick}>
-                                Админ панель
-                            </NavLink>
+                            <>
+                                <NavLink to="/admin" onClick={handleNavClick}>
+                                    Админ панель
+                                </NavLink>
+                                <NavLink to="/admin/catalog" onClick={handleNavClick}>
+                                    Снасти
+                                </NavLink>
+                            </>
                         )}
                     </nav>
 
