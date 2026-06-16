@@ -1,10 +1,9 @@
-import { unlink } from "node:fs/promises";
-import { join } from "node:path";
 import type { z } from "zod";
 import { pool } from "../lib/db";
 import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
-import { itemMediaRoot } from "../lib/uploads";
+import { deleteUploadedMedia } from "../lib/uploads";
+import { translateDbError } from "../lib/db-errors";
 import type { itemListQuerySchema } from "../lib/validation";
 
 export type ItemType = "reels" | "rods";
@@ -136,30 +135,6 @@ export function buildUpdateQuery(type: ItemType, id: number, data: Record<string
     };
 }
 
-function translateDbError(error: unknown): never {
-    const code = (error as { code?: string })?.code;
-    if (code === "23505") {
-        throw Object.assign(new Error("Предмет с таким названием уже существует"), { statusCode: 409 });
-    }
-    if (code === "23514") {
-        throw Object.assign(new Error("Значение не проходит проверку ограничений"), { statusCode: 400 });
-    }
-    throw error;
-}
-
-// Removes a managed upload (only files under /uploads/items/); ignores legacy/public/external paths.
-async function deleteItemMediaFile(value: unknown) {
-    if (typeof value !== "string") return;
-    const marker = "/uploads/items/";
-    const index = value.indexOf(marker);
-    if (index === -1) return;
-
-    const fileName = value.slice(index + marker.length);
-    if (!fileName || fileName.includes("/") || fileName.includes("..")) return;
-
-    await unlink(join(itemMediaRoot, fileName)).catch(() => undefined);
-}
-
 export async function createItem(type: ItemType, data: Record<string, unknown>, actor: SessionUser) {
     const { sql, values } = buildInsertQuery(type, data);
 
@@ -191,10 +166,10 @@ export async function updateItem(type: ItemType, id: number, data: Record<string
 
         if (previous) {
             if ("photo" in data && previous.photo && previous.photo !== rows[0].photo) {
-                await deleteItemMediaFile(previous.photo);
+                await deleteUploadedMedia(previous.photo);
             }
             if ("model" in data && previous.model && previous.model !== rows[0].model) {
-                await deleteItemMediaFile(previous.model);
+                await deleteUploadedMedia(previous.model);
             }
         }
 
@@ -214,8 +189,8 @@ export async function deleteItem(type: ItemType, id: number, actor: SessionUser)
     const { rows } = await pool.query(`DELETE FROM ${config.table} WHERE id = $1 RETURNING *`, [id]);
     if (!rows[0]) return null;
 
-    await deleteItemMediaFile(rows[0].photo);
-    await deleteItemMediaFile(rows[0].model);
+    await deleteUploadedMedia(rows[0].photo);
+    await deleteUploadedMedia(rows[0].model);
 
     await writeAuditLog({
         actor,

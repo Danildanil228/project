@@ -11,6 +11,8 @@ import { adminAccountsRouter } from './routes/admin-accounts';
 import { avatarUploadRouter } from './routes/avatar-upload';
 import { uploadsRoot } from './lib/uploads';
 import { createItemsRouter } from './routes/items';
+import { fishRouter } from './routes/fish';
+import { waterbodiesRouter } from './routes/waterbodies';
 
 dotenv.config();
 
@@ -55,6 +57,8 @@ app.get('/health', (_req, res) => {
 
 app.use('/api/reels', createItemsRouter('reels'));
 app.use('/api/rods', createItemsRouter('rods'));
+app.use('/api/fish', fishRouter);
+app.use('/api/waterbodies', waterbodiesRouter);
 
 app.use('/api', notFoundHandler);
 app.use(errorHandler);
