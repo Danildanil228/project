@@ -4,14 +4,15 @@ import { randomUUID } from "node:crypto";
 import express, { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
-import { requireRole } from "../lib/admin-auth";
-import { itemMediaRoot, uploadsRoot } from "../lib/uploads";
+import { requireAuth, requireRole } from "../lib/admin-auth";
+import { itemMediaRoot, postMediaRoot, uploadsRoot } from "../lib/uploads";
 
 const router = Router();
 
 const maxAvatarBytes = 2 * 1024 * 1024;
 const maxItemImageBytes = 10 * 1024 * 1024;
 const maxItemModelBytes = 30 * 1024 * 1024;
+const maxPostImageBytes = 5 * 1024 * 1024;
 const avatarUploadsRoot = join(uploadsRoot, "avatars");
 
 const imageTypes = new Map([
@@ -146,6 +147,41 @@ router.post(
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
             res.json({
                 url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/items/${fileName}`,
+            });
+        } catch (error) {
+            next(error);
+        }
+    },
+);
+
+router.post(
+    "/post-media",
+    express.raw({ limit: maxPostImageBytes, type: Array.from(imageTypes.keys()) }),
+    async (req, res, next) => {
+        try {
+            const session = await requireAuth(req, res);
+            if (!session) return;
+
+            const contentType = req.headers["content-type"]?.split(";")[0]?.trim().toLowerCase() ?? "";
+            const extension = imageTypes.get(contentType);
+            const body = req.body;
+
+            if (!extension || !Buffer.isBuffer(body) || body.length === 0) {
+                res.status(400).json({ message: "Загрузите PNG, JPEG, WEBP или GIF (до 5 МБ)" });
+                return;
+            }
+            if (!isValidImageSignature(body, contentType)) {
+                res.status(400).json({ message: "Содержимое не соответствует типу изображения" });
+                return;
+            }
+
+            await mkdir(postMediaRoot, { recursive: true });
+            const fileName = `${randomUUID()}.${extension}`;
+            await writeFile(join(postMediaRoot, fileName), body, { flag: "wx" });
+
+            const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
+            res.json({
+                url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/posts/${fileName}`,
             });
         } catch (error) {
             next(error);

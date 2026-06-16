@@ -3,16 +3,17 @@ import { join } from "node:path";
 
 export const uploadsRoot = join(process.cwd(), "uploads");
 export const itemMediaRoot = join(uploadsRoot, "items");
+export const postMediaRoot = join(uploadsRoot, "posts");
 
-// Removes a managed upload (only files under /uploads/items/); ignores legacy/public/external values.
+// Removes a managed upload (files under /uploads/items/ or /uploads/posts/); ignores legacy/external values.
 export async function deleteUploadedMedia(value: unknown) {
     if (typeof value !== "string") return;
-    const marker = "/uploads/items/";
+    const marker = "/uploads/";
     const index = value.indexOf(marker);
     if (index === -1) return;
 
-    const fileName = value.slice(index + marker.length);
-    if (!fileName || fileName.includes("/") || fileName.includes("..")) return;
+    const relative = value.slice(index + marker.length);
+    if (!/^(items|posts)\/[A-Za-z0-9._-]+$/.test(relative)) return;
 
-    await unlink(join(itemMediaRoot, fileName)).catch(() => undefined);
+    await unlink(join(uploadsRoot, relative)).catch(() => undefined);
 }
