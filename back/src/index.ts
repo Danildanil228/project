@@ -13,6 +13,7 @@ import { uploadsRoot } from './lib/uploads';
 import { createItemsRouter } from './routes/items';
 import { fishRouter } from './routes/fish';
 import { waterbodiesRouter } from './routes/waterbodies';
+import { postsRouter } from './routes/posts';
 
 dotenv.config();
 
@@ -59,6 +60,7 @@ app.use('/api/reels', createItemsRouter('reels'));
 app.use('/api/rods', createItemsRouter('rods'));
 app.use('/api/fish', fishRouter);
 app.use('/api/waterbodies', waterbodiesRouter);
+app.use('/api/posts', postsRouter);
 
 app.use('/api', notFoundHandler);
 app.use(errorHandler);
