@@ -16,6 +16,7 @@ export const auth = betterAuth({
     database: pool,
     emailAndPassword: {
         enabled: true,
+        requireEmailVerification: true,
         revokeSessionsOnPasswordReset: true,
         resetPasswordTokenExpiresIn: 60 * 60,
         sendResetPassword: async ({ user, url }) => {
@@ -45,7 +46,10 @@ export const auth = betterAuth({
         },
     },
     baseURL: process.env.BETTER_AUTH_URL!,
-    trustedOrigins: ["http://localhost:5173"],
+    trustedOrigins: (process.env.FRONTEND_ORIGINS ?? "http://localhost:5173")
+        .split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean),
     plugins: [
         adminAuditPlugin(),
         adminHierarchyGuard(superAdminUserIds),

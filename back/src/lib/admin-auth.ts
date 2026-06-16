@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "./auth";
-import { canManageRoleRank, hasElevatedAccess, hasRole, highestRoleRank, isSuperAdminId, roleRank } from "./admin-roles";
+import { canManageRoleRank, hasElevatedAccess, hasRole, highestRoleRank, isSuperAdminId, normalizeRoles, roleRank } from "./admin-roles";
 import { pool } from "./db";
 
 export type SessionUser = {
@@ -16,7 +16,7 @@ export const superAdminUserIds = process.env.BETTER_AUTH_ADMIN_USER_IDS
     .map((id) => id.trim())
     .filter(Boolean) ?? [];
 
-export async function requireAdmin(req: Request, res: Response) {
+export async function requireAuth(req: Request, res: Response) {
     const session = await auth.api.getSession({
         headers: fromNodeHeaders(req.headers),
     });
@@ -26,8 +26,31 @@ export async function requireAdmin(req: Request, res: Response) {
         return null;
     }
 
+    return session;
+}
+
+export async function requireAdmin(req: Request, res: Response) {
+    const session = await requireAuth(req, res);
+    if (!session) return null;
+
     if (!hasElevatedAccess(session.user as SessionUser, superAdminUserIds)) {
         res.status(403).json({ message: "Admin access required" });
+        return null;
+    }
+
+    return session;
+}
+
+export async function requireRole(req: Request, res: Response, roles: string[]) {
+    const session = await requireAuth(req, res);
+    if (!session) return null;
+
+    const user = session.user as SessionUser;
+    if (isSuperAdminId(user.id, superAdminUserIds)) return session;
+
+    const allowed = normalizeRoles(user.role).some((role) => roles.includes(role));
+    if (!allowed) {
+        res.status(403).json({ message: "Insufficient permissions" });
         return null;
     }
 

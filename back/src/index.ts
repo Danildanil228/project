@@ -15,12 +15,16 @@ dotenv.config();
 
 const app = express();
 const port = Number(process.env.PORT ?? 3000);
+const webOrigins = (process.env.FRONTEND_ORIGINS ?? "http://localhost:5173")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
 
 app.set("trust proxy", 1);
 app.use(securityHeaders);
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: webOrigins,
         credentials: true,
     }),
 );

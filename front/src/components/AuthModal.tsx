@@ -13,17 +13,26 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [error, setError] = useState("");
+    const [notice, setNotice] = useState("");
 
     if (!open) return null;
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
+        setNotice("");
         try {
-            const result = isLogin ? await authClient.signIn.email({ email, password }) : await authClient.signUp.email({ email, password, name });
-            if (result.error) throw new Error(result.error.message);
-            onSuccess(); // обновить сессию в родителе
-            setOpen(false);
+            if (isLogin) {
+                const result = await authClient.signIn.email({ email, password });
+                if (result.error) throw new Error(result.error.message);
+                onSuccess(); // обновить сессию в родителе
+                setOpen(false);
+            } else {
+                const result = await authClient.signUp.email({ email, password, name });
+                if (result.error) throw new Error(result.error.message);
+                setNotice("Аккаунт создан. Подтвердите email по ссылке (в dev-режиме она появится в консоли бэкенда), затем войдите.");
+                setIsLogin(true);
+            }
         } catch (err) {
             setError(err instanceof Error ? err.message : "Ошибка");
         }
@@ -48,6 +57,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                         Пароль
                         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={8} />
                     </label>
+                    {notice && <p className="alert success">{notice}</p>}
                     {error && <p className="alert error">{error}</p>}
                     <button className="primary" type="submit">
                         {isLogin ? "Войти" : "Создать аккаунт"}
