@@ -10,7 +10,7 @@ import { itemMediaRoot, uploadsRoot } from "../lib/uploads";
 const router = Router();
 
 const maxAvatarBytes = 2 * 1024 * 1024;
-const maxItemImageBytes = 5 * 1024 * 1024;
+const maxItemImageBytes = 10 * 1024 * 1024;
 const maxItemModelBytes = 30 * 1024 * 1024;
 const avatarUploadsRoot = join(uploadsRoot, "avatars");
 
@@ -119,7 +119,7 @@ router.post(
                     return;
                 }
                 if (body.length > maxItemImageBytes) {
-                    res.status(400).json({ message: "Изображение больше 5 МБ" });
+                    res.status(400).json({ message: "Изображение больше 10 МБ" });
                     return;
                 }
                 if (!isValidImageSignature(body, contentType)) {
