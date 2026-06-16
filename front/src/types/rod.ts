@@ -1,0 +1,23 @@
+export type Rod = {
+    id: number;
+    name: string;
+    category: string;
+    type: string;
+    brend: string;
+    power: string | null;
+    test_down: string;
+    test_up: string;
+    length: string;
+    sensi: string;
+    rig: string;
+    stroy: string;
+    bonus_opit: string | null;
+    bonus_snast: string | null;
+    bonus_nav: string | null;
+    bonus_zabros: string | null;
+    stren: string;
+    lvl: number;
+    price_ser: string | null;
+    price_gold: string | null;
+    photo: string | null;
+};

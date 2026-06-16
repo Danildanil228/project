@@ -3,10 +3,6 @@ import { UserAvatar } from "../components/UserAvatar";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { ModeToggle } from "../components/mode-toggle";
-import "@google/model-viewer";
-import { ReelCard } from "../components/ReelCard";
-import { useEffect, useState } from "react";
-import type { Reel } from "../types/reel";
 
 type HomePageProps = {
     currentUser?: ManagedUser;
@@ -16,14 +12,6 @@ type HomePageProps = {
 
 export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePageProps) {
     const canOpenAdmin = hasElevatedUserAccess(currentUser, adminContext);
-
-    const [reels, setReels] = useState<Reel[]>([]);
-    useEffect(() => {
-        fetch("/api/reels?limit=24")
-            .then((res) => res.json())
-            .then((data) => setReels(data.items ?? []))
-            .catch((err) => console.error("Fetch error:", err));
-    }, []);
 
     const testRequest = async () => {
         if (!currentUser) {
@@ -54,6 +42,14 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
             </div>
 
             <div className="home-grid">
+                <article className="panel home-card">
+                    <h3>Каталог предметов</h3>
+                    <p className="muted">Катушки и удилища с характеристиками. Поиск, фильтры и 3D-просмотр. Доступно без входа.</p>
+                    <Link className="primary nav-card-link" to="/catalog">
+                        Открыть каталог
+                    </Link>
+                </article>
+
                 <article className="panel home-card">
                     <div className="profile-heading">
                         <UserAvatar user={currentUser} size="lg" />
@@ -98,13 +94,6 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
                 )}
             </div>
 
-            <div className="">
-                <div className="grid gap-20">
-                    {reels.map((reel) => (
-                        <ReelCard key={reel.id} reel={reel} />
-                    ))}
-                </div>
-            </div>
         </section>
     );
 }

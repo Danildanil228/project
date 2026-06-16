@@ -37,6 +37,9 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                         <NavLink to="/" end>
                             Главная
                         </NavLink>
+                        <NavLink to="/catalog">
+                            Каталог
+                        </NavLink>
                         <NavLink to="/profile" onClick={handleNavClick}>
                             Профиль
                         </NavLink>

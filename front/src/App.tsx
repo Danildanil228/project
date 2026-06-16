@@ -4,6 +4,8 @@ import { AppShell } from "./components/AppShell";
 import { adminApi, getAdminContext } from "./lib/admin-api";
 import { authClient } from "./lib/auth-client";
 import { AdminPage } from "./pages/AdminPage";
+import { CatalogPage } from "./pages/CatalogPage";
+import { ItemDetailPage } from "./pages/ItemDetailPage";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProfilePage } from "./pages/ProfilePage";
@@ -66,6 +68,8 @@ function AppRoutes() {
                     }
                 >
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="catalog" element={<CatalogPage />} />
+                    <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
                     <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/users/:userId" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
