@@ -17,7 +17,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
     const location = useLocation();
     const title = location.pathname.startsWith("/admin") ? "Админ панель" : "Главная";
 
-    const handleNavClick = (to: string, e: React.MouseEvent) => {
+    const handleNavClick = (e: React.MouseEvent) => {
         if (!currentUser) {
             e.preventDefault();
             onOpenAuthModal();
@@ -37,11 +37,11 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                         <NavLink to="/" end>
                             Главная
                         </NavLink>
-                        <NavLink to="/profile" onClick={(e) => handleNavClick("/profile", e)}>
+                        <NavLink to="/profile" onClick={handleNavClick}>
                             Профиль
                         </NavLink>
                         {hasElevatedUserAccess(currentUser, adminContext) && (
-                            <NavLink to="/admin" onClick={(e) => handleNavClick("/admin", e)}>
+                            <NavLink to="/admin" onClick={handleNavClick}>
                                 Админ панель
                             </NavLink>
                         )}

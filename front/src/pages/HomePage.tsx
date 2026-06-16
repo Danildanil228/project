@@ -19,14 +19,11 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
 
     const [reels, setReels] = useState<Reel[]>([]);
     useEffect(() => {
-    fetch("/api/reels")
-        .then((res) => res.json())
-        .then((data) => {
-            console.log("Fetched data:", data);  // ← добавить
-            setReels(data.reels);
-        })
-        .catch(err => console.error("Fetch error:", err));
-}, []);
+        fetch("/api/reels")
+            .then((res) => res.json())
+            .then((data) => setReels(data.reels))
+            .catch((err) => console.error("Fetch error:", err));
+    }, []);
 
     const testRequest = async () => {
         if (!currentUser) {
@@ -37,7 +34,7 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
             const res = await fetch("/api/admin/context", { credentials: "include" });
             const data = await res.json();
             alert(`Успешный запрос! Данные: ${JSON.stringify(data)}`);
-        } catch (err) {
+        } catch {
             alert("Ошибка запроса или вы не авторизованы");
         }
     };

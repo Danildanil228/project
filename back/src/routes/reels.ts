@@ -7,7 +7,6 @@ router.get("/", async (req, res, next) => {
     try {
         const { rows } = await pool.query("SELECT * FROM reels");
         res.json({ reels: rows });
-        console.log("Fetched reels:", rows);
     } catch (error) {
         next(error);
     }

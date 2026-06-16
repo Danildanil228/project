@@ -128,20 +128,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
     const isSuperAdminSelected = isSuperAdminUser(selectedUser, adminContext);
     const superAdminUserKey = adminContext?.superAdminUserIds.join(",") ?? "";
 
-    if (!currentUser) {
-        return (
-            <section className="admin-page">
-                <div className="panel home-card" style={{ textAlign: "center" }}>
-                    <h2>Доступ ограничен</h2>
-                    <p className="muted">Для доступа к админ-панели необходимо войти в аккаунт.</p>
-                    <button className="primary" onClick={onOpenAuthModal}>
-                        Войти / Зарегистрироваться
-                    </button>
-                </div>
-            </section>
-        );
-    }
-
     function getCurrentUserQueryInput(nextOffset = offset, overrides: UserQueryOverrides = {}) {
         return {
             limit: overrides.pageSize ?? pageSize,
@@ -619,6 +605,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
     }
 
     useEffect(() => {
+        if (!currentUser?.id) return;
         void loadUsers(0);
         void loadAuditLogs(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -649,6 +636,20 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
         void loadUserDetails(selectedUser.id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedUser?.id, superAdminUserKey]);
+
+    if (!currentUser) {
+        return (
+            <section className="admin-page">
+                <div className="panel home-card" style={{ textAlign: "center" }}>
+                    <h2>Доступ ограничен</h2>
+                    <p className="muted">Для доступа к админ-панели необходимо войти в аккаунт.</p>
+                    <button className="primary" onClick={onOpenAuthModal}>
+                        Войти / Зарегистрироваться
+                    </button>
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className="admin-page">

@@ -16,6 +16,7 @@ type ModelViewerProps = React.DetailedHTMLProps<React.HTMLAttributes<ModelViewer
     "shadow-softness"?: number | string;
     "environment-image"?: string;
 
+    orientation?: string;
     "camera-orbit"?: string;
     "camera-target"?: string;
     "field-of-view"?: string;
