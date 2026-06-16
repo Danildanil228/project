@@ -1,11 +1,24 @@
 import { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
-import { requireAuth, superAdminUserIds, type SessionUser } from "../lib/admin-auth";
+import { requireAuth, requireRole, superAdminUserIds, type SessionUser } from "../lib/admin-auth";
 import { hasElevatedAccess } from "../lib/admin-roles";
-import { authorIdParamsSchema, createPostSchema, feedQuerySchema, myPostsQuerySchema, paginationQuerySchema, postIdParamsSchema } from "../lib/post-schemas";
+import {
+    authorIdParamsSchema,
+    createPostSchema,
+    feedQuerySchema,
+    moderationQueueQuerySchema,
+    myPostsQuerySchema,
+    paginationQuerySchema,
+    postContentSchema,
+    postIdParamsSchema,
+    rejectSchema,
+} from "../lib/post-schemas";
 import { parseOrSend } from "../lib/validation";
 import { createPost, deleteOwnPost, getAuthorProfile, getPostById, listFeed, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
+import { approvePost, claimPost, listModerationQueue, moderatorUpdateContent, rejectPost, releasePost, removePost } from "../services/post-moderation-service";
+
+const moderatorRoles = ["admin", "moderator"];
 
 const router = Router();
 
@@ -147,6 +160,107 @@ router.delete("/:id", async (req, res, next) => {
             res.status(409).json({ message: "Опубликованный пост удаляет модерация" });
             return;
         }
+        res.json({ ok: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("/moderation/queue", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const query = parseOrSend(moderationQueueQuerySchema, req.query, res);
+        if (!query) return;
+        res.json(await listModerationQueue(query));
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/claim", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await claimPost(params.id, session.user as SessionUser);
+        if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
+        if (result.status === "invalid") return void res.status(409).json({ message: "Пост нельзя взять в модерацию" });
+        if (result.status === "taken") return void res.status(409).json({ message: "Пост уже взят другим модератором" });
+        res.json({ post: result.post });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/release", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await releasePost(params.id, session.user as SessionUser);
+        if (result.status === "invalid") return void res.status(409).json({ message: "Нельзя отложить этот пост" });
+        res.json({ ok: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/approve", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await approvePost(params.id, session.user as SessionUser);
+        if (result.status === "invalid") return void res.status(409).json({ message: "Пост нельзя одобрить в текущем статусе" });
+        res.json({ post: result.post });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/reject", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        const body = parseOrSend(rejectSchema, req.body, res);
+        if (!params || !body) return;
+        const result = await rejectPost(params.id, session.user as SessionUser, body.reason);
+        if (result.status === "invalid") return void res.status(409).json({ message: "Пост нельзя отклонить в текущем статусе" });
+        res.json({ ok: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.patch("/:id/moderate", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        const content = parseOrSend(postContentSchema, req.body, res);
+        if (!params || !content) return;
+        const result = await moderatorUpdateContent(params.id, session.user as SessionUser, content);
+        if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
+        if (result.status === "invalid") return void res.status(409).json({ message: "Пост нельзя редактировать" });
+        res.json({ post: result.post });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/remove", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await removePost(params.id, session.user as SessionUser);
+        if (result.status === "invalid") return void res.status(409).json({ message: "Пост уже удалён" });
         res.json({ ok: true });
     } catch (error) {
         next(error);

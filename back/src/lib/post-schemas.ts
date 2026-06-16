@@ -23,6 +23,18 @@ export const postContentSchema = z.object({
 
 export const createPostSchema = postContentSchema.extend({
     submit: z.boolean().optional().default(false),
+    // Only honoured for admin/moderator/super-admin: publish without review.
+    skipModeration: z.boolean().optional().default(false),
+});
+
+export const rejectSchema = z.object({
+    reason: z.string().trim().min(1).max(500),
+});
+
+export const moderationQueueQuerySchema = z.object({
+    status: z.enum(["pending", "in_review"]).or(z.literal("")).optional().default(""),
+    limit: z.coerce.number().int().min(1).max(50).default(20),
+    offset: z.coerce.number().int().min(0).default(0),
 });
 
 export const postIdParamsSchema = z.object({

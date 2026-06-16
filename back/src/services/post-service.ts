@@ -2,7 +2,8 @@ import type { PoolClient } from "pg";
 import type { z } from "zod";
 import { pool } from "../lib/db";
 import { writeAuditLog } from "../lib/audit-log";
-import type { SessionUser } from "../lib/admin-auth";
+import { superAdminUserIds, type SessionUser } from "../lib/admin-auth";
+import { hasElevatedAccess } from "../lib/admin-roles";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import {
@@ -30,7 +31,7 @@ function assertSubmittable(content: PostContent) {
     }
 }
 
-async function insertVersionChildren(client: PoolClient, versionId: number, content: PostContent) {
+export async function insertVersionChildren(client: PoolClient, versionId: number, content: PostContent) {
     for (const item of content.catches) {
         await client.query(
             `INSERT INTO catch (post_version_id, fish_id, weight, quantity) VALUES ($1, $2, $3, $4)`,
@@ -48,11 +49,16 @@ async function insertVersionChildren(client: PoolClient, versionId: number, cont
 export async function createPost(author: SessionUser, input: CreatePostInput) {
     if (input.submit) assertSubmittable(input);
 
+    const publishDirectly = input.submit && input.skipModeration && hasElevatedAccess(author, superAdminUserIds);
+    const status = input.submit ? (publishDirectly ? "approved" : "pending") : "draft";
+
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
-        const status = input.submit ? "pending" : "draft";
-        const postResult = await client.query(`INSERT INTO post (author_id, status) VALUES ($1, $2) RETURNING id`, [author.id, status]);
+        const postResult = await client.query(
+            `INSERT INTO post (author_id, status, published_at) VALUES ($1, $2, $3) RETURNING id`,
+            [author.id, status, publishDirectly ? new Date() : null],
+        );
         const postId = postResult.rows[0].id;
 
         const versionResult = await client.query(
@@ -66,7 +72,12 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
         await client.query(`UPDATE post SET current_version_id = $1 WHERE id = $2`, [versionId, postId]);
         await client.query("COMMIT");
 
-        await writeAuditLog({ actor: author, action: input.submit ? "post.submit" : "post.create-draft", targetUserId: author.id, metadata: { postId } });
+        await writeAuditLog({
+            actor: author,
+            action: publishDirectly ? "post.publish-direct" : input.submit ? "post.submit" : "post.create-draft",
+            targetUserId: author.id,
+            metadata: { postId },
+        });
         return getPostById(postId);
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
