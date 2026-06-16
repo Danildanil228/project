@@ -39,6 +39,33 @@ export const myPostsQuerySchema = z.object({
     offset: z.coerce.number().int().min(0).default(0),
 });
 
+const toNumberArray = (value: unknown) => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === "string" && value.trim()) {
+        return value.split(",").map((part) => part.trim()).filter(Boolean);
+    }
+    return [];
+};
+
+export const feedQuerySchema = z.object({
+    search: z.string().trim().max(100).optional().default(""),
+    fishIds: z.preprocess(toNumberArray, z.array(z.coerce.number().int().positive()).max(50)),
+    waterbodyIds: z.preprocess(toNumberArray, z.array(z.coerce.number().int().positive()).max(50)),
+    fishingMethod: z.enum(fishingMethods).or(z.literal("")).optional().default(""),
+    sortBy: z.enum(["date", "incomePerHour"]).optional().default("date"),
+    limit: z.coerce.number().int().min(1).max(50).default(20),
+    offset: z.coerce.number().int().min(0).default(0),
+});
+
+export const authorIdParamsSchema = z.object({
+    authorId: z.string().trim().min(1).max(100),
+});
+
+export const paginationQuerySchema = z.object({
+    limit: z.coerce.number().int().min(1).max(50).default(20),
+    offset: z.coerce.number().int().min(0).default(0),
+});
+
 // Computes silver-per-hour from total income and fishing time, or null when either is missing.
 export function incomePerHour(income: number | null, minutes: number | null) {
     if (!income || !minutes) return null;

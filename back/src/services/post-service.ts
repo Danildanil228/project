@@ -5,7 +5,14 @@ import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
-import { incomePerHour, type createPostSchema, type myPostsQuerySchema, type postContentSchema } from "../lib/post-schemas";
+import {
+    incomePerHour,
+    type createPostSchema,
+    type feedQuerySchema,
+    type myPostsQuerySchema,
+    type paginationQuerySchema,
+    type postContentSchema,
+} from "../lib/post-schemas";
 
 type PostContent = z.infer<typeof postContentSchema>;
 type CreatePostInput = z.infer<typeof createPostSchema>;
@@ -232,4 +239,107 @@ export async function listMyPosts(authorId: string, query: MyPostsQuery) {
     );
 
     return { items: rows, total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
+}
+
+type FeedQuery = z.infer<typeof feedQuerySchema>;
+type PaginationQuery = z.infer<typeof paginationQuerySchema>;
+
+const feedSelect = `
+    p.id, p.published_at AS "publishedAt",
+    u.id AS "authorId", u.name AS "authorName", u.image AS "authorImage",
+    pv.description, pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
+    w.name AS "waterbodyName",
+    (SELECT url FROM post_media WHERE post_version_id = pv.id ORDER BY order_index, id LIMIT 1) AS "coverUrl",
+    (SELECT COUNT(*)::int FROM catch WHERE post_version_id = pv.id) AS "catchCount"
+`;
+
+function withIncomePerHour<T extends { income: number | null; fishingMinutes: number | null }>(row: T) {
+    return { ...row, incomePerHour: incomePerHour(row.income, row.fishingMinutes) };
+}
+
+export async function listFeed(query: FeedQuery) {
+    const where: string[] = [`p.status = 'approved'`];
+    const values: unknown[] = [];
+
+    if (query.search) {
+        values.push(`%${query.search}%`);
+        where.push(`pv.description ILIKE $${values.length}`);
+    }
+    if (query.waterbodyIds.length) {
+        values.push(query.waterbodyIds);
+        where.push(`pv.waterbody_id = ANY($${values.length}::int[])`);
+    }
+    if (query.fishingMethod) {
+        values.push(query.fishingMethod);
+        where.push(`pv.fishing_method = $${values.length}`);
+    }
+    if (query.fishIds.length) {
+        values.push(query.fishIds);
+        where.push(`EXISTS (SELECT 1 FROM catch c WHERE c.post_version_id = pv.id AND c.fish_id = ANY($${values.length}::int[]))`);
+    }
+
+    const whereSql = `WHERE ${where.join(" AND ")}`;
+    const orderSql =
+        query.sortBy === "incomePerHour"
+            ? `(pv.income::numeric * 60 / NULLIF(pv.fishing_minutes, 0)) DESC NULLS LAST, p.published_at DESC`
+            : `p.published_at DESC, p.id DESC`;
+
+    const countResult = await pool.query<{ count: number }>(
+        `SELECT COUNT(*)::int AS count FROM post p JOIN post_version pv ON pv.id = p.current_version_id ${whereSql}`,
+        values,
+    );
+
+    values.push(query.limit, query.offset);
+    const { rows } = await pool.query(
+        `
+            SELECT ${feedSelect}
+            FROM post p
+            JOIN post_version pv ON pv.id = p.current_version_id
+            JOIN "user" u ON u.id = p.author_id
+            LEFT JOIN waterbody w ON w.id = pv.waterbody_id
+            ${whereSql}
+            ORDER BY ${orderSql}
+            LIMIT $${values.length - 1} OFFSET $${values.length}
+        `,
+        values,
+    );
+
+    return { items: rows.map(withIncomePerHour), total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
+}
+
+export async function getAuthorProfile(authorId: string, query: PaginationQuery) {
+    const userResult = await pool.query(`SELECT id, name, image, role, "createdAt" FROM "user" WHERE id = $1`, [authorId]);
+    if (!userResult.rows[0]) return null;
+
+    const statsResult = await pool.query<{ postCount: number; totalIncome: string }>(
+        `
+            SELECT COUNT(*)::int AS "postCount", COALESCE(SUM(pv.income), 0)::bigint AS "totalIncome"
+            FROM post p
+            JOIN post_version pv ON pv.id = p.current_version_id
+            WHERE p.author_id = $1 AND p.status = 'approved'
+        `,
+        [authorId],
+    );
+
+    const { rows } = await pool.query(
+        `
+            SELECT ${feedSelect}
+            FROM post p
+            JOIN post_version pv ON pv.id = p.current_version_id
+            JOIN "user" u ON u.id = p.author_id
+            LEFT JOIN waterbody w ON w.id = pv.waterbody_id
+            WHERE p.status = 'approved' AND p.author_id = $1
+            ORDER BY p.published_at DESC, p.id DESC
+            LIMIT $2 OFFSET $3
+        `,
+        [authorId, query.limit, query.offset],
+    );
+
+    return {
+        author: userResult.rows[0],
+        stats: { postCount: statsResult.rows[0].postCount, totalIncome: Number(statsResult.rows[0].totalIncome) },
+        posts: rows.map(withIncomePerHour),
+        limit: query.limit,
+        offset: query.offset,
+    };
 }

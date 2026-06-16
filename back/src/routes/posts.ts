@@ -3,9 +3,9 @@ import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
 import { requireAuth, superAdminUserIds, type SessionUser } from "../lib/admin-auth";
 import { hasElevatedAccess } from "../lib/admin-roles";
-import { createPostSchema, myPostsQuerySchema, postIdParamsSchema } from "../lib/post-schemas";
+import { authorIdParamsSchema, createPostSchema, feedQuerySchema, myPostsQuerySchema, paginationQuerySchema, postIdParamsSchema } from "../lib/post-schemas";
 import { parseOrSend } from "../lib/validation";
-import { createPost, deleteOwnPost, getPostById, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
+import { createPost, deleteOwnPost, getAuthorProfile, getPostById, listFeed, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
 
 const router = Router();
 
@@ -28,6 +28,32 @@ router.get("/mine", async (req, res, next) => {
         const query = parseOrSend(myPostsQuerySchema, req.query, res);
         if (!query) return;
         res.json(await listMyPosts(session.user.id, query));
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("/feed", async (req, res, next) => {
+    try {
+        const query = parseOrSend(feedQuerySchema, req.query, res);
+        if (!query) return;
+        res.json(await listFeed(query));
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("/author/:authorId", async (req, res, next) => {
+    try {
+        const params = parseOrSend(authorIdParamsSchema, req.params, res);
+        const query = parseOrSend(paginationQuerySchema, req.query, res);
+        if (!params || !query) return;
+        const profile = await getAuthorProfile(params.authorId, query);
+        if (!profile) {
+            res.status(404).json({ message: "Автор не найден" });
+            return;
+        }
+        res.json(profile);
     } catch (error) {
         next(error);
     }
