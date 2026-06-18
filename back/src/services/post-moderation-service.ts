@@ -5,7 +5,7 @@ import type { SessionUser } from "../lib/admin-auth";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import type { moderationQueueQuerySchema, postContentSchema } from "../lib/post-schemas";
-import { getPostById, insertVersionChildren } from "./post-service";
+import { assertSubmittable, getPostById, insertVersionChildren } from "./post-service";
 import { createNotification } from "./notification-service";
 
 type QueueQuery = z.infer<typeof moderationQueueQuerySchema>;
@@ -110,10 +110,13 @@ export async function approvePost(postId: number, moderator: SessionUser) {
     const result = await pool.query<{ authorId: string }>(
         `
             UPDATE post SET status = 'approved', published_at = NOW(), claimed_by = NULL, claimed_at = NULL, rejection_reason = NULL, updated_at = NOW()
-            WHERE id = $1 AND status IN ('pending', 'in_review')
+            WHERE id = $1
+              AND status = 'in_review'
+              AND claimed_by = $2
+              AND claimed_at >= NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes'
             RETURNING author_id AS "authorId"
         `,
-        [postId],
+        [postId, moderator.id],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
@@ -126,10 +129,13 @@ export async function rejectPost(postId: number, moderator: SessionUser, reason:
     const result = await pool.query<{ authorId: string }>(
         `
             UPDATE post SET status = 'rejected', rejection_reason = $2, claimed_by = NULL, claimed_at = NULL, updated_at = NOW()
-            WHERE id = $1 AND status IN ('pending', 'in_review')
+            WHERE id = $1
+              AND status = 'in_review'
+              AND claimed_by = $3
+              AND claimed_at >= NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes'
             RETURNING author_id AS "authorId"
         `,
-        [postId, reason],
+        [postId, reason, moderator.id],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
@@ -151,20 +157,42 @@ export async function removePost(postId: number, moderator: SessionUser) {
 }
 
 export async function pinPost(postId: number, moderator: SessionUser) {
-    const target = await pool.query<{ status: string; pinnedAt: string | null }>(
-        `SELECT status, pinned_at AS "pinnedAt" FROM post WHERE id = $1`,
-        [postId],
-    );
-    if (!target.rows[0]) return { status: "not-found" as const };
-    if (target.rows[0].status !== "approved") return { status: "invalid" as const };
-    if (target.rows[0].pinnedAt) return { status: "ok" as const }; // already pinned, idempotent
+    const client = await pool.connect();
+    try {
+        await client.query("BEGIN");
+        // Serialize pin operations so concurrent requests cannot exceed the global limit.
+        await client.query(`SELECT pg_advisory_xact_lock(hashtext('post-pin-limit'))`);
+        const target = await client.query<{ status: string; pinnedAt: string | null }>(
+            `SELECT status, pinned_at AS "pinnedAt" FROM post WHERE id = $1 FOR UPDATE`,
+            [postId],
+        );
+        if (!target.rows[0]) {
+            await client.query("ROLLBACK");
+            return { status: "not-found" as const };
+        }
+        if (target.rows[0].status !== "approved") {
+            await client.query("ROLLBACK");
+            return { status: "invalid" as const };
+        }
+        if (target.rows[0].pinnedAt) {
+            await client.query("COMMIT");
+            return { status: "ok" as const };
+        }
 
-    const { rows: countRows } = await pool.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM post WHERE pinned_at IS NOT NULL`);
-    if ((countRows[0]?.count ?? 0) >= PIN_LIMIT) {
-        return { status: "limit" as const, limit: PIN_LIMIT };
+        const { rows: countRows } = await client.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM post WHERE pinned_at IS NOT NULL`);
+        if ((countRows[0]?.count ?? 0) >= PIN_LIMIT) {
+            await client.query("ROLLBACK");
+            return { status: "limit" as const, limit: PIN_LIMIT };
+        }
+
+        await client.query(`UPDATE post SET pinned_at = NOW() WHERE id = $1`, [postId]);
+        await client.query("COMMIT");
+    } catch (error) {
+        await client.query("ROLLBACK").catch(() => undefined);
+        translateDbError(error);
+    } finally {
+        client.release();
     }
-
-    await pool.query(`UPDATE post SET pinned_at = NOW() WHERE id = $1`, [postId]);
     await writeAuditLog({ actor: moderator, action: "post.pin", metadata: { postId } });
     return { status: "ok" as const };
 }
@@ -178,17 +206,43 @@ export async function unpinPost(postId: number, moderator: SessionUser) {
 
 // Moderator edits the post's current version in place; republishes (new date) when already approved.
 export async function moderatorUpdateContent(postId: number, moderator: SessionUser, content: PostContent) {
-    const owned = await pool.query(`SELECT status, current_version_id AS "versionId" FROM post WHERE id = $1`, [postId]);
-    if (!owned.rows[0] || !owned.rows[0].versionId) return { status: "not-found" as const };
-    if (owned.rows[0].status === "deleted") return { status: "invalid" as const };
-
-    const versionId = owned.rows[0].versionId as number;
-    const isApproved = owned.rows[0].status === "approved";
-    const previousMedia = await pool.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
+    assertSubmittable(content);
 
     const client = await pool.connect();
+    let previousMedia: { url: string }[] = [];
     try {
         await client.query("BEGIN");
+        const owned = await client.query<{
+            status: string;
+            versionId: number | null;
+            claimedBy: string | null;
+            claimFresh: boolean;
+        }>(
+            `
+                SELECT status, current_version_id AS "versionId", claimed_by AS "claimedBy",
+                       (claimed_at >= NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes') AS "claimFresh"
+                FROM post WHERE id = $1 FOR UPDATE
+            `,
+            [postId],
+        );
+        const post = owned.rows[0];
+        if (!post || !post.versionId) {
+            await client.query("ROLLBACK");
+            return { status: "not-found" as const };
+        }
+        if (post.status !== "approved" && post.status !== "in_review") {
+            await client.query("ROLLBACK");
+            return { status: "invalid" as const };
+        }
+        if (post.status === "in_review" && (post.claimedBy !== moderator.id || !post.claimFresh)) {
+            await client.query("ROLLBACK");
+            return { status: "invalid" as const };
+        }
+
+        const versionId = post.versionId;
+        const isApproved = post.status === "approved";
+        const mediaResult = await client.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
+        previousMedia = mediaResult.rows;
         await client.query(
             `UPDATE post_version SET description = $1, waterbody_id = $2, point = $3, fishing_method = $4, income = $5, fishing_minutes = $6 WHERE id = $7`,
             [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, versionId],
@@ -206,7 +260,7 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
     }
 
     const keep = new Set(content.media);
-    for (const row of previousMedia.rows) {
+    for (const row of previousMedia) {
         if (!keep.has(row.url)) await deleteUploadedMedia(row.url);
     }
 

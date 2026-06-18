@@ -17,7 +17,7 @@ test("createPostSchema normalises empty fields and coerces catches", () => {
         fishingMethod: "Спиннинг",
         income: "5000",
         fishingMinutes: "",
-        catches: [{ fishId: "4", weight: "1.5", quantity: "2" }],
+        catches: [{ fishId: "4" }],
         media: ["http://x/1.png"],
         submit: true,
     });
@@ -27,7 +27,7 @@ test("createPostSchema normalises empty fields and coerces catches", () => {
         assert.equal(result.data.waterbodyId, 13);
         assert.equal(result.data.point, null);
         assert.equal(result.data.fishingMinutes, null);
-        assert.deepEqual(result.data.catches[0], { fishId: 4, weight: 1.5, quantity: 2 });
+        assert.deepEqual(result.data.catches[0], { fishId: 4 });
         assert.equal(result.data.submit, true);
     }
 });

@@ -45,7 +45,6 @@ export function ItemAdminPage({ currentUser, adminContext, onOpenAuthModal }: It
     useEffect(() => {
         if (!canManage) return;
         void loadRows(type);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [type, canManage]);
 
     function changeType(next: ItemType) {

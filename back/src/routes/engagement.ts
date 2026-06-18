@@ -23,7 +23,9 @@ router.get("/:id/comments", async (req, res, next) => {
         const params = parseOrSend(postIdParamsSchema, req.params, res);
         const query = parseOrSend(paginationQuerySchema, req.query, res);
         if (!params || !query) return;
-        res.json(await listComments(params.id, query));
+        const result = await listComments(params.id, query);
+        if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
+        res.json(result);
     } catch (error) {
         next(error);
     }

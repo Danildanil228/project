@@ -22,7 +22,7 @@ type MyPostsQuery = z.infer<typeof myPostsQuerySchema>;
 
 const editableStatuses = new Set(["draft", "rejected"]);
 
-function assertSubmittable(content: PostContent) {
+export function assertSubmittable(content: PostContent) {
     const problems: string[] = [];
     if (!content.waterbodyId) problems.push("укажите водоём");
     if (!content.fishingMethod) problems.push("укажите вид ловли");

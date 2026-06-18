@@ -5,7 +5,7 @@ export const uploadsRoot = join(process.cwd(), "uploads");
 export const itemMediaRoot = join(uploadsRoot, "items");
 export const postMediaRoot = join(uploadsRoot, "posts");
 
-// Removes a managed upload (files under /uploads/items/ or /uploads/posts/); ignores legacy/external values.
+// Removes a managed upload; ignores legacy/external values and nested paths.
 export async function deleteUploadedMedia(value: unknown) {
     if (typeof value !== "string") return;
     const marker = "/uploads/";
@@ -13,7 +13,7 @@ export async function deleteUploadedMedia(value: unknown) {
     if (index === -1) return;
 
     const relative = value.slice(index + marker.length);
-    if (!/^(items|posts)\/[A-Za-z0-9._-]+$/.test(relative)) return;
+    if (!/^(avatars|items|posts)\/[A-Za-z0-9._-]+$/.test(relative)) return;
 
     await unlink(join(uploadsRoot, relative)).catch(() => undefined);
 }

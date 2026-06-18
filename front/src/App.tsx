@@ -1,29 +1,30 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { AppShell } from "./components/AppShell";
 import { adminApi, getAdminContext } from "./lib/admin-api";
 import { authClient } from "./lib/auth-client";
-import { AdminPage } from "./pages/AdminPage";
-import { CatalogPage } from "./pages/CatalogPage";
-import { ItemDetailPage } from "./pages/ItemDetailPage";
-import { ItemAdminPage } from "./pages/ItemAdminPage";
-import { ReferenceAdminPage } from "./pages/ReferenceAdminPage";
-import { FishAdminPage } from "./pages/FishAdminPage";
-import { WaterbodyAdminPage } from "./pages/WaterbodyAdminPage";
 import { HomePage } from "./pages/HomePage";
-import { FeedPage } from "./pages/FeedPage";
-import { PostEditorPage } from "./pages/PostEditorPage";
-import { PostDetailPage } from "./pages/PostDetailPage";
-import { AuthorProfilePage } from "./pages/AuthorProfilePage";
-import { ModerationQueuePage } from "./pages/ModerationQueuePage";
-import { ReportsPage } from "./pages/ReportsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { ResetPasswordPage } from "./pages/ResetPasswordPage";
 import type { AdminSecurityContext, ManagedUser } from "./types/admin";
 import { unwrapAuthResult } from "./utils/auth-client-result";
 import { AuthModalProvider, useAuthModal } from "./context/AuthModalContext";
 import { AuthModal } from "./components/AuthModal";
+
+const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
+const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((module) => ({ default: module.AuthorProfilePage })));
+const CatalogPage = lazy(() => import("./pages/CatalogPage").then((module) => ({ default: module.CatalogPage })));
+const FeedPage = lazy(() => import("./pages/FeedPage").then((module) => ({ default: module.FeedPage })));
+const FishAdminPage = lazy(() => import("./pages/FishAdminPage").then((module) => ({ default: module.FishAdminPage })));
+const ItemAdminPage = lazy(() => import("./pages/ItemAdminPage").then((module) => ({ default: module.ItemAdminPage })));
+const ItemDetailPage = lazy(() => import("./pages/ItemDetailPage").then((module) => ({ default: module.ItemDetailPage })));
+const ModerationQueuePage = lazy(() => import("./pages/ModerationQueuePage").then((module) => ({ default: module.ModerationQueuePage })));
+const PostDetailPage = lazy(() => import("./pages/PostDetailPage").then((module) => ({ default: module.PostDetailPage })));
+const PostEditorPage = lazy(() => import("./pages/PostEditorPage").then((module) => ({ default: module.PostEditorPage })));
+const ProfilePage = lazy(() => import("./pages/ProfilePage").then((module) => ({ default: module.ProfilePage })));
+const ReferenceAdminPage = lazy(() => import("./pages/ReferenceAdminPage").then((module) => ({ default: module.ReferenceAdminPage })));
+const ReportsPage = lazy(() => import("./pages/ReportsPage").then((module) => ({ default: module.ReportsPage })));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage").then((module) => ({ default: module.ResetPasswordPage })));
+const WaterbodyAdminPage = lazy(() => import("./pages/WaterbodyAdminPage").then((module) => ({ default: module.WaterbodyAdminPage })));
 
 function AppRoutes() {
     const { data: session, isPending, refetch } = authClient.useSession();
@@ -64,19 +65,20 @@ function AppRoutes() {
 
     return (
         <>
-            <Routes>
-                <Route
-                    element={
-                        <AppShell
-                            currentUser={currentUser}
-                            adminContext={adminContext}
-                            isImpersonating={isImpersonating}
-                            onLogout={handleLogout}
-                            onStopImpersonating={handleStopImpersonating}
-                            onOpenAuthModal={() => setOpen(true)}
-                        />
-                    }
-                >
+            <Suspense fallback={<main className="center-screen">Загрузка...</main>}>
+                <Routes>
+                    <Route
+                        element={
+                            <AppShell
+                                currentUser={currentUser}
+                                adminContext={adminContext}
+                                isImpersonating={isImpersonating}
+                                onLogout={handleLogout}
+                                onStopImpersonating={handleStopImpersonating}
+                                onOpenAuthModal={() => setOpen(true)}
+                            />
+                        }
+                    >
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="catalog" element={<CatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
@@ -98,9 +100,10 @@ function AppRoutes() {
                     <Route path="admin/waterbodies" element={<WaterbodyAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/users/:userId" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="*" element={<NotFoundPage />} />
-                </Route>
-                <Route path="reset-password" element={<ResetPasswordPage />} />
-            </Routes>
+                    </Route>
+                    <Route path="reset-password" element={<ResetPasswordPage />} />
+                </Routes>
+            </Suspense>
             <AuthModal onSuccess={refetch} />
         </>
     );

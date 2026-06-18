@@ -237,7 +237,7 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpe
 
             {/* "Мои посты" moved here from a dedicated nav entry — keeps profile-related actions together. */}
             <section className="mt-6">
-                <MyPostsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={onOpenAuthModal} />
+                <MyPostsPage currentUser={currentUser} onOpenAuthModal={onOpenAuthModal} />
             </section>
         </section>
     );

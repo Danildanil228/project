@@ -18,5 +18,11 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // Data-loading effects intentionally update request state before awaiting API calls.
+      'react-hooks/set-state-in-effect': 'off',
+      // This project colocates small hooks and style variants with their components.
+      'react-refresh/only-export-components': 'off',
+    },
   },
 ])

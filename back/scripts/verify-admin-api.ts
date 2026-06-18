@@ -1,3 +1,5 @@
+import { deleteUploadedMedia } from "../src/lib/uploads";
+
 const baseUrl = process.env.API_BASE_URL ?? "http://localhost:3000";
 const appOrigin = process.env.APP_ORIGIN ?? "http://localhost:5173";
 const adminEmail = process.env.ADMIN_TEST_EMAIL;
@@ -101,6 +103,7 @@ async function main() {
         uploadAvatar.ok && typeof uploadAvatarBody?.url === "string" && String(uploadAvatarBody.url).includes("/uploads/avatars/"),
         JSON.stringify({ status: uploadAvatar.status, url: uploadAvatarBody?.url }),
     );
+    await deleteUploadedMedia(uploadAvatarBody?.url);
 
     const invalidBulk = await request("/api/admin/users/bulk-role", {
         method: "POST",

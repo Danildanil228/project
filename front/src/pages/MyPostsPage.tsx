@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { mediaUrl } from "../lib/items-api";
 import { deletePost, listMyPosts, submitPost } from "../lib/posts-api";
-import type { AdminSecurityContext, ManagedUser } from "../types/admin";
+import type { ManagedUser } from "../types/admin";
 import { postStatusLabels, type MyPostRow, type PostStatus } from "../types/post";
 import { formatDate, getErrorMessage } from "../utils/admin-format";
 
 type MyPostsPageProps = {
     currentUser?: ManagedUser;
-    adminContext?: AdminSecurityContext | null;
     onOpenAuthModal: () => void;
 };
 
@@ -34,7 +33,7 @@ const statusBadgeClass: Record<PostStatus, string> = {
     deleted: "bg-muted text-muted-foreground line-through",
 };
 
-export function MyPostsPage({ currentUser, adminContext: _adminContext, onOpenAuthModal }: MyPostsPageProps) {
+export function MyPostsPage({ currentUser, onOpenAuthModal }: MyPostsPageProps) {
     const { confirm, dialog } = useConfirmDialog();
     const [status, setStatus] = useState<PostStatus | "">("");
     const [items, setItems] = useState<MyPostRow[]>([]);

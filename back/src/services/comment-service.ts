@@ -13,6 +13,9 @@ async function getPostMeta(postId: number) {
 }
 
 export async function listComments(postId: number, query: { limit: number; offset: number }) {
+    const post = await getPostMeta(postId);
+    if (!post || post.status !== "approved") return { status: "not-found" as const };
+
     const countResult = await pool.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM comment WHERE post_id = $1`, [postId]);
     const { rows } = await pool.query(
         `
@@ -26,7 +29,7 @@ export async function listComments(postId: number, query: { limit: number; offse
         `,
         [postId, query.limit, query.offset],
     );
-    return { items: rows, total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
+    return { status: "ok" as const, items: rows, total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
 }
 
 export async function createComment(postId: number, author: SessionUser, body: string) {
