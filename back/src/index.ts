@@ -1,6 +1,6 @@
 import express from 'express';
 import { toNodeHandler } from 'better-auth/node';
-import { auth } from './lib/auth';
+import { auth, enabledSocialProviders } from './lib/auth';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { runMigrations } from './lib/migrations';
@@ -14,6 +14,9 @@ import { createItemsRouter } from './routes/items';
 import { fishRouter } from './routes/fish';
 import { waterbodiesRouter } from './routes/waterbodies';
 import { postsRouter } from './routes/posts';
+import { engagementRouter } from './routes/engagement';
+import { reportsRouter } from './routes/reports';
+import { notificationsRouter } from './routes/notifications';
 
 dotenv.config();
 
@@ -56,11 +59,19 @@ app.get('/health', (_req, res) => {
     res.json({ status: "ok" });
 });
 
+// Tells the frontend which social providers are configured so we only render buttons that actually work.
+app.get('/api/auth-providers', (_req, res) => {
+    res.json(enabledSocialProviders);
+});
+
 app.use('/api/reels', createItemsRouter('reels'));
 app.use('/api/rods', createItemsRouter('rods'));
 app.use('/api/fish', fishRouter);
 app.use('/api/waterbodies', waterbodiesRouter);
 app.use('/api/posts', postsRouter);
+app.use('/api/posts', engagementRouter);
+app.use('/api/reports', reportsRouter);
+app.use('/api/notifications', notificationsRouter);
 
 app.use('/api', notFoundHandler);
 app.use(errorHandler);

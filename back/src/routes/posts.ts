@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
+import { pool } from "../lib/db";
 import { requireAuth, requireRole, superAdminUserIds, type SessionUser } from "../lib/admin-auth";
 import { hasElevatedAccess } from "../lib/admin-roles";
 import {
@@ -15,8 +16,8 @@ import {
     rejectSchema,
 } from "../lib/post-schemas";
 import { parseOrSend } from "../lib/validation";
-import { createPost, deleteOwnPost, getAuthorProfile, getPostById, listFeed, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
-import { approvePost, claimPost, listModerationQueue, moderatorUpdateContent, rejectPost, releasePost, removePost } from "../services/post-moderation-service";
+import { createPost, deleteOwnPost, getAuthorProfile, getPostById, incrementViewCount, listFeed, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
+import { approvePost, claimPost, listModerationQueue, moderatorUpdateContent, PIN_LIMIT, pinPost, rejectPost, releasePost, removePost, unpinPost } from "../services/post-moderation-service";
 
 const moderatorRoles = ["admin", "moderator"];
 
@@ -67,6 +68,19 @@ router.get("/author/:authorId", async (req, res, next) => {
             return;
         }
         res.json(profile);
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Per-session view counting: the frontend hits this once per session (uses sessionStorage to dedupe locally).
+router.post("/:id/view", async (req, res, next) => {
+    try {
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await incrementViewCount(params.id);
+        if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
+        res.json({ ok: true });
     } catch (error) {
         next(error);
     }
@@ -248,6 +262,48 @@ router.patch("/:id/moderate", async (req, res, next) => {
         if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
         if (result.status === "invalid") return void res.status(409).json({ message: "Пост нельзя редактировать" });
         res.json({ post: result.post });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/pin", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await pinPost(params.id, session.user as SessionUser);
+        if (result.status === "not-found") return void res.status(404).json({ message: "Пост не найден" });
+        if (result.status === "invalid") return void res.status(409).json({ message: "Закрепить можно только опубликованный пост" });
+        if (result.status === "limit") return void res.status(409).json({ message: `Достигнут лимит закреплённых постов (${result.limit}). Открепите другой, чтобы закрепить этот.` });
+        res.json({ ok: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.delete("/:id/pin", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        const params = parseOrSend(postIdParamsSchema, req.params, res);
+        if (!params) return;
+        const result = await unpinPost(params.id, session.user as SessionUser);
+        if (result.status === "not-pinned") return void res.status(404).json({ message: "Пост не был закреплён" });
+        res.json({ ok: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("/moderation/pin-info", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, moderatorRoles);
+        if (!session) return;
+        // Tells the frontend how many pinned slots are currently used + the cap, so the star UI can show "2/3".
+        const { rows } = await pool.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM post WHERE pinned_at IS NOT NULL`);
+        res.json({ used: rows[0]?.count ?? 0, limit: PIN_LIMIT });
     } catch (error) {
         next(error);
     }

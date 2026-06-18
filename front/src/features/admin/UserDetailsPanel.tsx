@@ -1,4 +1,3 @@
-import { ScrollArea } from "../../components/ui/scroll-area";
 import { UserAvatar } from "../../components/UserAvatar";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
@@ -15,6 +14,7 @@ type UserDetailsPanelProps = {
     roleOptions: string[];
     canManageSelectedUser: boolean;
     canUpdateSelectedProfile: boolean;
+    canImpersonate: boolean;
     isSelfSelected: boolean;
     isSuperAdminSelected: boolean;
     onEditFormChange: (form: EditUserFormState) => void;
@@ -61,6 +61,7 @@ export function UserDetailsPanel({
     roleOptions,
     canManageSelectedUser,
     canUpdateSelectedProfile,
+    canImpersonate,
     isSelfSelected,
     isSuperAdminSelected,
     onEditFormChange,
@@ -136,9 +137,11 @@ export function UserDetailsPanel({
                     </form>
 
                     <div className="actions-row">
-                        <button className="secondary" onClick={onImpersonateUser} disabled={!canManageSelectedUser}>
-                            Войти как пользователь
-                        </button>
+                        {canImpersonate && (
+                            <button className="secondary" onClick={onImpersonateUser} disabled={!canManageSelectedUser}>
+                                Войти как пользователь
+                            </button>
+                        )}
                         <button className="danger" onClick={onDeleteUser} disabled={!canManageSelectedUser}>
                             Удалить пользователя
                         </button>

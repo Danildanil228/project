@@ -4,6 +4,7 @@ import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
 import { displayRoleText, formatDate, getErrorMessage, shortId } from "../utils/admin-format";
 import { unwrapAuthResult } from "../utils/auth-client-result";
+import { MyPostsPage } from "./MyPostsPage";
 
 type ProfilePageProps = {
     currentUser?: ManagedUser;
@@ -232,6 +233,11 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpe
                     ))}
                     {!sessions.length && <p className="empty-panel muted">{loadingSessions ? "Загрузка..." : "Активных сессий нет"}</p>}
                 </div>
+            </section>
+
+            {/* "Мои посты" moved here from a dedicated nav entry — keeps profile-related actions together. */}
+            <section className="mt-6">
+                <MyPostsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={onOpenAuthModal} />
             </section>
         </section>
     );

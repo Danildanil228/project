@@ -78,6 +78,23 @@ export function formatDate(value?: string | Date | null) {
     return date.toLocaleString("ru-RU");
 }
 
+// "5 минут назад" style — competitor sites use this for feed liveness; we match that pattern.
+export function timeAgo(value?: string | Date | null) {
+    if (!value) return "";
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
+    const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
+    if (seconds < 60) return "только что";
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes} мин назад`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours} ч назад`;
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days} д назад`;
+    if (days < 30) return `${Math.floor(days / 7)} нед назад`;
+    return date.toLocaleDateString("ru-RU");
+}
+
 export function shortId(value?: string | null) {
     if (!value) return "-";
     if (value.length <= 14) return value;

@@ -6,6 +6,7 @@ import { superAdminUserIds, type SessionUser } from "../lib/admin-auth";
 import { hasElevatedAccess } from "../lib/admin-roles";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
+import { notifyModerators } from "./notification-service";
 import {
     incomePerHour,
     type createPostSchema,
@@ -25,18 +26,39 @@ function assertSubmittable(content: PostContent) {
     const problems: string[] = [];
     if (!content.waterbodyId) problems.push("укажите водоём");
     if (!content.fishingMethod) problems.push("укажите вид ловли");
+    if (!content.point) problems.push("укажите точку или клипсу");
     if (content.catches.length === 0) problems.push("добавьте хотя бы одну рыбу");
+    if (content.media.length === 0) problems.push("добавьте хотя бы одно фото");
     if (problems.length) {
         throw Object.assign(new Error(`Не удалось отправить пост: ${problems.join(", ")}`), { statusCode: 400 });
     }
 }
 
+// A draft is allowed to be incomplete, but it must contain at least *something* — otherwise
+// users accidentally accumulate empty rows in their "Мои посты" list.
+function assertHasContent(content: PostContent) {
+    const hasAny =
+        (content.description?.trim().length ?? 0) > 0 ||
+        content.waterbodyId != null ||
+        (content.point?.trim().length ?? 0) > 0 ||
+        content.fishingMethod != null ||
+        content.income != null ||
+        content.fishingMinutes != null ||
+        content.catches.length > 0 ||
+        content.media.length > 0;
+    if (!hasAny) {
+        throw Object.assign(new Error("Пустой пост сохранить нельзя — заполните хотя бы одно поле"), { statusCode: 400 });
+    }
+}
+
 export async function insertVersionChildren(client: PoolClient, versionId: number, content: PostContent) {
+    // Catches are now just "which fish species were caught" — dedupe by fishId so duplicates in the
+    // form payload (e.g. selected then re-selected) don't produce ghost rows.
+    const seenFishIds = new Set<number>();
     for (const item of content.catches) {
-        await client.query(
-            `INSERT INTO catch (post_version_id, fish_id, weight, quantity) VALUES ($1, $2, $3, $4)`,
-            [versionId, item.fishId, item.weight, item.quantity],
-        );
+        if (seenFishIds.has(item.fishId)) continue;
+        seenFishIds.add(item.fishId);
+        await client.query(`INSERT INTO catch (post_version_id, fish_id) VALUES ($1, $2)`, [versionId, item.fishId]);
     }
     for (let index = 0; index < content.media.length; index += 1) {
         await client.query(
@@ -48,6 +70,7 @@ export async function insertVersionChildren(client: PoolClient, versionId: numbe
 
 export async function createPost(author: SessionUser, input: CreatePostInput) {
     if (input.submit) assertSubmittable(input);
+    else assertHasContent(input);
 
     const publishDirectly = input.submit && input.skipModeration && hasElevatedAccess(author, superAdminUserIds);
     const status = input.submit ? (publishDirectly ? "approved" : "pending") : "draft";
@@ -78,6 +101,9 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
             targetUserId: author.id,
             metadata: { postId },
         });
+        if (status === "pending") {
+            await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
+        }
         return getPostById(postId);
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
@@ -95,6 +121,7 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
         return { status: "locked" as const };
     }
     if (submit) assertSubmittable(content);
+    else assertHasContent(content);
 
     const versionId = owned.rows[0].versionId as number;
     const previousMedia = await pool.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
@@ -125,6 +152,9 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
     }
 
     await writeAuditLog({ actor: author, action: submit ? "post.submit" : "post.update-draft", targetUserId: author.id, metadata: { postId } });
+    if (submit) {
+        await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
+    }
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 
@@ -142,11 +172,7 @@ export async function submitDraft(postId: number, author: SessionUser) {
             fishingMethod: full.version.fishingMethod,
             income: full.version.income,
             fishingMinutes: full.version.fishingMinutes,
-            catches: full.version.catches.map((item: { fishId: number; weight: number | null; quantity: number }) => ({
-                fishId: item.fishId,
-                weight: item.weight,
-                quantity: item.quantity,
-            })),
+            catches: full.version.catches.map((item: { fishId: number }) => ({ fishId: item.fishId })),
             media: full.version.media.map((item: { url: string }) => item.url),
         });
     }
@@ -157,6 +183,7 @@ export async function submitDraft(postId: number, author: SessionUser) {
         [postId, wasRejected ? 1 : 0],
     );
     await writeAuditLog({ actor: author, action: "post.submit", targetUserId: author.id, metadata: { postId } });
+    await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 
@@ -180,6 +207,7 @@ export async function getPostById(id: number) {
         `
             SELECT p.id, p.author_id AS "authorId", p.status, p.current_version_id AS "currentVersionId",
                    p.rejection_reason AS "rejectionReason", p.resubmit_count AS "resubmitCount",
+                   p.view_count AS "viewCount", p.pinned_at AS "pinnedAt",
                    p.created_at AS "createdAt", p.published_at AS "publishedAt",
                    u.name AS "authorName", u.image AS "authorImage"
             FROM post p
@@ -208,7 +236,7 @@ export async function getPostById(id: number) {
     if (!version) return { ...post, version: null };
 
     const catches = await pool.query(
-        `SELECT c.id, c.fish_id AS "fishId", c.weight, c.quantity, f.name AS "fishName", f.rarity FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = $1 ORDER BY c.id`,
+        `SELECT c.id, c.fish_id AS "fishId", f.name AS "fishName", f.rarity FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = $1 ORDER BY c.id`,
         [version.id],
     );
     const media = await pool.query(`SELECT id, url, order_index AS "orderIndex" FROM post_media WHERE post_version_id = $1 ORDER BY order_index, id`, [version.id]);
@@ -256,12 +284,15 @@ type FeedQuery = z.infer<typeof feedQuerySchema>;
 type PaginationQuery = z.infer<typeof paginationQuerySchema>;
 
 const feedSelect = `
-    p.id, p.published_at AS "publishedAt",
+    p.id, p.published_at AS "publishedAt", p.view_count AS "viewCount", p.pinned_at AS "pinnedAt",
     u.id AS "authorId", u.name AS "authorName", u.image AS "authorImage",
-    pv.description, pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
+    pv.description, pv.point, pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
     w.name AS "waterbodyName",
-    (SELECT url FROM post_media WHERE post_version_id = pv.id ORDER BY order_index, id LIMIT 1) AS "coverUrl",
-    (SELECT COUNT(*)::int FROM catch WHERE post_version_id = pv.id) AS "catchCount"
+    COALESCE((SELECT json_agg(url ORDER BY order_index, id) FROM post_media WHERE post_version_id = pv.id), '[]'::json) AS "mediaUrls",
+    (SELECT COUNT(*)::int FROM catch WHERE post_version_id = pv.id) AS "catchCount",
+    COALESCE((SELECT json_agg(f.name ORDER BY c.id) FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = pv.id), '[]'::json) AS "fishNames",
+    (SELECT COUNT(*)::int FROM reaction WHERE post_id = p.id AND value = 1) AS likes,
+    (SELECT COUNT(*)::int FROM reaction WHERE post_id = p.id AND value = -1) AS dislikes
 `;
 
 function withIncomePerHour<T extends { income: number | null; fishingMinutes: number | null }>(row: T) {
@@ -274,7 +305,10 @@ export async function listFeed(query: FeedQuery) {
 
     if (query.search) {
         values.push(`%${query.search}%`);
-        where.push(`pv.description ILIKE $${values.length}`);
+        const idx = values.length;
+        where.push(
+            `(pv.description ILIKE $${idx} OR pv.point ILIKE $${idx} OR w.name ILIKE $${idx} OR EXISTS (SELECT 1 FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = pv.id AND f.name ILIKE $${idx}))`,
+        );
     }
     if (query.waterbodyIds.length) {
         values.push(query.waterbodyIds);
@@ -290,13 +324,15 @@ export async function listFeed(query: FeedQuery) {
     }
 
     const whereSql = `WHERE ${where.join(" AND ")}`;
+    // Pinned posts always come first (most recently pinned at the top of the pinned tier),
+    // then the user-selected sort applies inside the regular tier.
     const orderSql =
         query.sortBy === "incomePerHour"
-            ? `(pv.income::numeric * 60 / NULLIF(pv.fishing_minutes, 0)) DESC NULLS LAST, p.published_at DESC`
-            : `p.published_at DESC, p.id DESC`;
+            ? `p.pinned_at DESC NULLS LAST, (pv.income::numeric * 60 / NULLIF(pv.fishing_minutes, 0)) DESC NULLS LAST, p.published_at DESC`
+            : `p.pinned_at DESC NULLS LAST, p.published_at DESC, p.id DESC`;
 
     const countResult = await pool.query<{ count: number }>(
-        `SELECT COUNT(*)::int AS count FROM post p JOIN post_version pv ON pv.id = p.current_version_id ${whereSql}`,
+        `SELECT COUNT(*)::int AS count FROM post p JOIN post_version pv ON pv.id = p.current_version_id LEFT JOIN waterbody w ON w.id = pv.waterbody_id ${whereSql}`,
         values,
     );
 
@@ -353,4 +389,14 @@ export async function getAuthorProfile(authorId: string, query: PaginationQuery)
         limit: query.limit,
         offset: query.offset,
     };
+}
+
+// Only counts views for approved posts so drafts/pending/rejected views never inflate the number.
+export async function incrementViewCount(postId: number) {
+    const { rowCount } = await pool.query(
+        `UPDATE post SET view_count = view_count + 1 WHERE id = $1 AND status = 'approved' RETURNING id`,
+        [postId],
+    );
+    if (!rowCount) return { status: "not-found" as const };
+    return { status: "ok" as const };
 }

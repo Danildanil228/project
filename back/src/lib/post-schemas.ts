@@ -6,8 +6,6 @@ const emptyToNull = (value: unknown) => (value === "" || value === undefined ? n
 
 const catchInputSchema = z.object({
     fishId: z.coerce.number().int().positive(),
-    weight: z.preprocess(emptyToNull, z.coerce.number().min(0).max(1_000_000).nullable()),
-    quantity: z.coerce.number().int().min(1).max(100_000).default(1),
 });
 
 export const postContentSchema = z.object({

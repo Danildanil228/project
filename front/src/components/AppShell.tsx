@@ -3,6 +3,7 @@ import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import { canManageCatalog, displayRoleText, hasElevatedUserAccess } from "../utils/admin-format";
 import { UserAvatar } from "./UserAvatar";
 import { ModeToggle } from "./mode-toggle";
+import { NotificationsBell } from "./NotificationsBell";
 
 type AppShellProps = {
     currentUser?: ManagedUser;
@@ -37,12 +38,20 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                         <NavLink to="/" end>
                             Главная
                         </NavLink>
+                        <NavLink to="/feed">
+                            Лента
+                        </NavLink>
                         <NavLink to="/catalog">
                             Каталог
                         </NavLink>
                         <NavLink to="/profile" onClick={handleNavClick}>
                             Профиль
                         </NavLink>
+                        {hasElevatedUserAccess(currentUser, adminContext) && (
+                            <NavLink to="/moderation" onClick={handleNavClick}>
+                                Модерация
+                            </NavLink>
+                        )}
                         {hasElevatedUserAccess(currentUser, adminContext) && (
                             <NavLink to="/admin" onClick={handleNavClick}>
                                 Админ панель
@@ -69,6 +78,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                             Остановить impersonation
                         </button>
                     )}
+                    {currentUser && <NotificationsBell currentUser={currentUser} />}
                     <ModeToggle />
 
                     {currentUser ? (

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AppShell } from "./components/AppShell";
 import { adminApi, getAdminContext } from "./lib/admin-api";
@@ -11,6 +11,12 @@ import { ReferenceAdminPage } from "./pages/ReferenceAdminPage";
 import { FishAdminPage } from "./pages/FishAdminPage";
 import { WaterbodyAdminPage } from "./pages/WaterbodyAdminPage";
 import { HomePage } from "./pages/HomePage";
+import { FeedPage } from "./pages/FeedPage";
+import { PostEditorPage } from "./pages/PostEditorPage";
+import { PostDetailPage } from "./pages/PostDetailPage";
+import { AuthorProfilePage } from "./pages/AuthorProfilePage";
+import { ModerationQueuePage } from "./pages/ModerationQueuePage";
+import { ReportsPage } from "./pages/ReportsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage";
@@ -74,6 +80,16 @@ function AppRoutes() {
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="catalog" element={<CatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
+                    <Route path="feed" element={<FeedPage currentUser={currentUser} adminContext={adminContext} />} />
+                    {/* /posts retired — link goes to profile where MyPostsPage is now embedded. */}
+                    <Route path="posts" element={<Navigate to="/profile" replace />} />
+                    <Route path="posts/new" element={<PostEditorPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="posts/author/:authorId" element={<AuthorProfilePage />} />
+                    <Route path="posts/:id" element={<PostDetailPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="posts/:id/edit" element={<PostEditorPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="posts/:id/moderate" element={<PostEditorPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} mode="moderate" />} />
+                    <Route path="moderation" element={<ModerationQueuePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="moderation/reports" element={<ReportsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/reference" element={<ReferenceAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />

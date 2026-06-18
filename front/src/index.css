@@ -82,6 +82,13 @@ select {
   outline: none;
 }
 
+/* Checkboxes/radios must stay native-sized, not stretched to full width. */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  padding: 0;
+}
+
 input:focus,
 select:focus {
   border-color: #2563eb;

@@ -194,6 +194,13 @@ export function adminHierarchyGuard(superAdminUserIds: string[]): BetterAuthPlug
 
                         if (!isModeratorOnly(session.user, superAdminUserIds)) return;
 
+                        // Moderators are never allowed to impersonate, regardless of target role.
+                        if (path === "/admin/impersonate-user") {
+                            throw new APIError("FORBIDDEN", {
+                                message: "Moderators cannot impersonate users",
+                            });
+                        }
+
                         if (
                             ((path.endsWith("/set-role") || (path === "" && looksLikeSetRole)) && roleInputIncludesAdmin(body.role)) ||
                             (path === "/admin/create-user" && roleInputIncludesAdmin(body.role)) ||

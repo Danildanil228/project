@@ -5,13 +5,16 @@
       "name": "back",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "back", "run", "dev"],
-      "port": 3000
+      "port": 3000,
+      "autoPort": false,
+      "workingDirectory": "${workspaceFolder}"
     },
     {
       "name": "front",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "front", "run", "dev"],
-      "port": 5173
+      "port": 5173,
+      "autoPort": false
     }
   ]
 }

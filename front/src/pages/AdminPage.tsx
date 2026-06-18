@@ -39,7 +39,7 @@ import type {
     VerificationFilter,
     UserFormState,
 } from "../types/admin";
-import { canManageUser, getErrorMessage, isSuperAdminUser, manageableRoleOptions, roleText } from "../utils/admin-format";
+import { canManageUser, getErrorMessage, isAdminUser, isSuperAdminUser, manageableRoleOptions, roleText } from "../utils/admin-format";
 import { unwrapAuthResult } from "../utils/auth-client-result";
 
 type AdminPageProps = {
@@ -731,6 +731,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                     roleOptions={roleOptions}
                     canManageSelectedUser={canManageSelectedUser}
                     canUpdateSelectedProfile={canUpdateSelectedProfile}
+                    canImpersonate={isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)}
                     isSelfSelected={isSelfSelected}
                     isSuperAdminSelected={isSuperAdminSelected}
                     onEditFormChange={setEditForm}

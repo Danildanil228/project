@@ -6,12 +6,16 @@ import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import type { moderationQueueQuerySchema, postContentSchema } from "../lib/post-schemas";
 import { getPostById, insertVersionChildren } from "./post-service";
+import { createNotification } from "./notification-service";
 
 type QueueQuery = z.infer<typeof moderationQueueQuerySchema>;
 type PostContent = z.infer<typeof postContentSchema>;
 
 // A claim older than this is considered abandoned and can be taken over / auto-released.
 const CLAIM_TIMEOUT_MINUTES = 20;
+
+// Hard cap on simultaneously pinned posts. Keeps the "featured" tier curated rather than overflowing.
+export const PIN_LIMIT = 3;
 
 export async function listModerationQueue(query: QueueQuery) {
     const where: string[] = [`p.status IN ('pending', 'in_review')`];
@@ -103,43 +107,72 @@ export async function releasePost(postId: number, moderator: SessionUser) {
 }
 
 export async function approvePost(postId: number, moderator: SessionUser) {
-    const result = await pool.query(
+    const result = await pool.query<{ authorId: string }>(
         `
             UPDATE post SET status = 'approved', published_at = NOW(), claimed_by = NULL, claimed_at = NULL, rejection_reason = NULL, updated_at = NOW()
             WHERE id = $1 AND status IN ('pending', 'in_review')
-            RETURNING id
+            RETURNING author_id AS "authorId"
         `,
         [postId],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
     await writeAuditLog({ actor: moderator, action: "post.approve", metadata: { postId } });
+    await createNotification({ userId: result.rows[0].authorId, type: "post_approved", postId, actorId: moderator.id });
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 
 export async function rejectPost(postId: number, moderator: SessionUser, reason: string) {
-    const result = await pool.query(
+    const result = await pool.query<{ authorId: string }>(
         `
             UPDATE post SET status = 'rejected', rejection_reason = $2, claimed_by = NULL, claimed_at = NULL, updated_at = NOW()
             WHERE id = $1 AND status IN ('pending', 'in_review')
-            RETURNING id
+            RETURNING author_id AS "authorId"
         `,
         [postId, reason],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
     await writeAuditLog({ actor: moderator, action: "post.reject", metadata: { postId, reason } });
+    await createNotification({ userId: result.rows[0].authorId, type: "post_rejected", postId, actorId: moderator.id, data: { reason } });
     return { status: "ok" as const };
 }
 
 export async function removePost(postId: number, moderator: SessionUser) {
-    const result = await pool.query(
-        `UPDATE post SET status = 'deleted', claimed_by = NULL, claimed_at = NULL, updated_at = NOW() WHERE id = $1 AND status <> 'deleted' RETURNING id`,
+    const result = await pool.query<{ authorId: string }>(
+        `UPDATE post SET status = 'deleted', claimed_by = NULL, claimed_at = NULL, updated_at = NOW() WHERE id = $1 AND status <> 'deleted' RETURNING author_id AS "authorId"`,
         [postId],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
     await writeAuditLog({ actor: moderator, action: "post.remove", metadata: { postId } });
+    await createNotification({ userId: result.rows[0].authorId, type: "post_removed", postId, actorId: moderator.id });
+    return { status: "ok" as const };
+}
+
+export async function pinPost(postId: number, moderator: SessionUser) {
+    const target = await pool.query<{ status: string; pinnedAt: string | null }>(
+        `SELECT status, pinned_at AS "pinnedAt" FROM post WHERE id = $1`,
+        [postId],
+    );
+    if (!target.rows[0]) return { status: "not-found" as const };
+    if (target.rows[0].status !== "approved") return { status: "invalid" as const };
+    if (target.rows[0].pinnedAt) return { status: "ok" as const }; // already pinned, idempotent
+
+    const { rows: countRows } = await pool.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM post WHERE pinned_at IS NOT NULL`);
+    if ((countRows[0]?.count ?? 0) >= PIN_LIMIT) {
+        return { status: "limit" as const, limit: PIN_LIMIT };
+    }
+
+    await pool.query(`UPDATE post SET pinned_at = NOW() WHERE id = $1`, [postId]);
+    await writeAuditLog({ actor: moderator, action: "post.pin", metadata: { postId } });
+    return { status: "ok" as const };
+}
+
+export async function unpinPost(postId: number, moderator: SessionUser) {
+    const { rowCount } = await pool.query(`UPDATE post SET pinned_at = NULL WHERE id = $1 AND pinned_at IS NOT NULL RETURNING id`, [postId]);
+    if (!rowCount) return { status: "not-pinned" as const };
+    await writeAuditLog({ actor: moderator, action: "post.unpin", metadata: { postId } });
     return { status: "ok" as const };
 }
 

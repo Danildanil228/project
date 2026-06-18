@@ -12,6 +12,23 @@ const superAdminUserIds = process.env.BETTER_AUTH_ADMIN_USER_IDS
     .map((id) => id.trim())
     .filter(Boolean) ?? [];
 
+// Only enable providers whose creds are actually configured — otherwise better-auth would crash on startup.
+type ProviderCreds = { clientId: string; clientSecret: string };
+function readProvider(idKey: string, secretKey: string): ProviderCreds | undefined {
+    const clientId = process.env[idKey]?.trim();
+    const clientSecret = process.env[secretKey]?.trim();
+    if (!clientId || !clientSecret) return undefined;
+    return { clientId, clientSecret };
+}
+
+const discord = readProvider("DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET");
+const vk = readProvider("VK_CLIENT_ID", "VK_CLIENT_SECRET");
+
+export const enabledSocialProviders = {
+    discord: Boolean(discord),
+    vk: Boolean(vk),
+};
+
 export const auth = betterAuth({
     database: pool,
     emailAndPassword: {
@@ -50,6 +67,10 @@ export const auth = betterAuth({
         .split(",")
         .map((origin) => origin.trim())
         .filter(Boolean),
+    socialProviders: {
+        ...(discord ? { discord } : {}),
+        ...(vk ? { vk } : {}),
+    },
     plugins: [
         adminAuditPlugin(),
         adminHierarchyGuard(superAdminUserIds),

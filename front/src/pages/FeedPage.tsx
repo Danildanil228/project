@@ -1,0 +1,227 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDebounce } from "use-debounce";
+import { MultiSelectFilter, type MultiSelectOption } from "../components/MultiSelectFilter";
+import { PostCard } from "../components/PostCard";
+import { listFish, listWaterbodies } from "../lib/reference-api";
+import { listFeed } from "../lib/posts-api";
+import type { AdminSecurityContext, ManagedUser } from "../types/admin";
+import { fishingMethods, type FeedItem, type FeedSort, type FishingMethod } from "../types/post";
+import { getErrorMessage } from "../utils/admin-format";
+
+type FeedPageProps = {
+    currentUser?: ManagedUser;
+    adminContext?: AdminSecurityContext | null;
+};
+
+const pageSize = 12;
+type Columns = 1 | 2 | 3;
+
+const gridClass: Record<Columns, string> = {
+    1: "grid grid-cols-1 gap-3",
+    2: "grid grid-cols-1 gap-3 md:grid-cols-2",
+    3: "grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3",
+};
+
+export function FeedPage({ currentUser }: FeedPageProps) {
+    const [allFish, setAllFish] = useState<MultiSelectOption[]>([]);
+    const [allWaterbodies, setAllWaterbodies] = useState<MultiSelectOption[]>([]);
+
+    const [searchInput, setSearchInput] = useState("");
+    const [debouncedSearch] = useDebounce(searchInput, 300);
+    const [fishIds, setFishIds] = useState<number[]>([]);
+    const [waterbodyIds, setWaterbodyIds] = useState<number[]>([]);
+    const [method, setMethod] = useState<FishingMethod | "">("");
+    const [sortBy, setSortBy] = useState<FeedSort>("date");
+    const [columns, setColumns] = useState<Columns>(3);
+
+    const [items, setItems] = useState<FeedItem[]>([]);
+    const [total, setTotal] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const sentinelRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let ignore = false;
+        Promise.all([listFish({ limit: 500 }), listWaterbodies({ limit: 200 })])
+            .then(([fish, water]) => {
+                if (ignore) return;
+                setAllFish(fish.items.map((item) => ({ id: item.id, name: item.name, hint: item.rarity })));
+                setAllWaterbodies(water.items.map((item) => ({ id: item.id, name: item.name })));
+            })
+            .catch(() => undefined);
+        return () => {
+            ignore = true;
+        };
+    }, []);
+
+    // Stable filter key — used to reset accumulated items when filters change.
+    const filterKey = JSON.stringify({ debouncedSearch, fishIds, waterbodyIds, method, sortBy });
+
+    const fetchPage = useCallback(
+        async (currentOffset: number, replace: boolean) => {
+            setLoading(true);
+            setError("");
+            try {
+                const response = await listFeed({
+                    search: debouncedSearch,
+                    fishIds,
+                    waterbodyIds,
+                    fishingMethod: method,
+                    sortBy,
+                    limit: pageSize,
+                    offset: currentOffset,
+                });
+                setItems((previous) => (replace ? response.items : [...previous, ...response.items]));
+                setTotal(response.total);
+            } catch (caught) {
+                setError(getErrorMessage(caught));
+            } finally {
+                setLoading(false);
+            }
+        },
+        [debouncedSearch, fishIds, waterbodyIds, method, sortBy],
+    );
+
+    // Whenever filters change: clear list and fetch page 1.
+    useEffect(() => {
+        setItems([]);
+        setTotal(0);
+        void fetchPage(0, true);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filterKey]);
+
+    // Infinite scroll: load next page when sentinel comes into view.
+    useEffect(() => {
+        const sentinel = sentinelRef.current;
+        if (!sentinel) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting && !loading && items.length < total) {
+                    void fetchPage(items.length, false);
+                }
+            },
+            { rootMargin: "200px" },
+        );
+        observer.observe(sentinel);
+        return () => observer.disconnect();
+    }, [items.length, total, loading, fetchPage]);
+
+    function resetAll() {
+        setSearchInput("");
+        setFishIds([]);
+        setWaterbodyIds([]);
+        setMethod("");
+        setSortBy("date");
+    }
+
+    const hasActiveFilters =
+        debouncedSearch || fishIds.length > 0 || waterbodyIds.length > 0 || method !== "" || sortBy !== "date";
+
+    return (
+        <section className="grid gap-5">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+                <div className="grid gap-1">
+                    <p className="text-xs font-extrabold uppercase text-primary">Сообщество</p>
+                    <h2 className="text-2xl font-bold">Лента постов</h2>
+                    <p className="text-muted-foreground">Уловы, трофеи и точки клёва от игроков. Доступно без входа.</p>
+                </div>
+                <Link
+                    to={currentUser ? "/posts/new" : "/posts"}
+                    className="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"
+                >
+                    + Создать пост
+                </Link>
+            </div>
+
+            <div className="grid gap-3 rounded-lg border border-border bg-card p-4">
+                <div className="grid gap-3 sm:grid-cols-[1fr_auto_auto] sm:items-end">
+                    <label className="grid gap-1 text-sm">
+                        <span className="text-muted-foreground">Поиск — по описанию, точке, водоёму, рыбе</span>
+                        <input value={searchInput} onChange={(event) => setSearchInput(event.target.value)} placeholder="Например, окунь / Ладожский / 75:88" />
+                    </label>
+                    <label className="grid gap-1 text-sm">
+                        <span className="text-muted-foreground">Вид ловли</span>
+                        <select value={method} onChange={(event) => setMethod(event.target.value as FishingMethod | "")}>
+                            <option value="">Все</option>
+                            {fishingMethods.map((value) => (
+                                <option key={value} value={value}>
+                                    {value}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <label className="grid gap-1 text-sm">
+                        <span className="text-muted-foreground">Сортировка</span>
+                        <select value={sortBy} onChange={(event) => setSortBy(event.target.value as FeedSort)}>
+                            <option value="date">Сначала новые</option>
+                            <option value="incomePerHour">По заработку в час</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                    <MultiSelectFilter label="Рыбы" options={allFish} selected={fishIds} onChange={setFishIds} searchPlaceholder="Поиск рыбы…" />
+                    <MultiSelectFilter label="Водоёмы" options={allWaterbodies} selected={waterbodyIds} onChange={setWaterbodyIds} searchPlaceholder="Поиск водоёма…" />
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                    {/* Column count toggle — mirrors the catalog page UX */}
+                    <div className="flex items-center gap-1">
+                        <span className="text-xs text-muted-foreground">Колонок:</span>
+                        {([1, 2, 3] as Columns[]).map((value) => (
+                            <button
+                                key={value}
+                                type="button"
+                                onClick={() => setColumns(value)}
+                                className={`h-8 w-8 rounded-lg text-sm font-bold transition-colors ${
+                                    columns === value ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-muted"
+                                }`}
+                                aria-label={`${value} в ряд`}
+                            >
+                                {value}
+                            </button>
+                        ))}
+                    </div>
+
+                    {hasActiveFilters && (
+                        <button type="button" onClick={resetAll} className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-destructive hover:text-destructive">
+                            ✕ Сбросить фильтры
+                        </button>
+                    )}
+                </div>
+            </div>
+
+            {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
+
+            {loading && items.length === 0 ? (
+                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+            ) : !loading && items.length === 0 ? (
+                <div className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
+                    <p>Постов не найдено</p>
+                    {hasActiveFilters && (
+                        <button type="button" onClick={resetAll} className="mt-3 rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-primary">
+                            Сбросить фильтры
+                        </button>
+                    )}
+                </div>
+            ) : (
+                <>
+                    <div className={gridClass[columns]}>
+                        {items.map((post) => (
+                            <PostCard key={post.id} post={post} />
+                        ))}
+                    </div>
+
+                    {/* Sentinel for infinite scroll — observed by IntersectionObserver. */}
+                    <div ref={sentinelRef} className="flex items-center justify-center pt-2">
+                        {loading && items.length > 0 && <span className="text-sm text-muted-foreground">Загружаю ещё…</span>}
+                        {!loading && items.length >= total && total > 0 && (
+                            <span className="text-xs text-muted-foreground">Показано {items.length} из {total}</span>
+                        )}
+                    </div>
+                </>
+            )}
+        </section>
+    );
+}
