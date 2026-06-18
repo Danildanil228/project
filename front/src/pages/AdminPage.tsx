@@ -69,6 +69,7 @@ const emptyAuditLogFilters: AuditLogFilters = {
     actorEmail: "",
     targetEmail: "",
     action: "",
+    outcome: "",
     from: "",
     to: "",
 };
@@ -234,7 +235,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
 
     async function loadSelectedUserAuditLogs(userId: string) {
         try {
-            const response = await listAuditLogs({ limit: 12, targetUserId: userId });
+            const response = await listAuditLogs({ limit: 12, userId });
             setSelectedUserAuditLogs(response.logs ?? []);
         } catch (error) {
             setAdminError(getErrorMessage(error));

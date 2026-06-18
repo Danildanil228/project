@@ -18,7 +18,7 @@ export async function createReport(postId: number, reporter: SessionUser, reason
     );
     if (!inserted.rows[0]) return { status: "duplicate" as const };
 
-    await writeAuditLog({ actor: reporter, action: "report.create", metadata: { postId, reportId: inserted.rows[0].id, reason } });
+    await writeAuditLog({ actor: reporter, action: "report.create", targetUserId: post.rows[0].authorId, metadata: { postId, reportId: inserted.rows[0].id, reason } });
     await notifyModerators({ type: "report_new", postId, actorId: reporter.id, data: { reason: reason.slice(0, 120) }, excludeUserId: reporter.id });
 
     return { status: "ok" as const };
@@ -75,6 +75,6 @@ export async function resolveReport(reportId: number, moderator: SessionUser, st
     );
     if (!rows[0]) return { status: "invalid" as const };
 
-    await writeAuditLog({ actor: moderator, action: `report.${status}`, metadata: { reportId, postId: rows[0].postId } });
+    await writeAuditLog({ actor: moderator, action: `report.${status}`, targetUserId: rows[0].reporterId, metadata: { reportId, postId: rows[0].postId } });
     return { status: "ok" as const };
 }

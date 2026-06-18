@@ -48,9 +48,11 @@ export const auditLogQuerySchema = z.object({
     limit: z.coerce.number().int().min(1).max(100).default(30),
     offset: z.coerce.number().int().min(0).default(0),
     targetUserId: z.string().trim().min(1).optional(),
+    userId: z.string().trim().min(1).max(200).optional(),
     actorEmail: z.string().trim().max(200).optional(),
     targetEmail: z.string().trim().max(200).optional(),
     action: z.string().trim().max(120).optional(),
+    outcome: z.enum(["success", "failure"]).optional(),
     from: z.string().datetime().optional(),
     to: z.string().datetime().optional(),
 });

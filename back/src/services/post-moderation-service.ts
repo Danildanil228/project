@@ -56,10 +56,11 @@ export async function listModerationQueue(query: QueueQuery) {
 
 export async function claimPost(postId: number, moderator: SessionUser) {
     const client = await pool.connect();
+    let targetUserId: string | null = null;
     try {
         await client.query("BEGIN");
         const result = await client.query(
-            `SELECT status, claimed_by AS "claimedBy", EXTRACT(EPOCH FROM (NOW() - claimed_at)) / 60 AS "ageMinutes" FROM post WHERE id = $1 FOR UPDATE`,
+            `SELECT status, author_id AS "authorId", claimed_by AS "claimedBy", EXTRACT(EPOCH FROM (NOW() - claimed_at)) / 60 AS "ageMinutes" FROM post WHERE id = $1 FOR UPDATE`,
             [postId],
         );
         if (!result.rows[0]) {
@@ -68,6 +69,7 @@ export async function claimPost(postId: number, moderator: SessionUser) {
         }
 
         const post = result.rows[0];
+        targetUserId = post.authorId;
         if (post.status !== "pending" && post.status !== "in_review") {
             await client.query("ROLLBACK");
             return { status: "invalid" as const };
@@ -87,7 +89,7 @@ export async function claimPost(postId: number, moderator: SessionUser) {
         client.release();
     }
 
-    await writeAuditLog({ actor: moderator, action: "post.claim", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.claim", targetUserId, metadata: { postId } });
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 
@@ -96,13 +98,13 @@ export async function releasePost(postId: number, moderator: SessionUser) {
         `
             UPDATE post SET status = 'pending', claimed_by = NULL, claimed_at = NULL, updated_at = NOW()
             WHERE id = $1 AND status = 'in_review' AND (claimed_by = $2 OR claimed_at < NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes')
-            RETURNING id
+            RETURNING author_id AS "authorId"
         `,
         [postId, moderator.id],
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
-    await writeAuditLog({ actor: moderator, action: "post.release", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.release", targetUserId: result.rows[0].authorId, metadata: { postId } });
     return { status: "ok" as const };
 }
 
@@ -120,7 +122,7 @@ export async function approvePost(postId: number, moderator: SessionUser) {
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
-    await writeAuditLog({ actor: moderator, action: "post.approve", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.approve", targetUserId: result.rows[0].authorId, metadata: { postId } });
     await createNotification({ userId: result.rows[0].authorId, type: "post_approved", postId, actorId: moderator.id });
     return { status: "ok" as const, post: await getPostById(postId) };
 }
@@ -139,7 +141,7 @@ export async function rejectPost(postId: number, moderator: SessionUser, reason:
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
-    await writeAuditLog({ actor: moderator, action: "post.reject", metadata: { postId, reason } });
+    await writeAuditLog({ actor: moderator, action: "post.reject", targetUserId: result.rows[0].authorId, metadata: { postId, reason } });
     await createNotification({ userId: result.rows[0].authorId, type: "post_rejected", postId, actorId: moderator.id, data: { reason } });
     return { status: "ok" as const };
 }
@@ -151,19 +153,20 @@ export async function removePost(postId: number, moderator: SessionUser) {
     );
     if (!result.rowCount) return { status: "invalid" as const };
 
-    await writeAuditLog({ actor: moderator, action: "post.remove", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.remove", targetUserId: result.rows[0].authorId, metadata: { postId } });
     await createNotification({ userId: result.rows[0].authorId, type: "post_removed", postId, actorId: moderator.id });
     return { status: "ok" as const };
 }
 
 export async function pinPost(postId: number, moderator: SessionUser) {
     const client = await pool.connect();
+    let targetUserId: string | null = null;
     try {
         await client.query("BEGIN");
         // Serialize pin operations so concurrent requests cannot exceed the global limit.
         await client.query(`SELECT pg_advisory_xact_lock(hashtext('post-pin-limit'))`);
-        const target = await client.query<{ status: string; pinnedAt: string | null }>(
-            `SELECT status, pinned_at AS "pinnedAt" FROM post WHERE id = $1 FOR UPDATE`,
+        const target = await client.query<{ status: string; pinnedAt: string | null; authorId: string }>(
+            `SELECT status, pinned_at AS "pinnedAt", author_id AS "authorId" FROM post WHERE id = $1 FOR UPDATE`,
             [postId],
         );
         if (!target.rows[0]) {
@@ -178,6 +181,7 @@ export async function pinPost(postId: number, moderator: SessionUser) {
             await client.query("COMMIT");
             return { status: "ok" as const };
         }
+        targetUserId = target.rows[0].authorId;
 
         const { rows: countRows } = await client.query<{ count: number }>(`SELECT COUNT(*)::int AS count FROM post WHERE pinned_at IS NOT NULL`);
         if ((countRows[0]?.count ?? 0) >= PIN_LIMIT) {
@@ -193,14 +197,15 @@ export async function pinPost(postId: number, moderator: SessionUser) {
     } finally {
         client.release();
     }
-    await writeAuditLog({ actor: moderator, action: "post.pin", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.pin", targetUserId, metadata: { postId } });
     return { status: "ok" as const };
 }
 
 export async function unpinPost(postId: number, moderator: SessionUser) {
-    const { rowCount } = await pool.query(`UPDATE post SET pinned_at = NULL WHERE id = $1 AND pinned_at IS NOT NULL RETURNING id`, [postId]);
+    const result = await pool.query<{ authorId: string }>(`UPDATE post SET pinned_at = NULL WHERE id = $1 AND pinned_at IS NOT NULL RETURNING author_id AS "authorId"`, [postId]);
+    const { rowCount } = result;
     if (!rowCount) return { status: "not-pinned" as const };
-    await writeAuditLog({ actor: moderator, action: "post.unpin", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.unpin", targetUserId: result.rows[0].authorId, metadata: { postId } });
     return { status: "ok" as const };
 }
 
@@ -210,6 +215,7 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
 
     const client = await pool.connect();
     let previousMedia: { url: string }[] = [];
+    let targetUserId: string | null = null;
     try {
         await client.query("BEGIN");
         const owned = await client.query<{
@@ -217,9 +223,10 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
             versionId: number | null;
             claimedBy: string | null;
             claimFresh: boolean;
+            authorId: string;
         }>(
             `
-                SELECT status, current_version_id AS "versionId", claimed_by AS "claimedBy",
+                SELECT status, current_version_id AS "versionId", claimed_by AS "claimedBy", author_id AS "authorId",
                        (claimed_at >= NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes') AS "claimFresh"
                 FROM post WHERE id = $1 FOR UPDATE
             `,
@@ -241,6 +248,7 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
 
         const versionId = post.versionId;
         const isApproved = post.status === "approved";
+        targetUserId = post.authorId;
         const mediaResult = await client.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
         previousMedia = mediaResult.rows;
         await client.query(
@@ -264,6 +272,6 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
         if (!keep.has(row.url)) await deleteUploadedMedia(row.url);
     }
 
-    await writeAuditLog({ actor: moderator, action: "post.moderate-edit", metadata: { postId } });
+    await writeAuditLog({ actor: moderator, action: "post.moderate-edit", targetUserId, metadata: { postId } });
     return { status: "ok" as const, post: await getPostById(postId) };
 }

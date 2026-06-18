@@ -16,8 +16,25 @@ type AuditLogPanelProps = {
     onExportCsv: () => void;
 };
 
-function actionText(action: string) {
+export function auditActionText(action: string) {
     const labels: Record<string, string> = {
+        "request.failed": "Отклонённый запрос",
+        "auth.register": "Регистрация",
+        "auth.login": "Вход в аккаунт",
+        "auth.login.social": "Вход через социальную сеть",
+        "auth.logout": "Выход из аккаунта",
+        "auth.profile.update": "Обновление профиля",
+        "auth.password.change": "Смена пароля",
+        "auth.password.reset-request": "Запрос сброса пароля",
+        "auth.password.reset-complete": "Завершение сброса пароля",
+        "auth.email.change": "Смена email",
+        "auth.email.verification-request": "Запрос подтверждения email",
+        "auth.user.delete": "Удаление своего аккаунта",
+        "auth.session.revoke": "Отзыв сессии",
+        "auth.sessions.revoke-all": "Отзыв всех сессий",
+        "auth.sessions.revoke-others": "Отзыв остальных сессий",
+        "auth.account.link": "Привязка аккаунта",
+        "auth.account.unlink": "Отвязка аккаунта",
         "admin.audit.export": "Экспорт журнала",
         "admin.user.role.update": "Изменение роли",
         "admin.users.bulk-role": "Массовое изменение ролей",
@@ -25,6 +42,8 @@ function actionText(action: string) {
         "admin.users.bulk-unban": "Массовая разблокировка",
         "admin.users.export": "Экспорт пользователей",
         "admin.account.unlink": "Отвязка аккаунта",
+        "admin.user.impersonate": "Вход от имени пользователя",
+        "admin.user.stop-impersonating": "Завершение входа от имени пользователя",
         "better-auth.admin.create-user": "Создание пользователя",
         "better-auth.admin.update-user": "Обновление пользователя",
         "better-auth.admin.ban-user": "Блокировка пользователя",
@@ -33,15 +52,62 @@ function actionText(action: string) {
         "better-auth.admin.set-user-password": "Смена пароля админом",
         "better-auth.admin.revoke-user-session": "Отзыв сессии",
         "better-auth.admin.revoke-user-sessions": "Отзыв всех сессий",
+        "better-auth.admin.impersonate-user": "Вход от имени пользователя",
+        "better-auth.admin.stop-impersonating": "Завершение входа от имени пользователя",
         "better-auth.change-password": "Смена своего пароля",
         "better-auth.update-user": "Обновление профиля",
         "email.verification.sent": "Отправка подтверждения email",
         "email.password-reset.sent": "Отправка сброса пароля",
         "user.email.verified": "Email подтвержден",
         "user.password.reset": "Пароль сброшен",
+        "post.create-draft": "Создание черновика",
+        "post.update-draft": "Обновление черновика",
+        "post.submit": "Отправка поста на модерацию",
+        "post.publish-direct": "Прямая публикация поста",
+        "post.delete-own": "Удаление своего поста",
+        "post.claim": "Пост взят на модерацию",
+        "post.release": "Пост освобождён модератором",
+        "post.approve": "Одобрение поста",
+        "post.reject": "Отклонение поста",
+        "post.remove": "Удаление поста модератором",
+        "post.pin": "Закрепление поста",
+        "post.unpin": "Открепление поста",
+        "post.moderate-edit": "Редактирование поста модератором",
+        "comment.create": "Добавление комментария",
+        "comment.delete-own": "Удаление своего комментария",
+        "comment.delete-moderate": "Удаление комментария модератором",
+        "reaction.set": "Добавление реакции",
+        "reaction.change": "Изменение реакции",
+        "reaction.remove": "Удаление реакции",
+        "report.create": "Создание жалобы",
+        "report.resolved": "Подтверждение жалобы",
+        "report.rejected": "Отклонение жалобы",
+        "notification.read": "Прочтение уведомлений",
+        "notification.read-all": "Прочтение всех уведомлений",
+        "upload.avatar": "Загрузка аватара",
+        "upload.post-image": "Загрузка изображения поста",
+        "upload.item-image": "Загрузка изображения предмета",
+        "upload.item-model": "Загрузка 3D-модели предмета",
+        "admin.fish.create": "Добавление рыбы",
+        "admin.fish.update": "Изменение рыбы",
+        "admin.fish.delete": "Удаление рыбы",
+        "admin.waterbody.create": "Добавление водоёма",
+        "admin.waterbody.update": "Изменение водоёма",
+        "admin.waterbody.delete": "Удаление водоёма",
+        "admin.reels.create": "Добавление катушки",
+        "admin.reels.update": "Изменение катушки",
+        "admin.reels.delete": "Удаление катушки",
+        "admin.rods.create": "Добавление удилища",
+        "admin.rods.update": "Изменение удилища",
+        "admin.rods.delete": "Удаление удилища",
     };
 
-    return labels[action] ?? action;
+    if (labels[action]) return labels[action];
+    if (action.endsWith(".failed")) {
+        const baseAction = action.slice(0, -7);
+        return `${labels[baseAction] ?? baseAction} — ошибка`;
+    }
+    return action;
 }
 
 function metadataPreview(metadata: Record<string, unknown>) {
@@ -112,6 +178,15 @@ export function AuditLogPanel({
                     value={filters.action}
                     onChange={(event) => onFiltersChange({ ...filters, action: event.target.value })}
                 />
+                <select
+                    aria-label="Результат действия"
+                    value={filters.outcome}
+                    onChange={(event) => onFiltersChange({ ...filters, outcome: event.target.value as AuditLogFilters["outcome"] })}
+                >
+                    <option value="">Любой результат</option>
+                    <option value="success">Успешно</option>
+                    <option value="failure">Ошибка</option>
+                </select>
                 <input
                     aria-label="Дата с"
                     type="datetime-local"
@@ -151,13 +226,20 @@ export function AuditLogPanel({
                 {logs.map((log) => (
                     <article className="audit-item" key={log.id}>
                         <div>
-                            <strong>{actionText(log.action)}</strong>
-                            <span>{formatDate(log.createdAt)}</span>
+                            <strong>{auditActionText(log.action)}</strong>
+                            <span>{log.outcome === "failure" ? "Ошибка" : "Успешно"} · {formatDate(log.createdAt)}</span>
                         </div>
                         <div>
-                            <span>Кто: {log.actorEmail || "система"}</span>
+                            <span>Кто: {log.actorEmail || "система"}{log.actorRole ? ` (${log.actorRole})` : ""}</span>
                             <span>Цель: {log.targetEmail || log.targetUserId || "-"}</span>
                         </div>
+                        {(log.method || log.path || log.ipAddress) && (
+                            <div>
+                                <span title={log.userAgent || undefined}>{[log.method, log.path].filter(Boolean).join(" ")}</span>
+                                <span>IP: {log.ipAddress || "-"}</span>
+                            </div>
+                        )}
+                        {log.requestId && <small>Request ID: {log.requestId}</small>}
                         {Boolean(metadataPreview(log.metadata)) && <small>{metadataPreview(log.metadata)}</small>}
                     </article>
                 ))}

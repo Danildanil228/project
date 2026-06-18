@@ -17,6 +17,7 @@ import { postsRouter } from './routes/posts';
 import { engagementRouter } from './routes/engagement';
 import { reportsRouter } from './routes/reports';
 import { notificationsRouter } from './routes/notifications';
+import { auditRequestContext } from './middleware/audit-request';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ const webOrigins = (process.env.FRONTEND_ORIGINS ?? "http://localhost:5173")
     .filter(Boolean);
 
 app.set("trust proxy", 1);
+app.use(auditRequestContext);
 app.use(securityHeaders);
 app.use(
     cors({

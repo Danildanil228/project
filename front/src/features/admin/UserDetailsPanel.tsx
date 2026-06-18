@@ -1,6 +1,7 @@
 import { UserAvatar } from "../../components/UserAvatar";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
+import { auditActionText } from "./AuditLogPanel";
 
 type UserDetailsPanelProps = {
     selectedUser: ManagedUser | null;
@@ -30,24 +31,6 @@ type UserDetailsPanelProps = {
     onRevokeAllSessions: () => void;
     onUnlinkAccount: (accountId: string) => void;
 };
-
-function auditActionText(action: string) {
-    const labels: Record<string, string> = {
-        "admin.user.role.update": "Изменение роли",
-        "admin.account.unlink": "Отвязка аккаунта",
-        "admin.users.export": "Экспорт пользователей",
-        "better-auth.admin.update-user": "Обновление профиля",
-        "better-auth.admin.ban-user": "Блокировка",
-        "better-auth.admin.unban-user": "Разблокировка",
-        "better-auth.admin.set-user-password": "Смена пароля",
-        "better-auth.admin.revoke-user-session": "Отзыв сессии",
-        "better-auth.admin.revoke-user-sessions": "Отзыв всех сессий",
-        "user.email.verified": "Email подтвержден",
-        "user.password.reset": "Сброс пароля",
-    };
-
-    return labels[action] ?? action;
-}
 
 export function UserDetailsPanel({
     selectedUser,
@@ -248,7 +231,7 @@ export function UserDetailsPanel({
                                     <div>
                                         <strong>{auditActionText(log.action)}</strong>
                                         <span>Кто: {log.actorEmail || "система"}</span>
-                                        <span>{formatDate(log.createdAt)}</span>
+                                        <span>{log.outcome === "failure" ? "Ошибка" : "Успешно"} · {formatDate(log.createdAt)}</span>
                                     </div>
                                 </div>
                             ))}

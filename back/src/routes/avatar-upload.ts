@@ -6,6 +6,8 @@ import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
 import { requireAuth, requireRole } from "../lib/admin-auth";
 import { itemMediaRoot, postMediaRoot, uploadsRoot } from "../lib/uploads";
+import { writeAuditLog } from "../lib/audit-log";
+import type { SessionUser } from "../lib/admin-auth";
 
 const router = Router();
 
@@ -80,8 +82,15 @@ router.post(
             await writeFile(join(avatarUploadsRoot, fileName), body, { flag: "wx" });
 
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
+            const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/avatars/${fileName}`;
+            await writeAuditLog({
+                actor: session.user as SessionUser,
+                action: "upload.avatar",
+                targetUserId: session.user.id,
+                metadata: { contentType, bytes: body.length, url },
+            });
             res.json({
-                url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/avatars/${fileName}`,
+                url,
             });
         } catch (error) {
             next(error);
@@ -145,8 +154,14 @@ router.post(
             await writeFile(join(itemMediaRoot, fileName), body, { flag: "wx" });
 
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
+            const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/items/${fileName}`;
+            await writeAuditLog({
+                actor: session.user as SessionUser,
+                action: kind === "model" ? "upload.item-model" : "upload.item-image",
+                metadata: { kind, contentType: req.headers["content-type"] ?? null, bytes: body.length, url },
+            });
             res.json({
-                url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/items/${fileName}`,
+                url,
             });
         } catch (error) {
             next(error);
@@ -180,8 +195,15 @@ router.post(
             await writeFile(join(postMediaRoot, fileName), body, { flag: "wx" });
 
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
+            const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/posts/${fileName}`;
+            await writeAuditLog({
+                actor: session.user as SessionUser,
+                action: "upload.post-image",
+                targetUserId: session.user.id,
+                metadata: { contentType, bytes: body.length, url },
+            });
             res.json({
-                url: `${publicBaseUrl.replace(/\/$/, "")}/uploads/posts/${fileName}`,
+                url,
             });
         } catch (error) {
             next(error);

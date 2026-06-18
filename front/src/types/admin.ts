@@ -44,6 +44,12 @@ export type ManagedAuditLog = {
     action: string;
     targetUserId?: string | null;
     targetEmail?: string | null;
+    outcome: "success" | "failure";
+    requestId?: string | null;
+    ipAddress?: string | null;
+    userAgent?: string | null;
+    method?: string | null;
+    path?: string | null;
     metadata: Record<string, unknown>;
     createdAt: string;
 };
@@ -137,6 +143,7 @@ export type AuditLogFilters = {
     actorEmail: string;
     targetEmail: string;
     action: string;
+    outcome: "" | "success" | "failure";
     from: string;
     to: string;
 };

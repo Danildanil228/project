@@ -3,6 +3,7 @@ import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "./auth";
 import { canManageRoleRank, hasElevatedAccess, hasRole, highestRoleRank, isSuperAdminId, normalizeRoles, roleRank } from "./admin-roles";
 import { pool } from "./db";
+import { setAuditActor } from "./audit-context";
 
 export type SessionUser = {
     id: string;
@@ -26,6 +27,7 @@ export async function requireAuth(req: Request, res: Response) {
         return null;
     }
 
+    setAuditActor(session.user as SessionUser);
     return session;
 }
 

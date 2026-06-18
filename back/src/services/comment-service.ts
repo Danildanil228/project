@@ -43,7 +43,7 @@ export async function createComment(postId: number, author: SessionUser, body: s
     );
     const created = rows[0];
 
-    await writeAuditLog({ actor: author, action: "comment.create", metadata: { postId, commentId: created.id } });
+    await writeAuditLog({ actor: author, action: "comment.create", targetUserId: post.authorId, metadata: { postId, commentId: created.id } });
 
     // Notify the post author about the new comment (never self-notify).
     if (post.authorId !== author.id) {
@@ -81,6 +81,6 @@ export async function deleteComment(postId: number, commentId: number, actor: Se
     if (!isOwner && !isModerator) return { status: "forbidden" as const };
 
     await pool.query(`DELETE FROM comment WHERE id = $1`, [commentId]);
-    await writeAuditLog({ actor, action: isOwner ? "comment.delete-own" : "comment.delete-moderate", metadata: { postId, commentId } });
+    await writeAuditLog({ actor, action: isOwner ? "comment.delete-own" : "comment.delete-moderate", targetUserId: rows[0].authorId, metadata: { postId, commentId } });
     return { status: "ok" as const };
 }

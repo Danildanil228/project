@@ -20,6 +20,12 @@ function auditLogsToCsv(rows: Record<string, unknown>[]) {
         "action",
         "targetUserId",
         "targetEmail",
+        "outcome",
+        "requestId",
+        "ipAddress",
+        "userAgent",
+        "method",
+        "path",
         "metadata",
         "createdAt",
     ];
@@ -58,6 +64,16 @@ function buildAuditLogQuery(query: AuditQuery) {
         where.push(`action ILIKE $${values.length}`);
     }
 
+    if (query.userId) {
+        values.push(query.userId);
+        where.push(`("actorId" = $${values.length} OR "targetUserId" = $${values.length})`);
+    }
+
+    if (query.outcome) {
+        values.push(query.outcome);
+        where.push(`outcome = $${values.length}`);
+    }
+
     if (query.from) {
         values.push(new Date(query.from));
         where.push(`"createdAt" >= $${values.length}`);
@@ -93,6 +109,12 @@ export async function listAuditLogs(query: z.infer<typeof auditLogQuerySchema>) 
                 action,
                 "targetUserId",
                 "targetEmail",
+                outcome,
+                "requestId",
+                "ipAddress",
+                "userAgent",
+                method,
+                path,
                 metadata,
                 "createdAt"
             FROM "adminAuditLog"
@@ -125,6 +147,12 @@ export async function exportAuditLogs(query: z.infer<typeof auditLogExportQueryS
                 action,
                 "targetUserId",
                 "targetEmail",
+                outcome,
+                "requestId",
+                "ipAddress",
+                "userAgent",
+                method,
+                path,
                 metadata,
                 "createdAt"
             FROM "adminAuditLog"

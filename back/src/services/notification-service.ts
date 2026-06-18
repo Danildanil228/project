@@ -1,5 +1,7 @@
 import { pool } from "../lib/db";
 import { superAdminUserIds } from "../lib/admin-auth";
+import type { SessionUser } from "../lib/admin-auth";
+import { writeAuditLog } from "../lib/audit-log";
 
 export type NotificationType =
     | "comment"
@@ -76,11 +78,20 @@ export async function countUnread(userId: string) {
 }
 
 // Marks the given ids read, or all of the user's notifications when ids is omitted.
-export async function markRead(userId: string, ids?: number[]) {
+export async function markRead(user: SessionUser, ids?: number[]) {
+    let updated = 0;
     if (ids && ids.length) {
-        await pool.query(`UPDATE notification SET read_at = NOW() WHERE user_id = $1 AND id = ANY($2::int[]) AND read_at IS NULL`, [userId, ids]);
+        const result = await pool.query(`UPDATE notification SET read_at = NOW() WHERE user_id = $1 AND id = ANY($2::int[]) AND read_at IS NULL`, [user.id, ids]);
+        updated = result.rowCount ?? 0;
     } else {
-        await pool.query(`UPDATE notification SET read_at = NOW() WHERE user_id = $1 AND read_at IS NULL`, [userId]);
+        const result = await pool.query(`UPDATE notification SET read_at = NOW() WHERE user_id = $1 AND read_at IS NULL`, [user.id]);
+        updated = result.rowCount ?? 0;
     }
-    return { unread: await countUnread(userId) };
+    await writeAuditLog({
+        actor: user,
+        action: ids?.length ? "notification.read" : "notification.read-all",
+        targetUserId: user.id,
+        metadata: { notificationIds: ids ?? null, updated },
+    });
+    return { unread: await countUnread(user.id) };
 }

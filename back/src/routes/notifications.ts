@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { requireAuth } from "../lib/admin-auth";
+import { requireAuth, type SessionUser } from "../lib/admin-auth";
 import { parseOrSend } from "../lib/validation";
 import { markReadSchema, notificationQuerySchema } from "../lib/engagement-schemas";
 import { countUnread, listNotifications, markRead } from "../services/notification-service";
@@ -34,7 +34,7 @@ router.post("/read", async (req, res, next) => {
         if (!session) return;
         const body = parseOrSend(markReadSchema, req.body ?? {}, res);
         if (!body) return;
-        res.json(await markRead(session.user.id, body.ids));
+        res.json(await markRead(session.user as SessionUser, body.ids));
     } catch (error) {
         next(error);
     }

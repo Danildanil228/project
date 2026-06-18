@@ -50,6 +50,7 @@ type ListAuditLogsInput = Partial<AuditLogFilters> & {
     limit?: number;
     offset?: number;
     targetUserId?: string;
+    userId?: string;
 };
 
 function buildAuditLogParams(input: ListAuditLogsInput = {}, includePaging = true) {
@@ -62,7 +63,7 @@ function buildAuditLogParams(input: ListAuditLogsInput = {}, includePaging = tru
         params.set("limit", String(input.limit));
     }
 
-    for (const key of ["targetUserId", "actorEmail", "targetEmail", "action", "from", "to"] as const) {
+    for (const key of ["targetUserId", "userId", "actorEmail", "targetEmail", "action", "outcome", "from", "to"] as const) {
         const value = input[key];
         if (value) {
             params.set(key, key === "from" || key === "to" ? new Date(value).toISOString() : value);
