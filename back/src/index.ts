@@ -18,11 +18,13 @@ import { engagementRouter } from './routes/engagement';
 import { reportsRouter } from './routes/reports';
 import { notificationsRouter } from './routes/notifications';
 import { auditRequestContext } from './middleware/audit-request';
+import { pool } from './lib/db';
 
 dotenv.config();
 
 const app = express();
 const port = Number(process.env.PORT ?? 3000);
+const host = process.env.HOST ?? "127.0.0.1";
 const webOrigins = (process.env.FRONTEND_ORIGINS ?? "http://localhost:5173")
     .split(",")
     .map((origin) => origin.trim())
@@ -80,6 +82,18 @@ app.use(errorHandler);
 
 
 
-app.listen(port, () => {
-    console.log(`API server listening on http://localhost:${port}`);
+const server = app.listen(port, host, () => {
+    console.log(`API server listening on http://${host}:${port}`);
 });
+
+async function shutdown(signal: string) {
+    console.log(`${signal} received, shutting down`);
+    server.close(async () => {
+        await pool.end().catch(() => undefined);
+        process.exit(0);
+    });
+    setTimeout(() => process.exit(1), 10_000).unref();
+}
+
+process.once("SIGTERM", () => void shutdown("SIGTERM"));
+process.once("SIGINT", () => void shutdown("SIGINT"));

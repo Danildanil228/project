@@ -1,0 +1,26 @@
+[Unit]
+Description=RF4 API
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=rf4
+Group=rf4
+WorkingDirectory=/var/www/rf4/back
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/rf4/back/.env
+ExecStartPre=/usr/bin/npm run migrate
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/rf4/back/uploads
+
+[Install]
+WantedBy=multi-user.target
