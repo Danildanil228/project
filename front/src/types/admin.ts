@@ -40,10 +40,12 @@ export type ManagedAuditLog = {
     id: string;
     actorId?: string | null;
     actorEmail?: string | null;
+    actorName?: string | null;
     actorRole?: string | null;
     action: string;
     targetUserId?: string | null;
     targetEmail?: string | null;
+    targetName?: string | null;
     outcome: "success" | "failure";
     requestId?: string | null;
     ipAddress?: string | null;

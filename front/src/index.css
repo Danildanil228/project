@@ -713,32 +713,128 @@ tbody tr:hover {
 
 .audit-item {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-  gap: 12px;
-  border-top: 1px solid #e2e8f0;
-  padding: 12px 16px;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  padding: 14px 16px 14px 13px;
 }
 
 .audit-item:first-child {
   border-top: 0;
 }
 
-.audit-item div {
+.audit-item--failure {
+  border-left-color: #dc2626;
+  background: color-mix(in srgb, var(--destructive) 5%, transparent);
+}
+
+.audit-item__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.audit-item__summary {
   display: grid;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
 }
 
-.audit-item span {
+.audit-item__summary strong {
+  line-height: 1.4;
+}
+
+.audit-item__summary span {
   overflow-wrap: anywhere;
-  color: #64748b;
+  color: var(--muted-foreground);
   font-size: 13px;
 }
 
-.audit-item small {
-  grid-column: 1 / -1;
+.audit-status {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.audit-status time {
+  margin-left: 3px;
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
+
+.audit-status--failure {
+  color: #dc2626;
+}
+
+.audit-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0;
+}
+
+.audit-details div {
+  display: flex;
+  gap: 5px;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.audit-details dt {
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+.audit-details dd {
   overflow-wrap: anywhere;
-  color: #475569;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.audit-technical {
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.audit-technical summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.audit-technical[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.audit-technical dl {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+  border-left: 2px solid var(--border);
+  padding-left: 10px;
+}
+
+.audit-technical dl div {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.audit-technical dt {
+  font-weight: 600;
+}
+
+.audit-technical dd {
+  overflow-wrap: anywhere;
+  margin: 0;
 }
 
 .modal-backdrop {
@@ -796,6 +892,16 @@ tbody tr:hover {
   .audit-item {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .audit-item__header {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .audit-status {
+    flex-wrap: wrap;
+    white-space: normal;
   }
 
   .toolbar,

@@ -1,0 +1,3 @@
+ALTER TABLE "adminAuditLog"
+    ADD COLUMN IF NOT EXISTS "actorName" TEXT,
+    ADD COLUMN IF NOT EXISTS "targetName" TEXT;

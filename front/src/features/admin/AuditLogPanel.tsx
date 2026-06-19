@@ -1,5 +1,7 @@
+import { CheckCircle2, ChevronDown, Download, RefreshCw, XCircle } from "lucide-react";
 import type { AuditLogFilters, ManagedAuditLog } from "../../types/admin";
 import { formatDate } from "../../utils/admin-format";
+import { auditActionText, auditClientText, auditDetails, auditRoleText, auditSummary } from "../../utils/audit-format";
 
 type AuditLogPanelProps = {
     logs: ManagedAuditLog[];
@@ -16,108 +18,54 @@ type AuditLogPanelProps = {
     onExportCsv: () => void;
 };
 
-export function auditActionText(action: string) {
-    const labels: Record<string, string> = {
-        "request.failed": "Отклонённый запрос",
-        "auth.register": "Регистрация",
-        "auth.login": "Вход в аккаунт",
-        "auth.login.social": "Вход через социальную сеть",
-        "auth.logout": "Выход из аккаунта",
-        "auth.profile.update": "Обновление профиля",
-        "auth.password.change": "Смена пароля",
-        "auth.password.reset-request": "Запрос сброса пароля",
-        "auth.password.reset-complete": "Завершение сброса пароля",
-        "auth.email.change": "Смена email",
-        "auth.email.verification-request": "Запрос подтверждения email",
-        "auth.user.delete": "Удаление своего аккаунта",
-        "auth.session.revoke": "Отзыв сессии",
-        "auth.sessions.revoke-all": "Отзыв всех сессий",
-        "auth.sessions.revoke-others": "Отзыв остальных сессий",
-        "auth.account.link": "Привязка аккаунта",
-        "auth.account.unlink": "Отвязка аккаунта",
-        "admin.audit.export": "Экспорт журнала",
-        "admin.user.role.update": "Изменение роли",
-        "admin.users.bulk-role": "Массовое изменение ролей",
-        "admin.users.bulk-ban": "Массовая блокировка",
-        "admin.users.bulk-unban": "Массовая разблокировка",
-        "admin.users.export": "Экспорт пользователей",
-        "admin.account.unlink": "Отвязка аккаунта",
-        "admin.user.impersonate": "Вход от имени пользователя",
-        "admin.user.stop-impersonating": "Завершение входа от имени пользователя",
-        "better-auth.admin.create-user": "Создание пользователя",
-        "better-auth.admin.update-user": "Обновление пользователя",
-        "better-auth.admin.ban-user": "Блокировка пользователя",
-        "better-auth.admin.unban-user": "Разблокировка пользователя",
-        "better-auth.admin.remove-user": "Удаление пользователя",
-        "better-auth.admin.set-user-password": "Смена пароля админом",
-        "better-auth.admin.revoke-user-session": "Отзыв сессии",
-        "better-auth.admin.revoke-user-sessions": "Отзыв всех сессий",
-        "better-auth.admin.impersonate-user": "Вход от имени пользователя",
-        "better-auth.admin.stop-impersonating": "Завершение входа от имени пользователя",
-        "better-auth.change-password": "Смена своего пароля",
-        "better-auth.update-user": "Обновление профиля",
-        "email.verification.sent": "Отправка подтверждения email",
-        "email.password-reset.sent": "Отправка сброса пароля",
-        "user.email.verified": "Email подтвержден",
-        "user.password.reset": "Пароль сброшен",
-        "post.create-draft": "Создание черновика",
-        "post.update-draft": "Обновление черновика",
-        "post.submit": "Отправка поста на модерацию",
-        "post.publish-direct": "Прямая публикация поста",
-        "post.delete-own": "Удаление своего поста",
-        "post.claim": "Пост взят на модерацию",
-        "post.release": "Пост освобождён модератором",
-        "post.approve": "Одобрение поста",
-        "post.reject": "Отклонение поста",
-        "post.remove": "Удаление поста модератором",
-        "post.pin": "Закрепление поста",
-        "post.unpin": "Открепление поста",
-        "post.moderate-edit": "Редактирование поста модератором",
-        "comment.create": "Добавление комментария",
-        "comment.delete-own": "Удаление своего комментария",
-        "comment.delete-moderate": "Удаление комментария модератором",
-        "reaction.set": "Добавление реакции",
-        "reaction.change": "Изменение реакции",
-        "reaction.remove": "Удаление реакции",
-        "report.create": "Создание жалобы",
-        "report.resolved": "Подтверждение жалобы",
-        "report.rejected": "Отклонение жалобы",
-        "notification.read": "Прочтение уведомлений",
-        "notification.read-all": "Прочтение всех уведомлений",
-        "upload.avatar": "Загрузка аватара",
-        "upload.post-image": "Загрузка изображения поста",
-        "upload.item-image": "Загрузка изображения предмета",
-        "upload.item-model": "Загрузка 3D-модели предмета",
-        "admin.fish.create": "Добавление рыбы",
-        "admin.fish.update": "Изменение рыбы",
-        "admin.fish.delete": "Удаление рыбы",
-        "admin.waterbody.create": "Добавление водоёма",
-        "admin.waterbody.update": "Изменение водоёма",
-        "admin.waterbody.delete": "Удаление водоёма",
-        "admin.reels.create": "Добавление катушки",
-        "admin.reels.update": "Изменение катушки",
-        "admin.reels.delete": "Удаление катушки",
-        "admin.rods.create": "Добавление удилища",
-        "admin.rods.update": "Изменение удилища",
-        "admin.rods.delete": "Удаление удилища",
-    };
+function AuditLogItem({ log }: { log: ManagedAuditLog }) {
+    const details = auditDetails(log);
+    const role = auditRoleText(log.actorRole);
+    const client = auditClientText(log.userAgent);
+    const hasTechnicalDetails = Boolean(log.method || log.path || log.ipAddress || log.requestId || client);
 
-    if (labels[action]) return labels[action];
-    if (action.endsWith(".failed")) {
-        const baseAction = action.slice(0, -7);
-        return `${labels[baseAction] ?? baseAction} — ошибка`;
-    }
-    return action;
-}
+    return (
+        <article className={`audit-item audit-item--${log.outcome}`}>
+            <div className="audit-item__header">
+                <div className="audit-item__summary">
+                    <strong>{auditSummary(log)}</strong>
+                    <span>{auditActionText(log.action)}{role ? ` · ${role}` : ""}</span>
+                </div>
+                <div className={`audit-status audit-status--${log.outcome}`}>
+                    {log.outcome === "failure" ? <XCircle aria-hidden="true" size={15} /> : <CheckCircle2 aria-hidden="true" size={15} />}
+                    <span>{log.outcome === "failure" ? "Ошибка" : "Успешно"}</span>
+                    <time dateTime={String(log.createdAt)}>{formatDate(log.createdAt)}</time>
+                </div>
+            </div>
 
-function metadataPreview(metadata: Record<string, unknown>) {
-    const entries = Object.entries(metadata).filter(([, value]) => value !== null && value !== undefined && value !== "");
-    if (!entries.length) return "";
+            {details.length > 0 && (
+                <dl className="audit-details">
+                    {details.map((detail) => (
+                        <div key={`${detail.label}-${detail.value}`}>
+                            <dt>{detail.label}</dt>
+                            <dd>{detail.value}</dd>
+                        </div>
+                    ))}
+                </dl>
+            )}
 
-    return entries
-        .slice(0, 4)
-        .map(([key, value]) => `${key}: ${typeof value === "object" ? JSON.stringify(value) : String(value)}`)
-        .join("; ");
+            {hasTechnicalDetails && (
+                <details className="audit-technical">
+                    <summary>
+                        <ChevronDown aria-hidden="true" size={15} />
+                        Технические данные
+                    </summary>
+                    <dl>
+                        {(log.method || log.path) && <div><dt>Запрос</dt><dd>{[log.method, log.path].filter(Boolean).join(" ")}</dd></div>}
+                        {log.ipAddress && <div><dt>IP-адрес</dt><dd>{log.ipAddress}</dd></div>}
+                        {client && <div><dt>Клиент</dt><dd title={log.userAgent || undefined}>{client}</dd></div>}
+                        {log.requestId && <div><dt>Request ID</dt><dd>{log.requestId}</dd></div>}
+                        <div><dt>Код события</dt><dd>{log.action}</dd></div>
+                    </dl>
+                </details>
+            )}
+        </article>
+    );
 }
 
 export function AuditLogPanel({
@@ -144,13 +92,15 @@ export function AuditLogPanel({
             <div className="panel-header">
                 <div>
                     <h2>Журнал действий</h2>
-                    <p className="muted">Фильтры, метаданные и экспорт важных действий админов и системных auth-событий.</p>
+                    <p className="muted">История изменений, действий пользователей и событий безопасности.</p>
                 </div>
                 <div className="actions-row">
-                    <button className="secondary" onClick={onExportCsv} disabled={loading || !logs.length}>
+                    <button className="secondary" onClick={onExportCsv} disabled={loading || !logs.length} title="Экспортировать в CSV">
+                        <Download aria-hidden="true" size={16} />
                         CSV
                     </button>
-                    <button className="secondary" onClick={onRefresh} disabled={loading}>
+                    <button className="secondary" onClick={onRefresh} disabled={loading} title="Обновить журнал">
+                        <RefreshCw aria-hidden="true" size={16} />
                         Обновить
                     </button>
                 </div>
@@ -164,20 +114,31 @@ export function AuditLogPanel({
                 }}
             >
                 <input
-                    placeholder="Email администратора"
+                    placeholder="Инициатор: email"
                     value={filters.actorEmail}
                     onChange={(event) => onFiltersChange({ ...filters, actorEmail: event.target.value })}
                 />
                 <input
-                    placeholder="Email цели"
+                    placeholder="Цель: email"
                     value={filters.targetEmail}
                     onChange={(event) => onFiltersChange({ ...filters, targetEmail: event.target.value })}
                 />
-                <input
-                    placeholder="Действие"
+                <select
+                    aria-label="Раздел действий"
                     value={filters.action}
                     onChange={(event) => onFiltersChange({ ...filters, action: event.target.value })}
-                />
+                >
+                    <option value="">Все действия</option>
+                    <option value="auth">Авторизация и безопасность</option>
+                    <option value="post.">Публикации и модерация</option>
+                    <option value="comment.">Комментарии</option>
+                    <option value="reaction.">Реакции</option>
+                    <option value="report.">Жалобы</option>
+                    <option value="notification.">Уведомления</option>
+                    <option value="upload.">Загрузки файлов</option>
+                    <option value="admin">Администрирование</option>
+                    <option value="request.failed">Отклонённые запросы</option>
+                </select>
                 <select
                     aria-label="Результат действия"
                     value={filters.outcome}
@@ -199,51 +160,21 @@ export function AuditLogPanel({
                     value={filters.to}
                     onChange={(event) => onFiltersChange({ ...filters, to: event.target.value })}
                 />
-                <button className="secondary" type="submit">
-                    Применить
-                </button>
-                <button className="link-button" type="button" onClick={onResetFilters}>
-                    Сбросить
-                </button>
+                <button className="secondary" type="submit">Применить</button>
+                <button className="link-button" type="button" onClick={onResetFilters}>Сбросить</button>
             </form>
 
             <div className="audit-count">
                 <p className="muted">Найдено записей: {total}</p>
                 <div className="actions-row">
-                    <button className="secondary" type="button" disabled={!hasPreviousPage || loading} onClick={() => onPageChange(Math.max(0, offset - pageSize))}>
-                        Назад
-                    </button>
-                    <span className="muted">
-                        {from}-{to}
-                    </span>
-                    <button className="secondary" type="button" disabled={!hasNextPage || loading} onClick={() => onPageChange(offset + pageSize)}>
-                        Далее
-                    </button>
+                    <button className="secondary" type="button" disabled={!hasPreviousPage || loading} onClick={() => onPageChange(Math.max(0, offset - pageSize))}>Назад</button>
+                    <span className="muted">{from}-{to}</span>
+                    <button className="secondary" type="button" disabled={!hasNextPage || loading} onClick={() => onPageChange(offset + pageSize)}>Далее</button>
                 </div>
             </div>
 
             <div className="audit-list">
-                {logs.map((log) => (
-                    <article className="audit-item" key={log.id}>
-                        <div>
-                            <strong>{auditActionText(log.action)}</strong>
-                            <span>{log.outcome === "failure" ? "Ошибка" : "Успешно"} · {formatDate(log.createdAt)}</span>
-                        </div>
-                        <div>
-                            <span>Кто: {log.actorEmail || "система"}{log.actorRole ? ` (${log.actorRole})` : ""}</span>
-                            <span>Цель: {log.targetEmail || log.targetUserId || "-"}</span>
-                        </div>
-                        {(log.method || log.path || log.ipAddress) && (
-                            <div>
-                                <span title={log.userAgent || undefined}>{[log.method, log.path].filter(Boolean).join(" ")}</span>
-                                <span>IP: {log.ipAddress || "-"}</span>
-                            </div>
-                        )}
-                        {log.requestId && <small>Request ID: {log.requestId}</small>}
-                        {Boolean(metadataPreview(log.metadata)) && <small>{metadataPreview(log.metadata)}</small>}
-                    </article>
-                ))}
-
+                {logs.map((log) => <AuditLogItem key={log.id} log={log} />)}
                 {!logs.length && <p className="empty-panel muted">{loading ? "Загрузка..." : "Записей пока нет"}</p>}
             </div>
         </section>

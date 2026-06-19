@@ -1,7 +1,7 @@
 import { UserAvatar } from "../../components/UserAvatar";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
-import { auditActionText } from "./AuditLogPanel";
+import { auditActionText, auditDetails, auditSummary } from "../../utils/audit-format";
 
 type UserDetailsPanelProps = {
     selectedUser: ManagedUser | null;
@@ -229,8 +229,9 @@ export function UserDetailsPanel({
                             {auditLogs.map((log) => (
                                 <div className="mini-card" key={log.id}>
                                     <div>
-                                        <strong>{auditActionText(log.action)}</strong>
-                                        <span>Кто: {log.actorEmail || "система"}</span>
+                                        <strong>{auditSummary(log)}</strong>
+                                        <span>{auditActionText(log.action)}</span>
+                                        {auditDetails(log).slice(0, 2).map((detail) => <span key={`${detail.label}-${detail.value}`}>{detail.label}: {detail.value}</span>)}
                                         <span>{log.outcome === "failure" ? "Ошибка" : "Успешно"} · {formatDate(log.createdAt)}</span>
                                     </div>
                                 </div>

@@ -6,6 +6,7 @@ import { getAuditContext } from "./audit-context";
 
 type AuditUser = {
     id?: string;
+    name?: string | null;
     email?: string | null;
     role?: string | string[] | null;
 };
@@ -15,6 +16,7 @@ type AuditLogInput = {
     action: string;
     targetUserId?: string | null;
     targetEmail?: string | null;
+    targetName?: string | null;
     metadata?: Record<string, unknown>;
     outcome?: "success" | "failure";
 };
@@ -58,16 +60,30 @@ export function sanitizeAuditMetadata(value: unknown): unknown {
 export async function writeAuditLog(input: AuditLogInput) {
     const request = getAuditContext();
     const actor = input.actor ?? request?.actor ?? null;
+    let targetEmail = input.targetEmail ?? null;
+    let targetName = input.targetName ?? null;
+
+    if (input.targetUserId && (!targetEmail || !targetName)) {
+        const target = await pool.query<{ email: string; name: string | null }>(
+            `SELECT email, name FROM "user" WHERE id = $1`,
+            [input.targetUserId],
+        );
+        targetEmail ??= target.rows[0]?.email ?? null;
+        targetName ??= target.rows[0]?.name ?? null;
+    }
+
     await pool.query(
         `
             INSERT INTO "adminAuditLog" (
                 id,
                 "actorId",
                 "actorEmail",
+                "actorName",
                 "actorRole",
                 action,
                 "targetUserId",
                 "targetEmail",
+                "targetName",
                 metadata,
                 outcome,
                 "requestId",
@@ -76,16 +92,18 @@ export async function writeAuditLog(input: AuditLogInput) {
                 method,
                 path
             )
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
         `,
         [
             randomUUID(),
             actor?.id ?? null,
             actor?.email ?? null,
+            actor?.name ?? null,
             normalizeRole(actor?.role),
             input.action,
             input.targetUserId ?? null,
-            input.targetEmail ?? null,
+            targetEmail,
+            targetName,
             JSON.stringify(sanitizeAuditMetadata(input.metadata ?? {})),
             input.outcome ?? "success",
             request?.requestId ?? null,
