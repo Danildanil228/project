@@ -1,7 +1,6 @@
 import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, Search, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import { useDebounce } from "use-debounce";
 import { ItemCard } from "../components/ItemCard";
 import { ItemDataTable } from "../features/items/ItemDataTable";
 import { fetchItems, itemCategories, typeLabels, type CatalogItem, type ItemType } from "../lib/items-api";
@@ -19,8 +18,6 @@ export function CatalogPage() {
     const [category, setCategory] = useState("");
     const [sortBy, setSortBy] = useState("name");
     const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-    const [filters, setFilters] = useState<Record<string, string>>({});
-    const [debouncedFilters] = useDebounce(filters, 350);
     const [offset, setOffset] = useState(0);
     const pageSize = view === "cards" ? 24 : 50;
 
@@ -32,8 +29,8 @@ export function CatalogPage() {
     // react-query dedupes identical concurrent fetches (StrictMode mounts share the cache),
     // keeps previous data while a new page loads (no flicker on pagination), and caches results for 30s.
     const { data, isFetching, error: queryError } = useQuery({
-        queryKey: ["catalog", type, { search: appliedSearch, category, filters: debouncedFilters, sortBy, sortDirection, limit: pageSize, offset }],
-        queryFn: () => fetchItems(type, { search: appliedSearch, category, filters: debouncedFilters, sortBy, sortDirection, limit: pageSize, offset }),
+        queryKey: ["catalog", type, { search: appliedSearch, category, sortBy, sortDirection, limit: pageSize, offset }],
+        queryFn: () => fetchItems(type, { search: appliedSearch, category, sortBy, sortDirection, limit: pageSize, offset }),
         placeholderData: keepPreviousData,
     });
     const items = (data?.items ?? []) as CatalogItem[];
@@ -47,7 +44,6 @@ export function CatalogPage() {
         setCategory("");
         setSearchInput("");
         setAppliedSearch("");
-        setFilters({});
         setSortBy("name");
         setSortDirection("asc");
         setOffset(0);
@@ -68,27 +64,16 @@ export function CatalogPage() {
         }
     }
 
-    function changeFilter(field: string, value: string) {
-        setOffset(0);
-        setFilters((current) => {
-            const next = { ...current };
-            if (value) next[field] = value;
-            else delete next[field];
-            return next;
-        });
-    }
-
     function clearFilters() {
         setSearchInput("");
         setAppliedSearch("");
         setCategory("");
-        setFilters({});
         setOffset(0);
     }
 
     const from = total === 0 ? 0 : offset + 1;
     const to = Math.min(offset + pageSize, total);
-    const hasFilters = Boolean(appliedSearch || category || Object.keys(filters).length);
+    const hasFilters = Boolean(appliedSearch || category);
 
     return (
         <section className="grid gap-5">
@@ -122,7 +107,7 @@ export function CatalogPage() {
                 <button type="button" onClick={clearFilters} disabled={!hasFilters} title="Сбросить фильтры" className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-40"><X size={16} /> Сбросить</button>
             </form>
 
-            {view === "rows" && <p className="text-sm text-muted-foreground">Нажмите заголовок столбца для сортировки. Фильтры под заголовками применяются автоматически.</p>}
+            {view === "rows" && <p className="text-sm text-muted-foreground">Нажмите заголовок столбца для сортировки.</p>}
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {view === "cards" ? (
@@ -130,7 +115,7 @@ export function CatalogPage() {
                     : items.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p>
                         : <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">{items.map((item) => <ItemCard key={item.id} type={type} item={item} />)}</div>
             ) : (
-                <ItemDataTable type={type} rows={items} loading={loading} sortBy={sortBy} sortDirection={sortDirection} filters={filters} onSort={changeSort} onFilter={changeFilter} />
+                <ItemDataTable type={type} rows={items} loading={loading} sortBy={sortBy} sortDirection={sortDirection} onSort={changeSort} />
             )}
 
             {total > pageSize && (

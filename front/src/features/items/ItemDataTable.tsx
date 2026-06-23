@@ -3,7 +3,6 @@ import {
     getCoreRowModel,
     useReactTable,
     type ColumnDef,
-    type ColumnFiltersState,
     type SortingState,
     type VisibilityState,
 } from "@tanstack/react-table";
@@ -21,9 +20,7 @@ type Props = {
     loading: boolean;
     sortBy: string;
     sortDirection: "asc" | "desc";
-    filters: Record<string, string>;
     onSort: (field: string) => void;
-    onFilter: (field: string, value: string) => void;
 };
 
 // Hand-picked default-visible columns for each type. Everything else hides behind the «Колонки» menu.
@@ -66,7 +63,7 @@ function loadVisibility(type: ItemType, fields: ItemFieldDef[]): VisibilityState
     return Object.fromEntries(fields.map((field) => [field.key, defaults.has(field.key)]));
 }
 
-export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, filters, onSort, onFilter }: Props) {
+export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, onSort }: Props) {
     const fields = useMemo(() => tableFields(type), [type]);
     const [visibility, setVisibility] = useState<VisibilityState>(() => loadVisibility(type, fields));
     const [menuOpen, setMenuOpen] = useState(false);
@@ -88,21 +85,15 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, filt
         return () => document.removeEventListener("mousedown", onDown);
     }, [menuOpen]);
 
-    // Sorting and column filters are server-driven; we mirror them into TanStack so the UI matches state.
+    // Sort state mirrors server-driven sort; TanStack stays in lockstep with the URL/query state.
     const sorting: SortingState = useMemo(() => sortBy ? [{ id: sortBy, desc: sortDirection === "desc" }] : [], [sortBy, sortDirection]);
-    const columnFilters: ColumnFiltersState = useMemo(
-        () => Object.entries(filters).map(([id, value]) => ({ id, value })),
-        [filters],
-    );
 
     const columns = useMemo<ColumnDef<ItemRow>[]>(() => {
         return fields.map((field) => ({
             id: field.key,
             accessorKey: field.key,
-            header: field.label,
+            header: field.shortLabel ?? field.label,
             enableSorting: field.key !== "photo",
-            // We don't filter client-side — the parent already issues server-side filter requests.
-            // But we still expose the meta so the header cell can render the right control.
             meta: { field },
             cell: ({ row }) => renderCell(field, row.original, type),
             size: field.key === "photo" ? 80 : field.key === "name" ? 220 : undefined,
@@ -112,11 +103,10 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, filt
     const table = useReactTable({
         data: rows,
         columns,
-        state: { sorting, columnFilters, columnVisibility: visibility },
+        state: { sorting, columnVisibility: visibility },
         getCoreRowModel: getCoreRowModel(),
         onColumnVisibilityChange: setVisibility,
         manualSorting: true,
-        manualFiltering: true,
     });
 
     const visibleFields = fields.filter((field) => visibility[field.key] !== false);
@@ -186,38 +176,21 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, filt
                                     const sortable = header.column.getCanSort();
                                     const active = sortBy === field.key;
                                     const isName = field.key === "name";
+                                    const label = field.shortLabel ?? field.label;
                                     return (
                                         <th key={header.id} className={`whitespace-nowrap px-3 py-2 font-semibold ${isName ? "sticky left-0 z-20 bg-muted" : ""}`}>
                                             {sortable ? (
                                                 <button type="button" onClick={() => onSort(field.key)} className="inline-flex items-center gap-1 hover:text-primary" title={`Сортировать: ${field.label}`}>
-                                                    {flexRender(field.label, header.getContext())}
+                                                    {label}
                                                     {active ? (sortDirection === "asc" ? <ArrowUp size={14} /> : <ArrowDown size={14} />) : <ArrowUpDown size={14} className="text-muted-foreground" />}
                                                 </button>
-                                            ) : field.label}
+                                            ) : label}
                                         </th>
                                     );
                                 })}
                                 <th className="sticky right-0 z-20 bg-muted px-3 py-2 text-right">Открыть</th>
                             </tr>
                         ))}
-                        <tr className="border-b border-border">
-                            {visibleFields.map((field) => (
-                                <th key={field.key} className={`px-2 py-2 ${field.key === "name" ? "sticky left-0 z-20 bg-muted" : ""}`}>
-                                    {field.key === "photo" ? null : field.kind === "checkbox" ? (
-                                        <select aria-label={`Фильтр: ${field.label}`} value={filters[field.key] ?? ""} onChange={(event) => onFilter(field.key, event.target.value)} className="h-8 min-w-24 text-xs">
-                                            <option value="">Все</option><option value="true">Да</option><option value="false">Нет</option>
-                                        </select>
-                                    ) : field.options ? (
-                                        <select aria-label={`Фильтр: ${field.label}`} value={filters[field.key] ?? ""} onChange={(event) => onFilter(field.key, event.target.value)} className="h-8 min-w-32 text-xs">
-                                            <option value="">Все</option>{field.options.map((option) => <option key={option} value={option}>{option}</option>)}
-                                        </select>
-                                    ) : (
-                                        <input aria-label={`Фильтр: ${field.label}`} value={filters[field.key] ?? ""} onChange={(event) => onFilter(field.key, event.target.value)} placeholder="Фильтр" className="h-8 w-28 text-xs" />
-                                    )}
-                                </th>
-                            ))}
-                            <th className="sticky right-0 z-20 bg-muted" />
-                        </tr>
                     </thead>
                     <tbody>
                         {loading ? (

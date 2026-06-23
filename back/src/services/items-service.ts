@@ -18,6 +18,15 @@ type ItemTypeConfig = {
     defaultSort: string;
 };
 
+// Columns stored as VARCHAR but semantically numeric (e.g. per="5.2:1", price_ser="1500", test="0-50 гр").
+// Sorting them as text gives "10" < "2"; we extract the first number with regex and cast to numeric in ORDER BY.
+// `size` and `lvl` are already INT — they sort natively.
+const numericSortColumns: Record<ItemType, Set<string>> = {
+    reels: new Set(["test", "per", "per_mod", "speed", "speed_mod", "frik", "frik_mod", "meh", "meh_mod", "price_ser", "price_gold", "capacity", "capacity_mod"]),
+    // `power` looks numeric but RF4 stores symbolic classes ("UL", "L", "ML", "M", "MH", "H", "XH", and freeform "Среднее"/"Лёгкое") — keep it as text sort.
+    rods: new Set(["test_down", "test_up", "length", "sensi", "rig", "stren", "bonus_opit", "bonus_nav", "bonus_zabros", "price_ser", "price_gold"]),
+};
+
 // Table/column names below are fixed (never user input), so they are safe to inline in SQL.
 export const itemConfigs: Record<ItemType, ItemTypeConfig> = {
     reels: {
@@ -86,10 +95,19 @@ export function buildItemListQuery(type: ItemType, query: ItemListQuery) {
 
     const sortColumn = config.sortFields[query.sortBy] ?? config.defaultSort;
     const sortDirection = query.sortDirection === "desc" ? "DESC" : "ASC";
+    const isNumericVarchar = numericSortColumns[type].has(sortColumn);
+    // For numeric-VARCHAR fields, extract the first signed number (e.g. "5,2:1" → 5.2, "0-100 гр" → 0)
+    // and sort by it. RF4 data uses comma as decimal separator, so we normalize "," → "." before cast.
+    // The regex uses a non-capturing group so substring() returns the full match (PG returns capture group #1
+    // otherwise, which would give us ".2" or NULL — broken sort).
+    // NULLS LAST so rows missing the field don't dominate the start in DESC order.
+    const sortExpr = isNumericVarchar
+        ? `NULLIF(replace(substring("${sortColumn}" FROM '-?[0-9]+(?:[.,][0-9]+)?'), ',', '.'), '')::numeric ${sortDirection} NULLS LAST`
+        : `"${sortColumn}" ${sortDirection}`;
 
     return {
         whereSql: where.length ? `WHERE ${where.join(" AND ")}` : "",
-        orderSql: `${sortColumn} ${sortDirection}, id ASC`,
+        orderSql: `${sortExpr}, id ASC`,
         values,
         limit: query.limit,
         offset: query.offset,

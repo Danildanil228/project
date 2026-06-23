@@ -19,7 +19,8 @@ test("builds a filtered reels query with search, filter and level range", () => 
 
     assert.match(result.whereSql, /^WHERE concat_ws\(' ', .*\) ILIKE \$1 AND category = \$2 AND lvl >= \$3$/);
     assert.deepEqual(result.values, ["%raptor%", "Силовые", 10]);
-    assert.equal(result.orderSql, "lvl DESC, id ASC");
+    // lvl is INT — sorts natively, just quoted.
+    assert.equal(result.orderSql, `"lvl" DESC, id ASC`);
 });
 
 test("rods support the type filter and fall back to default sort", () => {
@@ -39,7 +40,7 @@ test("rods support the type filter and fall back to default sort", () => {
 
     assert.equal(result.whereSql, "WHERE brend = $1 AND type = $2");
     assert.deepEqual(result.values, ["Reef", "Спиннинговые"]);
-    assert.equal(result.orderSql, "name ASC, id ASC");
+    assert.equal(result.orderSql, `"name" ASC, id ASC`);
 });
 
 test("ignores the type filter for reels (not a reels column)", () => {
@@ -92,5 +93,6 @@ test("supports whitelisted column filters and attribute sorting", () => {
 
     assert.equal(result.whereSql, `WHERE COALESCE("frik"::text, '') ILIKE $1 AND COALESCE("protection"::text, '') ILIKE $2`);
     assert.deepEqual(result.values, ["%20%", "%true%"]);
-    assert.equal(result.orderSql, "frik DESC, id ASC");
+    // frik is VARCHAR but semantically numeric (e.g. "20 кг", "3,5 кг") — extract first number, normalize "," → ".", cast.
+    assert.equal(result.orderSql, `NULLIF(replace(substring("frik" FROM '-?[0-9]+(?:[.,][0-9]+)?'), ',', '.'), '')::numeric DESC NULLS LAST, id ASC`);
 });
