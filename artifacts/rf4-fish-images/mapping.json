@@ -1,0 +1,2517 @@
+{
+  "generatedAt": "2026-06-21T12:13:25.137Z",
+  "exportRoot": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets",
+  "mappings": [
+    {
+      "fishId": 263,
+      "fishName": "Акула гигантская",
+      "cardSystemId": "card_cetorhinus_m",
+      "catalogName": "Акула гигантская",
+      "imageFile": "cetorhinus_m_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\cetorhinus_m_b.png",
+      "photoUrl": "/uploads/fish/cetorhinus_m_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 250,
+      "fishName": "Акула гренландская полярная",
+      "cardSystemId": "card_somniosus_m",
+      "catalogName": "Акула гренландская полярная",
+      "imageFile": "somniosus_m_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\somniosus_m_b.png",
+      "photoUrl": "/uploads/fish/somniosus_m_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 268,
+      "fishName": "Акула плащеносная",
+      "cardSystemId": "card_c_anguineus",
+      "catalogName": "Акула плащеносная",
+      "imageFile": "c_anguineus_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_anguineus_b.png",
+      "photoUrl": "/uploads/fish/c_anguineus_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 243,
+      "fishName": "Акула сельдевая атлантическая",
+      "cardSystemId": "card_lamna_n",
+      "catalogName": "Акула сельдевая атлантическая",
+      "imageFile": "lamna_n_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lamna_n_b.png",
+      "photoUrl": "/uploads/fish/lamna_n_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 4,
+      "fishName": "Амур белый",
+      "cardSystemId": "card_g_carp",
+      "catalogName": "Амур белый",
+      "imageFile": "g_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\g_carp_b.png",
+      "photoUrl": "/uploads/fish/g_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 93,
+      "fishName": "Амур белый альбинос",
+      "cardSystemId": "card_g_carp_albino",
+      "catalogName": "Амур белый альбинос",
+      "imageFile": "g_carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\g_carp_albino_b.png",
+      "photoUrl": "/uploads/fish/g_carp_albino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 72,
+      "fishName": "Амур чёрный",
+      "cardSystemId": "card_b_carp",
+      "catalogName": "Амур чёрный",
+      "imageFile": "b_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_carp_b.png",
+      "photoUrl": "/uploads/fish/b_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 48,
+      "fishName": "Белоглазка",
+      "cardSystemId": "card_wa_bream",
+      "catalogName": "Белоглазка",
+      "imageFile": "wa_bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\wa_bream_b.png",
+      "photoUrl": "/uploads/fish/wa_bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 156,
+      "fishName": "Белорыбица",
+      "cardSystemId": "card_wfish",
+      "catalogName": "Белорыбица",
+      "imageFile": "wfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\wfish_b.png",
+      "photoUrl": "/uploads/fish/wfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 158,
+      "fishName": "Белуга каспийская",
+      "cardSystemId": "card_beluga",
+      "catalogName": "Белуга каспийская",
+      "imageFile": "beluga_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\beluga_b.png",
+      "photoUrl": "/uploads/fish/beluga_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 109,
+      "fishName": "Белуга черноморская",
+      "cardSystemId": "card_ch_beluga",
+      "catalogName": "Белуга черноморская",
+      "imageFile": "ch_beluga_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ch_beluga_b.png",
+      "photoUrl": "/uploads/fish/ch_beluga_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 230,
+      "fishName": "Бельдюга европейская",
+      "cardSystemId": "card_zoarces_v",
+      "catalogName": "Бельдюга европейская",
+      "imageFile": "zoarces_v_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\zoarces_v_b.png",
+      "photoUrl": "/uploads/fish/zoarces_v_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 265,
+      "fishName": "Берикс красный",
+      "cardSystemId": "card_alfonsino",
+      "catalogName": "Берикс красный",
+      "imageFile": "alfonsino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\alfonsino_b.png",
+      "photoUrl": "/uploads/fish/alfonsino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 53,
+      "fishName": "Берш",
+      "cardSystemId": "card_barsch",
+      "catalogName": "Берш",
+      "imageFile": "barsch_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\barsch_b.png",
+      "photoUrl": "/uploads/fish/barsch_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 147,
+      "fishName": "Буффало большеротый",
+      "cardSystemId": "card_buffalo",
+      "catalogName": "Буффало большеротый",
+      "imageFile": "buffalo_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\buffalo_b.png",
+      "photoUrl": "/uploads/fish/buffalo_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 160,
+      "fishName": "Буффало чёрный",
+      "cardSystemId": "card_bl_buffalo",
+      "catalogName": "Буффало черный",
+      "imageFile": "bl_buffalo_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\bl_buffalo_b.png",
+      "photoUrl": "/uploads/fish/bl_buffalo_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 187,
+      "fishName": "Валёк",
+      "cardSystemId": "card_valyok",
+      "catalogName": "Валек обыкновенный",
+      "imageFile": "valyok_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\valyok_b.png",
+      "photoUrl": "/uploads/fish/valyok_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 27,
+      "fishName": "Вармоус",
+      "cardSystemId": "card_warm",
+      "catalogName": "Вармоус",
+      "imageFile": "warm_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\warm_b.png",
+      "photoUrl": "/uploads/fish/warm_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 149,
+      "fishName": "Вобла",
+      "cardSystemId": "card_vobla",
+      "catalogName": "Вобла",
+      "imageFile": "vobla_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\vobla_b.png",
+      "photoUrl": "/uploads/fish/vobla_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 108,
+      "fishName": "Вырезуб",
+      "cardSystemId": "card_vyrezub",
+      "catalogName": "Вырезуб",
+      "imageFile": "vyrezub_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\vyrezub_b.png",
+      "photoUrl": "/uploads/fish/vyrezub_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 7,
+      "fishName": "Вьюн",
+      "cardSystemId": "card_vjun",
+      "catalogName": "Вьюн",
+      "imageFile": "vjun_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\vjun_b.png",
+      "photoUrl": "/uploads/fish/vjun_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 271,
+      "fishName": "Гимантолоф атлантический",
+      "cardSystemId": "card_himant_g",
+      "catalogName": "Гимантолоф атлантический",
+      "imageFile": "himant_g_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\himant_g_b.png",
+      "photoUrl": "/uploads/fish/himant_g_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 19,
+      "fishName": "Голавль",
+      "cardSystemId": "card_e_chub",
+      "catalogName": "Голавль",
+      "imageFile": "e.chub_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\e.chub_b.png",
+      "photoUrl": "/uploads/fish/e.chub_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 87,
+      "fishName": "Голец арктический",
+      "cardSystemId": "card_a_char",
+      "catalogName": "Голец Арктический",
+      "imageFile": "a_char_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_char_b.png",
+      "photoUrl": "/uploads/fish/a_char_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 188,
+      "fishName": "Голец Дрягина",
+      "cardSystemId": "card_dr_char",
+      "catalogName": "Голец Дрягина",
+      "imageFile": "dr_char_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\dr_char_b.png",
+      "photoUrl": "/uploads/fish/dr_char_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 84,
+      "fishName": "Голец Куорский",
+      "cardSystemId": "card_chartus_kuoriius",
+      "catalogName": "Голец Куорский",
+      "imageFile": "chartus_kuoriius_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chartus_kuoriius_b.png",
+      "photoUrl": "/uploads/fish/chartus_kuoriius_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 208,
+      "fishName": "Голец Леванидова",
+      "cardSystemId": "card_golets_lev",
+      "catalogName": "Голец Леванидова",
+      "imageFile": "golets_lev_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\golets_lev_b.png",
+      "photoUrl": "/uploads/fish/golets_lev_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 194,
+      "fishName": "Голец сибирский-усач",
+      "cardSystemId": "card_barb_toni",
+      "catalogName": "Голец сибирский-усач",
+      "imageFile": "barb_toni_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\barb_toni_b.png",
+      "photoUrl": "/uploads/fish/barb_toni_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 86,
+      "fishName": "Гольян",
+      "cardSystemId": "card_golyan",
+      "catalogName": "Гольян",
+      "imageFile": "golyan_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\golyan_b.png",
+      "photoUrl": "/uploads/fish/golyan_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 178,
+      "fishName": "Гольян озёрный",
+      "cardSystemId": "card_l_minnow",
+      "catalogName": "Гольян озерный",
+      "imageFile": "l_minnow_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_minnow_b.png",
+      "photoUrl": "/uploads/fish/l_minnow_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 184,
+      "fishName": "Горбуша",
+      "cardSystemId": "card_gorbusha",
+      "catalogName": "Горбуша",
+      "imageFile": "gorbusha_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\gorbusha_b.png",
+      "photoUrl": "/uploads/fish/gorbusha_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 38,
+      "fishName": "Горбыль речной",
+      "cardSystemId": "card_fwdrum",
+      "catalogName": "Горбыль речной",
+      "imageFile": "fwdrum_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\fwdrum_b.png",
+      "photoUrl": "/uploads/fish/fwdrum_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 257,
+      "fishName": "Горбыль серебристый",
+      "cardSystemId": "card_meagre",
+      "catalogName": "Горбыль серебристый",
+      "imageFile": "meagre_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\meagre_b.png",
+      "photoUrl": "/uploads/fish/meagre_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 251,
+      "fishName": "Гребешок исландский",
+      "cardSystemId": "card_chlamys_isl",
+      "catalogName": "Гребешок исландский",
+      "imageFile": "chlamys_isl_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chlamys_isl_b.png",
+      "photoUrl": "/uploads/fish/chlamys_isl_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 21,
+      "fishName": "Густера",
+      "cardSystemId": "card_s_bream",
+      "catalogName": "Густера",
+      "imageFile": "s.bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s.bream_b.png",
+      "photoUrl": "/uploads/fish/s.bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 29,
+      "fishName": "Доросома северная",
+      "cardSystemId": "card_g_shad",
+      "catalogName": "Доросома северная",
+      "imageFile": "g_shad_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\g_shad_b.png",
+      "photoUrl": "/uploads/fish/g_shad_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 54,
+      "fishName": "Дрейссена речная",
+      "cardSystemId": "card_dreissena",
+      "catalogName": "Речная дрейссена",
+      "imageFile": "dreissena_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\dreissena_b.png",
+      "photoUrl": "/uploads/fish/dreissena_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 50,
+      "fishName": "Елец",
+      "cardSystemId": "card_dace",
+      "catalogName": "Елец",
+      "imageFile": "dace_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\dace_b.png",
+      "photoUrl": "/uploads/fish/dace_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 180,
+      "fishName": "Елец сибирский",
+      "cardSystemId": "card_syb_elets",
+      "catalogName": "Елец сибирский",
+      "imageFile": "syb_elets_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\syb_elets_b.png",
+      "photoUrl": "/uploads/fish/syb_elets_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 8,
+      "fishName": "Ёрш",
+      "cardSystemId": "card_ruffe",
+      "catalogName": "Ерш",
+      "imageFile": "ruffe_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ruffe_b.png",
+      "photoUrl": "/uploads/fish/ruffe_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 47,
+      "fishName": "Ёрш-носарь",
+      "cardSystemId": "card_ruffe_n",
+      "catalogName": "Ёрш-носарь",
+      "imageFile": "ruffe_n_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ruffe_n_b.png",
+      "photoUrl": "/uploads/fish/ruffe_n_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 58,
+      "fishName": "Жерех",
+      "cardSystemId": "card_asp",
+      "catalogName": "Жерех",
+      "imageFile": "asp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\asp_b.png",
+      "photoUrl": "/uploads/fish/asp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 227,
+      "fishName": "Зубатка полосатая",
+      "cardSystemId": "card_p_zubatka",
+      "catalogName": "Зубатка полосатая",
+      "imageFile": "p_zubatka_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\p_zubatka_b.png",
+      "photoUrl": "/uploads/fish/p_zubatka_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 235,
+      "fishName": "Зубатка пятнистая",
+      "cardSystemId": "card_m_zubatka",
+      "catalogName": "Зубатка пятнистая",
+      "imageFile": "m_zubatka_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_zubatka_b.png",
+      "photoUrl": "/uploads/fish/m_zubatka_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 264,
+      "fishName": "Зубатка синяя",
+      "cardSystemId": "card_d_zubatka",
+      "catalogName": "Зубатка синяя",
+      "imageFile": "d_zubatka_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\d_zubatka_b.png",
+      "photoUrl": "/uploads/fish/d_zubatka_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 213,
+      "fishName": "Калуга",
+      "cardSystemId": "card_kaluga",
+      "catalogName": "Калуга",
+      "imageFile": "kaluga_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kaluga_b.png",
+      "photoUrl": "/uploads/fish/kaluga_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 238,
+      "fishName": "Кальмар обыкновенный",
+      "cardSystemId": "card_c_squid",
+      "catalogName": "Кальмар обыкновенный",
+      "imageFile": "c_squid_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_squid_b.png",
+      "photoUrl": "/uploads/fish/c_squid_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 223,
+      "fishName": "Камбала морская",
+      "cardSystemId": "card_sea_kambala",
+      "catalogName": "Камбала морская",
+      "imageFile": "sea_kambala_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sea_kambala_b.png",
+      "photoUrl": "/uploads/fish/sea_kambala_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 236,
+      "fishName": "Камбала палтусовидная",
+      "cardSystemId": "card_hippoglos_p",
+      "catalogName": "Камбала палтусовидная",
+      "imageFile": "hippoglos_p_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\hippoglos_p_b.png",
+      "photoUrl": "/uploads/fish/hippoglos_p_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 224,
+      "fishName": "Камбала хоботная",
+      "cardSystemId": "card_lh_kambala",
+      "catalogName": "Камбала хоботная",
+      "imageFile": "lh_kambala_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lh_kambala_b.png",
+      "photoUrl": "/uploads/fish/lh_kambala_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 163,
+      "fishName": "Карасекарп",
+      "cardSystemId": "card_karasekarp",
+      "catalogName": "Карасекарп",
+      "imageFile": "karasekarp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\karasekarp_b.png",
+      "photoUrl": "/uploads/fish/karasekarp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 5,
+      "fishName": "Карась золотой",
+      "cardSystemId": "card_c_carp",
+      "catalogName": "Карась золотой",
+      "imageFile": "c.carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c.carp_b.png",
+      "photoUrl": "/uploads/fish/c.carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 11,
+      "fishName": "Карась серебряный",
+      "cardSystemId": "card_crucian",
+      "catalogName": "Карась серебряный",
+      "imageFile": "crucian_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\crucian_b.png",
+      "photoUrl": "/uploads/fish/crucian_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 95,
+      "fishName": "Карп голый",
+      "cardSystemId": "card_n_carp",
+      "catalogName": "Карп голый",
+      "imageFile": "n_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\n_carp_b.png",
+      "photoUrl": "/uploads/fish/n_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 136,
+      "fishName": "Карп голый - альбинос",
+      "cardSystemId": "card_n_carp_albino",
+      "catalogName": "Карп голый альбинос",
+      "imageFile": "n_carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\n_carp_albino_b.png",
+      "photoUrl": "/uploads/fish/n_carp_albino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 131,
+      "fishName": "Карп голый - призрак",
+      "cardSystemId": "card_n_carp_ghost",
+      "catalogName": "Карп голый призрак",
+      "imageFile": "n_carp_ghost_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\n_carp_ghost_b.png",
+      "photoUrl": "/uploads/fish/n_carp_ghost_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 172,
+      "fishName": "Карп Динкенбюльский голый",
+      "cardSystemId": "card_din_n_carp",
+      "catalogName": "Карп Динкельсбюльский голый",
+      "imageFile": "din_n_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\din_n_carp_b.png",
+      "photoUrl": "/uploads/fish/din_n_carp_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 167,
+      "fishName": "Карп Динкенбюльский зеркальный",
+      "cardSystemId": "card_din_m_carp",
+      "catalogName": "Карп Динкельсбюльский зеркальный",
+      "imageFile": "din_m_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\din_m_carp_b.png",
+      "photoUrl": "/uploads/fish/din_m_carp_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 168,
+      "fishName": "Карп Динкенбюльский линейный",
+      "cardSystemId": "card_din_l_carp",
+      "catalogName": "Карп Динкельсбюльский линейный",
+      "imageFile": "din_l_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\din_l_carp_b.png",
+      "photoUrl": "/uploads/fish/din_l_carp_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 22,
+      "fishName": "Карп зеркальный",
+      "cardSystemId": "card_m_carp",
+      "catalogName": "Карп зеркальный",
+      "imageFile": "m_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_carp_b.png",
+      "photoUrl": "/uploads/fish/m_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 137,
+      "fishName": "Карп зеркальный - альбинос",
+      "cardSystemId": "card_m_carp_albino",
+      "catalogName": "Карп зеркальный альбинос",
+      "imageFile": "m_carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_carp_albino_b.png",
+      "photoUrl": "/uploads/fish/m_carp_albino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 129,
+      "fishName": "Карп зеркальный - призрак",
+      "cardSystemId": "card_m_carp_ghost",
+      "catalogName": "Карп зеракльный призрак",
+      "imageFile": "m_carp_ghost_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_carp_ghost_b.png",
+      "photoUrl": "/uploads/fish/m_carp_ghost_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 171,
+      "fishName": "Карп Кои Ёцусиро",
+      "cardSystemId": "card_yotsushiro",
+      "catalogName": "Карп Кои Ёцусиро",
+      "imageFile": "yotsushiro_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\yotsushiro_b.png",
+      "photoUrl": "/uploads/fish/yotsushiro_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 170,
+      "fishName": "Карп Кои Кохаку",
+      "cardSystemId": "card_kohaku",
+      "catalogName": "Карп Кои Кохаку",
+      "imageFile": "kohaku_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kohaku_b.png",
+      "photoUrl": "/uploads/fish/kohaku_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 173,
+      "fishName": "Карп Кои Мамэсибори Госики",
+      "cardSystemId": "card_m_goshiki",
+      "catalogName": "Карп Кои Мамэсибори Госики",
+      "imageFile": "m_goshiki_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_goshiki_b.png",
+      "photoUrl": "/uploads/fish/m_goshiki_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 18,
+      "fishName": "Карп Кои Мидори-гои",
+      "cardSystemId": "card_midori_g",
+      "catalogName": "Карп Кои Мидори-гои",
+      "imageFile": "midori_g_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\midori_g_b.png",
+      "photoUrl": "/uploads/fish/midori_g_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 169,
+      "fishName": "Карп Кои Наруми Асаги",
+      "cardSystemId": "card_n_asagi",
+      "catalogName": "Карп Кои Наруми Асаги",
+      "imageFile": "n_asagi_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\n_asagi_b.png",
+      "photoUrl": "/uploads/fish/n_asagi_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 165,
+      "fishName": "Карп Кои Орэндзи Огон",
+      "cardSystemId": "card_o_ogon",
+      "catalogName": "Карп Кои Орэндзи Огон",
+      "imageFile": "o_ogon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\o_ogon_b.png",
+      "photoUrl": "/uploads/fish/o_ogon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 174,
+      "fishName": "Карп Кои Хи Уцури",
+      "cardSystemId": "card_hi_utsri",
+      "catalogName": "Карп Кои Хи Уцури",
+      "imageFile": "hi_utsri_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\hi_utsri_b.png",
+      "photoUrl": "/uploads/fish/hi_utsri_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 128,
+      "fishName": "Карп красный Старвас - зеркальный",
+      "cardSystemId": "card_m_carp_red",
+      "catalogName": "Карп старвас зеракльный красный",
+      "imageFile": "m_carp_red_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_carp_red_b.png",
+      "photoUrl": "/uploads/fish/m_carp_red_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 127,
+      "fishName": "Карп красный Старвас - чешуйчатый",
+      "cardSystemId": "card_carp_red",
+      "catalogName": "Карп старвас красный",
+      "imageFile": "carp_red_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\carp_red_b.png",
+      "photoUrl": "/uploads/fish/carp_red_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 126,
+      "fishName": "Карп линейный",
+      "cardSystemId": "card_l_carp",
+      "catalogName": "Карп линейный",
+      "imageFile": "l_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_carp_b.png",
+      "photoUrl": "/uploads/fish/l_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 135,
+      "fishName": "Карп линейный - альбинос",
+      "cardSystemId": "card_l_carp_albino",
+      "catalogName": "Карп линейный альбинос",
+      "imageFile": "l_carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_carp_albino_b.png",
+      "photoUrl": "/uploads/fish/l_carp_albino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 132,
+      "fishName": "Карп линейный - призрак",
+      "cardSystemId": "card_l_carp_ghost",
+      "catalogName": "Карп линейный призрак",
+      "imageFile": "l_carp_ghost_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_carp_ghost_b.png",
+      "photoUrl": "/uploads/fish/l_carp_ghost_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 125,
+      "fishName": "Карп рамчатый",
+      "cardSystemId": "card_r_carp",
+      "catalogName": "Карп рамчатый",
+      "imageFile": "r_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\r_carp_b.png",
+      "photoUrl": "/uploads/fish/r_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 138,
+      "fishName": "Карп рамчатый - альбинос",
+      "cardSystemId": "card_r_carp_albino",
+      "catalogName": "Карп рамчатый альбинос",
+      "imageFile": "r_carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\r_carp_albino_b.png",
+      "photoUrl": "/uploads/fish/r_carp_albino_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 133,
+      "fishName": "Карп рамчатый - призрак",
+      "cardSystemId": "card_r_carp_ghost",
+      "catalogName": "Карп рамчатый призрак",
+      "imageFile": "r_carp_ghost_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\r_carp_ghost_b.png",
+      "photoUrl": "/uploads/fish/r_carp_ghost_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 166,
+      "fishName": "Карп Супер Фрикс",
+      "cardSystemId": "card_s_freaks",
+      "catalogName": "Карп Супер Фрикс",
+      "imageFile": "s_freaks_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s_freaks_b.png",
+      "photoUrl": "/uploads/fish/s_freaks_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 23,
+      "fishName": "Карп чешуйчатый",
+      "cardSystemId": "card_carp",
+      "catalogName": "Карп обыкновенный",
+      "imageFile": "carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\carp_b.png",
+      "photoUrl": "/uploads/fish/carp_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 134,
+      "fishName": "Карп чешуйчатый - альбинос",
+      "cardSystemId": "card_carp_albino",
+      "catalogName": "Карп обыкновенный альбинос",
+      "imageFile": "carp_albino_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\carp_albino_b.png",
+      "photoUrl": "/uploads/fish/carp_albino_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 130,
+      "fishName": "Карп чешуйчатый - призрак",
+      "cardSystemId": "card_carp_ghost",
+      "catalogName": "Карп обыкновенный призрак",
+      "imageFile": "carp_ghost_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\carp_ghost_b.png",
+      "photoUrl": "/uploads/fish/carp_ghost_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 231,
+      "fishName": "Катран",
+      "cardSystemId": "card_katran",
+      "catalogName": "Катран",
+      "imageFile": "katran_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\katran_b.png",
+      "photoUrl": "/uploads/fish/katran_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 219,
+      "fishName": "Керчак европейский",
+      "cardSystemId": "card_m_scorpius",
+      "catalogName": "Керчак европейский",
+      "imageFile": "m_scorpius_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_scorpius_b.png",
+      "photoUrl": "/uploads/fish/m_scorpius_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 198,
+      "fishName": "Кета",
+      "cardSystemId": "card_keta",
+      "catalogName": "Кета",
+      "imageFile": "keta_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\keta_b.png",
+      "photoUrl": "/uploads/fish/keta_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 199,
+      "fishName": "Кижуч",
+      "cardSystemId": "card_kijuch",
+      "catalogName": "Кижуч",
+      "imageFile": "kijuch_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kijuch_b.png",
+      "photoUrl": "/uploads/fish/kijuch_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 211,
+      "fishName": "Колюшка девятииглая",
+      "cardSystemId": "card_stickleback_ninesp",
+      "catalogName": "Колюшка девятииглая",
+      "imageFile": "stickleback_ninesp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\stickleback_ninesp_b.png",
+      "photoUrl": "/uploads/fish/stickleback_ninesp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 151,
+      "fishName": "Колюшка малая южная",
+      "cardSystemId": "card_stickleback_ss",
+      "catalogName": "Колюшка малая южная",
+      "imageFile": "stickleback_ss_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\stickleback_ss_b.png",
+      "photoUrl": "/uploads/fish/stickleback_ss_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 118,
+      "fishName": "Колюшка трёхиглая",
+      "cardSystemId": "card_stickleback_threesp",
+      "catalogName": "Колюшка трёхиглая",
+      "imageFile": "stickleback_threesp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\stickleback_threesp_b.png",
+      "photoUrl": "/uploads/fish/stickleback_threesp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 256,
+      "fishName": "Конгер",
+      "cardSystemId": "card_conger",
+      "catalogName": "Конгер",
+      "imageFile": "conger_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\conger_b.png",
+      "photoUrl": "/uploads/fish/conger_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 115,
+      "fishName": "Корюшка",
+      "cardSystemId": "card_e_smelt",
+      "catalogName": "Корюшка",
+      "imageFile": "e_smelt_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\e_smelt_b.png",
+      "photoUrl": "/uploads/fish/e_smelt_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 189,
+      "fishName": "Корюшка азиатская",
+      "cardSystemId": "card_a_smelt",
+      "catalogName": "Корюшка азиатская",
+      "imageFile": "a_smelt_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_smelt_b.png",
+      "photoUrl": "/uploads/fish/a_smelt_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 246,
+      "fishName": "Краб камчатский",
+      "cardSystemId": "card_rk_crab",
+      "catalogName": "Краб камчатский",
+      "imageFile": "rk_crab_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\rk_crab_b.png",
+      "photoUrl": "/uploads/fish/rk_crab_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 254,
+      "fishName": "Краб съедобный",
+      "cardSystemId": "card_ed_crab",
+      "catalogName": "Краб съедобный",
+      "imageFile": "ed_crab_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ed_crab_b.png",
+      "photoUrl": "/uploads/fish/ed_crab_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 30,
+      "fishName": "Краппи белый",
+      "cardSystemId": "card_white_crappie",
+      "catalogName": "Краппи белый",
+      "imageFile": "white_crappie_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\white_crappie_b.png",
+      "photoUrl": "/uploads/fish/white_crappie_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 33,
+      "fishName": "Краппи чёрный",
+      "cardSystemId": "card_black_crappie",
+      "catalogName": "Краппи чёрный",
+      "imageFile": "black_crappie_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\black_crappie_b.png",
+      "photoUrl": "/uploads/fish/black_crappie_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 201,
+      "fishName": "Краснопёр-Угай крупночешуйчатый",
+      "cardSystemId": "card_trib_h",
+      "catalogName": "Краснопер Угай",
+      "imageFile": "trib_h_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\trib_h_b.png",
+      "photoUrl": "/uploads/fish/trib_h_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 209,
+      "fishName": "Краснопёр монгольский",
+      "cardSystemId": "card_chan_m",
+      "catalogName": "Краснопер монгольский",
+      "imageFile": "chan_m_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chan_m_b.png",
+      "photoUrl": "/uploads/fish/chan_m_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 107,
+      "fishName": "Краснопёрка",
+      "cardSystemId": "card_rudd",
+      "catalogName": "Красноперка",
+      "imageFile": "rudd_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\rudd_b.png",
+      "photoUrl": "/uploads/fish/rudd_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 202,
+      "fishName": "Кунджа",
+      "cardSystemId": "card_kunja",
+      "catalogName": "Кунджа",
+      "imageFile": "kunja_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kunja_b.png",
+      "photoUrl": "/uploads/fish/kunja_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 155,
+      "fishName": "Кутум",
+      "cardSystemId": "card_kutum",
+      "catalogName": "Кутум",
+      "imageFile": "kutum_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kutum_b.png",
+      "photoUrl": "/uploads/fish/kutum_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 43,
+      "fishName": "Лаврак полосатый",
+      "cardSystemId": "card_s_bass",
+      "catalogName": "Лаврак полосатый",
+      "imageFile": "s_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s_bass_b.png",
+      "photoUrl": "/uploads/fish/s_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 42,
+      "fishName": "Лаврак полосатый гибридный",
+      "cardSystemId": "card_hs_bass",
+      "catalogName": "Лаврак полосатый гибридный",
+      "imageFile": "hs_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\hs_bass_b.png",
+      "photoUrl": "/uploads/fish/hs_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 181,
+      "fishName": "Ленок острорылый",
+      "cardSystemId": "card_lenok_o",
+      "catalogName": "Ленок острорылый",
+      "imageFile": "lenok_o_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lenok_o_b.png",
+      "photoUrl": "/uploads/fish/lenok_o_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 205,
+      "fishName": "Ленок тупорылый",
+      "cardSystemId": "card_lenok_t",
+      "catalogName": "Ленок тупорылый",
+      "imageFile": "lenok_t_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lenok_t_b.png",
+      "photoUrl": "/uploads/fish/lenok_t_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 20,
+      "fishName": "Лещ",
+      "cardSystemId": "card_bream",
+      "catalogName": "Лещ",
+      "imageFile": "bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\bream_b.png",
+      "photoUrl": "/uploads/fish/bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 157,
+      "fishName": "Лещ восточный",
+      "cardSystemId": "card_e_bream",
+      "catalogName": "Лещ восточный",
+      "imageFile": "e_bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\e_bream_b.png",
+      "photoUrl": "/uploads/fish/e_bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 267,
+      "fishName": "Ликод полуголый",
+      "cardSystemId": "card_lycodes_s",
+      "catalogName": "Ликод полуголый",
+      "imageFile": "lycodes_s_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lycodes_s_b.png",
+      "photoUrl": "/uploads/fish/lycodes_s_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 266,
+      "fishName": "Ликод Эсмарка",
+      "cardSystemId": "card_lycodes_e",
+      "catalogName": "Ликод Эсмарка",
+      "imageFile": "lycodes_e_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lycodes_e_b.png",
+      "photoUrl": "/uploads/fish/lycodes_e_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 16,
+      "fishName": "Линь",
+      "cardSystemId": "card_tench",
+      "catalogName": "Линь",
+      "imageFile": "tench_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\tench_b.png",
+      "photoUrl": "/uploads/fish/tench_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 14,
+      "fishName": "Линь золотистый",
+      "cardSystemId": "card_g_tench",
+      "catalogName": "Линь золотистый",
+      "imageFile": "g_tench_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\g_tench_b.png",
+      "photoUrl": "/uploads/fish/g_tench_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 164,
+      "fishName": "Линь Квольсдорфский",
+      "cardSystemId": "card_kw_tench",
+      "catalogName": "Квольсдорфский линь",
+      "imageFile": "kw_tench_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\kw_tench_b.png",
+      "photoUrl": "/uploads/fish/kw_tench_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 98,
+      "fishName": "Лосось атлантический",
+      "cardSystemId": "card_a_salmon",
+      "catalogName": "Лосось Атлантический",
+      "imageFile": "a_salmon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_salmon_b.png",
+      "photoUrl": "/uploads/fish/a_salmon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 159,
+      "fishName": "Лосось каспийский",
+      "cardSystemId": "card_k_salmon",
+      "catalogName": "Лосось каспийский",
+      "imageFile": "k_salmon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\k_salmon_b.png",
+      "photoUrl": "/uploads/fish/k_salmon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 96,
+      "fishName": "Лосось ладожский",
+      "cardSystemId": "card_l_salmon",
+      "catalogName": "Лосось ладожский",
+      "imageFile": "l_salmon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_salmon_b.png",
+      "photoUrl": "/uploads/fish/l_salmon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 12,
+      "fishName": "Лягушка",
+      "cardSystemId": "card_frog",
+      "catalogName": "Лягушка",
+      "imageFile": "frog_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\frog_b.png",
+      "photoUrl": "/uploads/fish/frog_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 226,
+      "fishName": "Макрель атлантическая",
+      "cardSystemId": "card_makrel",
+      "catalogName": "Макрель атлантическая",
+      "imageFile": "makrel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\makrel_b.png",
+      "photoUrl": "/uploads/fish/makrel_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 269,
+      "fishName": "Макрурус северный",
+      "cardSystemId": "card_macrourus_b",
+      "catalogName": "Макрурус северный",
+      "imageFile": "macrourus_b_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\macrourus_b_b.png",
+      "photoUrl": "/uploads/fish/macrourus_b_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 197,
+      "fishName": "Мальма",
+      "cardSystemId": "card_malma",
+      "catalogName": "Мальма",
+      "imageFile": "malma_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\malma_b.png",
+      "photoUrl": "/uploads/fish/malma_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 218,
+      "fishName": "Менёк",
+      "cardSystemId": "card_menek",
+      "catalogName": "Менек",
+      "imageFile": "menek_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\menek_b.png",
+      "photoUrl": "/uploads/fish/menek_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 232,
+      "fishName": "Мерланг",
+      "cardSystemId": "card_merlang",
+      "catalogName": "Мерланг",
+      "imageFile": "merlang_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\merlang_b.png",
+      "photoUrl": "/uploads/fish/merlang_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 229,
+      "fishName": "Мерлуза",
+      "cardSystemId": "card_merluza",
+      "catalogName": "Мерлуза",
+      "imageFile": "merluza_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\merluza_b.png",
+      "photoUrl": "/uploads/fish/merluza_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 247,
+      "fishName": "Меч-рыба",
+      "cardSystemId": "card_x_gladius",
+      "catalogName": "Рыба-меч",
+      "imageFile": "x_gladius_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\x_gladius_b.png",
+      "photoUrl": "/uploads/fish/x_gladius_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 259,
+      "fishName": "Мидия",
+      "cardSystemId": "card_mytilus_ed",
+      "catalogName": "Мидия",
+      "imageFile": "mytilus_ed_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\mytilus_ed_b.png",
+      "photoUrl": "/uploads/fish/mytilus_ed_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 203,
+      "fishName": "Микижа",
+      "cardSystemId": "card_mikija",
+      "catalogName": "Микижа",
+      "imageFile": "mikija_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\mikija_b.png",
+      "photoUrl": "/uploads/fish/mikija_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 215,
+      "fishName": "Минога дальневосточная ручьевая",
+      "cardSystemId": "card_fe_lamprey",
+      "catalogName": "Минога дальневосточная ручьевая",
+      "imageFile": "fe_lamprey_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\fe_lamprey_b.png",
+      "photoUrl": "/uploads/fish/fe_lamprey_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 162,
+      "fishName": "Минога каспийская",
+      "cardSystemId": "card_c_lamprey",
+      "catalogName": "Минога каспийская",
+      "imageFile": "c_lamprey_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_lamprey_b.png",
+      "photoUrl": "/uploads/fish/c_lamprey_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 196,
+      "fishName": "Минога сибирская",
+      "cardSystemId": "card_s_lamprey",
+      "catalogName": "Минога сибирская",
+      "imageFile": "s_lamprey_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s_lamprey_b.png",
+      "photoUrl": "/uploads/fish/s_lamprey_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 214,
+      "fishName": "Минога трёхзубая",
+      "cardSystemId": "card_trid_lamprey",
+      "catalogName": "Минога трехзубая",
+      "imageFile": "trid_lamprey_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\trid_lamprey_b.png",
+      "photoUrl": "/uploads/fish/trid_lamprey_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 111,
+      "fishName": "Минога украинская",
+      "cardSystemId": "card_u_lamprey",
+      "catalogName": "Минога украинская",
+      "imageFile": "u_lamprey_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\u_lamprey_b.png",
+      "photoUrl": "/uploads/fish/u_lamprey_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 241,
+      "fishName": "Мольва голубая",
+      "cardSystemId": "card_molva",
+      "catalogName": "Мольва голубая",
+      "imageFile": "molva_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\molva_b.png",
+      "photoUrl": "/uploads/fish/molva_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 245,
+      "fishName": "Мольва обыкновенная",
+      "cardSystemId": "card_m_molva",
+      "catalogName": "Мольва обыкновенная",
+      "imageFile": "m_molva_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\m_molva_b.png",
+      "photoUrl": "/uploads/fish/m_molva_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 249,
+      "fishName": "Морской чёрт",
+      "cardSystemId": "card_lophius_p",
+      "catalogName": "Морской черт",
+      "imageFile": "lophius_p_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lophius_p_b.png",
+      "photoUrl": "/uploads/fish/lophius_p_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 182,
+      "fishName": "Муксун",
+      "cardSystemId": "card_muksun",
+      "catalogName": "Муксун",
+      "imageFile": "muksun_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\muksun_b.png",
+      "photoUrl": "/uploads/fish/muksun_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 59,
+      "fishName": "Налим",
+      "cardSystemId": "card_burbot",
+      "catalogName": "Налим",
+      "imageFile": "burbot_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\burbot_b.png",
+      "photoUrl": "/uploads/fish/burbot_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 212,
+      "fishName": "Нейва",
+      "cardSystemId": "card_neiva",
+      "catalogName": "Нейва",
+      "imageFile": "neiva_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\neiva_b.png",
+      "photoUrl": "/uploads/fish/neiva_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 192,
+      "fishName": "Нельма",
+      "cardSystemId": "card_nelma",
+      "catalogName": "Нельма",
+      "imageFile": "nelma_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\nelma_b.png",
+      "photoUrl": "/uploads/fish/nelma_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 204,
+      "fishName": "Нерка",
+      "cardSystemId": "card_nerka",
+      "catalogName": "Нерка",
+      "imageFile": "nerka_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\nerka_b.png",
+      "photoUrl": "/uploads/fish/nerka_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 15,
+      "fishName": "Окунь",
+      "cardSystemId": "card_perch",
+      "catalogName": "Окунь",
+      "imageFile": "perch_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\perch_b.png",
+      "photoUrl": "/uploads/fish/perch_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 239,
+      "fishName": "Окунь-клювач",
+      "cardSystemId": "card_sebastes_m",
+      "catalogName": "Окунь-клювач",
+      "imageFile": "sebastes_m_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sebastes_m_b.png",
+      "photoUrl": "/uploads/fish/sebastes_m_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 31,
+      "fishName": "Окунь белый",
+      "cardSystemId": "card_wh_bass",
+      "catalogName": "Окунь белый",
+      "imageFile": "wh_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\wh_bass_b.png",
+      "photoUrl": "/uploads/fish/wh_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 35,
+      "fishName": "Окунь большеротый",
+      "cardSystemId": "card_lm_b_bass",
+      "catalogName": "Окунь большеротый",
+      "imageFile": "lm_b_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lm_b_bass_b.png",
+      "photoUrl": "/uploads/fish/lm_b_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 260,
+      "fishName": "Окунь каменный",
+      "cardSystemId": "card_polyprion",
+      "catalogName": "Окунь каменный",
+      "imageFile": "polyprion_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\polyprion_b.png",
+      "photoUrl": "/uploads/fish/polyprion_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 34,
+      "fishName": "Окунь малоротый",
+      "cardSystemId": "card_sm_bass",
+      "catalogName": "Окунь малоротый",
+      "imageFile": "sm_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sm_bass_b.png",
+      "photoUrl": "/uploads/fish/sm_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 248,
+      "fishName": "Окунь морской золотистый",
+      "cardSystemId": "card_sebastes_n",
+      "catalogName": "Окунь морской золотистый",
+      "imageFile": "sebastes_n_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sebastes_n_b.png",
+      "photoUrl": "/uploads/fish/sebastes_n_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 221,
+      "fishName": "Окунь морской норвежский",
+      "cardSystemId": "card_red_fish",
+      "catalogName": "Окунь морской норвежский",
+      "imageFile": "red_fish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\red_fish_b.png",
+      "photoUrl": "/uploads/fish/red_fish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 41,
+      "fishName": "Окунь павлиний",
+      "cardSystemId": "card_bp_bass",
+      "catalogName": "Окунь павлиний",
+      "imageFile": "bp_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\bp_bass_b.png",
+      "photoUrl": "/uploads/fish/bp_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 37,
+      "fishName": "Окунь пятнистый",
+      "cardSystemId": "card_sp_bass",
+      "catalogName": "Окунь пятнистый",
+      "imageFile": "sp_bass_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sp_bass_b.png",
+      "photoUrl": "/uploads/fish/sp_bass_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 101,
+      "fishName": "Окунь солнечный",
+      "cardSystemId": "card_pumps_sunfish",
+      "catalogName": "Окунь солнечный",
+      "imageFile": "pumps_sunfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\pumps_sunfish_b.png",
+      "photoUrl": "/uploads/fish/pumps_sunfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 179,
+      "fishName": "Омуль арктический",
+      "cardSystemId": "card_a_omul",
+      "catalogName": "Омуль арктический",
+      "imageFile": "a_omul_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_omul_b.png",
+      "photoUrl": "/uploads/fish/a_omul_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 143,
+      "fishName": "Омуль байкальский",
+      "cardSystemId": "card_b_omul",
+      "catalogName": "Омуль байкальский",
+      "imageFile": "b_omul_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_omul_b.png",
+      "photoUrl": "/uploads/fish/b_omul_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 261,
+      "fishName": "Опах краснопёрый",
+      "cardSystemId": "card_lampris_g",
+      "catalogName": "Опах красноперый",
+      "imageFile": "lampris_g_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\lampris_g_b.png",
+      "photoUrl": "/uploads/fish/lampris_g_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 124,
+      "fishName": "Осётр балтийский",
+      "cardSystemId": "card_osetr_balt",
+      "catalogName": "Осетр балтийский",
+      "imageFile": "osetr_balt_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\osetr_balt_b.png",
+      "photoUrl": "/uploads/fish/osetr_balt_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 191,
+      "fishName": "Осётр восточносибирский",
+      "cardSystemId": "card_zs_sturgeon",
+      "catalogName": "Осетр восточносибирский",
+      "imageFile": "zs_sturgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\zs_sturgeon_b.png",
+      "photoUrl": "/uploads/fish/zs_sturgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 141,
+      "fishName": "Осётр ладожский",
+      "cardSystemId": "card_l_sturgeon",
+      "catalogName": "Осетр ладожский",
+      "imageFile": "l_sturgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\l_sturgeon_b.png",
+      "photoUrl": "/uploads/fish/l_sturgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 153,
+      "fishName": "Осётр персидский",
+      "cardSystemId": "card_p_sturgeon",
+      "catalogName": "Осетр персидский",
+      "imageFile": "p_sturgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\p_sturgeon_b.png",
+      "photoUrl": "/uploads/fish/p_sturgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 112,
+      "fishName": "Осётр русский",
+      "cardSystemId": "card_r_sturgeon",
+      "catalogName": "Осетр Русский",
+      "imageFile": "r_sturgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\r_sturgeon_b.png",
+      "photoUrl": "/uploads/fish/r_sturgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 122,
+      "fishName": "Палия кряжевая",
+      "cardSystemId": "card_palia_kr",
+      "catalogName": "Палия кряжевая",
+      "imageFile": "palia_kr_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\palia_kr_b.png",
+      "photoUrl": "/uploads/fish/palia_kr_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 123,
+      "fishName": "Палия лудожная",
+      "cardSystemId": "card_palia_lud",
+      "catalogName": "Палия лудожная",
+      "imageFile": "palia_lud_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\palia_lud_b.png",
+      "photoUrl": "/uploads/fish/palia_lud_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 90,
+      "fishName": "Палия обыкновенная",
+      "cardSystemId": "card_salvel_l",
+      "catalogName": "Палия обыкновенная",
+      "imageFile": "salvel_l_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\salvel_l_b.png",
+      "photoUrl": "/uploads/fish/salvel_l_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 240,
+      "fishName": "Палтус атлантический",
+      "cardSystemId": "card_halibut_w",
+      "catalogName": "Палтус атлантический",
+      "imageFile": "halibut_w_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\halibut_w_b.png",
+      "photoUrl": "/uploads/fish/halibut_w_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 253,
+      "fishName": "Палтус синекорый",
+      "cardSystemId": "card_halibut_b",
+      "catalogName": "Палтус синекорый",
+      "imageFile": "halibut_b_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\halibut_b_b.png",
+      "photoUrl": "/uploads/fish/halibut_b_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 44,
+      "fishName": "Панцирник пятнистый",
+      "cardSystemId": "card_sgar",
+      "catalogName": "Панцирник пятнистый",
+      "imageFile": "sgar_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sgar_b.png",
+      "photoUrl": "/uploads/fish/sgar_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 89,
+      "fishName": "Пелядь",
+      "cardSystemId": "card_peled",
+      "catalogName": "Пелядь",
+      "imageFile": "peled_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\peled_b.png",
+      "photoUrl": "/uploads/fish/peled_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 52,
+      "fishName": "Перловица",
+      "cardSystemId": "card_freshwater_mussel",
+      "catalogName": "Перловица",
+      "imageFile": "freshwater_mussel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\freshwater_mussel_b.png",
+      "photoUrl": "/uploads/fish/freshwater_mussel_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 46,
+      "fishName": "Пескарь обыкновенный",
+      "cardSystemId": "card_gudgeon",
+      "catalogName": "Пескарь обыкновенный",
+      "imageFile": "gudgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\gudgeon_b.png",
+      "photoUrl": "/uploads/fish/gudgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 195,
+      "fishName": "Пескарь сибирский",
+      "cardSystemId": "card_syb_gudgeon",
+      "catalogName": "Пескарь сибирский",
+      "imageFile": "syb_gudgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\syb_gudgeon_b.png",
+      "photoUrl": "/uploads/fish/syb_gudgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 217,
+      "fishName": "Пикша",
+      "cardSystemId": "card_piksha",
+      "catalogName": "Пикша",
+      "imageFile": "piksha_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\piksha_b.png",
+      "photoUrl": "/uploads/fish/piksha_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 237,
+      "fishName": "Пинагор",
+      "cardSystemId": "card_pinagor",
+      "catalogName": "Пинагор",
+      "imageFile": "pinagor_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\pinagor_b.png",
+      "photoUrl": "/uploads/fish/pinagor_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 13,
+      "fishName": "Плотва обыкновенная",
+      "cardSystemId": "card_c_roach",
+      "catalogName": "Плотва обыкновенная",
+      "imageFile": "c.roach_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c.roach_b.png",
+      "photoUrl": "/uploads/fish/c.roach_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 185,
+      "fishName": "Плотва сибирская",
+      "cardSystemId": "card_syb_roach",
+      "catalogName": "Плотва сибирская",
+      "imageFile": "syb_roach_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\syb_roach_b.png",
+      "photoUrl": "/uploads/fish/syb_roach_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 193,
+      "fishName": "Подкаменщик сибирский",
+      "cardSystemId": "card_bullhead_syb",
+      "catalogName": "Подкаменьщик сибирский",
+      "imageFile": "bullhead_syb_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\bullhead_syb_b.png",
+      "photoUrl": "/uploads/fish/bullhead_syb_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 55,
+      "fishName": "Подуст",
+      "cardSystemId": "card_c_nase",
+      "catalogName": "Подуст",
+      "imageFile": "c_nase_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_nase_b.png",
+      "photoUrl": "/uploads/fish/c_nase_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 225,
+      "fishName": "Поллак",
+      "cardSystemId": "card_pollachius",
+      "catalogName": "Поллак",
+      "imageFile": "pollachius_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\pollachius_b.png",
+      "photoUrl": "/uploads/fish/pollachius_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 146,
+      "fishName": "Пузанок каспийский",
+      "cardSystemId": "card_c_herring",
+      "catalogName": "Пузанок каспийский",
+      "imageFile": "c_herring_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_herring_b.png",
+      "photoUrl": "/uploads/fish/c_herring_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 228,
+      "fishName": "Путассу северная",
+      "cardSystemId": "card_poutassou",
+      "catalogName": "Путассу северная",
+      "imageFile": "poutassou_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\poutassou_b.png",
+      "photoUrl": "/uploads/fish/poutassou_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 49,
+      "fishName": "Рак речной",
+      "cardSystemId": "card_crawfish",
+      "catalogName": "Рак речной",
+      "imageFile": "crawfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\crawfish_b.png",
+      "photoUrl": "/uploads/fish/crawfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 116,
+      "fishName": "Рипус",
+      "cardSystemId": "card_ripus",
+      "catalogName": "Рипус",
+      "imageFile": "ripus_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ripus_b.png",
+      "photoUrl": "/uploads/fish/ripus_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 6,
+      "fishName": "Ротан",
+      "cardSystemId": "card_a_sleeper",
+      "catalogName": "Ротан",
+      "imageFile": "a_sleeper_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_sleeper_b.png",
+      "photoUrl": "/uploads/fish/a_sleeper_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 97,
+      "fishName": "Рыбец",
+      "cardSystemId": "card_v_bream",
+      "catalogName": "Рыбец",
+      "imageFile": "v_bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\v_bream_b.png",
+      "photoUrl": "/uploads/fish/v_bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 88,
+      "fishName": "Ряпушка",
+      "cardSystemId": "card_vendace",
+      "catalogName": "Ряпушка",
+      "imageFile": "vendace_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\vendace_b.png",
+      "photoUrl": "/uploads/fish/vendace_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 175,
+      "fishName": "Ряпушка сибирская",
+      "cardSystemId": "card_syb_vendace",
+      "catalogName": "Ряпушка сибирская",
+      "imageFile": "syb_vendace_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\syb_vendace_b.png",
+      "photoUrl": "/uploads/fish/syb_vendace_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 110,
+      "fishName": "Сазан",
+      "cardSystemId": "card_common_carp",
+      "catalogName": "Сазан",
+      "imageFile": "common_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\common_carp_b.png",
+      "photoUrl": "/uploads/fish/common_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 216,
+      "fishName": "Сайда",
+      "cardSystemId": "card_coalfish",
+      "catalogName": "Сайда",
+      "imageFile": "coalfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\coalfish_b.png",
+      "photoUrl": "/uploads/fish/coalfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 220,
+      "fishName": "Сайра атлантическая",
+      "cardSystemId": "card_s_saurus",
+      "catalogName": "Сайра атлантическая",
+      "imageFile": "s_saurus_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s_saurus_b.png",
+      "photoUrl": "/uploads/fish/s_saurus_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 233,
+      "fishName": "Сардина европейская",
+      "cardSystemId": "card_sardina_p",
+      "catalogName": "Сардина европейская",
+      "imageFile": "sardina_p_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sardina_p_b.png",
+      "photoUrl": "/uploads/fish/sardina_p_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 152,
+      "fishName": "Севрюга",
+      "cardSystemId": "card_st_sturgeon",
+      "catalogName": "Севрюга",
+      "imageFile": "st_sturgeon_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\st_sturgeon_b.png",
+      "photoUrl": "/uploads/fish/st_sturgeon_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 242,
+      "fishName": "Сельдь атлантическая",
+      "cardSystemId": "card_atl_herring",
+      "catalogName": "Сельдь атлантическая",
+      "imageFile": "atl_herring_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\atl_herring_b.png",
+      "photoUrl": "/uploads/fish/atl_herring_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 150,
+      "fishName": "Сельдь Бражникова",
+      "cardSystemId": "card_b_herring",
+      "catalogName": "Сельдь Бражникова",
+      "imageFile": "b_herring_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_herring_b.png",
+      "photoUrl": "/uploads/fish/b_herring_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 144,
+      "fishName": "Сельдь Кесслера",
+      "cardSystemId": "card_k_herring",
+      "catalogName": "Сельдь Кесслера",
+      "imageFile": "k_herring_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\k_herring_b.png",
+      "photoUrl": "/uploads/fish/k_herring_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 99,
+      "fishName": "Сельдь черноморская",
+      "cardSystemId": "card_cha_herring",
+      "catalogName": "Сельдь черноморская",
+      "imageFile": "cha_herring_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\cha_herring_b.png",
+      "photoUrl": "/uploads/fish/cha_herring_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 117,
+      "fishName": "Сиг-лудога",
+      "cardSystemId": "card_sig_ludoga",
+      "catalogName": "Сиг-лудога",
+      "imageFile": "sig_ludoga_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_ludoga_b.png",
+      "photoUrl": "/uploads/fish/sig_ludoga_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 74,
+      "fishName": "Сиг-пыжьян",
+      "cardSystemId": "card_sig_p",
+      "catalogName": "Сиг-пыжьян",
+      "imageFile": "sig_p_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_p_b.png",
+      "photoUrl": "/uploads/fish/sig_p_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 121,
+      "fishName": "Сиг валаамский",
+      "cardSystemId": "card_sig_valaam",
+      "catalogName": "Сиг валаамский",
+      "imageFile": "sig_valaam_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_valaam_b.png",
+      "photoUrl": "/uploads/fish/sig_valaam_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 119,
+      "fishName": "Сиг волховский",
+      "cardSystemId": "card_sig",
+      "catalogName": "Сиг волховский",
+      "imageFile": "sig_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_b.png",
+      "photoUrl": "/uploads/fish/sig_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 120,
+      "fishName": "Сиг вуоксинский",
+      "cardSystemId": "card_sig_vouksa",
+      "catalogName": "Сиг вуоксинский",
+      "imageFile": "sig_vouksa_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_vouksa_b.png",
+      "photoUrl": "/uploads/fish/sig_vouksa_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 85,
+      "fishName": "Сиг куорский",
+      "cardSystemId": "card_sig_kuor",
+      "catalogName": "Сиг куорский",
+      "imageFile": "sig_kuor_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_kuor_b.png",
+      "photoUrl": "/uploads/fish/sig_kuor_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 140,
+      "fishName": "Сиг ладожский озёрный",
+      "cardSystemId": "card_sig_o_l",
+      "catalogName": "Сиг ладожский озерный",
+      "imageFile": "sig_o_l_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_o_l_b.png",
+      "photoUrl": "/uploads/fish/sig_o_l_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 71,
+      "fishName": "Сиг острожский",
+      "cardSystemId": "card_sig_ostr",
+      "catalogName": "Сиг острожский",
+      "imageFile": "sig_ostr_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_ostr_b.png",
+      "photoUrl": "/uploads/fish/sig_ostr_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 142,
+      "fishName": "Сиг свирский",
+      "cardSystemId": "card_sv_sig",
+      "catalogName": "Сиг свирский",
+      "imageFile": "sv_sig_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sv_sig_b.png",
+      "photoUrl": "/uploads/fish/sv_sig_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 139,
+      "fishName": "Сиг чёрный",
+      "cardSystemId": "card_sig_black",
+      "catalogName": "Сиг ладожский черный",
+      "imageFile": "sig_black_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sig_black_b.png",
+      "photoUrl": "/uploads/fish/sig_black_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 207,
+      "fishName": "Сима",
+      "cardSystemId": "card_onkor_m",
+      "catalogName": "Сима проходная",
+      "imageFile": "onkor_m_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\onkor_m_b.png",
+      "photoUrl": "/uploads/fish/onkor_m_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 200,
+      "fishName": "Сима жилая",
+      "cardSystemId": "card_onkor_mg",
+      "catalogName": "Сима",
+      "imageFile": "onkor_mg_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\onkor_mg_b.png",
+      "photoUrl": "/uploads/fish/onkor_mg_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 56,
+      "fishName": "Синец",
+      "cardSystemId": "card_b_bream",
+      "catalogName": "Синец",
+      "imageFile": "b_bream_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_bream_b.png",
+      "photoUrl": "/uploads/fish/b_bream_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 244,
+      "fishName": "Скат колючий",
+      "cardSystemId": "card_ambl_r",
+      "catalogName": "Скат колючий",
+      "imageFile": "ambl_r_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ambl_r_b.png",
+      "photoUrl": "/uploads/fish/ambl_r_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 255,
+      "fishName": "Скат полярный",
+      "cardSystemId": "card_ambl_h",
+      "catalogName": "Скат полярный",
+      "imageFile": "ambl_h_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ambl_h_b.png",
+      "photoUrl": "/uploads/fish/ambl_h_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 32,
+      "fishName": "Солнечник красноухий",
+      "cardSystemId": "card_resfish",
+      "catalogName": "Солнечник красноухий",
+      "imageFile": "resfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\resfish_b.png",
+      "photoUrl": "/uploads/fish/resfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 28,
+      "fishName": "Солнечник синежаберный",
+      "cardSystemId": "card_b_gill",
+      "catalogName": "Солнечник синежаберный",
+      "imageFile": "b_gill_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_gill_b.png",
+      "photoUrl": "/uploads/fish/b_gill_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 25,
+      "fishName": "Сом",
+      "cardSystemId": "card_w_catfish",
+      "catalogName": "Сом",
+      "imageFile": "w_catfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\w_catfish_b.png",
+      "photoUrl": "/uploads/fish/w_catfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 161,
+      "fishName": "Сом альбинос",
+      "cardSystemId": "card_w_catfish_a",
+      "catalogName": "Сом альбинос",
+      "imageFile": "w_catfish_a_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\w_catfish_a_b.png",
+      "photoUrl": "/uploads/fish/w_catfish_a_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 190,
+      "fishName": "Сом амурский",
+      "cardSystemId": "card_a_catfish",
+      "catalogName": "Сом амурский",
+      "imageFile": "a_catfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_catfish_b.png",
+      "photoUrl": "/uploads/fish/a_catfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 36,
+      "fishName": "Сомик канальный",
+      "cardSystemId": "card_ch_catfish",
+      "catalogName": "Сомик канальный",
+      "imageFile": "ch_catfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ch_catfish_b.png",
+      "photoUrl": "/uploads/fish/ch_catfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 39,
+      "fishName": "Сомик оливковый",
+      "cardSystemId": "card_fhcatfish",
+      "catalogName": "Сомик оливковый",
+      "imageFile": "fhcatfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\fhcatfish_b.png",
+      "photoUrl": "/uploads/fish/fhcatfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 79,
+      "fishName": "Стерлядь",
+      "cardSystemId": "card_sterlet",
+      "catalogName": "Стерлядь",
+      "imageFile": "sterlet_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sterlet_b.png",
+      "photoUrl": "/uploads/fish/sterlet_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 186,
+      "fishName": "Стерлядь сибирская",
+      "cardSystemId": "card_syb_sterlet",
+      "catalogName": "Стерлядь сибирская",
+      "imageFile": "syb_sterlet_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\syb_sterlet_b.png",
+      "photoUrl": "/uploads/fish/syb_sterlet_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 64,
+      "fishName": "Судак",
+      "cardSystemId": "card_e_pikeperch",
+      "catalogName": "Судак",
+      "imageFile": "e.pikeperch_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\e.pikeperch_b.png",
+      "photoUrl": "/uploads/fish/e.pikeperch_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 40,
+      "fishName": "Судак светлопёрый",
+      "cardSystemId": "card_walleye",
+      "catalogName": "Судак светлоперый",
+      "imageFile": "walleye_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\walleye_b.png",
+      "photoUrl": "/uploads/fish/walleye_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 78,
+      "fishName": "Таймень",
+      "cardSystemId": "card_taimen",
+      "catalogName": "Таймень",
+      "imageFile": "taimen_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\taimen_b.png",
+      "photoUrl": "/uploads/fish/taimen_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 104,
+      "fishName": "Тарань",
+      "cardSystemId": "card_taran",
+      "catalogName": "Тарань",
+      "imageFile": "taran_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\taran_b.png",
+      "photoUrl": "/uploads/fish/taran_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 113,
+      "fishName": "Толстолобик белый",
+      "cardSystemId": "card_s_carp",
+      "catalogName": "Толстолобик белый",
+      "imageFile": "s_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s_carp_b.png",
+      "photoUrl": "/uploads/fish/s_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 114,
+      "fishName": "Толстолобик пёстрый",
+      "cardSystemId": "card_bh_carp",
+      "catalogName": "Толстолобик пестрый",
+      "imageFile": "bh_carp_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\bh_carp_b.png",
+      "photoUrl": "/uploads/fish/bh_carp_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 222,
+      "fishName": "Треска атлантическая",
+      "cardSystemId": "card_atl_cod",
+      "catalogName": "Треска атлантическая",
+      "imageFile": "atl_cod_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\atl_cod_b.png",
+      "photoUrl": "/uploads/fish/atl_cod_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 183,
+      "fishName": "Тугун",
+      "cardSystemId": "card_tugun",
+      "catalogName": "Тугун",
+      "imageFile": "tugun_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\tugun_b.png",
+      "photoUrl": "/uploads/fish/tugun_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 258,
+      "fishName": "Тунец голубой",
+      "cardSystemId": "card_thynnus_t",
+      "catalogName": "Тунец голубой",
+      "imageFile": "thynnus_t_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\thynnus_t_b.png",
+      "photoUrl": "/uploads/fish/thynnus_t_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 103,
+      "fishName": "Тюлька черноморская",
+      "cardSystemId": "card_tiulka",
+      "catalogName": "Тюлька черноморская",
+      "imageFile": "tiulka_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\tiulka_b.png",
+      "photoUrl": "/uploads/fish/tiulka_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 234,
+      "fishName": "Тюрбо",
+      "cardSystemId": "card_turbot",
+      "catalogName": "Тюрбо",
+      "imageFile": "turbot_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\turbot_b.png",
+      "photoUrl": "/uploads/fish/turbot_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 270,
+      "fishName": "Угольщик обыкновенный",
+      "cardSystemId": "card_b_scabbardfish",
+      "catalogName": "Угольщик обыкновенный",
+      "imageFile": "b_scabbardfish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\b_scabbardfish_b.png",
+      "photoUrl": "/uploads/fish/b_scabbardfish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 70,
+      "fishName": "Угорь",
+      "cardSystemId": "card_eel",
+      "catalogName": "Угорь",
+      "imageFile": "eel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\eel_b.png",
+      "photoUrl": "/uploads/fish/eel_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 10,
+      "fishName": "Уклейка",
+      "cardSystemId": "card_c_bleak",
+      "catalogName": "Уклейка",
+      "imageFile": "c_bleak_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_bleak_b.png",
+      "photoUrl": "/uploads/fish/c_bleak_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 92,
+      "fishName": "Усач альбинос",
+      "cardSystemId": "card_alb_barbel",
+      "catalogName": "Усач обыкновенный альбинос",
+      "imageFile": "alb_barbel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\alb_barbel_b.png",
+      "photoUrl": "/uploads/fish/alb_barbel_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 148,
+      "fishName": "Усач короткоголовый",
+      "cardSystemId": "card_sh_barbel",
+      "catalogName": "Усач короткоголовый",
+      "imageFile": "sh_barbel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sh_barbel_b.png",
+      "photoUrl": "/uploads/fish/sh_barbel_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 91,
+      "fishName": "Усач обыкновенный",
+      "cardSystemId": "card_c_barbel",
+      "catalogName": "Усач обыкновенный",
+      "imageFile": "c_barbel_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\c_barbel_b.png",
+      "photoUrl": "/uploads/fish/c_barbel_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 262,
+      "fishName": "Устрица съедобная",
+      "cardSystemId": "card_ostrea_ed",
+      "catalogName": "Устрица",
+      "imageFile": "ostrea_ed_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\ostrea_ed_b.png",
+      "photoUrl": "/uploads/fish/ostrea_ed_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 81,
+      "fishName": "Форель озерная",
+      "cardSystemId": "card_gc_smelt",
+      "catalogName": "Форель озерная",
+      "imageFile": "gc_smelt_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\gc_smelt_b.png",
+      "photoUrl": "/uploads/fish/gc_smelt_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 83,
+      "fishName": "Форель радужная",
+      "cardSystemId": "card_riv_rb_trout",
+      "catalogName": "Форель радужная",
+      "imageFile": "riv_rb_trout_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\riv_rb_trout_b.png",
+      "photoUrl": "/uploads/fish/riv_rb_trout_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 75,
+      "fishName": "Форель ручьевая",
+      "cardSystemId": "card_riv_brown_trout",
+      "catalogName": "Форель ручьевая",
+      "imageFile": "riv_brown_trout_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\riv_brown_trout_b.png",
+      "photoUrl": "/uploads/fish/riv_brown_trout_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 82,
+      "fishName": "Форель севанская",
+      "cardSystemId": "card_sevan_trout",
+      "catalogName": "Форель севанская",
+      "imageFile": "sevan_trout_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sevan_trout_b.png",
+      "photoUrl": "/uploads/fish/sevan_trout_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 176,
+      "fishName": "Хариус восточносибирский",
+      "cardSystemId": "card_os_grayling",
+      "catalogName": "Хариус восточносибирский",
+      "imageFile": "os_grayling_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\os_grayling_b.png",
+      "photoUrl": "/uploads/fish/os_grayling_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 73,
+      "fishName": "Хариус европейский",
+      "cardSystemId": "card_a_grayling",
+      "catalogName": "Хариус европейский",
+      "imageFile": "a_grayling_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\a_grayling_b.png",
+      "photoUrl": "/uploads/fish/a_grayling_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 76,
+      "fishName": "Хариус западносибирский",
+      "cardSystemId": "card_zs_grayling",
+      "catalogName": "Хариус западносибирский",
+      "imageFile": "zs_grayling_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\zs_grayling_b.png",
+      "photoUrl": "/uploads/fish/zs_grayling_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 272,
+      "fishName": "Химера европейская",
+      "cardSystemId": "card_chimaera",
+      "catalogName": "Химера европейская",
+      "imageFile": "chimaera_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chimaera_b.png",
+      "photoUrl": "/uploads/fish/chimaera_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 252,
+      "fishName": "Центролоф чёрный",
+      "cardSystemId": "card_centroloph_n",
+      "catalogName": "Центролоф чёрный",
+      "imageFile": "centroloph_n_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\centroloph_n_b.png",
+      "photoUrl": "/uploads/fish/centroloph_n_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 210,
+      "fishName": "Чавыча",
+      "cardSystemId": "card_chavycha",
+      "catalogName": "Чавыча",
+      "imageFile": "chavycha_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chavycha_b.png",
+      "photoUrl": "/uploads/fish/chavycha_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 105,
+      "fishName": "Чехонь",
+      "cardSystemId": "card_sabrefish",
+      "catalogName": "Чехонь",
+      "imageFile": "sabrefish_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\sabrefish_b.png",
+      "photoUrl": "/uploads/fish/sabrefish_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 177,
+      "fishName": "Чир",
+      "cardSystemId": "card_chir",
+      "catalogName": "Чир",
+      "imageFile": "chir_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chir_b.png",
+      "photoUrl": "/uploads/fish/chir_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 206,
+      "fishName": "Чукучан",
+      "cardSystemId": "card_chukuchan",
+      "catalogName": "Чукучан",
+      "imageFile": "chukuchan_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\chukuchan_b.png",
+      "photoUrl": "/uploads/fish/chukuchan_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 145,
+      "fishName": "Шемая каспийская",
+      "cardSystemId": "card_shemaya",
+      "catalogName": "Шемая каспийская",
+      "imageFile": "shemaya_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\shemaya_b.png",
+      "photoUrl": "/uploads/fish/shemaya_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 26,
+      "fishName": "Шемая черноморская",
+      "cardSystemId": "card_shemaya_cha",
+      "catalogName": "Шемая азовская",
+      "imageFile": "shemaya_cha_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\shemaya_cha_b.png",
+      "photoUrl": "/uploads/fish/shemaya_cha_b.png",
+      "match": "alias"
+    },
+    {
+      "fishId": 154,
+      "fishName": "Шип",
+      "cardSystemId": "card_osetr_ship",
+      "catalogName": "Шип",
+      "imageFile": "osetr_ship_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\osetr_ship_b.png",
+      "photoUrl": "/uploads/fish/osetr_ship_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 24,
+      "fishName": "Щука обыкновенная",
+      "cardSystemId": "card_n_pike",
+      "catalogName": "Щука обыкновенная",
+      "imageFile": "n.pike_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\n.pike_b.png",
+      "photoUrl": "/uploads/fish/n.pike_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 45,
+      "fishName": "Щука панцирная",
+      "cardSystemId": "card_agar",
+      "catalogName": "Щука панцирная",
+      "imageFile": "agar_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\agar_b.png",
+      "photoUrl": "/uploads/fish/agar_b.png",
+      "match": "normalized_exact"
+    },
+    {
+      "fishId": 17,
+      "fishName": "Язь",
+      "cardSystemId": "card_s_orfe",
+      "catalogName": "Язь",
+      "imageFile": "s.orfe_b.png",
+      "imagePath": "C:\\Users\\danil\\Desktop\\rr4\\RepeatAllFilesCopy\\AssetRipper_export_20260621_111439\\Assets\\Resources\\previews\\s.orfe_b.png",
+      "photoUrl": "/uploads/fish/s.orfe_b.png",
+      "match": "normalized_exact"
+    }
+  ],
+  "errors": []
+}

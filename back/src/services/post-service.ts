@@ -7,6 +7,8 @@ import { hasElevatedAccess } from "../lib/admin-roles";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import { notifyModerators } from "./notification-service";
+import { createPendingMapSubmission } from "./map-submission-service";
+import { postMapLinkingEnabled } from "../lib/features";
 import {
     incomePerHour,
     type createPostSchema,
@@ -31,6 +33,18 @@ export function assertSubmittable(content: PostContent) {
     if (content.media.length === 0) problems.push("добавьте хотя бы одно фото");
     if (problems.length) {
         throw Object.assign(new Error(`Не удалось отправить пост: ${problems.join(", ")}`), { statusCode: 400 });
+    }
+}
+
+export async function assertCatchHabitats(content: PostContent) {
+    if (!content.waterbodyId || !content.catches.length) return;
+    const fishIds = [...new Set(content.catches.map((item) => item.fishId))];
+    const allowed = await pool.query<{ fishId: number }>(
+        `SELECT fish_id AS "fishId" FROM waterbody_fish WHERE waterbody_id=$1 AND fish_id=ANY($2::int[])`,
+        [content.waterbodyId, fishIds],
+    );
+    if (allowed.rowCount !== fishIds.length) {
+        throw Object.assign(new Error("В улове можно выбрать только рыб, обитающих в указанном водоёме"), { statusCode: 400 });
     }
 }
 
@@ -60,6 +74,17 @@ export async function insertVersionChildren(client: PoolClient, versionId: numbe
         seenFishIds.add(item.fishId);
         await client.query(`INSERT INTO catch (post_version_id, fish_id) VALUES ($1, $2)`, [versionId, item.fishId]);
     }
+    if (content.baitMode === "common") {
+        for (const baitId of content.commonBaitIds) {
+            await client.query(`INSERT INTO post_version_bait (post_version_id, bait_id) VALUES ($1, $2) ON CONFLICT DO NOTHING`, [versionId, baitId]);
+        }
+    } else {
+        for (const item of content.catches) {
+            for (const baitId of item.baitIds) {
+                await client.query(`INSERT INTO post_version_bait (post_version_id, fish_id, bait_id) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING`, [versionId, item.fishId, baitId]);
+            }
+        }
+    }
     for (let index = 0; index < content.media.length; index += 1) {
         await client.query(
             `INSERT INTO post_media (post_version_id, url, order_index) VALUES ($1, $2, $3)`,
@@ -71,6 +96,7 @@ export async function insertVersionChildren(client: PoolClient, versionId: numbe
 export async function createPost(author: SessionUser, input: CreatePostInput) {
     if (input.submit) assertSubmittable(input);
     else assertHasContent(input);
+    await assertCatchHabitats(input);
 
     const publishDirectly = input.submit && input.skipModeration && hasElevatedAccess(author, superAdminUserIds);
     const status = input.submit ? (publishDirectly ? "approved" : "pending") : "draft";
@@ -85,14 +111,15 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
         const postId = postResult.rows[0].id;
 
         const versionResult = await client.query(
-            `INSERT INTO post_version (post_id, version_number, description, waterbody_id, point, fishing_method, income, fishing_minutes)
-             VALUES ($1, 1, $2, $3, $4, $5, $6, $7) RETURNING id`,
-            [postId, input.description, input.waterbodyId, input.point, input.fishingMethod, input.income, input.fishingMinutes],
+            `INSERT INTO post_version (post_id, version_number, description, waterbody_id, point, fishing_method, income, fishing_minutes, proposed_spot_id, map_x, map_y, game_coordinate_x, game_coordinate_y, bait_mode)
+             VALUES ($1, 1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
+            [postId, input.description, input.waterbodyId, input.point, input.fishingMethod, input.income, input.fishingMinutes, input.proposedSpotId, input.mapX, input.mapY, input.gameCoordinateX, input.gameCoordinateY, input.baitMode],
         );
         const versionId = versionResult.rows[0].id;
 
         await insertVersionChildren(client, versionId, input);
         await client.query(`UPDATE post SET current_version_id = $1 WHERE id = $2`, [versionId, postId]);
+        const mapSubmissionId = postMapLinkingEnabled && publishDirectly ? await createPendingMapSubmission(client, postId, versionId) : null;
         await client.query("COMMIT");
 
         await writeAuditLog({
@@ -104,6 +131,7 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
         if (status === "pending") {
             await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
         }
+        if (mapSubmissionId) await notifyModerators({ type: "map_submission_new", postId, actorId: author.id, excludeUserId: author.id, data: { mapSubmissionId } });
         return getPostById(postId);
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
@@ -122,6 +150,7 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
     }
     if (submit) assertSubmittable(content);
     else assertHasContent(content);
+    await assertCatchHabitats(content);
 
     const versionId = owned.rows[0].versionId as number;
     const previousMedia = await pool.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
@@ -130,11 +159,12 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
     try {
         await client.query("BEGIN");
         await client.query(
-            `UPDATE post_version SET description = $1, waterbody_id = $2, point = $3, fishing_method = $4, income = $5, fishing_minutes = $6 WHERE id = $7`,
-            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, versionId],
+            `UPDATE post_version SET description=$1, waterbody_id=$2, point=$3, fishing_method=$4, income=$5, fishing_minutes=$6, proposed_spot_id=$7, map_x=$8, map_y=$9, game_coordinate_x=$10, game_coordinate_y=$11, bait_mode=$12 WHERE id=$13`,
+            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, content.proposedSpotId, content.mapX, content.mapY, content.gameCoordinateX, content.gameCoordinateY, content.baitMode, versionId],
         );
         await client.query(`DELETE FROM catch WHERE post_version_id = $1`, [versionId]);
         await client.query(`DELETE FROM post_media WHERE post_version_id = $1`, [versionId]);
+        await client.query(`DELETE FROM post_version_bait WHERE post_version_id = $1`, [versionId]);
         await insertVersionChildren(client, versionId, content);
         await client.query(`UPDATE post SET status = $1, updated_at = NOW() WHERE id = $2`, [submit ? "pending" : "draft", postId]);
         await client.query("COMMIT");
@@ -165,16 +195,25 @@ export async function submitDraft(postId: number, author: SessionUser) {
 
     const full = await getPostById(postId);
     if (full?.version) {
-        assertSubmittable({
+        const content = {
             description: full.version.description ?? "",
             waterbodyId: full.version.waterbodyId,
             point: full.version.point,
             fishingMethod: full.version.fishingMethod,
             income: full.version.income,
             fishingMinutes: full.version.fishingMinutes,
-            catches: full.version.catches.map((item: { fishId: number }) => ({ fishId: item.fishId })),
+            catches: full.version.catches.map((item: { fishId: number; baits: Array<{ id: number }> }) => ({ fishId: item.fishId, baitIds: item.baits.map((bait) => bait.id) })),
+            baitMode: full.version.baitMode,
+            commonBaitIds: full.version.commonBaits.map((item: { id: number }) => item.id),
+            proposedSpotId: full.version.proposedSpotId,
+            mapX: full.version.mapX,
+            mapY: full.version.mapY,
+            gameCoordinateX: full.version.gameCoordinateX,
+            gameCoordinateY: full.version.gameCoordinateY,
             media: full.version.media.map((item: { url: string }) => item.url),
-        });
+        };
+        assertSubmittable(content);
+        await assertCatchHabitats(content);
     }
 
     const wasRejected = owned.rows[0].status === "rejected";
@@ -225,7 +264,9 @@ export async function getPostById(id: number) {
         `
             SELECT pv.id, pv.version_number AS "versionNumber", pv.description, pv.point,
                    pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
-                   pv.waterbody_id AS "waterbodyId", w.name AS "waterbodyName"
+                   pv.waterbody_id AS "waterbodyId", w.name AS "waterbodyName", pv.proposed_spot_id AS "proposedSpotId",
+                   pv.map_x::float AS "mapX", pv.map_y::float AS "mapY", pv.game_coordinate_x::float AS "gameCoordinateX",
+                   pv.game_coordinate_y::float AS "gameCoordinateY", pv.bait_mode AS "baitMode"
             FROM post_version pv
             LEFT JOIN waterbody w ON w.id = pv.waterbody_id
             WHERE pv.id = $1
@@ -240,13 +281,15 @@ export async function getPostById(id: number) {
         [version.id],
     );
     const media = await pool.query(`SELECT id, url, order_index AS "orderIndex" FROM post_media WHERE post_version_id = $1 ORDER BY order_index, id`, [version.id]);
+    const baits = await pool.query(`SELECT pvb.fish_id AS "fishId", b.id, b.name, b.kind FROM post_version_bait pvb JOIN bait b ON b.id=pvb.bait_id WHERE pvb.post_version_id=$1 ORDER BY b.name`, [version.id]);
 
     return {
         ...post,
         version: {
             ...version,
             incomePerHour: incomePerHour(version.income, version.fishingMinutes),
-            catches: catches.rows,
+            catches: catches.rows.map((item) => ({ ...item, baits: baits.rows.filter((bait) => Number(bait.fishId) === Number(item.fishId)).map(({ fishId: _fishId, ...bait }) => bait) })),
+            commonBaits: baits.rows.filter((bait) => bait.fishId === null).map(({ fishId: _fishId, ...bait }) => bait),
             media: media.rows,
         },
     };

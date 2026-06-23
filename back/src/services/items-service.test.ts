@@ -8,6 +8,7 @@ test("builds a filtered reels query with search, filter and level range", () => 
         category: "Силовые",
         brend: "",
         type: "",
+        filters: "",
         minLvl: 10,
         maxLvl: undefined,
         sortBy: "lvl",
@@ -16,7 +17,7 @@ test("builds a filtered reels query with search, filter and level range", () => 
         offset: 0,
     });
 
-    assert.equal(result.whereSql, "WHERE name ILIKE $1 AND category = $2 AND lvl >= $3");
+    assert.match(result.whereSql, /^WHERE concat_ws\(' ', .*\) ILIKE \$1 AND category = \$2 AND lvl >= \$3$/);
     assert.deepEqual(result.values, ["%raptor%", "Силовые", 10]);
     assert.equal(result.orderSql, "lvl DESC, id ASC");
 });
@@ -27,6 +28,7 @@ test("rods support the type filter and fall back to default sort", () => {
         category: "",
         brend: "Reef",
         type: "Спиннинговые",
+        filters: "",
         minLvl: undefined,
         maxLvl: undefined,
         sortBy: "name",
@@ -46,6 +48,7 @@ test("ignores the type filter for reels (not a reels column)", () => {
         category: "",
         brend: "",
         type: "Спиннинговые",
+        filters: "",
         minLvl: undefined,
         maxLvl: undefined,
         sortBy: "name",
@@ -70,4 +73,24 @@ test("builds a parameterised update query with id as the last value", () => {
 
     assert.equal(sql, `UPDATE rods SET "brend" = $1, "lvl" = $2 WHERE id = $3 RETURNING *`);
     assert.deepEqual(values, ["Reef", 20, 7]);
+});
+
+test("supports whitelisted column filters and attribute sorting", () => {
+    const result = buildItemListQuery("reels", {
+        search: "",
+        category: "",
+        brend: "",
+        type: "",
+        filters: JSON.stringify({ frik: "20", protection: "true", injected: "ignored" }),
+        minLvl: undefined,
+        maxLvl: undefined,
+        sortBy: "frik",
+        sortDirection: "desc",
+        limit: 50,
+        offset: 0,
+    });
+
+    assert.equal(result.whereSql, `WHERE COALESCE("frik"::text, '') ILIKE $1 AND COALESCE("protection"::text, '') ILIKE $2`);
+    assert.deepEqual(result.values, ["%20%", "%true%"]);
+    assert.equal(result.orderSql, "frik DESC, id ASC");
 });

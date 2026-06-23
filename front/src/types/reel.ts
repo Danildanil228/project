@@ -5,6 +5,7 @@ export type Reel = {
   brend: string;
   size: number | null;
   test: string;
+  test_mod: string | null;
   protection: boolean;
   per: string;
   per_mod: string | null;
@@ -14,10 +15,13 @@ export type Reel = {
   frik_mod: string | null;
   meh: string;
   meh_mod: string | null;
-  lvl: number;
+  lvl: number | null;
   price_ser: string | null;
   price_gold: string | null;
   capacity: string | null;
+  capacity_mod: string | null;
+  system_id: string | null;
+  source_url: string | null;
   photo: string | null;
   model: string | null;
 };

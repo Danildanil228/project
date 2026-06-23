@@ -6,7 +6,11 @@ const emptyToNull = (value: unknown) => (value === "" || value === undefined ? n
 
 const catchInputSchema = z.object({
     fishId: z.coerce.number().int().positive(),
+    baitIds: z.array(z.coerce.number().int().positive()).max(50).optional().default([]).transform((ids) => [...new Set(ids)]),
 });
+
+const optionalCoordinate = z.preprocess(emptyToNull, z.coerce.number().min(-999999.99).max(999999.99).nullable());
+const optionalMapPercent = z.preprocess(emptyToNull, z.coerce.number().min(0).max(100).nullable());
 
 export const postContentSchema = z.object({
     description: z.string().trim().max(5000).optional().default(""),
@@ -16,7 +20,19 @@ export const postContentSchema = z.object({
     income: z.preprocess(emptyToNull, z.coerce.number().int().min(0).max(1_000_000_000).nullable()),
     fishingMinutes: z.preprocess(emptyToNull, z.coerce.number().int().min(1).max(100_000).nullable()),
     catches: z.array(catchInputSchema).max(50).optional().default([]),
+    baitMode: z.enum(["common", "per_fish"]).optional().default("common"),
+    commonBaitIds: z.array(z.coerce.number().int().positive()).max(50).optional().default([]).transform((ids) => [...new Set(ids)]),
+    proposedSpotId: z.preprocess(emptyToNull, z.coerce.number().int().positive().nullable()),
+    mapX: optionalMapPercent,
+    mapY: optionalMapPercent,
+    gameCoordinateX: optionalCoordinate,
+    gameCoordinateY: optionalCoordinate,
     media: z.array(z.string().trim().min(1).max(255)).max(8).optional().default([]),
+}).superRefine((data, context) => {
+    const coordinates = [data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY];
+    if (!coordinates.every((value) => value === null) && coordinates.some((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX"], message: "Для точки укажите обе координаты" });
+    }
 });
 
 export const createPostSchema = postContentSchema.extend({

@@ -1,0 +1,180 @@
+{
+  "generatedAt": "2026-06-21T11:45:37.863Z",
+  "dryRun": true,
+  "sources": {
+    "catalogPath": "C:\\Users\\danil\\Desktop\\rr4\\rr4Reap\\AssetRipper_export_20260610_180045\\Assets\\Resources\\itemscatalog\\ru_RU.bytes",
+    "previewsRoot": "C:\\Users\\danil\\Desktop\\rr4\\rr4Reap\\AssetRipper_export_20260610_180045\\Assets\\Resources\\previews",
+    "bundleRoot": "C:\\Users\\danil\\Desktop\\rr4\\allfilescopy\\AssetRipper_export_20260610_230108\\Assets\\AssetBundle",
+    "bundleCount": 25
+  },
+  "totals": {
+    "sourceAssets": 4095,
+    "importCandidates": 4085,
+    "baits": 929,
+    "lures": 3156,
+    "categorized": 4085,
+    "matchedFamilies": 3445,
+    "withPreview": 4085,
+    "issues": 555,
+    "duplicateNameGroups": 196,
+    "duplicateNameItems": 571,
+    "familyApplicable": 3990,
+    "standaloneItems": 95
+  },
+  "byCategory": [
+    {
+      "category": "lure:wobblers",
+      "count": 697
+    },
+    {
+      "category": "lure:spoons",
+      "count": 496
+    },
+    {
+      "category": "lure:soft_plastic",
+      "count": 469
+    },
+    {
+      "category": "bait:sinking_boilies",
+      "count": 361
+    },
+    {
+      "category": "lure:spinnerbaits",
+      "count": 259
+    },
+    {
+      "category": "bait:pop_up_boilies",
+      "count": 222
+    },
+    {
+      "category": "lure:pilkers",
+      "count": 194
+    },
+    {
+      "category": "lure:jerkbaits",
+      "count": 190
+    },
+    {
+      "category": "lure:giant_shads",
+      "count": 188
+    },
+    {
+      "category": "lure:topwater",
+      "count": 139
+    },
+    {
+      "category": "bait:zig_rig_foam",
+      "count": 103
+    },
+    {
+      "category": "bait:pellets",
+      "count": 98
+    },
+    {
+      "category": "lure:spinners",
+      "count": 93
+    },
+    {
+      "category": "lure:skirted_jigs",
+      "count": 89
+    },
+    {
+      "category": "lure:octopus",
+      "count": 81
+    },
+    {
+      "category": "lure:gummi_makk",
+      "count": 68
+    },
+    {
+      "category": "lure:wacky_worms",
+      "count": 54
+    },
+    {
+      "category": "bait:artificial_corn",
+      "count": 50
+    },
+    {
+      "category": "lure:silicon_sea_worms",
+      "count": 48
+    },
+    {
+      "category": "lure:dead_fish_jigheads",
+      "count": 40
+    },
+    {
+      "category": "lure:shrimp",
+      "count": 30
+    },
+    {
+      "category": "bait:live_fish",
+      "count": 18
+    },
+    {
+      "category": "bait:dead_fish",
+      "count": 15
+    },
+    {
+      "category": "lure:attraction_elements",
+      "count": 13
+    },
+    {
+      "category": "bait:natural",
+      "count": 11
+    },
+    {
+      "category": "bait:porridge_dough",
+      "count": 10
+    },
+    {
+      "category": "bait:insects",
+      "count": 9
+    },
+    {
+      "category": "bait:larvae",
+      "count": 9
+    },
+    {
+      "category": "lure:tube_baits",
+      "count": 8
+    },
+    {
+      "category": "bait:marine_bait",
+      "count": 6
+    },
+    {
+      "category": "bait:crustaceans",
+      "count": 5
+    },
+    {
+      "category": "bait:sets",
+      "count": 5
+    },
+    {
+      "category": "bait:worms",
+      "count": 4
+    },
+    {
+      "category": "bait:live",
+      "count": 2
+    },
+    {
+      "category": "bait:fish_fillet",
+      "count": 1
+    }
+  ],
+  "byIssue": [
+    {
+      "type": "unknown_family",
+      "count": 435
+    },
+    {
+      "type": "ambiguous_family",
+      "count": 110
+    },
+    {
+      "type": "missing_public_name",
+      "count": 10
+    }
+  ]
+}

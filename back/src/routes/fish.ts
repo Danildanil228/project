@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { requireRole, type SessionUser } from "../lib/admin-auth";
-import { fishCreateSchema, fishUpdateSchema, referenceIdParamsSchema, referenceListQuerySchema } from "../lib/reference-schemas";
+import { fishBulkCreateSchema, fishCreateSchema, fishUpdateSchema, referenceIdParamsSchema, referenceListQuerySchema } from "../lib/reference-schemas";
 import { parseOrSend } from "../lib/validation";
-import { createFish, deleteFish, getFish, listFish, updateFish } from "../services/fish-service";
+import { createFish, createFishBulk, deleteFish, getFish, listFish, updateFish } from "../services/fish-service";
 
 const managerRoles = ["admin"];
 const router = Router();
@@ -23,7 +23,21 @@ router.post("/", async (req, res, next) => {
         if (!session) return;
         const data = parseOrSend(fishCreateSchema, req.body, res);
         if (!data) return;
-        res.status(201).json({ item: await createFish(data, session.user as SessionUser) });
+        const result = await createFish(data, session.user as SessionUser);
+        res.status(result.alreadyExisted ? 200 : 201).json(result);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/bulk", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, managerRoles);
+        if (!session) return;
+        const data = parseOrSend(fishBulkCreateSchema, req.body, res);
+        if (!data) return;
+        const result = await createFishBulk(data, session.user as SessionUser);
+        res.status(result.created ? 201 : 200).json(result);
     } catch (error) {
         next(error);
     }

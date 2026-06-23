@@ -9,6 +9,7 @@ import type { AdminSecurityContext, ManagedUser } from "./types/admin";
 import { unwrapAuthResult } from "./utils/auth-client-result";
 import { AuthModalProvider, useAuthModal } from "./context/AuthModalContext";
 import { AuthModal } from "./components/AuthModal";
+import { postMapLinkingEnabled } from "./lib/features";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((module) => ({ default: module.AuthorProfilePage })));
@@ -18,6 +19,7 @@ const FishAdminPage = lazy(() => import("./pages/FishAdminPage").then((module) =
 const ItemAdminPage = lazy(() => import("./pages/ItemAdminPage").then((module) => ({ default: module.ItemAdminPage })));
 const ItemDetailPage = lazy(() => import("./pages/ItemDetailPage").then((module) => ({ default: module.ItemDetailPage })));
 const ModerationQueuePage = lazy(() => import("./pages/ModerationQueuePage").then((module) => ({ default: module.ModerationQueuePage })));
+const MapModerationPage = lazy(() => import("./pages/MapModerationPage").then((module) => ({ default: module.MapModerationPage })));
 const PostDetailPage = lazy(() => import("./pages/PostDetailPage").then((module) => ({ default: module.PostDetailPage })));
 const PostEditorPage = lazy(() => import("./pages/PostEditorPage").then((module) => ({ default: module.PostEditorPage })));
 const ProfilePage = lazy(() => import("./pages/ProfilePage").then((module) => ({ default: module.ProfilePage })));
@@ -25,6 +27,9 @@ const ReferenceAdminPage = lazy(() => import("./pages/ReferenceAdminPage").then(
 const ReportsPage = lazy(() => import("./pages/ReportsPage").then((module) => ({ default: module.ReportsPage })));
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage").then((module) => ({ default: module.ResetPasswordPage })));
 const WaterbodyAdminPage = lazy(() => import("./pages/WaterbodyAdminPage").then((module) => ({ default: module.WaterbodyAdminPage })));
+const BaitAdminPage = lazy(() => import("./pages/BaitAdminPage").then((module) => ({ default: module.BaitAdminPage })));
+const WaterbodyListPage = lazy(() => import("./pages/WaterbodyListPage").then((module) => ({ default: module.WaterbodyListPage })));
+const WaterbodyMapPage = lazy(() => import("./pages/WaterbodyMapPage").then((module) => ({ default: module.WaterbodyMapPage })));
 
 function AppRoutes() {
     const { data: session, isPending, refetch } = authClient.useSession();
@@ -82,6 +87,8 @@ function AppRoutes() {
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="catalog" element={<CatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
+                    <Route path="waterbodies" element={<WaterbodyListPage />} />
+                    <Route path="waterbodies/:id" element={<WaterbodyMapPage currentUser={currentUser} adminContext={adminContext} />} />
                     <Route path="feed" element={<FeedPage currentUser={currentUser} adminContext={adminContext} />} />
                     {/* /posts retired — link goes to profile where MyPostsPage is now embedded. */}
                     <Route path="posts" element={<Navigate to="/profile" replace />} />
@@ -91,6 +98,7 @@ function AppRoutes() {
                     <Route path="posts/:id/edit" element={<PostEditorPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="posts/:id/moderate" element={<PostEditorPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} mode="moderate" />} />
                     <Route path="moderation" element={<ModerationQueuePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    {postMapLinkingEnabled && <Route path="moderation/map" element={<MapModerationPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />}
                     <Route path="moderation/reports" element={<ReportsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
@@ -98,6 +106,7 @@ function AppRoutes() {
                     <Route path="admin/catalog" element={<ItemAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/fish" element={<FishAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/waterbodies" element={<WaterbodyAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="admin/baits" element={<BaitAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/users/:userId" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="*" element={<NotFoundPage />} />
                     </Route>

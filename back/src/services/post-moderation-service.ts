@@ -5,8 +5,10 @@ import type { SessionUser } from "../lib/admin-auth";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import type { moderationQueueQuerySchema, postContentSchema } from "../lib/post-schemas";
-import { assertSubmittable, getPostById, insertVersionChildren } from "./post-service";
-import { createNotification } from "./notification-service";
+import { assertCatchHabitats, assertSubmittable, getPostById, insertVersionChildren } from "./post-service";
+import { createNotification, notifyModerators } from "./notification-service";
+import { createPendingMapSubmission } from "./map-submission-service";
+import { postMapLinkingEnabled } from "../lib/features";
 
 type QueueQuery = z.infer<typeof moderationQueueQuerySchema>;
 type PostContent = z.infer<typeof postContentSchema>;
@@ -109,21 +111,14 @@ export async function releasePost(postId: number, moderator: SessionUser) {
 }
 
 export async function approvePost(postId: number, moderator: SessionUser) {
-    const result = await pool.query<{ authorId: string }>(
-        `
-            UPDATE post SET status = 'approved', published_at = NOW(), claimed_by = NULL, claimed_at = NULL, rejection_reason = NULL, updated_at = NOW()
-            WHERE id = $1
-              AND status = 'in_review'
-              AND claimed_by = $2
-              AND claimed_at >= NOW() - INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes'
-            RETURNING author_id AS "authorId"
-        `,
-        [postId, moderator.id],
-    );
-    if (!result.rowCount) return { status: "invalid" as const };
-
-    await writeAuditLog({ actor: moderator, action: "post.approve", targetUserId: result.rows[0].authorId, metadata: { postId } });
-    await createNotification({ userId: result.rows[0].authorId, type: "post_approved", postId, actorId: moderator.id });
+    const client=await pool.connect();let authorId:string|null=null,mapSubmissionId:number|null=null;
+    try{await client.query("BEGIN");const result=await client.query<{authorId:string;versionId:number}>(`UPDATE post SET status='approved',published_at=NOW(),claimed_by=NULL,claimed_at=NULL,rejection_reason=NULL,updated_at=NOW() WHERE id=$1 AND status='in_review' AND claimed_by=$2 AND claimed_at>=NOW()-INTERVAL '${CLAIM_TIMEOUT_MINUTES} minutes' RETURNING author_id AS "authorId",current_version_id AS "versionId"`,[postId,moderator.id]);
+        if(!result.rows[0]){await client.query("ROLLBACK");return {status:"invalid" as const};}
+        authorId=result.rows[0].authorId;mapSubmissionId=postMapLinkingEnabled?await createPendingMapSubmission(client,postId,result.rows[0].versionId):null;await client.query("COMMIT");
+    }catch(error){await client.query("ROLLBACK").catch(()=>undefined);translateDbError(error);}finally{client.release();}
+    await writeAuditLog({ actor: moderator, action: "post.approve", targetUserId: authorId, metadata: { postId, mapSubmissionId } });
+    await createNotification({ userId: authorId!, type: "post_approved", postId, actorId: moderator.id });
+    if(mapSubmissionId)await notifyModerators({type:"map_submission_new",postId,actorId:moderator.id,excludeUserId:authorId!,data:{mapSubmissionId}});
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 
@@ -147,14 +142,20 @@ export async function rejectPost(postId: number, moderator: SessionUser, reason:
 }
 
 export async function removePost(postId: number, moderator: SessionUser) {
-    const result = await pool.query<{ authorId: string }>(
-        `UPDATE post SET status = 'deleted', claimed_by = NULL, claimed_at = NULL, updated_at = NOW() WHERE id = $1 AND status <> 'deleted' RETURNING author_id AS "authorId"`,
-        [postId],
-    );
-    if (!result.rowCount) return { status: "invalid" as const };
+    const client = await pool.connect();
+    let authorId: string | null = null;
+    try {
+        await client.query("BEGIN");
+        const result = await client.query<{ authorId: string }>(`UPDATE post SET status='deleted',claimed_by=NULL,claimed_at=NULL,updated_at=NOW() WHERE id=$1 AND status<>'deleted' RETURNING author_id AS "authorId"`, [postId]);
+        if (!result.rowCount) { await client.query("ROLLBACK"); return { status: "invalid" as const }; }
+        authorId = result.rows[0].authorId;
+        const linked = await client.query<{ spotId: number }>(`DELETE FROM spot_post WHERE post_id=$1 RETURNING spot_id AS "spotId"`, [postId]);
+        if (linked.rows[0]) await client.query(`UPDATE spot SET is_active=FALSE,updated_at=NOW() WHERE id=$1 AND is_community=TRUE AND NOT EXISTS(SELECT 1 FROM spot_post WHERE spot_id=$1)`, [linked.rows[0].spotId]);
+        await client.query("COMMIT");
+    } catch (error) { await client.query("ROLLBACK").catch(() => undefined); translateDbError(error); } finally { client.release(); }
 
-    await writeAuditLog({ actor: moderator, action: "post.remove", targetUserId: result.rows[0].authorId, metadata: { postId } });
-    await createNotification({ userId: result.rows[0].authorId, type: "post_removed", postId, actorId: moderator.id });
+    await writeAuditLog({ actor: moderator, action: "post.remove", targetUserId: authorId, metadata: { postId } });
+    await createNotification({ userId: authorId!, type: "post_removed", postId, actorId: moderator.id });
     return { status: "ok" as const };
 }
 
@@ -212,10 +213,12 @@ export async function unpinPost(postId: number, moderator: SessionUser) {
 // Moderator edits the post's current version in place; republishes (new date) when already approved.
 export async function moderatorUpdateContent(postId: number, moderator: SessionUser, content: PostContent) {
     assertSubmittable(content);
+    await assertCatchHabitats(content);
 
     const client = await pool.connect();
     let previousMedia: { url: string }[] = [];
     let targetUserId: string | null = null;
+    let mapSubmissionId: number | null = null;
     try {
         await client.query("BEGIN");
         const owned = await client.query<{
@@ -252,13 +255,15 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
         const mediaResult = await client.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
         previousMedia = mediaResult.rows;
         await client.query(
-            `UPDATE post_version SET description = $1, waterbody_id = $2, point = $3, fishing_method = $4, income = $5, fishing_minutes = $6 WHERE id = $7`,
-            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, versionId],
+            `UPDATE post_version SET description=$1,waterbody_id=$2,point=$3,fishing_method=$4,income=$5,fishing_minutes=$6,proposed_spot_id=$7,map_x=$8,map_y=$9,game_coordinate_x=$10,game_coordinate_y=$11,bait_mode=$12 WHERE id=$13`,
+            [content.description,content.waterbodyId,content.point,content.fishingMethod,content.income,content.fishingMinutes,content.proposedSpotId,content.mapX,content.mapY,content.gameCoordinateX,content.gameCoordinateY,content.baitMode,versionId],
         );
         await client.query(`DELETE FROM catch WHERE post_version_id = $1`, [versionId]);
         await client.query(`DELETE FROM post_media WHERE post_version_id = $1`, [versionId]);
+        await client.query(`DELETE FROM post_version_bait WHERE post_version_id = $1`, [versionId]);
         await insertVersionChildren(client, versionId, content);
         await client.query(`UPDATE post SET updated_at = NOW()${isApproved ? ", published_at = NOW()" : ""} WHERE id = $1`, [postId]);
+        if (postMapLinkingEnabled && isApproved) mapSubmissionId = await createPendingMapSubmission(client, postId, versionId);
         await client.query("COMMIT");
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
@@ -273,5 +278,6 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
     }
 
     await writeAuditLog({ actor: moderator, action: "post.moderate-edit", targetUserId, metadata: { postId } });
+    if (mapSubmissionId) await notifyModerators({ type: "map_submission_new", postId, actorId: moderator.id, excludeUserId: targetUserId!, data: { mapSubmissionId } });
     return { status: "ok" as const, post: await getPostById(postId) };
 }

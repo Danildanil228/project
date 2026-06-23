@@ -1,0 +1,4481 @@
+[
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_ca10",
+    "name": "Икра 10",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_ca16",
+    "name": "Икра 16",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_ca20",
+    "name": "Икра 20",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_ca26",
+    "name": "Икра 26",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_fc10",
+    "name": "Свежая клюква 10",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Свежая клюква [cb_boilies_cranb]",
+      "Craft Baits / Свежая клюква [cb_fpel_cranberry]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_fc16",
+    "name": "Свежая клюква 16",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Свежая клюква [cb_boilies_cranb]",
+      "Craft Baits / Свежая клюква [cb_fpel_cranberry]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_fc20",
+    "name": "Свежая клюква 20",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Свежая клюква [cb_boilies_cranb]",
+      "Craft Baits / Свежая клюква [cb_fpel_cranberry]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_cb_fc26",
+    "name": "Свежая клюква 26",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Свежая клюква [cb_boilies_cranb]",
+      "Craft Baits / Свежая клюква [cb_fpel_cranberry]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf10",
+    "name": "ТФ 10",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf14",
+    "name": "ТФ 14",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf18",
+    "name": "ТФ 18",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf20",
+    "name": "ТФ 20",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf_pu10",
+    "name": "ТФ Pop Ups 10",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf_pu14",
+    "name": "ТФ Pop Ups 14",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf_pu18",
+    "name": "ТФ Pop Ups 18",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_cb_tf_pu20",
+    "name": "ТФ Pop Ups 20",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_brown",
+    "name": "Боил коричневый",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_green",
+    "name": "Боил зеленый",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_orange",
+    "name": "Боил оранжевый",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_red",
+    "name": "Боил красный",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_rose",
+    "name": "Боил розовый",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boil_yellow",
+    "name": "Боил жёлтый",
+    "domain": "bait",
+    "brandHint": null
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ami_12",
+    "name": "Амино 12",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ami_16",
+    "name": "Амино 16",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ami_22",
+    "name": "Амино 22",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ami_24",
+    "name": "Амино 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_bcur12",
+    "name": "Чёрная смородина 12",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Чёрная смородина [hvz_boils_bcur]",
+      "Helen Van Zandt / Черная смородина [hvz_fpel_bcurrant]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_bcur15",
+    "name": "Чёрная смородина 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Чёрная смородина [hvz_boils_bcur]",
+      "Helen Van Zandt / Черная смородина [hvz_fpel_bcurrant]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_bcur20",
+    "name": "Чёрная смородина 20",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Чёрная смородина [hvz_boils_bcur]",
+      "Helen Van Zandt / Черная смородина [hvz_fpel_bcurrant]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_hs12",
+    "name": "Клубника 12",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Клубника [hvz_boils_hs]",
+      "Helen Van Zandt / Клубника [hvz_fpel_strawb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_hs15",
+    "name": "Клубника 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Клубника [hvz_boils_hs]",
+      "Helen Van Zandt / Клубника [hvz_fpel_strawb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_hs20",
+    "name": "Клубника 20",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Клубника [hvz_boils_hs]",
+      "Helen Van Zandt / Клубника [hvz_fpel_strawb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_kc15",
+    "name": "Королевский краб 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_kc18",
+    "name": "Королевский краб 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_kc24",
+    "name": "Королевский краб 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ma15",
+    "name": "Нежный анис 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Нежный анис [hvz_boils_ma]",
+      "Helen Van Zandt / Нежный анис [hvz_fpel_anis]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_ma20",
+    "name": "Нежный анис 20",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Нежный анис [hvz_boils_ma]",
+      "Helen Van Zandt / Нежный анис [hvz_fpel_anis]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_mh15",
+    "name": "Горный мёд 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Горный мёд [hvz_boils_mh]",
+      "Helen Van Zandt / Горный мед [hvz_fpel_honey]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_tf15",
+    "name": "Тутти-Фрутти 15",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Тутти-Фрутти [hvz_boils_tf]",
+      "Helen Van Zandt / Тутти Фрутти [hvz_fpel_tutti]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_tf18",
+    "name": "Тутти-Фрутти 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Тутти-Фрутти [hvz_boils_tf]",
+      "Helen Van Zandt / Тутти Фрутти [hvz_fpel_tutti]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_tf24",
+    "name": "Тутти-Фрутти 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Тутти-Фрутти [hvz_boils_tf]",
+      "Helen Van Zandt / Тутти Фрутти [hvz_fpel_tutti]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_hvz_tp_pu12",
+    "name": "Тропическй ананас Pop-Ups 12",
+    "domain": "bait",
+    "brandHint": "van_zandt"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_hvz_tp_pu15",
+    "name": "Тропическй ананас Pop-Ups 15",
+    "domain": "bait",
+    "brandHint": "van_zandt"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "boils_hvz_tp_pu20",
+    "name": "Тропическй ананас Pop-Ups 20",
+    "domain": "bait",
+    "brandHint": "van_zandt"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_van12",
+    "name": "Ваниль 12",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_van16",
+    "name": "Ваниль 16",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_hvz_van22",
+    "name": "Ваниль 22",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_ban14",
+    "name": "Банан 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Банан [op_boils_ban]",
+      "Old Pal / Банан [op_fpel_banana]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_ban20",
+    "name": "Банан 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Банан [op_boils_ban]",
+      "Old Pal / Банан [op_fpel_banana]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_ban26",
+    "name": "Банан 26",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Банан [op_boils_ban]",
+      "Old Pal / Банан [op_fpel_banana]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_blw10",
+    "name": "Мотыль 10",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Мотыль [op_boils_blw]",
+      "Old Pal / Мотыль [op_fpel_bloodworm]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_blw14",
+    "name": "Мотыль 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Мотыль [op_boils_blw]",
+      "Old Pal / Мотыль [op_fpel_bloodworm]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_cc12",
+    "name": "Кокос и сливки 12",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_cc16",
+    "name": "Кокос и сливки 16",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_cc22",
+    "name": "Кокос и сливки 22",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_fwk14",
+    "name": "Пресноводный криль 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_fwk18",
+    "name": "Пресноводный криль 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_hal14",
+    "name": "Палтус 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Палтус [op_boils_hal]",
+      "Old Pal / Палтус [op_pellets_halib]",
+      "Old Pal / Палтус [op_fpel_halib]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_hal20",
+    "name": "Палтус 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Палтус [op_boils_hal]",
+      "Old Pal / Палтус [op_pellets_halib]",
+      "Old Pal / Палтус [op_fpel_halib]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_mc15",
+    "name": "Мятный торт 15",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Мятный торт [op_boils_mc]",
+      "Old Pal / Мятный торт [op_pellets_mint]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_mc20",
+    "name": "Мятный торт 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Мятный торт [op_boils_mc]",
+      "Old Pal / Мятный торт [op_pellets_mint]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_mc25",
+    "name": "Мятный торт 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Мятный торт [op_boils_mc]",
+      "Old Pal / Мятный торт [op_pellets_mint]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_rj15",
+    "name": "Малиновый джем 15",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Малиновый джем [op_boils_raspberryjam]",
+      "Old Pal / Малиновый джем [op_fpel_raspb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_rj20",
+    "name": "Малиновый джем 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Малиновый джем [op_boils_raspberryjam]",
+      "Old Pal / Малиновый джем [op_fpel_raspb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_rj25",
+    "name": "Малиновый джем 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Малиновый джем [op_boils_raspberryjam]",
+      "Old Pal / Малиновый джем [op_fpel_raspb]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sc14",
+    "name": "Сахарная кукуруза 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сахарная кукуруза [op_boils_sc]",
+      "Old Pal / Сахарная кукуруза [op_pellets_sweetcorn]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sc20",
+    "name": "Сахарная кукуруза 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сахарная кукуруза [op_boils_sc]",
+      "Old Pal / Сахарная кукуруза [op_pellets_sweetcorn]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sc26",
+    "name": "Сахарная кукуруза 26",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сахарная кукуруза [op_boils_sc]",
+      "Old Pal / Сахарная кукуруза [op_pellets_sweetcorn]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sf14",
+    "name": "Семена подсолнуха 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Семена подсолнуха [op_boils_sf]",
+      "Old Pal / Семена подсолнуха [op_fpel_sunflow]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sf20",
+    "name": "Семена подсолнуха 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Семена подсолнуха [op_boils_sf]",
+      "Old Pal / Семена подсолнуха [op_fpel_sunflow]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_sf26",
+    "name": "Семена подсолнуха 26",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Семена подсолнуха [op_boils_sf]",
+      "Old Pal / Семена подсолнуха [op_fpel_sunflow]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_smk14",
+    "name": "Копчёности 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_smk20",
+    "name": "Копчёности 20",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "boils_op_smk30",
+    "name": "Копчёности 30",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": true,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "boils_pm_hn20",
+    "prefabPath": "assets/gfx/baits/boil/boils_pm/prefabs/boils_pm_hn20.prefab"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_cb_bfc",
+    "name": "Банан",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Банан [op_boils_ban]",
+      "Old Pal / Банан [op_fpel_banana]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_cfc",
+    "name": "Цитрусы",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_ffc",
+    "name": "Фрукты",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_flr",
+    "name": "Натуральный вкус FLR",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_neo",
+    "name": "Натуральный вкус NEO",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_org",
+    "name": "Натуральный вкус ORG",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_red",
+    "name": "Натуральный вкус RED",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_ylw",
+    "name": "Натуральный вкус YLW",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_nfc_ylw2",
+    "name": "Натуральный вкус YLW2",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_rbfc",
+    "name": "Малина",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_cb_sbfc",
+    "name": "Клубника",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Клубника [hvz_boils_hs]",
+      "Helen Van Zandt / Клубника [hvz_fpel_strawb]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_sfc",
+    "name": "Специи",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_cb_sqfc",
+    "name": "Кальмар",
+    "domain": "bait",
+    "brandHint": "craft_baits"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_bccp",
+    "name": "Черная смородина Фиолетовый",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Чёрная смородина [hvz_boils_bcur]",
+      "Helen Van Zandt / Черная смородина [hvz_fpel_bcurrant]",
+      "Mad Mayers / Черная смородина [mad_boilies_bcurrant]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_bccy",
+    "name": "Черная смородина Жёлтый",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Чёрная смородина [hvz_boils_bcur]",
+      "Helen Van Zandt / Черная смородина [hvz_fpel_bcurrant]",
+      "Mad Mayers / Черная смородина [mad_boilies_bcurrant]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_bcy",
+    "name": "Банан",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Банан [op_boils_ban]",
+      "Old Pal / Банан [op_fpel_banana]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_cbcr",
+    "name": "Клюква",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_cccw",
+    "name": "Кокосовый крем",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_ccr",
+    "name": "Икра Красный",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_ccy",
+    "name": "Икра Жёлтый",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_ebcr",
+    "name": "Ягодный микс",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_mbcp",
+    "name": "Шелковица Фиолетовый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_mbcy",
+    "name": "Шелковица Жёлтый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_rbcp",
+    "name": "Малина",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "crn_op_sbcr",
+    "name": "Клубника",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Клубника [hvz_boils_hs]",
+      "Helen Van Zandt / Клубника [hvz_fpel_strawb]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_f",
+    "name": "Натуральный Флуоресцентный",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_g",
+    "name": "Натуральный Зеленый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_o",
+    "name": "Натуральный Оранжевый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_p",
+    "name": "Натуральный Розовый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_r",
+    "name": "Натуральный Красный",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_w",
+    "name": "Натуральный Белый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scn_y",
+    "name": "Натуральный Жёлтый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_scy",
+    "name": "Пряности",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_sqcr",
+    "name": "Кальмар Красный",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "crn_op_sqcy",
+    "name": "Кальмар Жёлтый",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": true,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "large_fish",
+    "prefabPath": "assets/gfx/baits/live_fish/large_fish.prefab"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": true,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "small_fish",
+    "prefabPath": "assets/gfx/baits/live_fish/small_fish.prefab"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": true,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "tiny_fish",
+    "prefabPath": "assets/gfx/baits/live_fish/tiny_fish.prefab"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cvr14",
+    "name": "Икра 14",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cvr18",
+    "name": "Икра 18",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cvr24",
+    "name": "Икра 24",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Икра [cb_boilies_caviar]",
+      "Craft Baits / Икра [cb_pellets_caviar]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cwf14",
+    "name": "Речной рак 14",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Речной рак [cb_pellets_crawfish]",
+      "Craft Baits / Речной рак [cb_fpel_crawf]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cwf18",
+    "name": "Речной рак 18",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Речной рак [cb_pellets_crawfish]",
+      "Craft Baits / Речной рак [cb_fpel_crawf]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_cwf24",
+    "name": "Речной рак 24",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Речной рак [cb_pellets_crawfish]",
+      "Craft Baits / Речной рак [cb_fpel_crawf]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_sgp18",
+    "name": "Пряный чеснок 18",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Пряный чеснок [cb_pellets_spicygar]",
+      "Craft Baits / Пряный чеснок [cb_fpel_spgarlic]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_sgp24",
+    "name": "Пряный чеснок 24",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Пряный чеснок [cb_pellets_spicygar]",
+      "Craft Baits / Пряный чеснок [cb_fpel_spgarlic]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_sqh16",
+    "name": "Кальмар и травы 16",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Кальмар и травы [cb_pellets_squid]",
+      "Craft Baits / Кальмар и травы [cb_fpel_squid]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_sqh22",
+    "name": "Кальмар и травы 22",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Кальмар и травы [cb_pellets_squid]",
+      "Craft Baits / Кальмар и травы [cb_fpel_squid]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_cb_sqh26",
+    "name": "Кальмар и травы 26",
+    "domain": "bait",
+    "brandHint": "craft_baits",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Craft Baits / Кальмар и травы [cb_pellets_squid]",
+      "Craft Baits / Кальмар и травы [cb_fpel_squid]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_ap14",
+    "name": "Амино 14",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_ap18",
+    "name": "Амино 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_ap24",
+    "name": "Амино 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_ap8",
+    "name": "Амино 8",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Амино [hvz_boils_amino]",
+      "Helen Van Zandt / Амино [hvz_pel_amino]",
+      "Helen Van Zandt / Амино [hvz_fpel_amino]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_kcp14",
+    "name": "Королевский краб 14",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_kcp18",
+    "name": "Королевский краб 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_kcp24",
+    "name": "Королевский краб 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Helen Van Zandt / Королевский краб [hvz_boils_kc]",
+      "Helen Van Zandt / Королевский краб [hvz_pel_crab]",
+      "Helen Van Zandt / Королевский краб [hvz_fpel_crab]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_rkp14",
+    "name": "Красный криль 14",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Красный криль [hvz_pel_krill]",
+      "Helen Van Zandt / Красный криль [hvz_fpel_krill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_rkp18",
+    "name": "Красный криль 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Красный криль [hvz_pel_krill]",
+      "Helen Van Zandt / Красный криль [hvz_fpel_krill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_rkp8",
+    "name": "Красный криль 8",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Красный криль [hvz_pel_krill]",
+      "Helen Van Zandt / Красный криль [hvz_fpel_krill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_vp14",
+    "name": "Ваниль 14",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_vp18",
+    "name": "Ваниль 18",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_vp24",
+    "name": "Ваниль 24",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_hvz_vp8",
+    "name": "Ваниль 8",
+    "domain": "bait",
+    "brandHint": "van_zandt",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Helen Van Zandt / Ваниль [hvz_boils_van]",
+      "Helen Van Zandt / Ваниль [hvz_pel_vanila]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_ccp14",
+    "name": "Кокос и сливки 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_ccp18",
+    "name": "Кокос и сливки 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_ccp25",
+    "name": "Кокос и сливки 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_ccp8",
+    "name": "Кокос и сливки 8",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Кокос и сливки [op_boils_cc]",
+      "Old Pal / Кокос и сливки [op_pellets_cocos]",
+      "Old Pal / Кокос и сливки [op_fpel_cococream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_fkp10",
+    "name": "Пресноводный криль 10",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_fkp14",
+    "name": "Пресноводный криль 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_fkp18",
+    "name": "Пресноводный криль 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_fkp25",
+    "name": "Пресноводный криль 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Пресноводный криль [op_boils_fwk]",
+      "Old Pal / Пресноводный криль [op_pellets_fwkrill]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_gcp14",
+    "name": "Десерт из трав 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Десерт из трав [op_pellets_grass]",
+      "Old Pal / Десерт из трав [op_fpel_grass]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_gcp18",
+    "name": "Десерт из трав 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Десерт из трав [op_pellets_grass]",
+      "Old Pal / Десерт из трав [op_fpel_grass]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_gcp25",
+    "name": "Десерт из трав 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Десерт из трав [op_pellets_grass]",
+      "Old Pal / Десерт из трав [op_fpel_grass]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_hbp14",
+    "name": "Палтус 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Палтус [op_boils_hal]",
+      "Old Pal / Палтус [op_pellets_halib]",
+      "Old Pal / Палтус [op_fpel_halib]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_hbp18",
+    "name": "Палтус 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Палтус [op_boils_hal]",
+      "Old Pal / Палтус [op_pellets_halib]",
+      "Old Pal / Палтус [op_fpel_halib]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_hbp25",
+    "name": "Палтус 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Палтус [op_boils_hal]",
+      "Old Pal / Палтус [op_pellets_halib]",
+      "Old Pal / Палтус [op_fpel_halib]"
+    ]
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plt_op_mcp14",
+    "name": "Мятный пряник 14",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plt_op_mcp18",
+    "name": "Мятный пряник 18",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plt_op_mcp25",
+    "name": "Мятный пряник 25",
+    "domain": "bait",
+    "brandHint": "old_pal"
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_scr14",
+    "name": "Сладкие сливки 14",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сладкие сливки [op_pellets_cream]",
+      "Old Pal / Сладкие сливки [op_fpel_cream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_scr18",
+    "name": "Сладкие сливки 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сладкие сливки [op_pellets_cream]",
+      "Old Pal / Сладкие сливки [op_fpel_cream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_scr8",
+    "name": "Сладкие сливки 8",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 2,
+    "candidateFamilies": [
+      "Old Pal / Сладкие сливки [op_pellets_cream]",
+      "Old Pal / Сладкие сливки [op_fpel_cream]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_skp15",
+    "name": "Копчености 15",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_skp18",
+    "name": "Копчености 18",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "ambiguous_family",
+    "systemId": "plt_op_skp25",
+    "name": "Копчености 25",
+    "domain": "bait",
+    "brandHint": "old_pal",
+    "candidates": 3,
+    "candidateFamilies": [
+      "Old Pal / Копчёности [op_boils_smk]",
+      "Old Pal / Копчёности [op_pellets_smoked]",
+      "Old Pal / Копчёности [op_fpel_smoked]"
+    ]
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "p_surv_worm",
+    "prefabPath": "assets/gfx/baits/surv_worm/p_surv_worm.prefab"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "bait",
+    "bundle": "baits",
+    "systemId": "vypolzok_01_nonposed",
+    "prefabPath": "assets/gfx/baits/vypolzok_01/vypolzok_01_nonposed.prefab"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21045",
+    "name": "DF Huge Jig RED 150",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21046",
+    "name": "DF Huge Jig BLUE 150",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21047",
+    "name": "DF Huge Jig GREEN 150",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21048",
+    "name": "DF Huge Jig RED 350",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21049",
+    "name": "DF Huge Jig BLUE 350",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21050",
+    "name": "DF Huge Jig GREEN 350",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21051",
+    "name": "DF Huge Jig RED 500",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21052",
+    "name": "DF Huge Jig BLUE 500",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21053",
+    "name": "DF Huge Jig GREEN 500",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21054",
+    "name": "DF Huge Jig RED 750",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21055",
+    "name": "DF Huge Jig BLUE 750",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21056",
+    "name": "DF Huge Jig GREEN 750",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21080",
+    "name": "DF Huge Jig PINK 150",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21081",
+    "name": "DF Huge Jig SILVER 150",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21082",
+    "name": "DF Huge Jig PINK 350",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21083",
+    "name": "DF Huge Jig SILVER 350",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21084",
+    "name": "DF Huge Jig PINK 500",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21085",
+    "name": "DF Huge Jig SILVER 500",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21086",
+    "name": "DF Huge Jig PINK 750",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21087",
+    "name": "DF Huge Jig SILVER 750",
+    "domain": "lure",
+    "brandHint": "berserk_hooks"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21025",
+    "name": "GigaJig head FR 280",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21026",
+    "name": "GigaJig head BLU 280",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21027",
+    "name": "GigaJig head ROS 280",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21028",
+    "name": "GigaJig head GR 280",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21029",
+    "name": "GigaJig head NAT 280",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21030",
+    "name": "GigaJig head FR 380",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21031",
+    "name": "GigaJig head BLU 380",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21032",
+    "name": "GigaJig head ROS 380",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21033",
+    "name": "GigaJig head GR 380",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21034",
+    "name": "GigaJig head NAT 380",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21035",
+    "name": "GigaJig head FR 500",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21036",
+    "name": "GigaJig head BLU 500",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21037",
+    "name": "GigaJig head ROS 500",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21038",
+    "name": "GigaJig head GR 500",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21039",
+    "name": "GigaJig head NAT 500",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21040",
+    "name": "GigaJig head FR 700",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21041",
+    "name": "GigaJig head BLU 700",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21042",
+    "name": "GigaJig head ROS 700",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21043",
+    "name": "GigaJig head GR 700",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "jhead_21044",
+    "name": "GigaJig head NAT 700",
+    "domain": "lure",
+    "brandHint": "cobra"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_001_hq",
+    "name": "Wooden Jerk-Fat 100F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_001_lq",
+    "name": "Wooden Jerk-Fat 100F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_001_mq",
+    "name": "Wooden Jerk-Fat 100F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_002_hq",
+    "name": "Wooden Jerk-Fat 100F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_002_lq",
+    "name": "Wooden Jerk-Fat 100F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_002_mq",
+    "name": "Wooden Jerk-Fat 100F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_003_hq",
+    "name": "Wooden Jerk-Fat 100F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_003_lq",
+    "name": "Wooden Jerk-Fat 100F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_003_mq",
+    "name": "Wooden Jerk-Fat 100F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_004_hq",
+    "name": "Wooden Jerk-Fat 100F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_004_lq",
+    "name": "Wooden Jerk-Fat 100F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_004_mq",
+    "name": "Wooden Jerk-Fat 100F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_005_hq",
+    "name": "Wooden Jerk-Fat 100F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_005_lq",
+    "name": "Wooden Jerk-Fat 100F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_100f_005_mq",
+    "name": "Wooden Jerk-Fat 100F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_001_hq",
+    "name": "Wooden Jerk-Fat 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_001_lq",
+    "name": "Wooden Jerk-Fat 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_001_mq",
+    "name": "Wooden Jerk-Fat 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_002_hq",
+    "name": "Wooden Jerk-Fat 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_002_lq",
+    "name": "Wooden Jerk-Fat 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_002_mq",
+    "name": "Wooden Jerk-Fat 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_003_hq",
+    "name": "Wooden Jerk-Fat 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_003_lq",
+    "name": "Wooden Jerk-Fat 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_003_mq",
+    "name": "Wooden Jerk-Fat 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_004_hq",
+    "name": "Wooden Jerk-Fat 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_004_lq",
+    "name": "Wooden Jerk-Fat 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_004_mq",
+    "name": "Wooden Jerk-Fat 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_005_hq",
+    "name": "Wooden Jerk-Fat 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_005_lq",
+    "name": "Wooden Jerk-Fat 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_f_140f_005_mq",
+    "name": "Wooden Jerk-Fat 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_001_hq",
+    "name": "Wooden Jerk-Slim 110F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_001_lq",
+    "name": "Wooden Jerk-Slim 110F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_001_mq",
+    "name": "Wooden Jerk-Slim 110F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_002_hq",
+    "name": "Wooden Jerk-Slim 110F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_002_lq",
+    "name": "Wooden Jerk-Slim 110F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_002_mq",
+    "name": "Wooden Jerk-Slim 110F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_003_hq",
+    "name": "Wooden Jerk-Slim 110F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_003_lq",
+    "name": "Wooden Jerk-Slim 110F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_003_mq",
+    "name": "Wooden Jerk-Slim 110F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_004_hq",
+    "name": "Wooden Jerk-Slim 110F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_004_lq",
+    "name": "Wooden Jerk-Slim 110F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_004_mq",
+    "name": "Wooden Jerk-Slim 110F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_005_hq",
+    "name": "Wooden Jerk-Slim 110F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_005_lq",
+    "name": "Wooden Jerk-Slim 110F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_110f_005_mq",
+    "name": "Wooden Jerk-Slim 110F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_001_hq",
+    "name": "Wooden Jerk-Slim 170F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_001_lq",
+    "name": "Wooden Jerk-Slim 170F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_001_mq",
+    "name": "Wooden Jerk-Slim 170F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_002_hq",
+    "name": "Wooden Jerk-Slim 170F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_002_lq",
+    "name": "Wooden Jerk-Slim 170F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_002_mq",
+    "name": "Wooden Jerk-Slim 170F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_003_hq",
+    "name": "Wooden Jerk-Slim 170F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_003_lq",
+    "name": "Wooden Jerk-Slim 170F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_003_mq",
+    "name": "Wooden Jerk-Slim 170F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_004_hq",
+    "name": "Wooden Jerk-Slim 170F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_004_lq",
+    "name": "Wooden Jerk-Slim 170F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_004_mq",
+    "name": "Wooden Jerk-Slim 170F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_005_hq",
+    "name": "Wooden Jerk-Slim 170F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_005_lq",
+    "name": "Wooden Jerk-Slim 170F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_jerk_s_170f_005_mq",
+    "name": "Wooden Jerk-Slim 170F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_001_hq",
+    "name": "Balsa Shad 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_001_lq",
+    "name": "Balsa Shad 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_001_mq",
+    "name": "Balsa Shad 140F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_002_hq",
+    "name": "Balsa Shad 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_002_lq",
+    "name": "Balsa Shad 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_002_mq",
+    "name": "Balsa Shad 140F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_003_hq",
+    "name": "Balsa Shad 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_003_lq",
+    "name": "Balsa Shad 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_003_mq",
+    "name": "Balsa Shad 140F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_004_hq",
+    "name": "Balsa Shad 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_004_lq",
+    "name": "Balsa Shad 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_004_mq",
+    "name": "Balsa Shad 140F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_005_hq",
+    "name": "Balsa Shad 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_005_lq",
+    "name": "Balsa Shad 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_005_mq",
+    "name": "Balsa Shad 140F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_006_hq",
+    "name": "Balsa Shad 140F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_006_lq",
+    "name": "Balsa Shad 140F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_140f_006_mq",
+    "name": "Balsa Shad 140F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_001_hq",
+    "name": "Balsa Shad 60F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_001_lq",
+    "name": "Balsa Shad 60F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_001_mq",
+    "name": "Balsa Shad 60F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_002_hq",
+    "name": "Balsa Shad 60F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_002_lq",
+    "name": "Balsa Shad 60F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_002_mq",
+    "name": "Balsa Shad 60F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_003_hq",
+    "name": "Balsa Shad 60F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_003_lq",
+    "name": "Balsa Shad 60F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_003_mq",
+    "name": "Balsa Shad 60F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_004_hq",
+    "name": "Balsa Shad 60F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_004_lq",
+    "name": "Balsa Shad 60F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_004_mq",
+    "name": "Balsa Shad 60F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_005_hq",
+    "name": "Balsa Shad 60F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_005_lq",
+    "name": "Balsa Shad 60F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_005_mq",
+    "name": "Balsa Shad 60F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_006_hq",
+    "name": "Balsa Shad 60F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_006_lq",
+    "name": "Balsa Shad 60F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_60f_006_mq",
+    "name": "Balsa Shad 60F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_001_hq",
+    "name": "Balsa Shad 85F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_001_lq",
+    "name": "Balsa Shad 85F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_001_mq",
+    "name": "Balsa Shad 85F-001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_002_hq",
+    "name": "Balsa Shad 85F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_002_lq",
+    "name": "Balsa Shad 85F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_002_mq",
+    "name": "Balsa Shad 85F-002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_003_hq",
+    "name": "Balsa Shad 85F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_003_lq",
+    "name": "Balsa Shad 85F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_003_mq",
+    "name": "Balsa Shad 85F-003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_004_hq",
+    "name": "Balsa Shad 85F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_004_lq",
+    "name": "Balsa Shad 85F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_004_mq",
+    "name": "Balsa Shad 85F-004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_005_hq",
+    "name": "Balsa Shad 85F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_005_lq",
+    "name": "Balsa Shad 85F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_005_mq",
+    "name": "Balsa Shad 85F-005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_006_hq",
+    "name": "Balsa Shad 85F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_006_lq",
+    "name": "Balsa Shad 85F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_shad_85f_006_mq",
+    "name": "Balsa Shad 85F-006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bl_hq",
+    "name": "Вращалка №1 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bl_lq",
+    "name": "Вращалка №1 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bl_mq",
+    "name": "Вращалка №1 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bra_hq",
+    "name": "Вращалка №1 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bra_lq",
+    "name": "Вращалка №1 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_bra_mq",
+    "name": "Вращалка №1 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_cop_hq",
+    "name": "Вращалка №1 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_cop_lq",
+    "name": "Вращалка №1 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_cop_mq",
+    "name": "Вращалка №1 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_gsil_hq",
+    "name": "Вращалка №1 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_gsil_lq",
+    "name": "Вращалка №1 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_gsil_mq",
+    "name": "Вращалка №1 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_or_r_hq",
+    "name": "Вращалка №1 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_or_r_lq",
+    "name": "Вращалка №1 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_or_r_mq",
+    "name": "Вращалка №1 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_purp_hq",
+    "name": "Вращалка №1 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_purp_lq",
+    "name": "Вращалка №1 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n1_purp_mq",
+    "name": "Вращалка №1 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bl_hq",
+    "name": "Вращалка №3 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bl_lq",
+    "name": "Вращалка №3 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bl_mq",
+    "name": "Вращалка №3 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "lure",
+    "bundle": "lures",
+    "systemId": "hm_spinner_n3_body_hq",
+    "prefabPath": "assets/gfx/lures/handmade_lures/hm_spinner_n3/hm_spinner_n3_body_hq.prefab"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "lure",
+    "bundle": "lures",
+    "systemId": "hm_spinner_n3_body_lq",
+    "prefabPath": "assets/gfx/lures/handmade_lures/hm_spinner_n3/hm_spinner_n3_body_lq.prefab"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "lure",
+    "bundle": "lures",
+    "systemId": "hm_spinner_n3_body_mq",
+    "prefabPath": "assets/gfx/lures/handmade_lures/hm_spinner_n3/hm_spinner_n3_body_mq.prefab"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bra_hq",
+    "name": "Вращалка №3 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bra_lq",
+    "name": "Вращалка №3 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_bra_mq",
+    "name": "Вращалка №3 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_cop_hq",
+    "name": "Вращалка №3 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_cop_lq",
+    "name": "Вращалка №3 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_cop_mq",
+    "name": "Вращалка №3 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_gsil_hq",
+    "name": "Вращалка №3 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_gsil_lq",
+    "name": "Вращалка №3 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_gsil_mq",
+    "name": "Вращалка №3 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_or_r_hq",
+    "name": "Вращалка №3 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_or_r_lq",
+    "name": "Вращалка №3 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_or_r_mq",
+    "name": "Вращалка №3 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_purp_hq",
+    "name": "Вращалка №3 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_purp_lq",
+    "name": "Вращалка №3 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spinner_n3_purp_mq",
+    "name": "Вращалка №3 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_mos_hq",
+    "name": "Московская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_mos_lq",
+    "name": "Московская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_mos_mq",
+    "name": "Московская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nov_hq",
+    "name": "Новгородская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nov_lq",
+    "name": "Новгородская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nov_mq",
+    "name": "Новгородская №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pe_hq",
+    "name": "Нижневолжская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pe_lq",
+    "name": "Нижневолжская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pe_mq",
+    "name": "Нижневолжская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pi_hq",
+    "name": "Нижневолжская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pi_lq",
+    "name": "Нижневолжская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_nv_pi_mq",
+    "name": "Нижневолжская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pe_hq",
+    "name": "Сердобская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pe_lq",
+    "name": "Сердобская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pe_mq",
+    "name": "Сердобская окуневая",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pi_hq",
+    "name": "Сердобская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pi_lq",
+    "name": "Сердобская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_s_pi_mq",
+    "name": "Сердобская щучья",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_sud_hq",
+    "name": "Судаковая №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_sud_lq",
+    "name": "Судаковая №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_sud_mq",
+    "name": "Судаковая №2",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bl_hq",
+    "name": "Западносибирская К 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bl_lq",
+    "name": "Западносибирская К 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bl_mq",
+    "name": "Западносибирская К 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bra_hq",
+    "name": "Западносибирская К 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bra_lq",
+    "name": "Западносибирская К 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_bra_mq",
+    "name": "Западносибирская К 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_cop_hq",
+    "name": "Западносибирская К 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_cop_lq",
+    "name": "Западносибирская К 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_cop_mq",
+    "name": "Западносибирская К 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_gsil_hq",
+    "name": "Западносибирская К 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_gsil_lq",
+    "name": "Западносибирская К 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_gsil_mq",
+    "name": "Западносибирская К 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_or_hq",
+    "name": "Западносибирская К 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_or_lq",
+    "name": "Западносибирская К 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_or_mq",
+    "name": "Западносибирская К 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_purp_hq",
+    "name": "Западносибирская К 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_purp_lq",
+    "name": "Западносибирская К 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_r_purp_mq",
+    "name": "Западносибирская К 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bl_hq",
+    "name": "Западносибирская К-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bl_lq",
+    "name": "Западносибирская К-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bl_mq",
+    "name": "Западносибирская К-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bra_hq",
+    "name": "Западносибирская К-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bra_lq",
+    "name": "Западносибирская К-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_bra_mq",
+    "name": "Западносибирская К-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_cop_hq",
+    "name": "Западносибирская К-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_cop_lq",
+    "name": "Западносибирская К-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_cop_mq",
+    "name": "Западносибирская К-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_gsil_hq",
+    "name": "Западносибирская К-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_gsil_lq",
+    "name": "Западносибирская К-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_gsil_mq",
+    "name": "Западносибирская К-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_or_hq",
+    "name": "Западносибирская К-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_or_lq",
+    "name": "Западносибирская К-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_or_mq",
+    "name": "Западносибирская К-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_purp_hq",
+    "name": "Западносибирская К-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_purp_lq",
+    "name": "Западносибирская К-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_r_purp_mq",
+    "name": "Западносибирская К-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bl_hq",
+    "name": "Западносибирская Ф 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bl_lq",
+    "name": "Западносибирская Ф 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bl_mq",
+    "name": "Западносибирская Ф 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bra_hq",
+    "name": "Западносибирская Ф 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bra_lq",
+    "name": "Западносибирская Ф 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_bra_mq",
+    "name": "Западносибирская Ф 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_cop_hq",
+    "name": "Западносибирская Ф 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_cop_lq",
+    "name": "Западносибирская Ф 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_cop_mq",
+    "name": "Западносибирская Ф 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_gsil_hq",
+    "name": "Западносибирская Ф 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_gsil_lq",
+    "name": "Западносибирская Ф 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_gsil_mq",
+    "name": "Западносибирская Ф 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_or_r_hq",
+    "name": "Западносибирская Ф 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_or_r_lq",
+    "name": "Западносибирская Ф 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_or_r_mq",
+    "name": "Западносибирская Ф 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_purp_hq",
+    "name": "Западносибирская Ф 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_purp_lq",
+    "name": "Западносибирская Ф 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_ws_purp_mq",
+    "name": "Западносибирская Ф 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bl_hq",
+    "name": "Западносибирская Ф-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bl_lq",
+    "name": "Западносибирская Ф-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bl_mq",
+    "name": "Западносибирская Ф-Б 004",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bra_hq",
+    "name": "Западносибирская Ф-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bra_lq",
+    "name": "Западносибирская Ф-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_bra_mq",
+    "name": "Западносибирская Ф-Б 001",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_cop_hq",
+    "name": "Западносибирская Ф-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_cop_lq",
+    "name": "Западносибирская Ф-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_cop_mq",
+    "name": "Западносибирская Ф-Б 002",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_gsil_hq",
+    "name": "Западносибирская Ф-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_gsil_lq",
+    "name": "Западносибирская Ф-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_gsil_mq",
+    "name": "Западносибирская Ф-Б 003",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_or_r_hq",
+    "name": "Западносибирская Ф-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_or_r_lq",
+    "name": "Западносибирская Ф-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_or_r_mq",
+    "name": "Западносибирская Ф-Б 005",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_purp_hq",
+    "name": "Западносибирская Ф-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_purp_lq",
+    "name": "Западносибирская Ф-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "hm_spoon_wsb_purp_mq",
+    "name": "Западносибирская Ф-Б 006",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "old_spoonlure",
+    "name": "Старая блесна",
+    "domain": "lure",
+    "brandHint": "Handmade"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "old_spinnerlure",
+    "name": "Старая вертушка",
+    "domain": "lure",
+    "brandHint": "soviet"
+  },
+  {
+    "type": "missing_public_name",
+    "hasImage": false,
+    "domain": "lure",
+    "bundle": "lures",
+    "systemId": "test_fly",
+    "prefabPath": "assets/gfx/lures/test/test_fly_4/model/test_fly.prefab"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2019",
+    "name": "Lynns Twister 30-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2020",
+    "name": "Lynns Twister 30-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2021",
+    "name": "Lynns Twister 30-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2022",
+    "name": "Lynns Twister 30-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2023",
+    "name": "Lynns Twister 30-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2024",
+    "name": "Lynns Twister 30-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2025",
+    "name": "Lynns Twister 30-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2026",
+    "name": "Lynns Twister 30-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2027",
+    "name": "Lynns Twister 30-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2028",
+    "name": "Lynns Twister 70-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2029",
+    "name": "Lynns Twister 70-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2030",
+    "name": "Lynns Twister 70-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2031",
+    "name": "Lynns Twister 70-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2032",
+    "name": "Lynns Twister 70-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2033",
+    "name": "Lynns Twister 70-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2034",
+    "name": "Lynns Twister 70-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2035",
+    "name": "Lynns Twister 70-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2036",
+    "name": "Lynns Twister 70-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2037",
+    "name": "Lynns Twister 110-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2038",
+    "name": "Lynns Twister 110-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2039",
+    "name": "Lynns Twister 110-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2040",
+    "name": "Lynns Twister 110-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2041",
+    "name": "Lynns Twister 110-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2042",
+    "name": "Lynns Twister 110-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2043",
+    "name": "Lynns Twister 110-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2044",
+    "name": "Lynns Twister 110-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_g_2045",
+    "name": "Lynns Twister 110-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1888",
+    "name": "Lynns Huge Minnow 120-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1889",
+    "name": "Lynns Huge Minnow 120-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1890",
+    "name": "Lynns Huge Minnow 120-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1891",
+    "name": "Lynns Huge Minnow 120-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1892",
+    "name": "Lynns Huge Minnow 120-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1893",
+    "name": "Lynns Huge Minnow 120-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1894",
+    "name": "Lynns Huge Minnow 120-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1895",
+    "name": "Lynns Huge Minnow 120-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1896",
+    "name": "Lynns Huge Minnow 120-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1897",
+    "name": "Lynns Huge Minnow 120-010",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1944",
+    "name": "Lynns Minnow 40-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1945",
+    "name": "Lynns Minnow 40-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1946",
+    "name": "Lynns Minnow 40-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1947",
+    "name": "Lynns Minnow 40-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1948",
+    "name": "Lynns Minnow 40-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1949",
+    "name": "Lynns Minnow 40-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1950",
+    "name": "Lynns Minnow 40-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1951",
+    "name": "Lynns Minnow 40-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1952",
+    "name": "Lynns Minnow 40-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1953",
+    "name": "Lynns Minnow 80-001",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1954",
+    "name": "Lynns Minnow 80-002",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1955",
+    "name": "Lynns Minnow 80-003",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1956",
+    "name": "Lynns Minnow 80-004",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1957",
+    "name": "Lynns Minnow 80-005",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1958",
+    "name": "Lynns Minnow 80-006",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1959",
+    "name": "Lynns Minnow 80-007",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1960",
+    "name": "Lynns Minnow 80-008",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "softplastic_m_1961",
+    "name": "Lynns Minnow 80-009",
+    "domain": "lure",
+    "brandHint": "lynns"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_lc_1631",
+    "name": "PS crank C1",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_lc_1632",
+    "name": "PS crank C2",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_lc_1633",
+    "name": "PS crank C3",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_lc_1634",
+    "name": "PS crank C4",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_lc_1635",
+    "name": "PS crank C5",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1624",
+    "name": "Humpy C1",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1625",
+    "name": "Humpy C2",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1626",
+    "name": "Humpy C3",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1627",
+    "name": "Humpy C4",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1628",
+    "name": "Humpy C5",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1629",
+    "name": "Humpy C6",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1630",
+    "name": "Humpy C7",
+    "domain": "lure",
+    "brandHint": "syberia"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1914",
+    "name": "Snatcher-S001",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1915",
+    "name": "Snatcher-S002",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1916",
+    "name": "Snatcher-S003",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1917",
+    "name": "Snatcher-S004",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1918",
+    "name": "Snatcher-S005",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1919",
+    "name": "Snatcher-S006",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1920",
+    "name": "Snatcher-S007",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1921",
+    "name": "Snatcher-S008",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1922",
+    "name": "Snatcher-S009",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1961",
+    "name": "Orig Walker-001",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1962",
+    "name": "Orig Walker-002",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1963",
+    "name": "Orig Walker-003",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1964",
+    "name": "Orig Walker-004",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1965",
+    "name": "Orig Walker-005",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1966",
+    "name": "Orig Walker-006",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_1967",
+    "name": "Orig Walker-007",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2024",
+    "name": "UL Popper-001",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2025",
+    "name": "UL Popper-002",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2026",
+    "name": "UL Popper-003",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2027",
+    "name": "UL Popper-004",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2028",
+    "name": "UL Popper-005",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "topwater_2029",
+    "name": "UL Popper-006",
+    "domain": "lure",
+    "brandHint": "ylin_uistin"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1752",
+    "name": "Terminator SD10-001",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1753",
+    "name": "Terminator SD10-002",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1754",
+    "name": "Terminator SD10-003",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1755",
+    "name": "Terminator SD10-004",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1756",
+    "name": "Terminator SD10-005",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1757",
+    "name": "Terminator SD10-006",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1758",
+    "name": "Terminator SD10-007",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1816",
+    "name": "Terminator SD14-001",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1817",
+    "name": "Terminator SD14-002",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1818",
+    "name": "Terminator SD14-003",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1819",
+    "name": "Terminator SD14-004",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1820",
+    "name": "Terminator SD14-005",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1821",
+    "name": "Terminator SD14-006",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  },
+  {
+    "type": "unknown_family",
+    "systemId": "plug_m_1822",
+    "name": "Terminator SD14-007",
+    "domain": "lure",
+    "brandHint": "zeiman"
+  }
+]

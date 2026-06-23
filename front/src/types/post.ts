@@ -17,6 +17,7 @@ export type CatchRow = {
     fishId: number;
     fishName: string;
     rarity: string;
+    baits: Array<{ id: number; name: string; kind: string }>;
 };
 
 export type MediaRow = {
@@ -36,6 +37,13 @@ export type PostVersion = {
     incomePerHour: number | null;
     waterbodyId: number | null;
     waterbodyName: string | null;
+    proposedSpotId: number | null;
+    mapX: number | null;
+    mapY: number | null;
+    gameCoordinateX: number | null;
+    gameCoordinateY: number | null;
+    baitMode: "common" | "per_fish";
+    commonBaits: Array<{ id: number; name: string; kind: string }>;
     catches: CatchRow[];
     media: MediaRow[];
 };
@@ -71,6 +79,7 @@ export type MyPostRow = {
 // Editor payload pieces
 export type CatchInput = {
     fishId: number;
+    baitIds: number[];
 };
 
 export type PostContentInput = {
@@ -81,6 +90,13 @@ export type PostContentInput = {
     income: number | null;
     fishingMinutes: number | null;
     catches: CatchInput[];
+    baitMode: "common" | "per_fish";
+    commonBaitIds: number[];
+    proposedSpotId: number | null;
+    mapX: number | null;
+    mapY: number | null;
+    gameCoordinateX: number | null;
+    gameCoordinateY: number | null;
     media: string[];
 };
 
@@ -129,7 +145,7 @@ export type ReactionSummary = {
     mine: 1 | -1 | 0;
 };
 
-export type NotificationType = "comment" | "post_approved" | "post_rejected" | "post_removed" | "moderation_new" | "report_new";
+export type NotificationType = "comment" | "post_approved" | "post_rejected" | "post_removed" | "moderation_new" | "report_new" | "map_submission_new" | "map_submission_approved" | "map_submission_rejected";
 
 export type NotificationRow = {
     id: number;

@@ -7,6 +7,11 @@
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "migrate": "tsx src/lib/migrations.ts",
+    "seed": "tsx src/lib/seeds.ts",
+    "catalog:dry-run": "tsx scripts/rf4-catalog-dry-run.ts",
+    "catalog:import": "tsx scripts/rf4-catalog-import.ts",
+    "fish-images:import": "tsx scripts/rf4-fish-images.ts",
+    "reels:import": "tsx scripts/rf4-reels-import.ts",
     "verify:admin-api": "tsx scripts/verify-admin-api.ts",
     "dev": "tsx watch src/index.ts"
   },

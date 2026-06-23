@@ -72,11 +72,19 @@ const actionLabels: Record<string, string> = {
     "upload.item-image": "Загрузка изображения предмета",
     "upload.item-model": "Загрузка 3D-модели предмета",
     "admin.fish.create": "Добавление рыбы",
+    "admin.fish.create_existing": "Добавление водоёма существующей рыбе",
+    "admin.fish.bulk_create": "Массовое добавление рыб",
     "admin.fish.update": "Изменение рыбы",
     "admin.fish.delete": "Удаление рыбы",
     "admin.waterbody.create": "Добавление водоёма",
     "admin.waterbody.update": "Изменение водоёма",
     "admin.waterbody.delete": "Удаление водоёма",
+    "admin.bait.create": "Добавление наживки",
+    "admin.bait.update": "Изменение наживки",
+    "admin.bait.delete": "Удаление наживки",
+    "admin.spot.create": "Добавление точки ловли",
+    "admin.spot.update": "Изменение точки ловли",
+    "admin.spot.delete": "Удаление точки ловли",
     "admin.reels.create": "Добавление катушки",
     "admin.reels.update": "Изменение катушки",
     "admin.reels.delete": "Удаление катушки",
@@ -108,6 +116,11 @@ const fieldLabels: Record<string, string> = {
     fishingMinutes: "время ловли",
     catches: "улов",
     media: "изображения",
+    photo: "фото",
+    trophyWeightGrams: "вес трофея",
+    rareTrophyWeightGrams: "вес редкого трофея",
+    kind: "тип",
+    isActive: "публичный статус",
 };
 
 function value(metadata: Record<string, unknown>, key: string) {
@@ -165,6 +178,7 @@ export function auditActionText(action: string) {
 
 export function auditSummary(log: ManagedAuditLog) {
     const actor = actorLabel(log);
+    const habitatsAdded = Number(value(log.metadata, "habitatsAdded")) || 0;
     const postId = numericId(log.metadata, "postId");
     const commentId = numericId(log.metadata, "commentId");
     const reportId = numericId(log.metadata, "reportId");
@@ -242,11 +256,21 @@ export function auditSummary(log: ManagedAuditLog) {
         case "upload.item-image": return `${actor} загрузил изображение предмета`;
         case "upload.item-model": return `${actor} загрузил 3D-модель предмета`;
         case "admin.fish.create": return `${actor} добавил рыбу${entityName(log)}`;
+        case "admin.fish.create_existing": return habitatsAdded
+            ? `${actor} выбрал уже существующую рыбу${entityName(log)} и добавил ей водоёмы (${habitatsAdded})`
+            : `${actor} попытался повторно добавить существующую рыбу${entityName(log)}`;
+        case "admin.fish.bulk_create": return `${actor} добавил несколько рыб${numericId(log.metadata, "count") ? ` (${numericId(log.metadata, "count")})` : ""}`;
         case "admin.fish.update": return `${actor} изменил рыбу${entityName(log)}`;
         case "admin.fish.delete": return `${actor} удалил рыбу${entityName(log)}`;
         case "admin.waterbody.create": return `${actor} добавил водоём${entityName(log)}`;
         case "admin.waterbody.update": return `${actor} изменил водоём${entityName(log)}`;
         case "admin.waterbody.delete": return `${actor} удалил водоём${entityName(log)}`;
+        case "admin.bait.create": return `${actor} добавил наживку${entityName(log)}`;
+        case "admin.bait.update": return `${actor} изменил наживку${entityName(log)}`;
+        case "admin.bait.delete": return `${actor} удалил наживку${entityName(log)}`;
+        case "admin.spot.create": return `${actor} добавил точку ловли${entityName(log)}`;
+        case "admin.spot.update": return `${actor} изменил точку ловли${entityName(log)}`;
+        case "admin.spot.delete": return `${actor} удалил точку ловли${entityName(log)}`;
         case "admin.reels.create": return `${actor} добавил катушку${entityName(log)}`;
         case "admin.reels.update": return `${actor} изменил катушку${entityName(log)}`;
         case "admin.reels.delete": return `${actor} удалил катушку${entityName(log)}`;
@@ -291,7 +315,7 @@ export function auditDetails(log: ManagedAuditLog) {
         email: "Email",
         image: "Аватар",
     };
-    const ignored = new Set(["body", "path", "url", "userId", "postId", "commentId", "reportId", "previousValue", "notificationIds", "query", "error", "kind"]);
+    const ignored = new Set(["body", "path", "url", "userId", "postId", "commentId", "reportId", "previousValue", "notificationIds", "query", "error", "kind", "name"]);
 
     if (typeof data.name === "string" && data.name.trim()) {
         details.push({ label: Object.hasOwn(body(log.metadata), "name") ? "Имя" : "Название", value: data.name });

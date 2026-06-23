@@ -1,0 +1,2372 @@
+[
+  {
+    "sourceName": "Rocket Jet SG80",
+    "catalogName": "Rocket Jet SG80",
+    "systemId": "bcr_6010",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Minister CS ES60",
+    "catalogName": "Minister CS ES60 Pearl",
+    "systemId": "bcr_5462",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Phantom Super",
+    "catalogName": "Phantom Super LWC20",
+    "systemId": "bcr_6013",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Rocket Jet SG70",
+    "catalogName": "Rocket Jet SG70",
+    "systemId": "bcr_6009",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Centauri ZC80",
+    "catalogName": "Centauri ZC80",
+    "systemId": "bcr_5079",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Centauri ZC70",
+    "catalogName": "Centauri ZC70",
+    "systemId": "bcr_5078",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Classic SG70",
+    "catalogName": "Classic SG70",
+    "systemId": "bcr_5975",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Monster LD60",
+    "catalogName": "ZM Monster LD60",
+    "systemId": "bcr_5366",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Minister NGT LD60",
+    "catalogName": "Minister NGT LD60",
+    "systemId": "bcr_5365",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Minister NGT LD50",
+    "catalogName": "Minister NGT LD50",
+    "systemId": "bcr_5364",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Minister CS LD60",
+    "catalogName": "Minister CS LD60 Blue",
+    "systemId": "bcr_5460",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Minister CS PG60",
+    "catalogName": "Minister CS PG60 Orange",
+    "systemId": "bcr_5458",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Minister CS SR60",
+    "catalogName": "Minister CS SR60 Green",
+    "systemId": "bcr_5459",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Minister CS SG60",
+    "catalogName": "Minister CS SG60 Red",
+    "systemId": "bcr_5456",
+    "method": "alias"
+  },
+  {
+    "sourceName": "ZM-3 Spear SG70",
+    "catalogName": "ZM-3 Spear SG70",
+    "systemId": "bcr_5362",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM Ranger Z70",
+    "catalogName": "ZM Ranger Z70",
+    "systemId": "bcr_5361",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM Ranger Z60",
+    "catalogName": "ZM Ranger Z60",
+    "systemId": "bcr_5360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Minister CS 60",
+    "catalogName": "Minister CS 60",
+    "systemId": "bcr_5455",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Imperial R605",
+    "catalogName": "Imperial R605",
+    "systemId": "bcr_5923",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-Steelness ZMS60",
+    "catalogName": "ZM-Steelness ZMS60",
+    "systemId": "bcr_5077",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-Steelness ZMS50",
+    "catalogName": "ZM-Steelness ZMS50",
+    "systemId": "bcr_5076",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SAL5000",
+    "catalogName": "SAL5000",
+    "systemId": "bcr_5452",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Billionare HV 60R",
+    "catalogName": "Billionaire H-Version 60R",
+    "systemId": "bcr_5048",
+    "method": "alias"
+  },
+  {
+    "sourceName": "ZM-4 Z60",
+    "catalogName": "ZM-4 Z60",
+    "systemId": "bcr_5072",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-4 Z-60 8-Years",
+    "catalogName": "ZM-4 60 8-Years",
+    "systemId": "bcr_5723",
+    "method": "alias"
+  },
+  {
+    "sourceName": "ZM-4 Z50",
+    "catalogName": "ZM-4 Z50",
+    "systemId": "bcr_5071",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-4 Z40",
+    "catalogName": "ZM-4 Z40",
+    "systemId": "bcr_5007",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-4 Z-40 8-Years",
+    "catalogName": "ZM-4 40 8-Years",
+    "systemId": "bcr_5717",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Castmaster  LGR1973",
+    "catalogName": "Castmaster LGR1973 ME",
+    "systemId": "bcr_5764",
+    "method": "alias"
+  },
+  {
+    "sourceName": "SteelHead 600-R",
+    "catalogName": "SteelHead 600-R",
+    "systemId": "bcr_5062",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SteelHead 500-R",
+    "catalogName": "SteelHead 500-R",
+    "systemId": "bcr_5011",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Billionare 60R",
+    "catalogName": "Billionaire 60R",
+    "systemId": "bcr_5070",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Billionare 50R",
+    "catalogName": "Billionaire 50R",
+    "systemId": "bcr_5008",
+    "method": "alias"
+  },
+  {
+    "sourceName": "ZM-3 Z60",
+    "catalogName": "ZM-3 Z60",
+    "systemId": "bcr_5075",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-3 Z50",
+    "catalogName": "ZM-3 Z50",
+    "systemId": "bcr_5074",
+    "method": "exact"
+  },
+  {
+    "sourceName": "ZM-3 Z40",
+    "catalogName": "ZM-3 Z40",
+    "systemId": "bcr_5073",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Minister 2000",
+    "catalogName": "Minister 2000",
+    "systemId": "bcr_5389",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Box ZBB60",
+    "catalogName": "Black Box ZBB60",
+    "systemId": "bcr_5081",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Box ZBB50",
+    "catalogName": "Black Box ZBB50",
+    "systemId": "bcr_5080",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Compact ZC60",
+    "catalogName": "Compact ZC60",
+    "systemId": "bcr_5120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Compact ZC50",
+    "catalogName": "Compact ZC50",
+    "systemId": "bcr_5082",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Compact ZC40",
+    "catalogName": "Compact ZC40",
+    "systemId": "bcr_5119",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Zodiac 500-R2",
+    "catalogName": "Zodiac 500-R2",
+    "systemId": "bcr_5198",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spider 400-R2",
+    "catalogName": "Spider 400-R2",
+    "systemId": "bcr_5197",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Magellan 400",
+    "catalogName": "Magellan 400",
+    "systemId": "bcr_5034",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Winner Round II",
+    "catalogName": "Winner Round II",
+    "systemId": "bcr_5196",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Furia 30000",
+    "catalogName": "Furia 30000",
+    "systemId": "spin_5691",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Turion SW 30000",
+    "catalogName": "Turion SW 30000",
+    "systemId": "spin_5274",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 30000",
+    "catalogName": "Venga II 30000",
+    "systemId": "spin_6046",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 30000 Super 9",
+    "catalogName": "Venga II 30000 Super 9",
+    "systemId": "spin_7002",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 30000 First Edition",
+    "catalogName": "Venga II 30000 First Edition",
+    "systemId": "spin_6047",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Goliaf 30000",
+    "catalogName": "Goliaf 30000",
+    "systemId": "spin_5326",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Furia 20000",
+    "catalogName": "Furia 20000",
+    "systemId": "spin_5690",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Turion SW 20000",
+    "catalogName": "Turion SW 20000",
+    "systemId": "spin_5273",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Goliaf 20000",
+    "catalogName": "Goliaf 20000",
+    "systemId": "spin_5325",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Turion SW 10000",
+    "catalogName": "Turion SW 10000",
+    "systemId": "spin_5272",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Furia 10000",
+    "catalogName": "Furia 10000",
+    "systemId": "spin_5689",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Furia 10000 SHS",
+    "catalogName": "Furia 10000 SHS",
+    "systemId": "spin_5688",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 10000",
+    "catalogName": "Venga II 10000",
+    "systemId": "spin_6045",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 10000 Super 9",
+    "catalogName": "Venga II 10000 Super 9",
+    "systemId": "spin_7001",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga Classic 10000",
+    "catalogName": "Venga Classic 10000",
+    "systemId": "spin_6041",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 10000 Final",
+    "catalogName": "Venga 10000 Final",
+    "systemId": "spin_6042",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Venga 10000 6 An.",
+    "catalogName": "Venga 10000 6-Anniversary",
+    "systemId": "spin_5928",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Goliaf 10000",
+    "catalogName": "Goliaf 10000",
+    "systemId": "spin_5324",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 10000S",
+    "catalogName": "Admiral II 10000S",
+    "systemId": "spin_6118",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 10000S Superior",
+    "catalogName": "Admiral II 10000S Superior",
+    "systemId": "spin_6038",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf Stark SP-SWG 100",
+    "catalogName": "Olaf Stark SP-SWG 100",
+    "systemId": "spin_5699",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Azimut 10000",
+    "catalogName": "Azimut 10000",
+    "systemId": "spin_5319",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara II 10000",
+    "catalogName": "Tagara II 10000",
+    "systemId": "spin_5679",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara II 10000 8-An.",
+    "catalogName": "Tagara II 10000 8-Anniversary",
+    "systemId": "spin_5719",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Tagara 10000",
+    "catalogName": "Tagara 10000",
+    "systemId": "spin_5152",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Turion SW 8000",
+    "catalogName": "Turion SW 8000",
+    "systemId": "spin_5271",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 8000 SHS",
+    "catalogName": "Venga II 8000 SHS",
+    "systemId": "spin_6044",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga 8000",
+    "catalogName": "Venga 8000",
+    "systemId": "spin_5139",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Megara 8000",
+    "catalogName": "Megara 8000",
+    "systemId": "c_spin_5382",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 88",
+    "catalogName": "Overlord 88",
+    "systemId": "spin_5817",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia II 8000 SHS",
+    "catalogName": "Bestia II 8000 SHS",
+    "systemId": "spin_5687",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia 8000",
+    "catalogName": "Bestia 8000",
+    "systemId": "spin_5137",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Azimut 8000",
+    "catalogName": "Azimut 8000",
+    "systemId": "spin_5318",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 8000S",
+    "catalogName": "Admiral II 8000S",
+    "systemId": "spin_6112",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral 8000s",
+    "catalogName": "Admiral 8000s",
+    "systemId": "spin_5222",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara II 8000",
+    "catalogName": "Tagara II 8000",
+    "systemId": "spin_5678",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara 8000",
+    "catalogName": "Tagara 8000",
+    "systemId": "spin_5151",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Silver 80",
+    "catalogName": "Silver 80",
+    "systemId": "spin_5451",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Everest III 8000S",
+    "catalogName": "Everest III 8000S",
+    "systemId": "spin_6090",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Everest II 8000s",
+    "catalogName": "Everest II 8000s",
+    "systemId": "spin_5118",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Everest-24 8000s",
+    "catalogName": "Everest-24 8000s",
+    "systemId": "spin_6006",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SG8000 Ultra Power",
+    "catalogName": "SG8000 Ultra Power",
+    "systemId": "spin_5700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evia 8000",
+    "catalogName": "Evia 8000",
+    "systemId": "c_spin_5383",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hunter 80S",
+    "catalogName": "Hunter 80S",
+    "systemId": "spin_7016",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hunter 80S 9-Years",
+    "catalogName": "Hunter 80S 9-Years",
+    "systemId": "spin_7005",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 8000",
+    "catalogName": "Natora 8000",
+    "systemId": "spin_5127",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 8000 Super Seven",
+    "catalogName": "Natora 8000 Super Seven",
+    "systemId": "spin_6020",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 8000",
+    "catalogName": "Velara 8000",
+    "systemId": "spin_6027",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 8000 Mystique",
+    "catalogName": "Velara 8000 Mystique",
+    "systemId": "spin_6029",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Caliber 80 SLC",
+    "catalogName": "Caliber 80 SLC",
+    "systemId": "c_spin_5387",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model 827",
+    "catalogName": "Model 827",
+    "systemId": "spin_5078",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga 8000 Super 7",
+    "catalogName": "Narga 8000 Super 7",
+    "systemId": "spin_6005",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga 8000",
+    "catalogName": "Narga 8000",
+    "systemId": "spin_5121",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Caliber HSV 80 SLC",
+    "catalogName": "Caliber HSV 80 SLC",
+    "systemId": "c_spin_5386",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Caliber HSV 80 SLC Raven",
+    "catalogName": "Caliber HSV 80 SLC Raven",
+    "systemId": "spin_5703",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Alfa 8000",
+    "catalogName": "Alfa 8000",
+    "systemId": "spin_5195",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Gold 80s",
+    "catalogName": "Gold 80s",
+    "systemId": "spin_5045",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Titan 8000",
+    "catalogName": "Titan 8000",
+    "systemId": "c_spin_5385",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga II 6000",
+    "catalogName": "Venga II 6000",
+    "systemId": "spin_6043",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga Classic 6000",
+    "catalogName": "Venga Classic 6000",
+    "systemId": "spin_6040",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 6000S",
+    "catalogName": "Admiral II 6000S",
+    "systemId": "spin_6111",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 6000S Superior",
+    "catalogName": "Admiral II 6000S Superior",
+    "systemId": "spin_6037",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral 6000s",
+    "catalogName": "Admiral 6000s",
+    "systemId": "spin_5221",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Chronica II 6000",
+    "catalogName": "Chronica II 6000",
+    "systemId": "spin_5680",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia II 6000 SHS",
+    "catalogName": "Bestia II 6000 SHS",
+    "systemId": "spin_5686",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Major ltd 2 6000s",
+    "catalogName": "Mayor LTD 2 6000s",
+    "systemId": "spin_5216",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Bestia 6000",
+    "catalogName": "Bestia 6000",
+    "systemId": "spin_5136",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf SP 60",
+    "catalogName": "Olaf SP 60",
+    "systemId": "spin_5698",
+    "method": "exact"
+  },
+  {
+    "sourceName": "P-Series 2 GS 60S",
+    "catalogName": "P-Series 2 GS 60S",
+    "systemId": "spin_5401",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Azimut 6000",
+    "catalogName": "Azimut 6000",
+    "systemId": "spin_5819",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara II 6000",
+    "catalogName": "Tagara II 6000",
+    "systemId": "spin_5677",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara 6000 Super 8",
+    "catalogName": "Tagara 6000 Super 8",
+    "systemId": "spin_5150_S8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 656",
+    "catalogName": "Overlord 656",
+    "systemId": "spin_6048",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara 6000",
+    "catalogName": "Tagara 6000",
+    "systemId": "spin_5150",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Z-Series 2 60S",
+    "catalogName": "Z-Series 2 60S",
+    "systemId": "spin_5344",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Full Metal 60",
+    "catalogName": "Full Metal 60",
+    "systemId": "spin_5453",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evia 6000",
+    "catalogName": "Evia 6000",
+    "systemId": "spin_6019",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Everest III 6000S",
+    "catalogName": "Everest III 6000S",
+    "systemId": "spin_6089",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hunter 60S",
+    "catalogName": "Hunter 60S",
+    "systemId": "spin_7015",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hunter 60S 9-Years",
+    "catalogName": "Hunter 60S 9-Years",
+    "systemId": "spin_7004",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon III 6000S",
+    "catalogName": "Horizon III 6000S",
+    "systemId": "spin_6087",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Everest II 6000s",
+    "catalogName": "Everest II 6000s",
+    "systemId": "spin_5117",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor GS 60S",
+    "catalogName": "Commandor GS 60S",
+    "systemId": "spin_5100",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 6000",
+    "catalogName": "Natora 6000",
+    "systemId": "spin_5126",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 6000 Supercarp",
+    "catalogName": "Natora 6000 Supercarp",
+    "systemId": "spin_6039",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 6000",
+    "catalogName": "Velara 6000",
+    "systemId": "spin_6026",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 6000 Mystique",
+    "catalogName": "Velara 6000 Mystique",
+    "systemId": "spin_6028",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga 6000",
+    "catalogName": "Narga 6000",
+    "systemId": "spin_5120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor 2 60S",
+    "catalogName": "Commandor 2 60S",
+    "systemId": "spin_5362",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Alfa 6000",
+    "catalogName": "Alfa 6000",
+    "systemId": "spin_5194",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Gold 60s",
+    "catalogName": "Gold 60s",
+    "systemId": "spin_5044",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulsar 6000",
+    "catalogName": "Pulsar 6000",
+    "systemId": "spin_5398",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sabre 60s",
+    "catalogName": "Sabre 60s",
+    "systemId": "spin_5066",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Cast 6000s",
+    "catalogName": "Super Cast 6000s",
+    "systemId": "c_spin_5384",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Proton 6000",
+    "catalogName": "Proton 6000",
+    "systemId": "spin_5187",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pride 6000S",
+    "catalogName": "Pride 6000S",
+    "systemId": "spin_5030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Adriatica 5000S",
+    "catalogName": "Adriatica 5000S",
+    "systemId": "spin_5027",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Chronica 6000",
+    "catalogName": "Chronica 6000",
+    "systemId": "spin_5369",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia 4000",
+    "catalogName": "Bestia 4000",
+    "systemId": "spin_5135",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral II 4000S",
+    "catalogName": "Admiral II 4000S",
+    "systemId": "spin_6110",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral 4000s",
+    "catalogName": "Admiral 4000s",
+    "systemId": "spin_5220",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara 4000",
+    "catalogName": "Tagara 4000",
+    "systemId": "spin_5149",
+    "method": "exact"
+  },
+  {
+    "sourceName": "P-Series 2 GS 40S",
+    "catalogName": "P-Series 2 GS 40S",
+    "systemId": "spin_5402",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Azimut 4000",
+    "catalogName": "Azimut 4000",
+    "systemId": "spin_5818",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Z-Series 2 40S",
+    "catalogName": "Z-Series 2 40S",
+    "systemId": "spin_5345",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Major ltd 2 4000s",
+    "catalogName": "Mayor LTD 2 4000s",
+    "systemId": "spin_5215",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Major 2 4000s",
+    "catalogName": "Mayor 2 4000s",
+    "systemId": "spin_5213",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Everest III 4000S",
+    "catalogName": "Everest III 4000S",
+    "systemId": "spin_6088",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hunter 40S",
+    "catalogName": "Hunter 40S HS",
+    "systemId": "spin_7014",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Everest II 4000s",
+    "catalogName": "Everest II 4000s",
+    "systemId": "spin_5116",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor GS 40S",
+    "catalogName": "Commandor GS 40S",
+    "systemId": "spin_5099",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 4000",
+    "catalogName": "Natora 4000",
+    "systemId": "spin_5125",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Conquest II 4000s",
+    "catalogName": "Conquest II 4000s",
+    "systemId": "spin_5317",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor 2 40S",
+    "catalogName": "Commandor 2 40S",
+    "systemId": "spin_5363",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga 4000",
+    "catalogName": "Narga 4000",
+    "systemId": "spin_5119",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 GSX 40S",
+    "catalogName": "Bird 2 GSX 40S",
+    "systemId": "spin_5225",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Alfa 4000",
+    "catalogName": "Alfa 4000",
+    "systemId": "spin_5193",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model De Luxe 430S",
+    "catalogName": "Model De Luxe 430S",
+    "systemId": "spin_5390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sabre 40s",
+    "catalogName": "Sabre 40s",
+    "systemId": "spin_5041",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon 2 4000s",
+    "catalogName": "Horizon 2 4000s",
+    "systemId": "spin_5069_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulsar 4000",
+    "catalogName": "Pulsar 4000",
+    "systemId": "spin_5399",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Proton 4000",
+    "catalogName": "Proton 4000",
+    "systemId": "spin_5186",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pride 4000S",
+    "catalogName": "Pride 4000S",
+    "systemId": "spin_5029",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hercules G2 40s",
+    "catalogName": "Hercules G2 40s",
+    "systemId": "spin_5360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element PRO 4000",
+    "catalogName": "Element PRO 4000",
+    "systemId": "spin_5184",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dragon 40s",
+    "catalogName": "Dragon 40s",
+    "systemId": "spin_5063",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element 4000",
+    "catalogName": "Element 4000",
+    "systemId": "spin_5180",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lagoon-HP 2 4000S",
+    "catalogName": "Lagoon-HP 2 4000S",
+    "systemId": "spin_5825",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lacerti-S 2 4000S",
+    "catalogName": "Lacerti-S 2 4000S",
+    "systemId": "spin_5357",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lacerti 2 4000S",
+    "catalogName": "Lacerti 2 4000S",
+    "systemId": "spin_5358",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lacerti-SX NG 4000",
+    "catalogName": "Lacerti-SX NG 4000",
+    "systemId": "spin_6102",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lacerti NG 4000",
+    "catalogName": "Lacerti NG 4000",
+    "systemId": "spin_6101",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aviator SP 3000 XHS",
+    "catalogName": "Aviator SP 3000 XHS",
+    "systemId": "spin_6093",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia II 3000 SHS",
+    "catalogName": "Bestia II 3000 SHS",
+    "systemId": "spin_5685",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf SP 30",
+    "catalogName": "Olaf SP 30",
+    "systemId": "spin_5697",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tagara II 3000 SHS",
+    "catalogName": "Tagara II 3000 SHS",
+    "systemId": "spin_5676",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia 3000",
+    "catalogName": "Bestia 3000",
+    "systemId": "spin_5134",
+    "method": "exact"
+  },
+  {
+    "sourceName": "P-Series 2 GS 30S",
+    "catalogName": "P-Series 2 GS 30S",
+    "systemId": "spin_5403",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mayor III 3000S + 9 Years",
+    "catalogName": "Mayor III 3000S 9 Years",
+    "systemId": "spin_6115_g",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Z-Series 2 30S",
+    "catalogName": "Z-Series 2 30S",
+    "systemId": "spin_5346",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mayor ltd 2 3000s",
+    "catalogName": "Mayor LTD 2 3000s",
+    "systemId": "spin_5214",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 3000",
+    "catalogName": "Natora 3000",
+    "systemId": "spin_5124",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 3000",
+    "catalogName": "Velara 3000",
+    "systemId": "spin_6025",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corsair 30S",
+    "catalogName": "Corsair 30S",
+    "systemId": "spin_5352",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon III 3000S",
+    "catalogName": "Horizon III 3000S",
+    "systemId": "spin_6086",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon III 3000S 9-Anniversary",
+    "catalogName": "Horizon III 3000S 9-Anniversary",
+    "systemId": "spin_7006",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor 2 30S",
+    "catalogName": "Commandor 2 30S",
+    "systemId": "spin_5364",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 GSX 30S",
+    "catalogName": "Bird 2 GSX 30S",
+    "systemId": "spin_5224",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Gold 30s",
+    "catalogName": "Gold 30s",
+    "systemId": "spin_5043",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 GS 30S",
+    "catalogName": "Bird 2 GS 30S",
+    "systemId": "spin_5227",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mosquito 2 3000s",
+    "catalogName": "Mosquito 2 3000s",
+    "systemId": "spin_5052_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon 2 3000s",
+    "catalogName": "Horizon 2 3000s",
+    "systemId": "spin_5068_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Meteor 30s",
+    "catalogName": "Meteor 30s",
+    "systemId": "spin_5217",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pegasus 30s",
+    "catalogName": "Pegasus 30s",
+    "systemId": "spin_5065",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dragon 30s",
+    "catalogName": "Dragon 30s",
+    "systemId": "spin_5037",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element PRO 3000",
+    "catalogName": "Element PRO 3000",
+    "systemId": "spin_5183",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Adriatica 3000S",
+    "catalogName": "Adriatica 3000S",
+    "systemId": "spin_5026",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element 3000",
+    "catalogName": "Element 3000",
+    "systemId": "spin_5179",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hydra G2 30s",
+    "catalogName": "Hydra G2 30s",
+    "systemId": "spin_5359",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lagoon 3000S",
+    "catalogName": "Lagoon 3000S",
+    "systemId": "spin_5022",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Libra 2 3000S",
+    "catalogName": "Libra 2 3000S",
+    "systemId": "spin_5823",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spark 2 3000S",
+    "catalogName": "Spark 2 3000S",
+    "systemId": "spin_5821",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aviator SP 2000 XHS",
+    "catalogName": "Aviator SP 2000 XHS",
+    "systemId": "spin_6092",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia II 2000 SHS",
+    "catalogName": "Bestia II 2000 SHS",
+    "systemId": "spin_5684",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3RS 20S",
+    "catalogName": "Overlord 3RS 20S",
+    "systemId": "spin_5425",
+    "method": "exact"
+  },
+  {
+    "sourceName": "JSX Inferno 20S",
+    "catalogName": "JSX Inferno 20S",
+    "systemId": "spin_5356",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3GS 20S",
+    "catalogName": "Overlord 3GS 20S",
+    "systemId": "spin_5423",
+    "method": "exact"
+  },
+  {
+    "sourceName": "JSX 20S",
+    "catalogName": "JSX 20S",
+    "systemId": "spin_5354",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Major III 2000S",
+    "catalogName": "Mayor III 2000S",
+    "systemId": "spin_6114",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Bestia 2000",
+    "catalogName": "Bestia 2000",
+    "systemId": "spin_5133",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3BS 20S",
+    "catalogName": "Overlord 3BS 20S",
+    "systemId": "spin_5421",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf SP 20",
+    "catalogName": "Olaf SP 20",
+    "systemId": "spin_5696",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3E 20S",
+    "catalogName": "Overlord 3E 20S",
+    "systemId": "spin_5419",
+    "method": "exact"
+  },
+  {
+    "sourceName": "P-Series 2 GS 20S",
+    "catalogName": "P-Series 2 GS 20S",
+    "systemId": "spin_5404",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral 2000s",
+    "catalogName": "Admiral 2000s",
+    "systemId": "spin_5219",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Z-Series 2 20S",
+    "catalogName": "Z-Series 2 20S",
+    "systemId": "spin_5347",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3B 20S",
+    "catalogName": "Overlord 3B 20S",
+    "systemId": "spin_5417",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Major 2 2000s",
+    "catalogName": "Mayor 2 2000s",
+    "systemId": "spin_5212",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Overlord 3 20S",
+    "catalogName": "Overlord 3 20S",
+    "systemId": "spin_5415",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3 20S 8-Years",
+    "catalogName": "Overlord 3 20S 8-Years",
+    "systemId": "spin_5724",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 2000",
+    "catalogName": "Natora 2000",
+    "systemId": "spin_5123",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corsair 20S",
+    "catalogName": "Corsair 20S",
+    "systemId": "spin_5351",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Commandor 2 20S",
+    "catalogName": "Commandor 2 20S",
+    "systemId": "spin_5365",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga 2000",
+    "catalogName": "Narga 2000",
+    "systemId": "spin_5268",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Conquest II 2000",
+    "catalogName": "Conquest II 2000s",
+    "systemId": "spin_5316",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Bird 2 GSX 20S",
+    "catalogName": "Bird 2 GSX 20S",
+    "systemId": "spin_5349",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon III 2000S",
+    "catalogName": "Horizon III 2000S",
+    "systemId": "spin_6085",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pelengas",
+    "catalogName": "Pelengas",
+    "systemId": "spinreel_pelengas",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pelengas 2017",
+    "catalogName": "Pelengas 2017",
+    "systemId": "spinreel_pelengas_2017",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pelengas 2025",
+    "catalogName": "Pelengas 2025",
+    "systemId": "spinreel_pelengas_2025",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pelengas 2026",
+    "catalogName": "Pelengas 26",
+    "systemId": "spinreel_pelengas_2026",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Alfa 2000",
+    "catalogName": "Alfa 2000",
+    "systemId": "spin_5192",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 20S",
+    "catalogName": "Bird 2 20S",
+    "systemId": "spin_5103_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon 2 2000s",
+    "catalogName": "Horizon 2 2000s",
+    "systemId": "spin_5001_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vyatka-2",
+    "catalogName": "Vyatka-2",
+    "systemId": "old_spinreel",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulsar 2000",
+    "catalogName": "Pulsar 2000",
+    "systemId": "spin_5400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sirius 20S",
+    "catalogName": "Sirius 20s",
+    "systemId": "spin_5040",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Proton 2000",
+    "catalogName": "Proton 2000",
+    "systemId": "spin_5185",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hercules G2 20s",
+    "catalogName": "Hercules G2 20s",
+    "systemId": "spin_5361",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pride 2000S",
+    "catalogName": "Pride 2000S",
+    "systemId": "spin_5028",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element PRO 2000",
+    "catalogName": "Element PRO 2000",
+    "systemId": "spin_5182",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element 2000",
+    "catalogName": "Element 2000",
+    "systemId": "spin_5178",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lagoon-HP 2 2000S",
+    "catalogName": "Lagoon-HP 2 2000S",
+    "systemId": "spin_5824",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hydra Smart 2 25s",
+    "catalogName": "Hydra Smart 2 25S",
+    "systemId": "spin_5826",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Libra 2 2000S",
+    "catalogName": "Libra 2 2000S",
+    "systemId": "spin_5822",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spark 2 2000S",
+    "catalogName": "Spark 2 2000S",
+    "systemId": "spin_5820",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aviator SP 1000 XHS",
+    "catalogName": "Aviator SP 1000 XHS",
+    "systemId": "spin_6091",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aviator SP 1000 XHS 9-Years",
+    "catalogName": "Aviator SP 1000 XHS 9-Years",
+    "systemId": "spin_7003",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia II 1000 SHS",
+    "catalogName": "Bestia II 1000 SHS",
+    "systemId": "spin_5683",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3RS 10S",
+    "catalogName": "Overlord 3RS 10S",
+    "systemId": "spin_5424",
+    "method": "exact"
+  },
+  {
+    "sourceName": "JSX Inferno 10S",
+    "catalogName": "JSX Inferno 10S",
+    "systemId": "spin_5355",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3GS 10S",
+    "catalogName": "Overlord 3GS 10S",
+    "systemId": "spin_5422",
+    "method": "exact"
+  },
+  {
+    "sourceName": "JSX 10S",
+    "catalogName": "JSX 10S",
+    "systemId": "spin_5353",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Major III 1000S",
+    "catalogName": "Mayor III 1000S",
+    "systemId": "spin_6113",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Overlord 3BS 10S",
+    "catalogName": "Overlord 3BS 10S",
+    "systemId": "spin_5420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bestia 1000",
+    "catalogName": "Bestia 1000",
+    "systemId": "spin_5132",
+    "method": "exact"
+  },
+  {
+    "sourceName": "P-Series 2 GS 10S",
+    "catalogName": "P-Series 2 GS 10S",
+    "systemId": "spin_5405",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3E 10S",
+    "catalogName": "Overlord 3E 10S",
+    "systemId": "spin_5418",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf SP 10",
+    "catalogName": "Olaf SP 10",
+    "systemId": "spin_5695",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Admiral 1000s",
+    "catalogName": "Admiral 1000s",
+    "systemId": "spin_5218",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Z-Series 2 10S",
+    "catalogName": "Z-Series 2 10S",
+    "systemId": "spin_5348",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3B 10S",
+    "catalogName": "Overlord 3B 10S",
+    "systemId": "spin_5416",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Overlord 3 10S",
+    "catalogName": "Overlord 3 10S",
+    "systemId": "spin_5414",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Natora 1000",
+    "catalogName": "Natora 1000",
+    "systemId": "spin_5122",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Velara 1000",
+    "catalogName": "Velara 1000",
+    "systemId": "spin_6024",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corsair 10S",
+    "catalogName": "Corsair 10S",
+    "systemId": "spin_5350",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Horizon III 1000S",
+    "catalogName": "Horizon III 1000S",
+    "systemId": "spin_6084",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fisher MT10",
+    "catalogName": "Fisher MT10",
+    "systemId": "spin_5765",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 GSX 10S",
+    "catalogName": "Bird 2 GSX 10S",
+    "systemId": "spin_5223",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Alfa 1000",
+    "catalogName": "Alfa 1000",
+    "systemId": "spin_5191",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bird 2 GS 10S",
+    "catalogName": "Bird 2 GS 10S",
+    "systemId": "spin_5226",
+    "method": "exact"
+  },
+  {
+    "sourceName": "EasySpin 1000s",
+    "catalogName": "EasySpin 1000s",
+    "systemId": "spin_5051",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pegasus 10s",
+    "catalogName": "Pegasus 10s",
+    "systemId": "spin_5039",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element PRO 1000",
+    "catalogName": "Element PRO 1000",
+    "systemId": "spin_5181",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Element 1000",
+    "catalogName": "Element 1000",
+    "systemId": "spin_5177",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lagoon 1000S",
+    "catalogName": "Lagoon 1000S",
+    "systemId": "spin_5023",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Electro Raptor 40",
+    "catalogName": "Electro Raptor 40",
+    "systemId": "elcon_5969",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Electro Raptor 20",
+    "catalogName": "Electro Raptor 20",
+    "systemId": "elcon_5968",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Borealica 40DS",
+    "catalogName": "Borealica 40 DS",
+    "systemId": "conv_5972",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Borealica 30DS",
+    "catalogName": "Borealica 30 DS",
+    "systemId": "conv_5313",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Borealica 20DS",
+    "catalogName": "Borealica 20 DS",
+    "systemId": "conv_5312",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Imperial C40 2S",
+    "catalogName": "Imperial C 40 2S",
+    "systemId": "conv_5174",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Triumph 30 2S",
+    "catalogName": "Triumph 30 2S",
+    "systemId": "conv_5411",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Triumph 30 2S 8-An.",
+    "catalogName": "Triumph 30 2S 8-Anniversary",
+    "systemId": "conv_5718",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Triumph 20 2S",
+    "catalogName": "Triumph 20 2S",
+    "systemId": "conv_5410",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Triumph 10 2S",
+    "catalogName": "Triumph 10 2S",
+    "systemId": "conv_5409",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga C 40 2S",
+    "catalogName": "Venga C 40 2S",
+    "systemId": "conv_5173",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga C 40 2S 9-An.",
+    "catalogName": "Venga C 40 2S 9-Anniversary",
+    "systemId": "conv_7008",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Venga C 30 2S",
+    "catalogName": "Venga C 30 2S",
+    "systemId": "conv_5172",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Venga C 20 2S",
+    "catalogName": "Venga C 20 2S",
+    "systemId": "conv_5171",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Albacore 40 DS",
+    "catalogName": "Albacore 40 DS",
+    "systemId": "conv_5310",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Albacore 20",
+    "catalogName": "Albacore 20",
+    "systemId": "conv_5309",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Taiga 40 2S",
+    "catalogName": "Taiga LTD C 40 2S",
+    "systemId": "conv_5170",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Taiga 20 2S",
+    "catalogName": "Taiga LTD C 20 2S",
+    "systemId": "conv_5169",
+    "method": "alias"
+  },
+  {
+    "sourceName": "California 40",
+    "catalogName": "California 40",
+    "systemId": "conv_5993",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tongar 2Gen 30 DS",
+    "catalogName": "Tongar 2Gen 30 DS",
+    "systemId": "conv_6105",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tongar 2Gen 20 DS",
+    "catalogName": "Tongar 2Gen 20 DS",
+    "systemId": "conv_6104",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tongar 2Gen 20",
+    "catalogName": "Tongar 2Gen 20",
+    "systemId": "conv_6103",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tera L-LD 40",
+    "catalogName": "Tera L-LD 40",
+    "systemId": "conv_5168",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tera L-LD 30",
+    "catalogName": "Tera L-LD 30",
+    "systemId": "conv_5167",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tera L-LD 20",
+    "catalogName": "Tera L-LD 20",
+    "systemId": "conv_5166",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardinal 30 2S",
+    "catalogName": "Cardinal 30 2S",
+    "systemId": "conv_5382",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardinal 30",
+    "catalogName": "Cardinal 30",
+    "systemId": "conv_5381",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardinal 20 2S",
+    "catalogName": "Cardinal 20 2S",
+    "systemId": "conv_5380",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardinal 20",
+    "catalogName": "Cardinal 20",
+    "systemId": "conv_5379",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardinal 10",
+    "catalogName": "Cardinal 10",
+    "systemId": "conv_5378",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palomar 30",
+    "catalogName": "Palomar 30",
+    "systemId": "conv_5304",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palomar 20",
+    "catalogName": "Palomar 20",
+    "systemId": "conv_5303",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palomar 10",
+    "catalogName": "Palomar 10",
+    "systemId": "conv_5302",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tera C-LW 40",
+    "catalogName": "Tera С-LW 40",
+    "systemId": "conv_5165",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Tera C-LW 30LC",
+    "catalogName": "Tera С-LW 30LC",
+    "systemId": "conv_5164",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Tera C-LW 30",
+    "catalogName": "Tera С-LW 30",
+    "systemId": "conv_5163",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Tera C-LW 20",
+    "catalogName": "Tera С-LW 20",
+    "systemId": "conv_5162",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Billionaire CNV 30 MS",
+    "catalogName": "Billionaire CNV 30 MS",
+    "systemId": "conv_5392",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Billionaire CNV 20",
+    "catalogName": "Billionaire CNV 20",
+    "systemId": "conv_5391",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Billionaire CNV 10",
+    "catalogName": "Billionaire CNV 10",
+    "systemId": "conv_5390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Taiga C 40",
+    "catalogName": "Taiga C 40",
+    "systemId": "conv_5161",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Taiga C 30",
+    "catalogName": "Taiga C 30",
+    "systemId": "conv_5160",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Taiga C 30 2S 7-An.",
+    "catalogName": "Taiga C 30 2S 7-Anniversary",
+    "systemId": "conv_6015",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Taiga C 20",
+    "catalogName": "Taiga C 20",
+    "systemId": "conv_5159",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rigal 20 2S",
+    "catalogName": "Rigal 20 2S",
+    "systemId": "conv_5377",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Oriental 30",
+    "catalogName": "Oriental 30",
+    "systemId": "conv_5301",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Oriental Noble F30",
+    "catalogName": "Oriental Noble F30",
+    "systemId": "conv_5708",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Oriental 20",
+    "catalogName": "Oriental 20",
+    "systemId": "conv_5300",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Oriental Noble F20",
+    "catalogName": "Oriental Noble F20",
+    "systemId": "conv_5706",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SteelHead C-30",
+    "catalogName": "SteelHead C-30",
+    "systemId": "conv_5397",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SteelHead C-20",
+    "catalogName": "SteelHead C-20",
+    "systemId": "conv_5396",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SteelHead C-10",
+    "catalogName": "SteelHead C-10",
+    "systemId": "conv_5395",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Isinga C-LW 30",
+    "catalogName": "Isinga C-LW 30",
+    "systemId": "conv_5157",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Isinga C-LW 20",
+    "catalogName": "Isinga C-LW 20",
+    "systemId": "conv_5155",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Isinga C-LW 10",
+    "catalogName": "Isinga C-LW 10",
+    "systemId": "conv_5153",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Argus 30",
+    "catalogName": "Argus 30",
+    "systemId": "conv_5299",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Argus 20",
+    "catalogName": "Argus 20",
+    "systemId": "conv_5297",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Argus 10",
+    "catalogName": "Argus 10",
+    "systemId": "conv_5296",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Halibut 20 2S",
+    "catalogName": "Halibut 20 2S",
+    "systemId": "conv_5376",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Halibut 20",
+    "catalogName": "Halibut 20",
+    "systemId": "conv_5375",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Altitude 20 DLC",
+    "catalogName": "Altitude 20 DLC",
+    "systemId": "conv_5229",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Altitude 10 DLC",
+    "catalogName": "Altitude 10 DLC",
+    "systemId": "conv_5228",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Hamra C-LW 30",
+    "catalogName": "Hamra С-LW 30",
+    "systemId": "conv_5148",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Hamra C-LW 20",
+    "catalogName": "Hamra С-LW 20",
+    "systemId": "conv_5146",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Hamra C-LW 10",
+    "catalogName": "Hamra С-LW 10",
+    "systemId": "conv_5145",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Seagull 30",
+    "catalogName": "Seagull 30",
+    "systemId": "conv_5371",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Seagull 20",
+    "catalogName": "Seagull 20",
+    "systemId": "conv_5370",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Narga C-LW 30",
+    "catalogName": "Narga С-LW 30",
+    "systemId": "conv_5144",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Narga C-LW 20",
+    "catalogName": "Narga С-LW 20",
+    "systemId": "conv_5143",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Narga C-LW 10",
+    "catalogName": "Narga С-LW 10",
+    "systemId": "conv_5142",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Simplex 400",
+    "catalogName": "Simplex 400",
+    "systemId": "conv_5369",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Simplex 300",
+    "catalogName": "Simplex 300",
+    "systemId": "conv_5367",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Simplex 200",
+    "catalogName": "Simplex 200",
+    "systemId": "conv_5366",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Zodiac С-20",
+    "catalogName": "Zodiac C-20",
+    "systemId": "conv_5394",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Zodiac С-10",
+    "catalogName": "Zodiac C-10",
+    "systemId": "conv_5393",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Winner Trolling 30",
+    "catalogName": "Winner Trolling 30",
+    "systemId": "conv_5210",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Winner Trolling 20",
+    "catalogName": "Winner Trolling 20",
+    "systemId": "conv_5209",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Winner Trolling 10",
+    "catalogName": "Winner Trolling 10",
+    "systemId": "conv_5208",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series ULX LP-R",
+    "catalogName": "Jet-Series ULX LP-R",
+    "systemId": "bclp_5380",
+    "method": "exact"
+  },
+  {
+    "sourceName": "JSX Inferno LP-R",
+    "catalogName": "JSX Inferno LP-R",
+    "systemId": "bclp_5358",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series JSXHS-R",
+    "catalogName": "Jet-Series JSXHS-R",
+    "systemId": "bclp_5103",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series JSX-R",
+    "catalogName": "Jet-Series JSX-R",
+    "systemId": "bclp_5004",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Polestar ELT LP-R",
+    "catalogName": "Polestar ELT LP-R",
+    "systemId": "bclp_5379",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Skipper LP-R HS",
+    "catalogName": "Skipper LP-R HS",
+    "systemId": "bclp_5675",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Magma XHS-LP",
+    "catalogName": "Magma XHS-LP",
+    "systemId": "bclp_5701",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Magma XHS-LP 9-Years",
+    "catalogName": "Magma XHS-LP 9-Years",
+    "systemId": "bclp_7007",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Bullet LP HS-R",
+    "catalogName": "Jet-Bullet LP HS-R",
+    "systemId": "bclp_5357",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Olaf HS-LP",
+    "catalogName": "Olaf HS-LP",
+    "systemId": "bclp_5700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series JSGHS-R",
+    "catalogName": "Jet-Series JSGHS-R",
+    "systemId": "bclp_5091",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series JSG-R",
+    "catalogName": "Jet-Series JSG-R",
+    "systemId": "bclp_5090",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pillar 2 TPC-R-HS",
+    "catalogName": "Pillar 2 TPC-R-HS",
+    "systemId": "bclp_5331",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pillar 2 TPC-R",
+    "catalogName": "Pillar 2 TPC-R",
+    "systemId": "bclp_5330",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Zero GS ZG-R",
+    "catalogName": "Zero GS ZG-R",
+    "systemId": "bclp_5088",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mayor 2 TMC-R",
+    "catalogName": "Mayor 2 TMC-R",
+    "systemId": "bclp_5406",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Jet-Series JS-R",
+    "catalogName": "Jet-Series JS-R",
+    "systemId": "bclp_5089",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Zero 2 Z-R",
+    "catalogName": "Zero 2 Z-R",
+    "systemId": "bclp_5335",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Zero 2 ZHS-R",
+    "catalogName": "Zero 2 ZHS-R",
+    "systemId": "bclp_5336",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Alfa Pro LP",
+    "catalogName": "Alfa Pro LP",
+    "systemId": "bclp_5670",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pro Bird 2 MS-R",
+    "catalogName": "Pro Bird 2 MS-R",
+    "systemId": "bclp_5334",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spectrum TSH-R",
+    "catalogName": "Spectrum TSH-R",
+    "systemId": "bclp_5329",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Silver Bird 2 LS-R",
+    "catalogName": "Silver Bird 2 LS-R",
+    "systemId": "bclp_5333",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Charger 2 TC-R",
+    "catalogName": "Charger 2 TC-R",
+    "systemId": "bclp_5328",
+    "method": "exact"
+  },
+  {
+    "sourceName": "T-Tech STT-HSR",
+    "catalogName": "T-Tech STT-HSR",
+    "systemId": "bclp_5067",
+    "method": "exact"
+  },
+  {
+    "sourceName": "T-Tech STT-R",
+    "catalogName": "T-Tech STT-R",
+    "systemId": "bclp_5033",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Nitro 2 TN-R",
+    "catalogName": "Nitro 2 TN-R",
+    "systemId": "bclp_5327",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Thunderbolt SSP HS-R",
+    "catalogName": "Thunderbolt SSP HS-R",
+    "systemId": "bclp_5343",
+    "method": "exact"
+  },
+  {
+    "sourceName": "SportPro X2 MS-R",
+    "catalogName": "SportPro X2 MS-R",
+    "systemId": "bclp_5342",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Bird 2 LS-R",
+    "catalogName": "Black Bird 2 LS-R",
+    "systemId": "bclp_5332",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Riva 2 MS-R",
+    "catalogName": "Riva 2 MS-R",
+    "systemId": "bclp_5341",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Energy SNB-R",
+    "catalogName": "Energy SNB-R",
+    "systemId": "bclp_5031",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Winner NG LP-HS",
+    "catalogName": "Winner NG LP-HS",
+    "systemId": "bclp_6100",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Opyimus",
+    "catalogName": "Optimus",
+    "systemId": "bclp_5339",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Profisher",
+    "catalogName": "Profisher",
+    "systemId": "bclp_5338",
+    "method": "exact"
+  }
+]

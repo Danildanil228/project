@@ -7,4 +7,16 @@ export type Fish = {
     name: string;
     rarity: FishRarity;
     photo: string | null;
+    trophyWeightGrams: number | null;
+    rareTrophyWeightGrams: number | null;
+    waterbodies: Array<{ id: number; name: string }>;
+};
+
+export type FishInput = {
+    name: string;
+    rarity: FishRarity;
+    photo: string | null;
+    waterbodyIds: number[];
+    trophyWeightGrams: number;
+    rareTrophyWeightGrams: number;
 };

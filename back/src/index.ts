@@ -17,7 +17,11 @@ import { postsRouter } from './routes/posts';
 import { engagementRouter } from './routes/engagement';
 import { reportsRouter } from './routes/reports';
 import { notificationsRouter } from './routes/notifications';
+import { baitsRouter } from './routes/baits';
+import { spotsRouter } from './routes/spots';
 import { auditRequestContext } from './middleware/audit-request';
+import { mapSubmissionsRouter } from './routes/map-submissions';
+import { postMapLinkingEnabled } from './lib/features';
 
 dotenv.config();
 
@@ -70,6 +74,9 @@ app.use('/api/reels', createItemsRouter('reels'));
 app.use('/api/rods', createItemsRouter('rods'));
 app.use('/api/fish', fishRouter);
 app.use('/api/waterbodies', waterbodiesRouter);
+app.use('/api/baits', baitsRouter);
+app.use('/api/spots', spotsRouter);
+if (postMapLinkingEnabled) app.use('/api/map-submissions', mapSubmissionsRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/posts', engagementRouter);
 app.use('/api/reports', reportsRouter);

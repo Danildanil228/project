@@ -4,6 +4,7 @@ import { useConfirmDialog } from "../components/ConfirmDialog";
 import { mediaUrl } from "../lib/items-api";
 import { approvePost, claimPost, listModerationQueue, rejectPost, releasePost, removeModeratedPost } from "../lib/posts-api";
 import { reportsOpenCount } from "../lib/engagement-api";
+import { postMapLinkingEnabled } from "../lib/features";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import type { ModerationQueueRow } from "../types/post";
 import { formatDate, getErrorMessage, hasElevatedUserAccess } from "../utils/admin-format";
@@ -151,9 +152,12 @@ export function ModerationQueuePage({ currentUser, adminContext, onOpenAuthModal
                     <h2 className="text-2xl font-bold">Очередь постов</h2>
                     <p className="text-muted-foreground">Возьмите пост в работу, чтобы одобрить, отклонить или отредактировать. «Захват» снимается автоматически через 20 минут бездействия.</p>
                 </div>
-                <Link to="/moderation/reports" className="rounded-lg border border-border px-4 py-2 text-sm font-bold hover:border-primary">
-                    Жалобы{openReports > 0 && <span className="ml-1 rounded bg-destructive px-1.5 text-xs text-destructive-foreground">{openReports}</span>}
-                </Link>
+                <div className="flex flex-wrap gap-2">
+                    {postMapLinkingEnabled && <Link to="/moderation/map" className="rounded-lg border border-border px-4 py-2 text-sm font-bold hover:border-primary">Точки из постов</Link>}
+                    <Link to="/moderation/reports" className="rounded-lg border border-border px-4 py-2 text-sm font-bold hover:border-primary">
+                        Жалобы{openReports > 0 && <span className="ml-1 rounded bg-destructive px-1.5 text-xs text-destructive-foreground">{openReports}</span>}
+                    </Link>
+                </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">

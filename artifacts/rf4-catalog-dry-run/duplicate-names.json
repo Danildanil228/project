@@ -1,0 +1,2141 @@
+[
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_bra_hq",
+      "hm_spinner_n1_bra_lq",
+      "hm_spinner_n1_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_cop_hq",
+      "hm_spinner_n1_cop_lq",
+      "hm_spinner_n1_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_gsil_hq",
+      "hm_spinner_n1_gsil_lq",
+      "hm_spinner_n1_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_bl_hq",
+      "hm_spinner_n1_bl_lq",
+      "hm_spinner_n1_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_or_r_hq",
+      "hm_spinner_n1_or_r_lq",
+      "hm_spinner_n1_or_r_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №1 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n1_purp_hq",
+      "hm_spinner_n1_purp_lq",
+      "hm_spinner_n1_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_bra_hq",
+      "hm_spinner_n3_bra_lq",
+      "hm_spinner_n3_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_cop_hq",
+      "hm_spinner_n3_cop_lq",
+      "hm_spinner_n3_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_gsil_hq",
+      "hm_spinner_n3_gsil_lq",
+      "hm_spinner_n3_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_bl_hq",
+      "hm_spinner_n3_bl_lq",
+      "hm_spinner_n3_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_or_r_hq",
+      "hm_spinner_n3_or_r_lq",
+      "hm_spinner_n3_or_r_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Вращалка №3 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spinner_n3_purp_hq",
+      "hm_spinner_n3_purp_lq",
+      "hm_spinner_n3_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_bra_hq",
+      "hm_spoon_ws_r_bra_lq",
+      "hm_spoon_ws_r_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_cop_hq",
+      "hm_spoon_ws_r_cop_lq",
+      "hm_spoon_ws_r_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_gsil_hq",
+      "hm_spoon_ws_r_gsil_lq",
+      "hm_spoon_ws_r_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_bl_hq",
+      "hm_spoon_ws_r_bl_lq",
+      "hm_spoon_ws_r_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_or_hq",
+      "hm_spoon_ws_r_or_lq",
+      "hm_spoon_ws_r_or_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_r_purp_hq",
+      "hm_spoon_ws_r_purp_lq",
+      "hm_spoon_ws_r_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_bra_hq",
+      "hm_spoon_wsb_r_bra_lq",
+      "hm_spoon_wsb_r_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_cop_hq",
+      "hm_spoon_wsb_r_cop_lq",
+      "hm_spoon_wsb_r_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_gsil_hq",
+      "hm_spoon_wsb_r_gsil_lq",
+      "hm_spoon_wsb_r_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_bl_hq",
+      "hm_spoon_wsb_r_bl_lq",
+      "hm_spoon_wsb_r_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_or_hq",
+      "hm_spoon_wsb_r_or_lq",
+      "hm_spoon_wsb_r_or_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская К-Б 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_r_purp_hq",
+      "hm_spoon_wsb_r_purp_lq",
+      "hm_spoon_wsb_r_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_bra_hq",
+      "hm_spoon_ws_bra_lq",
+      "hm_spoon_ws_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_cop_hq",
+      "hm_spoon_ws_cop_lq",
+      "hm_spoon_ws_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_gsil_hq",
+      "hm_spoon_ws_gsil_lq",
+      "hm_spoon_ws_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_bl_hq",
+      "hm_spoon_ws_bl_lq",
+      "hm_spoon_ws_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_or_r_hq",
+      "hm_spoon_ws_or_r_lq",
+      "hm_spoon_ws_or_r_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_ws_purp_hq",
+      "hm_spoon_ws_purp_lq",
+      "hm_spoon_ws_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 001",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_bra_hq",
+      "hm_spoon_wsb_bra_lq",
+      "hm_spoon_wsb_bra_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 002",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_cop_hq",
+      "hm_spoon_wsb_cop_lq",
+      "hm_spoon_wsb_cop_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 003",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_gsil_hq",
+      "hm_spoon_wsb_gsil_lq",
+      "hm_spoon_wsb_gsil_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 004",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_bl_hq",
+      "hm_spoon_wsb_bl_lq",
+      "hm_spoon_wsb_bl_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 005",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_or_r_hq",
+      "hm_spoon_wsb_or_r_lq",
+      "hm_spoon_wsb_or_r_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Западносибирская Ф-Б 006",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_wsb_purp_hq",
+      "hm_spoon_wsb_purp_lq",
+      "hm_spoon_wsb_purp_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Московская №2",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_mos_hq",
+      "hm_spoon_mos_lq",
+      "hm_spoon_mos_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Нижневолжская окуневая",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_nv_pe_hq",
+      "hm_spoon_nv_pe_lq",
+      "hm_spoon_nv_pe_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Нижневолжская щучья",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_nv_pi_hq",
+      "hm_spoon_nv_pi_lq",
+      "hm_spoon_nv_pi_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Новгородская №2",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_nov_hq",
+      "hm_spoon_nov_lq",
+      "hm_spoon_nov_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Поролоновая рыбка 001",
+    "count": 3,
+    "systemIds": [
+      "hm_foamr_80yellow_hq",
+      "hm_foamr_80yellow_lq",
+      "hm_foamr_80yellow_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Поролоновая рыбка 002",
+    "count": 3,
+    "systemIds": [
+      "hm_foamr_80red_hq",
+      "hm_foamr_80red_lq",
+      "hm_foamr_80red_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Поролоновая рыбка 003",
+    "count": 3,
+    "systemIds": [
+      "hm_foamr_80green_hq",
+      "hm_foamr_80green_lq",
+      "hm_foamr_80green_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Поролоновая рыбка 004",
+    "count": 3,
+    "systemIds": [
+      "hm_foamr_80black_hq",
+      "hm_foamr_80black_lq",
+      "hm_foamr_80black_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Поролоновая рыбка 005",
+    "count": 3,
+    "systemIds": [
+      "hm_foamr_80blue_hq",
+      "hm_foamr_80blue_lq",
+      "hm_foamr_80blue_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Сердобская окуневая",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_s_pe_hq",
+      "hm_spoon_s_pe_lq",
+      "hm_spoon_s_pe_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Сердобская щучья",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_s_pi_hq",
+      "hm_spoon_s_pi_lq",
+      "hm_spoon_s_pi_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Судаковая №2",
+    "count": 3,
+    "systemIds": [
+      "hm_spoon_sud_hq",
+      "hm_spoon_sud_lq",
+      "hm_spoon_sud_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_001_hq",
+      "hm_crank_130f_001_lq",
+      "hm_crank_130f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_002_hq",
+      "hm_crank_130f_002_lq",
+      "hm_crank_130f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_003_hq",
+      "hm_crank_130f_003_lq",
+      "hm_crank_130f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_004_hq",
+      "hm_crank_130f_004_lq",
+      "hm_crank_130f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_005_hq",
+      "hm_crank_130f_005_lq",
+      "hm_crank_130f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 130F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_130f_006_hq",
+      "hm_crank_130f_006_lq",
+      "hm_crank_130f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_001_hq",
+      "hm_crank_50f_001_lq",
+      "hm_crank_50f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_002_hq",
+      "hm_crank_50f_002_lq",
+      "hm_crank_50f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_003_hq",
+      "hm_crank_50f_003_lq",
+      "hm_crank_50f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_004_hq",
+      "hm_crank_50f_004_lq",
+      "hm_crank_50f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_005_hq",
+      "hm_crank_50f_005_lq",
+      "hm_crank_50f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 50F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_50f_006_hq",
+      "hm_crank_50f_006_lq",
+      "hm_crank_50f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_001_hq",
+      "hm_crank_65f_001_lq",
+      "hm_crank_65f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_002_hq",
+      "hm_crank_65f_002_lq",
+      "hm_crank_65f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_003_hq",
+      "hm_crank_65f_003_lq",
+      "hm_crank_65f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_004_hq",
+      "hm_crank_65f_004_lq",
+      "hm_crank_65f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_005_hq",
+      "hm_crank_65f_005_lq",
+      "hm_crank_65f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 65F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65f_006_hq",
+      "hm_crank_65f_006_lq",
+      "hm_crank_65f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_001_hq",
+      "hm_crank_70f_001_lq",
+      "hm_crank_70f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_002_hq",
+      "hm_crank_70f_002_lq",
+      "hm_crank_70f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_003_hq",
+      "hm_crank_70f_003_lq",
+      "hm_crank_70f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_004_hq",
+      "hm_crank_70f_004_lq",
+      "hm_crank_70f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_005_hq",
+      "hm_crank_70f_005_lq",
+      "hm_crank_70f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 70F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_70f_006_hq",
+      "hm_crank_70f_006_lq",
+      "hm_crank_70f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_001_hq",
+      "hm_crank_80f_001_lq",
+      "hm_crank_80f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_002_hq",
+      "hm_crank_80f_002_lq",
+      "hm_crank_80f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_003_hq",
+      "hm_crank_80f_003_lq",
+      "hm_crank_80f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_004_hq",
+      "hm_crank_80f_004_lq",
+      "hm_crank_80f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_005_hq",
+      "hm_crank_80f_005_lq",
+      "hm_crank_80f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Crank 80F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_80f_006_hq",
+      "hm_crank_80f_006_lq",
+      "hm_crank_80f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_001_hq",
+      "hm_pl_join_140s_001_lq",
+      "hm_pl_join_140s_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_002_hq",
+      "hm_pl_join_140s_002_lq",
+      "hm_pl_join_140s_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_003_hq",
+      "hm_pl_join_140s_003_lq",
+      "hm_pl_join_140s_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_004_hq",
+      "hm_pl_join_140s_004_lq",
+      "hm_pl_join_140s_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_005_hq",
+      "hm_pl_join_140s_005_lq",
+      "hm_pl_join_140s_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 140S-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_140s_006_hq",
+      "hm_pl_join_140s_006_lq",
+      "hm_pl_join_140s_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_001_hq",
+      "hm_pl_join_70s_001_lq",
+      "hm_pl_join_70s_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_002_hq",
+      "hm_pl_join_70s_002_lq",
+      "hm_pl_join_70s_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_003_hq",
+      "hm_pl_join_70s_003_lq",
+      "hm_pl_join_70s_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_004_hq",
+      "hm_pl_join_70s_004_lq",
+      "hm_pl_join_70s_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_005_hq",
+      "hm_pl_join_70s_005_lq",
+      "hm_pl_join_70s_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 70S-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_70s_006_hq",
+      "hm_pl_join_70s_006_lq",
+      "hm_pl_join_70s_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_001_hq",
+      "hm_pl_join_80s_001_lq",
+      "hm_pl_join_80s_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_002_hq",
+      "hm_pl_join_80s_002_lq",
+      "hm_pl_join_80s_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_003_hq",
+      "hm_pl_join_80s_003_lq",
+      "hm_pl_join_80s_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_004_hq",
+      "hm_pl_join_80s_004_lq",
+      "hm_pl_join_80s_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_005_hq",
+      "hm_pl_join_80s_005_lq",
+      "hm_pl_join_80s_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Joined 80S-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_join_80s_006_hq",
+      "hm_pl_join_80s_006_lq",
+      "hm_pl_join_80s_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_001_hq",
+      "hm_pl_min_110f_001_lq",
+      "hm_pl_min_110f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_002_hq",
+      "hm_pl_min_110f_002_lq",
+      "hm_pl_min_110f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_003_hq",
+      "hm_pl_min_110f_003_lq",
+      "hm_pl_min_110f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_004_hq",
+      "hm_pl_min_110f_004_lq",
+      "hm_pl_min_110f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_005_hq",
+      "hm_pl_min_110f_005_lq",
+      "hm_pl_min_110f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 110F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_110f_006_hq",
+      "hm_pl_min_110f_006_lq",
+      "hm_pl_min_110f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_001_hq",
+      "hm_pl_min_140f_001_lq",
+      "hm_pl_min_140f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_002_hq",
+      "hm_pl_min_140f_002_lq",
+      "hm_pl_min_140f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_003_hq",
+      "hm_pl_min_140f_003_lq",
+      "hm_pl_min_140f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_004_hq",
+      "hm_pl_min_140f_004_lq",
+      "hm_pl_min_140f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_005_hq",
+      "hm_pl_min_140f_005_lq",
+      "hm_pl_min_140f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 140F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_140f_006_hq",
+      "hm_pl_min_140f_006_lq",
+      "hm_pl_min_140f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_001_hq",
+      "hm_pl_min_65f_001_lq",
+      "hm_pl_min_65f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_002_hq",
+      "hm_pl_min_65f_002_lq",
+      "hm_pl_min_65f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_003_hq",
+      "hm_pl_min_65f_003_lq",
+      "hm_pl_min_65f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_004_hq",
+      "hm_pl_min_65f_004_lq",
+      "hm_pl_min_65f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_005_hq",
+      "hm_pl_min_65f_005_lq",
+      "hm_pl_min_65f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 65F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_65f_006_hq",
+      "hm_pl_min_65f_006_lq",
+      "hm_pl_min_65f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_001_hq",
+      "hm_pl_min_75f_001_lq",
+      "hm_pl_min_75f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_002_hq",
+      "hm_pl_min_75f_002_lq",
+      "hm_pl_min_75f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_003_hq",
+      "hm_pl_min_75f_003_lq",
+      "hm_pl_min_75f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_004_hq",
+      "hm_pl_min_75f_004_lq",
+      "hm_pl_min_75f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_005_hq",
+      "hm_pl_min_75f_005_lq",
+      "hm_pl_min_75f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 75F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_75f_006_hq",
+      "hm_pl_min_75f_006_lq",
+      "hm_pl_min_75f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_001_hq",
+      "hm_pl_min_90f_001_lq",
+      "hm_pl_min_90f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_002_hq",
+      "hm_pl_min_90f_002_lq",
+      "hm_pl_min_90f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_003_hq",
+      "hm_pl_min_90f_003_lq",
+      "hm_pl_min_90f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_004_hq",
+      "hm_pl_min_90f_004_lq",
+      "hm_pl_min_90f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_005_hq",
+      "hm_pl_min_90f_005_lq",
+      "hm_pl_min_90f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Minnow 90F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_pl_min_90f_006_hq",
+      "hm_pl_min_90f_006_lq",
+      "hm_pl_min_90f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_001_hq",
+      "hm_popper_65f_001_lq",
+      "hm_popper_65f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_002_hq",
+      "hm_popper_65f_002_lq",
+      "hm_popper_65f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_003_hq",
+      "hm_popper_65f_003_lq",
+      "hm_popper_65f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_004_hq",
+      "hm_popper_65f_004_lq",
+      "hm_popper_65f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_005_hq",
+      "hm_popper_65f_005_lq",
+      "hm_popper_65f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Popper 65F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_popper_65f_006_hq",
+      "hm_popper_65f_006_lq",
+      "hm_popper_65f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_001_hq",
+      "hm_shad_140f_001_lq",
+      "hm_shad_140f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_002_hq",
+      "hm_shad_140f_002_lq",
+      "hm_shad_140f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_003_hq",
+      "hm_shad_140f_003_lq",
+      "hm_shad_140f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_004_hq",
+      "hm_shad_140f_004_lq",
+      "hm_shad_140f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_005_hq",
+      "hm_shad_140f_005_lq",
+      "hm_shad_140f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 140F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_140f_006_hq",
+      "hm_shad_140f_006_lq",
+      "hm_shad_140f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_001_hq",
+      "hm_shad_60f_001_lq",
+      "hm_shad_60f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_002_hq",
+      "hm_shad_60f_002_lq",
+      "hm_shad_60f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_003_hq",
+      "hm_shad_60f_003_lq",
+      "hm_shad_60f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_004_hq",
+      "hm_shad_60f_004_lq",
+      "hm_shad_60f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_005_hq",
+      "hm_shad_60f_005_lq",
+      "hm_shad_60f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 60F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_60f_006_hq",
+      "hm_shad_60f_006_lq",
+      "hm_shad_60f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_001_hq",
+      "hm_shad_85f_001_lq",
+      "hm_shad_85f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_002_hq",
+      "hm_shad_85f_002_lq",
+      "hm_shad_85f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_003_hq",
+      "hm_shad_85f_003_lq",
+      "hm_shad_85f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_004_hq",
+      "hm_shad_85f_004_lq",
+      "hm_shad_85f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_005_hq",
+      "hm_shad_85f_005_lq",
+      "hm_shad_85f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Shad 85F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_shad_85f_006_hq",
+      "hm_shad_85f_006_lq",
+      "hm_shad_85f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa walker 65F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_001_hq",
+      "hm_walker_65f_001_lq",
+      "hm_walker_65f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa walker 65F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_002_hq",
+      "hm_walker_65f_002_lq",
+      "hm_walker_65f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa walker 65F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_003_hq",
+      "hm_walker_65f_003_lq",
+      "hm_walker_65f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa walker 65F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_004_hq",
+      "hm_walker_65f_004_lq",
+      "hm_walker_65f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa walker 65F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_005_hq",
+      "hm_walker_65f_005_lq",
+      "hm_walker_65f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Balsa Walker 65F-006",
+    "count": 3,
+    "systemIds": [
+      "hm_walker_65f_006_hq",
+      "hm_walker_65f_006_lq",
+      "hm_walker_65f_006_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Crank 65S",
+    "count": 3,
+    "systemIds": [
+      "hm_crank_65s_hq",
+      "hm_crank_65s_lq",
+      "hm_crank_65s_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 100F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_100f_001_hq",
+      "hm_jerk_f_100f_001_lq",
+      "hm_jerk_f_100f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 100F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_100f_002_hq",
+      "hm_jerk_f_100f_002_lq",
+      "hm_jerk_f_100f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 100F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_100f_003_hq",
+      "hm_jerk_f_100f_003_lq",
+      "hm_jerk_f_100f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 100F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_100f_004_hq",
+      "hm_jerk_f_100f_004_lq",
+      "hm_jerk_f_100f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 100F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_100f_005_hq",
+      "hm_jerk_f_100f_005_lq",
+      "hm_jerk_f_100f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 140F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_140f_001_hq",
+      "hm_jerk_f_140f_001_lq",
+      "hm_jerk_f_140f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 140F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_140f_002_hq",
+      "hm_jerk_f_140f_002_lq",
+      "hm_jerk_f_140f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 140F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_140f_003_hq",
+      "hm_jerk_f_140f_003_lq",
+      "hm_jerk_f_140f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 140F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_140f_004_hq",
+      "hm_jerk_f_140f_004_lq",
+      "hm_jerk_f_140f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Fat 140F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_f_140f_005_hq",
+      "hm_jerk_f_140f_005_lq",
+      "hm_jerk_f_140f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 110F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_110f_001_hq",
+      "hm_jerk_s_110f_001_lq",
+      "hm_jerk_s_110f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 110F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_110f_002_hq",
+      "hm_jerk_s_110f_002_lq",
+      "hm_jerk_s_110f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 110F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_110f_003_hq",
+      "hm_jerk_s_110f_003_lq",
+      "hm_jerk_s_110f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 110F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_110f_004_hq",
+      "hm_jerk_s_110f_004_lq",
+      "hm_jerk_s_110f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 110F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_110f_005_hq",
+      "hm_jerk_s_110f_005_lq",
+      "hm_jerk_s_110f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 170F-001",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_170f_001_hq",
+      "hm_jerk_s_170f_001_lq",
+      "hm_jerk_s_170f_001_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 170F-002",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_170f_002_hq",
+      "hm_jerk_s_170f_002_lq",
+      "hm_jerk_s_170f_002_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 170F-003",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_170f_003_hq",
+      "hm_jerk_s_170f_003_lq",
+      "hm_jerk_s_170f_003_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 170F-004",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_170f_004_hq",
+      "hm_jerk_s_170f_004_lq",
+      "hm_jerk_s_170f_004_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Jerk-Slim 170F-005",
+    "count": 3,
+    "systemIds": [
+      "hm_jerk_s_170f_005_hq",
+      "hm_jerk_s_170f_005_lq",
+      "hm_jerk_s_170f_005_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Joined 90S",
+    "count": 3,
+    "systemIds": [
+      "hm_j_minnow_90s_hq",
+      "hm_j_minnow_90s_lq",
+      "hm_j_minnow_90s_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "lure",
+    "name": "Wooden Minnow 100S",
+    "count": 3,
+    "systemIds": [
+      "hm_minnow_100s_hq",
+      "hm_minnow_100s_lq",
+      "hm_minnow_100s_mq"
+    ],
+    "likelyQualityVariants": true
+  },
+  {
+    "domain": "bait",
+    "name": "Амино 24",
+    "count": 2,
+    "systemIds": [
+      "boils_hvz_ami_24",
+      "plt_hvz_ap24"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Банан",
+    "count": 2,
+    "systemIds": [
+      "crn_cb_bfc",
+      "crn_op_bcy"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Ваниль 14",
+    "count": 2,
+    "systemIds": [
+      "boils_op_van14",
+      "plt_hvz_vp14"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Ваниль 8",
+    "count": 2,
+    "systemIds": [
+      "boils_op_van8",
+      "plt_hvz_vp8"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Клубника",
+    "count": 2,
+    "systemIds": [
+      "crn_cb_sbfc",
+      "crn_op_sbcr"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Королевский краб 18",
+    "count": 2,
+    "systemIds": [
+      "boils_hvz_kc18",
+      "plt_hvz_kcp18"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Королевский краб 24",
+    "count": 2,
+    "systemIds": [
+      "boils_hvz_kc24",
+      "plt_hvz_kcp24"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Малина",
+    "count": 2,
+    "systemIds": [
+      "crn_cb_rbfc",
+      "crn_op_rbcp"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Мидии",
+    "count": 2,
+    "systemIds": [
+      "crn_cb_mfc",
+      "crn_op_mcg"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Нейтральный 20",
+    "count": 2,
+    "systemIds": [
+      "boils_mm_neu20",
+      "plt_op_ntp20"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Нейтральный 25",
+    "count": 2,
+    "systemIds": [
+      "boils_mm_neu25",
+      "plt_op_ntp25"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Палтус 14",
+    "count": 2,
+    "systemIds": [
+      "boils_op_hal14",
+      "plt_op_hbp14"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Пресноводный криль 14",
+    "count": 2,
+    "systemIds": [
+      "boils_op_fwk14",
+      "plt_op_fkp14"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Пресноводный криль 18",
+    "count": 2,
+    "systemIds": [
+      "boils_op_fwk18",
+      "plt_op_fkp18"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Речной рак 24",
+    "count": 2,
+    "systemIds": [
+      "boils_sb_craw24",
+      "plt_cb_cwf24"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Семена подсолнуха 14",
+    "count": 2,
+    "systemIds": [
+      "boils_op_sf14",
+      "plt_hvz_ssp14"
+    ],
+    "likelyQualityVariants": false
+  },
+  {
+    "domain": "bait",
+    "name": "Сладкая кукуруза 10",
+    "count": 2,
+    "systemIds": [
+      "boils_hvz_sc10",
+      "plt_op_stc10"
+    ],
+    "likelyQualityVariants": false
+  }
+]

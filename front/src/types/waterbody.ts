@@ -10,6 +10,10 @@ export type Waterbody = {
     id: number;
     name: string;
     photo: string | null;
+    coordinateMinX: number | null;
+    coordinateMinY: number | null;
+    coordinateMaxX: number | null;
+    coordinateMaxY: number | null;
     fish: WaterbodyFish[];
 };
 
@@ -18,4 +22,5 @@ export type WaterbodyListRow = {
     name: string;
     photo: string | null;
     fishCount: number;
+    spotCount: number;
 };

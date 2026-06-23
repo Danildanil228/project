@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
 import { mediaUrl } from "../lib/items-api";
@@ -26,6 +28,10 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
     const [editingId, setEditingId] = useState<number | null>(null);
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
+    const [coordinateMinX, setCoordinateMinX] = useState("");
+    const [coordinateMinY, setCoordinateMinY] = useState("");
+    const [coordinateMaxX, setCoordinateMaxX] = useState("");
+    const [coordinateMaxY, setCoordinateMaxY] = useState("");
     const [selectedFishIds, setSelectedFishIds] = useState<number[]>([]);
     const [fishSearch, setFishSearch] = useState("");
     const [submitting, setSubmitting] = useState(false);
@@ -52,6 +58,10 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
     function resetForm() {
         setName("");
         setPhoto("");
+        setCoordinateMinX("");
+        setCoordinateMinY("");
+        setCoordinateMaxX("");
+        setCoordinateMaxY("");
         setSelectedFishIds([]);
         setFishSearch("");
         setFormError("");
@@ -71,6 +81,10 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
             const { item } = await getWaterbody(row.id);
             setName(item.name);
             setPhoto(item.photo ?? "");
+            setCoordinateMinX(item.coordinateMinX?.toString() ?? "");
+            setCoordinateMinY(item.coordinateMinY?.toString() ?? "");
+            setCoordinateMaxX(item.coordinateMaxX?.toString() ?? "");
+            setCoordinateMaxY(item.coordinateMaxY?.toString() ?? "");
             setSelectedFishIds(item.fish.map((fish) => fish.id));
         } catch (caught) {
             setFormError(getErrorMessage(caught));
@@ -87,7 +101,16 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
         setFormError("");
         setNotice("");
         try {
-            const payload = { name, photo: photo || null, fishIds: selectedFishIds };
+            const toNumber = (value: string) => value === "" ? null : Number(value);
+            const payload = {
+                name,
+                photo: photo || null,
+                coordinateMinX: toNumber(coordinateMinX),
+                coordinateMinY: toNumber(coordinateMinY),
+                coordinateMaxX: toNumber(coordinateMaxX),
+                coordinateMaxY: toNumber(coordinateMaxY),
+                fishIds: selectedFishIds,
+            };
             if (editingId) {
                 await updateWaterbody(editingId, payload);
                 setNotice("Водоём обновлён");
@@ -165,8 +188,19 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
                             <span className="text-muted-foreground">Название *</span>
                             <input value={name} onChange={(event) => setName(event.target.value)} required />
                         </label>
-                        <PhotoUploadField value={photo} onChange={setPhoto} />
+                        <PhotoUploadField value={photo} onChange={setPhoto} label="Карта водоёма" />
                     </div>
+
+                    <fieldset className="grid gap-3 border-y border-border py-4">
+                        <legend className="px-2 text-sm font-bold">Границы игровых координат</legend>
+                        <p className="text-sm text-muted-foreground">Минимум — левая и нижняя границы карты, максимум — правая и верхняя.</p>
+                        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                            <label className="grid gap-1 text-sm"><span>Минимум X</span><input type="number" step="0.01" value={coordinateMinX} onChange={(event) => setCoordinateMinX(event.target.value)} /></label>
+                            <label className="grid gap-1 text-sm"><span>Минимум Y</span><input type="number" step="0.01" value={coordinateMinY} onChange={(event) => setCoordinateMinY(event.target.value)} /></label>
+                            <label className="grid gap-1 text-sm"><span>Максимум X</span><input type="number" step="0.01" value={coordinateMaxX} onChange={(event) => setCoordinateMaxX(event.target.value)} /></label>
+                            <label className="grid gap-1 text-sm"><span>Максимум Y</span><input type="number" step="0.01" value={coordinateMaxY} onChange={(event) => setCoordinateMaxY(event.target.value)} /></label>
+                        </div>
+                    </fieldset>
 
                     <div className="grid gap-2 text-sm">
                         <span className="text-muted-foreground">Какие рыбы водятся (выбрано: {selectedFishIds.length})</span>
@@ -213,19 +247,20 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
                             <th className="p-3">Фото</th>
                             <th className="p-3">Название</th>
                             <th className="p-3">Видов рыб</th>
+                            <th className="p-3">Точек</th>
                             <th className="p-3 text-right">Действия</th>
                         </tr>
                     </thead>
                     <tbody>
                         {loading ? (
                             <tr>
-                                <td colSpan={4} className="p-6 text-center text-muted-foreground">
+                                <td colSpan={5} className="p-6 text-center text-muted-foreground">
                                     Загрузка…
                                 </td>
                             </tr>
                         ) : rows.length === 0 ? (
                             <tr>
-                                <td colSpan={4} className="p-6 text-center text-muted-foreground">
+                                <td colSpan={5} className="p-6 text-center text-muted-foreground">
                                     Пока нет водоёмов
                                 </td>
                             </tr>
@@ -241,8 +276,12 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
                                     </td>
                                     <td className="p-3 font-medium">{row.name}</td>
                                     <td className="p-3 text-muted-foreground">{row.fishCount}</td>
+                                    <td className="p-3 text-muted-foreground">{row.spotCount}</td>
                                     <td className="p-3">
                                         <div className="flex justify-end gap-2">
+                                            <Link to={`/waterbodies/${row.id}`} className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-primary">
+                                                <ExternalLink size={14} /> Карта
+                                            </Link>
                                             <button onClick={() => startEdit(row)} className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-primary">
                                                 Изменить
                                             </button>

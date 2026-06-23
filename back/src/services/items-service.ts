@@ -12,7 +12,7 @@ type ItemListQuery = z.infer<typeof itemListQuerySchema>;
 
 type ItemTypeConfig = {
     table: string;
-    searchField: string;
+    searchFields: string[];
     filterFields: string[];
     sortFields: Record<string, string>;
     defaultSort: string;
@@ -22,16 +22,16 @@ type ItemTypeConfig = {
 export const itemConfigs: Record<ItemType, ItemTypeConfig> = {
     reels: {
         table: "reels",
-        searchField: "name",
-        filterFields: ["category", "brend"],
-        sortFields: { name: "name", lvl: "lvl", id: "id" },
+        searchFields: ["name", "category", "brend", "size", "test", "test_mod", "protection", "per", "per_mod", "speed", "speed_mod", "frik", "frik_mod", "meh", "meh_mod", "lvl", "price_ser", "price_gold", "capacity", "capacity_mod"],
+        filterFields: ["name", "category", "brend", "size", "test", "test_mod", "protection", "per", "per_mod", "speed", "speed_mod", "frik", "frik_mod", "meh", "meh_mod", "lvl", "price_ser", "price_gold", "capacity", "capacity_mod"],
+        sortFields: { name: "name", category: "category", brend: "brend", size: "size", test: "test", test_mod: "test_mod", protection: "protection", per: "per", per_mod: "per_mod", speed: "speed", speed_mod: "speed_mod", frik: "frik", frik_mod: "frik_mod", meh: "meh", meh_mod: "meh_mod", lvl: "lvl", price_ser: "price_ser", price_gold: "price_gold", capacity: "capacity", capacity_mod: "capacity_mod", id: "id" },
         defaultSort: "name",
     },
     rods: {
         table: "rods",
-        searchField: "name",
-        filterFields: ["category", "brend", "type"],
-        sortFields: { name: "name", lvl: "lvl", id: "id" },
+        searchFields: ["name", "category", "type", "brend", "power", "test_down", "test_up", "length", "sensi", "rig", "stroy", "stren", "bonus_opit", "bonus_snast", "bonus_nav", "bonus_zabros", "lvl", "price_ser", "price_gold"],
+        filterFields: ["name", "category", "type", "brend", "power", "test_down", "test_up", "length", "sensi", "rig", "stroy", "stren", "bonus_opit", "bonus_snast", "bonus_nav", "bonus_zabros", "lvl", "price_ser", "price_gold"],
+        sortFields: { name: "name", category: "category", type: "type", brend: "brend", power: "power", test_down: "test_down", test_up: "test_up", length: "length", sensi: "sensi", rig: "rig", stroy: "stroy", stren: "stren", bonus_opit: "bonus_opit", bonus_snast: "bonus_snast", bonus_nav: "bonus_nav", bonus_zabros: "bonus_zabros", lvl: "lvl", price_ser: "price_ser", price_gold: "price_gold", id: "id" },
         defaultSort: "name",
     },
 };
@@ -47,10 +47,26 @@ export function buildItemListQuery(type: ItemType, query: ItemListQuery) {
 
     if (query.search) {
         values.push(`%${query.search}%`);
-        where.push(`${config.searchField} ILIKE $${values.length}`);
+        where.push(`concat_ws(' ', ${config.searchFields.map((field) => `COALESCE("${field}"::text, '')`).join(", ")}) ILIKE $${values.length}`);
     }
 
-    for (const field of config.filterFields) {
+    if (query.filters) {
+        let filters: Record<string, unknown> = {};
+        try {
+            const parsed = JSON.parse(query.filters);
+            if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) filters = parsed;
+        } catch {
+            // Invalid filter JSON is treated as no column filters.
+        }
+        for (const [field, rawValue] of Object.entries(filters)) {
+            if (!config.filterFields.includes(field) || typeof rawValue !== "string" || !rawValue.trim()) continue;
+            values.push(`%${rawValue.trim()}%`);
+            where.push(`COALESCE("${field}"::text, '') ILIKE $${values.length}`);
+        }
+    }
+
+    for (const field of ["category", "brend", "type"]) {
+        if (!config.filterFields.includes(field)) continue;
         const value = query[field as keyof ItemListQuery];
         if (typeof value === "string" && value) {
             values.push(value);

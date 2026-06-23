@@ -10,7 +10,7 @@ export type CatalogItem = {
     name: string;
     category: string;
     brend: string;
-    lvl: number;
+    lvl: number | null;
     price_ser: string | null;
     photo: string | null;
 };
@@ -20,7 +20,10 @@ export type ItemListParams = {
     category?: string;
     brend?: string;
     type?: string;
-    sortBy?: "name" | "lvl" | "id";
+    minLvl?: number;
+    maxLvl?: number;
+    filters?: Record<string, string>;
+    sortBy?: string;
     sortDirection?: "asc" | "desc";
     limit?: number;
     offset?: number;
@@ -59,7 +62,7 @@ function buildQuery(params: ItemListParams) {
     const query = new URLSearchParams();
     for (const [key, value] of Object.entries(params)) {
         if (value !== undefined && value !== null && value !== "") {
-            query.set(key, String(value));
+            query.set(key, key === "filters" ? JSON.stringify(value) : String(value));
         }
     }
     return query.toString();
