@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, Search, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
 import { ItemCard } from "../components/ItemCard";
 import { ItemDataTable } from "../features/items/ItemDataTable";
@@ -21,10 +22,6 @@ export function CatalogPage() {
     const [filters, setFilters] = useState<Record<string, string>>({});
     const [debouncedFilters] = useDebounce(filters, 350);
     const [offset, setOffset] = useState(0);
-    const [items, setItems] = useState<CatalogItem[]>([]);
-    const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
     const pageSize = view === "cards" ? 24 : 50;
 
     useEffect(() => {
@@ -32,24 +29,17 @@ export function CatalogPage() {
         setOffset(0);
     }, [view]);
 
-    useEffect(() => {
-        let ignore = false;
-        setLoading(true);
-        setError("");
-        fetchItems(type, { search: appliedSearch, category, filters: debouncedFilters, sortBy, sortDirection, limit: pageSize, offset })
-            .then((response) => {
-                if (ignore) return;
-                setItems(response.items as CatalogItem[]);
-                setTotal(response.total);
-            })
-            .catch((caught) => {
-                if (!ignore) setError(caught instanceof Error ? caught.message : "Ошибка загрузки");
-            })
-            .finally(() => {
-                if (!ignore) setLoading(false);
-            });
-        return () => { ignore = true; };
-    }, [type, appliedSearch, category, debouncedFilters, sortBy, sortDirection, offset, pageSize]);
+    // react-query dedupes identical concurrent fetches (StrictMode mounts share the cache),
+    // keeps previous data while a new page loads (no flicker on pagination), and caches results for 30s.
+    const { data, isFetching, error: queryError } = useQuery({
+        queryKey: ["catalog", type, { search: appliedSearch, category, filters: debouncedFilters, sortBy, sortDirection, limit: pageSize, offset }],
+        queryFn: () => fetchItems(type, { search: appliedSearch, category, filters: debouncedFilters, sortBy, sortDirection, limit: pageSize, offset }),
+        placeholderData: keepPreviousData,
+    });
+    const items = (data?.items ?? []) as CatalogItem[];
+    const total = data?.total ?? 0;
+    const loading = isFetching;
+    const error = queryError instanceof Error ? queryError.message : "";
 
     function changeType(next: ItemType) {
         if (next === type) return;
