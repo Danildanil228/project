@@ -210,7 +210,8 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
                 {/* Trolling line — SVG overlay between A and B, drawn under markers */}
                 {trollingActive && value.mapX !== null && value.mapY !== null && value.mapX2 !== null && value.mapY2 !== null && (
                     <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                        <line x1={value.mapX} y1={value.mapY} x2={value.mapX2} y2={value.mapY2} stroke="hsl(var(--destructive))" strokeWidth="0.7" strokeDasharray="2 1.5" vectorEffect="non-scaling-stroke" />
+                        {/* Literal hex — Tailwind CSS vars don't resolve when used as a raw SVG `stroke` attribute in every browser. */}
+                        <line x1={value.mapX} y1={value.mapY} x2={value.mapX2} y2={value.mapY2} stroke="#dc2626" strokeWidth="2" strokeDasharray="4 3" vectorEffect="non-scaling-stroke" />
                     </svg>
                 )}
 
