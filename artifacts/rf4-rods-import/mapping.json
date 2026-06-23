@@ -1,0 +1,4430 @@
+[
+  {
+    "sourceName": "Ultima S-M100HH",
+    "catalogName": "Ultima S-M100HH",
+    "systemId": "spin_10158_M100HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M88HH",
+    "catalogName": "Ultima S-M88HH",
+    "systemId": "spin_10158_M88HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M87H",
+    "catalogName": "Ultima S-M87H",
+    "systemId": "spin_10158_M87H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M78L",
+    "catalogName": "Ultima S-M78L",
+    "systemId": "spin_10158_M78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M75ML",
+    "catalogName": "Ultima S-M75ML",
+    "systemId": "spin_10158_M75ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M61L",
+    "catalogName": "Ultima S-M61L",
+    "systemId": "spin_10158_M61L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M68ML",
+    "catalogName": "Ultima S-M68ML",
+    "systemId": "spin_10158_M68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima S-M60UL",
+    "catalogName": "Ultima S-M60UL",
+    "systemId": "spin_10158_M60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master S-M82M",
+    "catalogName": "Trout Master S-M82M",
+    "systemId": "spin_10157_M82M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master S-M71ML",
+    "catalogName": "Trout Master S-M71ML",
+    "systemId": "spin_10157_M71ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master S-M68L",
+    "catalogName": "Trout Master S-M68L",
+    "systemId": "spin_10157_M68L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon S-M70UL",
+    "catalogName": "Aquilon S-M70UL",
+    "systemId": "spin_10156_M70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master S-M60L",
+    "catalogName": "Trout Master S-M60L",
+    "systemId": "spin_10157_M60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon S-M71L",
+    "catalogName": "Aquilon S-M71L",
+    "systemId": "spin_10156_M71L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon S-M68ULL",
+    "catalogName": "Aquilon S-M68ULL",
+    "systemId": "spin_10156_M68ULL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar S-F66L",
+    "catalogName": "Vexillar S-F66L",
+    "systemId": "spin_10155_F66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar S-F66MH",
+    "catalogName": "Vexillar S-F66MH",
+    "systemId": "spin_10155_F66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar S-F70UL",
+    "catalogName": "Vexillar S-F70UL",
+    "systemId": "spin_10155_F70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda SPSL88MH",
+    "catalogName": "Barracuda SPSL88MH",
+    "systemId": "spin_10065_SPSL88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda SPM88H",
+    "catalogName": "Barracuda SPM88H",
+    "systemId": "spin_10065_SPM88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPF78XH",
+    "catalogName": "Black Edition SPF78XH",
+    "systemId": "spin_10068_SPF78XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPM78MH",
+    "catalogName": "Black Edition SPM78MH",
+    "systemId": "spin_10068_SPM78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPXF68H",
+    "catalogName": "Black Edition SPXF68H",
+    "systemId": "spin_10068_SPXF68H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPXF68M",
+    "catalogName": "Black Edition SPXF68M",
+    "systemId": "spin_10068_SPXF68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPM68MH",
+    "catalogName": "Black Edition SPM68MH",
+    "systemId": "spin_10068_SPM68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPXF60H",
+    "catalogName": "Black Edition SPXF60H",
+    "systemId": "spin_10068_SPXF60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPF60MH",
+    "catalogName": "Black Edition SPF60MH",
+    "systemId": "spin_10068_SPF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition SPM60ML",
+    "catalogName": "Black Edition SPM60ML",
+    "systemId": "spin_10068_SPM60ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda SPM88M",
+    "catalogName": "Barracuda SPM88M",
+    "systemId": "spin_10065_SPM88M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda SPM78M",
+    "catalogName": "Barracuda SPM78M",
+    "systemId": "spin_10065_SPM78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda SPM68M",
+    "catalogName": "Barracuda SPM68M",
+    "systemId": "spin_10065_SPM68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPF78MH",
+    "catalogName": "Armada SPF78MH",
+    "systemId": "spin_10067_SPF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPEF68H",
+    "catalogName": "Armada SPEF68H",
+    "systemId": "spin_10067_SPEF68H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPF68XH",
+    "catalogName": "Armada SPF68XH",
+    "systemId": "spin_10067_SPF68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPEF68M",
+    "catalogName": "Armada SPEF68M",
+    "systemId": "spin_10067_SPEF68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPF60M",
+    "catalogName": "Armada SPF60M",
+    "systemId": "spin_10067_SPF60M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada SPF60MH",
+    "catalogName": "Armada SPF60MH",
+    "systemId": "spin_10067_SPF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF77ML",
+    "catalogName": "Legend SPF77ML",
+    "systemId": "spin_10146_SPF77ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF77XH",
+    "catalogName": "Legend SPF77XH",
+    "systemId": "spin_10146_SPF77XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF70M",
+    "catalogName": "Legend SPF70M",
+    "systemId": "spin_10146_SPF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF70MH",
+    "catalogName": "Legend SPF70MH",
+    "systemId": "spin_10146_SPF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF77H",
+    "catalogName": "Legend SPF77H",
+    "systemId": "spin_10146_SPF77H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF66M",
+    "catalogName": "Legend SPF66M",
+    "systemId": "spin_10146_SPF66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF68ML",
+    "catalogName": "Legend SPF68ML",
+    "systemId": "spin_10146_SPF68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF66UL",
+    "catalogName": "Legend SPF66UL",
+    "systemId": "spin_10146_SPF66UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend SPF66L",
+    "catalogName": "Legend SPF66L",
+    "systemId": "spin_10146_SPF66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F100HHH",
+    "catalogName": "Advent S-F100HHH",
+    "systemId": "spin_10154_F100HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F96H",
+    "catalogName": "Advent S-F96H",
+    "systemId": "spin_10154_F96H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmera UL SPM78L",
+    "catalogName": "Palmera UL SPM78L",
+    "systemId": "spin_10066_SPM78UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F93MH",
+    "catalogName": "Advent S-F93MH",
+    "systemId": "spin_10154_F93MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F86HH",
+    "catalogName": "Advent S-F86HH",
+    "systemId": "spin_10154_F86HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F70HHH",
+    "catalogName": "Advent S-F70HHH",
+    "systemId": "spin_10154_F70HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F70HH",
+    "catalogName": "Advent S-F70HH",
+    "systemId": "spin_10154_F70HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F66L",
+    "catalogName": "Advent S-F66L",
+    "systemId": "spin_10154_F66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F70H",
+    "catalogName": "Advent S-F70H",
+    "systemId": "spin_10154_F70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmera UL SPM68UL",
+    "catalogName": "Palmera UL SPM68UL",
+    "systemId": "spin_10066_SPM68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPF77MH",
+    "catalogName": "Pulse SPF77MH",
+    "systemId": "spin_10145_SPF77MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPF77H",
+    "catalogName": "Pulse SPF77H",
+    "systemId": "spin_10145_SPF77H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPXF70M",
+    "catalogName": "Pulse SPXF70M",
+    "systemId": "spin_10145_SPXF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPF66L",
+    "catalogName": "Pulse SPF66L",
+    "systemId": "spin_10145_SPF66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPF66ML",
+    "catalogName": "Pulse SPF66ML",
+    "systemId": "spin_10145_SPF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse SPF60UL",
+    "catalogName": "Pulse SPF60UL",
+    "systemId": "spin_10145_SPF60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evora SPM98H",
+    "catalogName": "Evora SPM98H",
+    "systemId": "spin_10064_SPM98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F66ML",
+    "catalogName": "Advent S-F66ML",
+    "systemId": "spin_10154_F66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evora SPSL88MH",
+    "catalogName": "Evora SPSL88MH",
+    "systemId": "spin_10064_SPSL88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evora SPM78ML",
+    "catalogName": "Evora SPM78ML",
+    "systemId": "spin_10064_SPM78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF70UL",
+    "catalogName": "Versa SPF70UL",
+    "systemId": "spin_10144_SPF70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPM70L",
+    "catalogName": "Versa SPM70L",
+    "systemId": "spin_10144_SPM70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF66ML",
+    "catalogName": "Versa SPF66ML",
+    "systemId": "spin_10144_SPF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF88H",
+    "catalogName": "Versa SPF88H",
+    "systemId": "spin_10144_SPF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena SPM78ML",
+    "catalogName": "Cardena SPM78ML",
+    "systemId": "spin_10063_SPM78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPXF98H",
+    "catalogName": "Ethnic SPXF98H",
+    "systemId": "spin_10105_SPXF98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF77XH",
+    "catalogName": "Versa SPF77XH",
+    "systemId": "spin_10144_SPF77XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena SPM68UL",
+    "catalogName": "Cardena SPM68UL",
+    "systemId": "spin_10063_SPM68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena SPM68L",
+    "catalogName": "Cardena SPM68L",
+    "systemId": "spin_10063_SPM68L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF88MH",
+    "catalogName": "Versa SPF88MH",
+    "systemId": "spin_10144_SPF88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPXF78H",
+    "catalogName": "Ethnic SPXF78H",
+    "systemId": "spin_10105_SPXF78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent S-F70MH",
+    "catalogName": "Advent S-F70MH",
+    "systemId": "spin_10154_F70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF77M",
+    "catalogName": "Versa SPF77M",
+    "systemId": "spin_10144_SPF77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF70ML",
+    "catalogName": "Integra SPF70ML",
+    "systemId": "spin_10143_SPF70ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa SPF66M",
+    "catalogName": "Versa SPF66M",
+    "systemId": "spin_10144_SPF66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One S98H",
+    "catalogName": "Model One S98H",
+    "systemId": "spin_10036_S98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena SPF60L",
+    "catalogName": "Cardena SPF60L",
+    "systemId": "spin_10063_SPF60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPM78L",
+    "catalogName": "Ethnic SPM78L",
+    "systemId": "spin_10105_SPM78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF77M",
+    "catalogName": "Integra SPF77M",
+    "systemId": "spin_10143_SPF77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPM68UL",
+    "catalogName": "Ethnic SPM68UL",
+    "systemId": "spin_10105_SPM68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF70MH",
+    "catalogName": "Integra SPF70MH",
+    "systemId": "spin_10143_SPF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF70M",
+    "catalogName": "Integra SPF70M",
+    "systemId": "spin_10143_SPF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura SPF70H",
+    "catalogName": "Ventura SPF70H",
+    "systemId": "spin_10142_SPF70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF66MH",
+    "catalogName": "Integra SPF66MH",
+    "systemId": "spin_10143_SPF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura SPF70MH",
+    "catalogName": "Ventura SPF70MH",
+    "systemId": "spin_10142_SPF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra SPF66M",
+    "catalogName": "Integra SPF66M",
+    "systemId": "spin_10143_SPF66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura SPXF66MH",
+    "catalogName": "Ventura SPXF66MH",
+    "systemId": "spin_10142_SPXF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty S88XH",
+    "catalogName": "Super Duty S88XH",
+    "systemId": "spin_10042_S88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura SPF66ML",
+    "catalogName": "Ventura SPF66ML",
+    "systemId": "spin_10142_SPF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura SPXF70M",
+    "catalogName": "Ventura SPXF70M",
+    "systemId": "spin_10142_SPXF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка СКС",
+    "catalogName": "Рязанка СКС",
+    "systemId": "spin_10172",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aeros SP60UL",
+    "catalogName": "Aeros SP60UL",
+    "systemId": "spin_10062_SP60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPM88MH",
+    "catalogName": "Ethnic SPM88MH",
+    "systemId": "spin_10105_SPM88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aeros SP60ML",
+    "catalogName": "Aeros SP60ML",
+    "systemId": "spin_10062_SP60ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPF88MH",
+    "catalogName": "Ethnic SPF88MH",
+    "systemId": "spin_10105_SPF88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPF78MH",
+    "catalogName": "Ethnic SPF78MH",
+    "systemId": "spin_10105_SPF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic SPF66MH",
+    "catalogName": "Ethnic SPF66MH",
+    "systemId": "spin_10105_SPF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aeros SP68MH",
+    "catalogName": "Aeros SP68MH",
+    "systemId": "spin_10062_SP68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One S88MH",
+    "catalogName": "Model One S88MH",
+    "systemId": "spin_10036_S88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One S78L",
+    "catalogName": "Model One S78L",
+    "systemId": "spin_10036_S78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One S78ML",
+    "catalogName": "Model One S78ML",
+    "systemId": "spin_10036_S78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One S78M",
+    "catalogName": "Model One S78M",
+    "systemId": "spin_10036_S78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty S88H",
+    "catalogName": "Super Duty S88H",
+    "systemId": "spin_10042_S88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty S78MH",
+    "catalogName": "Super Duty S78MH",
+    "systemId": "spin_10042_S78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty S78H",
+    "catalogName": "Super Duty S78H",
+    "systemId": "spin_10042_S78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SXF88H",
+    "catalogName": "Mechta SXF88H",
+    "systemId": "spin_10121_SXF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SM88MH",
+    "catalogName": "Mechta SM88MH",
+    "systemId": "spin_10121_SM88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S88XH",
+    "catalogName": "Linear S88XH",
+    "systemId": "spin_10032_S88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SF78MH",
+    "catalogName": "Mechta SF78MH",
+    "systemId": "spin_10121_SF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SXF78XH",
+    "catalogName": "Mechta SXF78XH",
+    "systemId": "spin_10121_SXF78XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SXF70MH",
+    "catalogName": "Mechta SXF70MH",
+    "systemId": "spin_10121_SXF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SM70L",
+    "catalogName": "Mechta SM70L",
+    "systemId": "spin_10121_SM70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SM70UL",
+    "catalogName": "Mechta SM70UL",
+    "systemId": "spin_10121_SM70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SF68ML",
+    "catalogName": "Mechta SF68ML",
+    "systemId": "spin_10121_SF68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta SF60MH",
+    "catalogName": "Mechta SF60MH",
+    "systemId": "spin_10121_SF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inspiration S78L",
+    "catalogName": "Inspiration S78L",
+    "systemId": "spin_10041_S78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inspiration S78ML",
+    "catalogName": "Inspiration S78ML",
+    "systemId": "spin_10041_S78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inspiration S68L",
+    "catalogName": "Inspiration S68L",
+    "systemId": "spin_10041_S68L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inspiration S68UL",
+    "catalogName": "Inspiration S68UL",
+    "systemId": "spin_10041_S68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inspiration S60UL",
+    "catalogName": "Inspiration S60UL",
+    "systemId": "spin_10041_S60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia SPF78M",
+    "catalogName": "Karelia SPF78M",
+    "systemId": "spin_10104_SPF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia SPM68ML",
+    "catalogName": "Karelia SPM68ML",
+    "systemId": "spin_10104_SPM68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia SPM66L",
+    "catalogName": "Karelia SPM66L",
+    "systemId": "spin_10104_SPM66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lait SSL78ML",
+    "catalogName": "Lait SSL78ML",
+    "systemId": "spin_10120_SSL78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S98H",
+    "catalogName": "Linear S98H",
+    "systemId": "spin_10032_S98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lait SSL70L",
+    "catalogName": "Lait SSL70L",
+    "systemId": "spin_10120_SSL70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lait SSL60UL",
+    "catalogName": "Lait SSL60UL",
+    "systemId": "spin_10120_SSL60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S88H",
+    "catalogName": "Linear S88H",
+    "systemId": "spin_10032_S88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S78H",
+    "catalogName": "Linear S78H",
+    "systemId": "spin_10032_S78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S78MH",
+    "catalogName": "Linear S78MH",
+    "systemId": "spin_10032_S78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor SPXF88XH",
+    "catalogName": "Belmor SPXF88XH",
+    "systemId": "spin_10103_SPXF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna S68MH",
+    "catalogName": "Fortuna S68MH",
+    "systemId": "spin_10034_S68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor SPF88H",
+    "catalogName": "Belmor SPF88H",
+    "systemId": "spin_10103_SPF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy S80XH",
+    "catalogName": "Heavy S80XH",
+    "systemId": "spin_10004_S80XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S68ML",
+    "catalogName": "Linear S68ML",
+    "systemId": "spin_10032_S68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear S60L",
+    "catalogName": "Linear S60L",
+    "systemId": "spin_10032_S60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna S66MH",
+    "catalogName": "Fortuna S66MH",
+    "systemId": "spin_10034_S66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna S60H",
+    "catalogName": "Fortuna S60H",
+    "systemId": "spin_10034_S60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor SPF78MH",
+    "catalogName": "Belmor SPF78MH",
+    "systemId": "spin_10103_SPF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor SPF78M",
+    "catalogName": "Belmor SPF78M",
+    "systemId": "spin_10103_SPF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF98XH",
+    "catalogName": "Comfort SF98XH",
+    "systemId": "spin_10119_SF98XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna S60MH",
+    "catalogName": "Fortuna S60MH",
+    "systemId": "spin_10034_S60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy S70XH",
+    "catalogName": "Heavy S70XH",
+    "systemId": "spin_10004_S70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF88XH",
+    "catalogName": "Comfort SF88XH",
+    "systemId": "spin_10119_SF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF70XH",
+    "catalogName": "Comfort SF70XH",
+    "systemId": "spin_10119_SF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S90MH",
+    "catalogName": "Premium Stick S90MH",
+    "systemId": "spin_10005_S90MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S80H",
+    "catalogName": "Premium Stick S80H",
+    "systemId": "spin_10005_S80H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S70H",
+    "catalogName": "Premium Stick S70H",
+    "systemId": "spin_10005_S70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S70MH",
+    "catalogName": "Premium Stick S70MH",
+    "systemId": "spin_10005_S70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S66MH",
+    "catalogName": "Premium Stick S66MH",
+    "systemId": "spin_10005_S66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S60M",
+    "catalogName": "Premium Stick S60M",
+    "systemId": "spin_10005_S60M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S60H",
+    "catalogName": "Premium Stick S60H",
+    "systemId": "spin_10005_S60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick S60MH",
+    "catalogName": "Premium Stick S60MH",
+    "systemId": "spin_10005_S60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SXF98H",
+    "catalogName": "Comfort SXF98H",
+    "systemId": "spin_10119_SXF98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF88MH",
+    "catalogName": "Comfort SF88MH",
+    "systemId": "spin_10119_SF88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SXF88H",
+    "catalogName": "Comfort SXF88H",
+    "systemId": "spin_10119_SXF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy S70H",
+    "catalogName": "Heavy S70H",
+    "systemId": "spin_10004_S70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF78M",
+    "catalogName": "Comfort SF78M",
+    "systemId": "spin_10119_SF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SXF78H",
+    "catalogName": "Comfort SXF78H",
+    "systemId": "spin_10119_SXF78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF70MH",
+    "catalogName": "Comfort SF70MH",
+    "systemId": "spin_10119_SF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SXF68H",
+    "catalogName": "Comfort SXF68H",
+    "systemId": "spin_10119_SXF68H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort SF60MH",
+    "catalogName": "Comfort SF60MH",
+    "systemId": "spin_10119_SF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow S70M",
+    "catalogName": "Arrow S70M",
+    "systemId": "spin_10003_S70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow S60UL",
+    "catalogName": "Arrow S60UL",
+    "systemId": "spin_10003_S60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow S66M",
+    "catalogName": "Arrow S66M",
+    "systemId": "spin_10003_S66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow S60L",
+    "catalogName": "Arrow S60L",
+    "systemId": "spin_10003_S60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic S70MH",
+    "catalogName": "Dynamic S70MH",
+    "systemId": "spin_10002_S70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic S66H",
+    "catalogName": "Dynamic S66H",
+    "systemId": "spin_10002_S66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic S60MH",
+    "catalogName": "Dynamic S60MH",
+    "systemId": "spin_10002_S60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona S70H",
+    "catalogName": "Corona S70H",
+    "systemId": "spin_10001_S70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona S66H",
+    "catalogName": "Corona S66H",
+    "systemId": "spin_10001_S66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona S66MH",
+    "catalogName": "Corona S66MH",
+    "systemId": "spin_10001_S66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona S60MH",
+    "catalogName": "Corona S60MH",
+    "systemId": "spin_10001_S60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona S60L",
+    "catalogName": "Corona S60L",
+    "systemId": "spin_10001_S60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M100HH",
+    "catalogName": "Ultima CST-M100HH",
+    "systemId": "cast_10163_M100HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M88HH",
+    "catalogName": "Ultima CST-M88HH",
+    "systemId": "cast_10163_M88HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M87H",
+    "catalogName": "Ultima CST-M87H",
+    "systemId": "cast_10163_M87H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M77M",
+    "catalogName": "Ultima CST-M77M",
+    "systemId": "cast_10163_M77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M61L",
+    "catalogName": "Ultima CST-M61L",
+    "systemId": "cast_10163_M61L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M75ML",
+    "catalogName": "Ultima CST-M75ML",
+    "systemId": "cast_10163_M75ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M68ML",
+    "catalogName": "Ultima CST-M68ML",
+    "systemId": "cast_10163_M68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima CST-M60UL",
+    "catalogName": "Ultima CST-M60UL",
+    "systemId": "cast_10163_M60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master CST-M88MH",
+    "catalogName": "Trout Master CST-M88MH",
+    "systemId": "cast_10162_M88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master CST-M82M",
+    "catalogName": "Trout Master CST-M82M",
+    "systemId": "cast_10162_M82M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master CST-M71ML",
+    "catalogName": "Trout Master CST-M71ML",
+    "systemId": "cast_10162_M71ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master CST-M68L",
+    "catalogName": "Trout Master CST-M68L",
+    "systemId": "cast_10162_M68L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon CST-M70UL",
+    "catalogName": "Aquilon CST-M70UL",
+    "systemId": "cast_10161_M70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trout Master CST-M60L",
+    "catalogName": "Trout Master CST-M60L",
+    "systemId": "cast_10162_M60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon CST-M71L",
+    "catalogName": "Aquilon CST-M71L",
+    "systemId": "cast_10161_M71L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aquilon CST-M68ULL",
+    "catalogName": "Aquilon CST-M68ULL",
+    "systemId": "cast_10161_M68ULL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar CST-F66L",
+    "catalogName": "Vexillar CST-F66L",
+    "systemId": "cast_10160_F66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar CST-F66MH",
+    "catalogName": "Vexillar CST-F66MH",
+    "systemId": "cast_10160_F66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar CST-F70H",
+    "catalogName": "Vexillar CST-F70H",
+    "systemId": "cast_10160_F70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vexillar CST-F70UL",
+    "catalogName": "Vexillar CST-F70UL",
+    "systemId": "cast_10160_F70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda CST CSSL88MH",
+    "catalogName": "Barracuda CST CSSL88MH",
+    "systemId": "cast_10057_CSSL88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda CST CSM88H",
+    "catalogName": "Barracuda CST CSM88H",
+    "systemId": "cast_10057_CSM88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSF78MH",
+    "catalogName": "Black Edition CST CSF78MH",
+    "systemId": "cast_10059_CSF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSF68XH",
+    "catalogName": "Black Edition CST CSF68XH",
+    "systemId": "cast_10059_CSF68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rocket CM88XH",
+    "catalogName": "Rocket CM88XH",
+    "systemId": "cast_10150_CM88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSF68M",
+    "catalogName": "Black Edition CST CSF68M",
+    "systemId": "cast_10059_CSF68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSXF68M",
+    "catalogName": "Black Edition CST CSXF68M",
+    "systemId": "cast_10059_CSXF68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSM68MH",
+    "catalogName": "Black Edition CST CSM68MH",
+    "systemId": "cast_10059_CSM68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rocket CM88H",
+    "catalogName": "Rocket CM88H",
+    "systemId": "cast_10150_CM88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSXF60H",
+    "catalogName": "Black Edition CST CSXF60H",
+    "systemId": "cast_10059_CSXF60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Black Edition CST CSF60MH",
+    "catalogName": "Black Edition CST CSF60MH",
+    "systemId": "cast_10059_CSF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rocket CM88MH",
+    "catalogName": "Rocket CM88MH",
+    "systemId": "cast_10150_CM88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rocket CM77M",
+    "catalogName": "Rocket CM77M",
+    "systemId": "cast_10150_CM77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSF68MH",
+    "catalogName": "Armada CST CSF68MH",
+    "systemId": "cast_10058_CSF68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSF68XH",
+    "catalogName": "Armada CST CSF68XH",
+    "systemId": "cast_10058_CSF68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSXF68M",
+    "catalogName": "Armada CST CSXF68M",
+    "systemId": "cast_10058_CSXF68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSF60M",
+    "catalogName": "Armada CST CSF60M",
+    "systemId": "cast_10058_CSF60M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSXF60H",
+    "catalogName": "Armada CST CSXF60H",
+    "systemId": "cast_10058_CSXF60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSXF60UL",
+    "catalogName": "Armada CST CSXF60UL",
+    "systemId": "cast_10058_CSXF60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda CST CSM68M",
+    "catalogName": "Barracuda CST CSM68M",
+    "systemId": "cast_10057_CSM68M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Armada CST CSF60MH",
+    "catalogName": "Armada CST CSF60MH",
+    "systemId": "cast_10058_CSF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF77ML",
+    "catalogName": "Legend CF77ML",
+    "systemId": "cast_10151_CF77ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF70M",
+    "catalogName": "Legend CF70M",
+    "systemId": "cast_10151_CF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF70MH",
+    "catalogName": "Legend CF70MH",
+    "systemId": "cast_10151_CF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF77H",
+    "catalogName": "Legend CF77H",
+    "systemId": "cast_10151_CF77H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF66M",
+    "catalogName": "Legend CF66M",
+    "systemId": "cast_10151_CF66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF68ML",
+    "catalogName": "Legend CF68ML",
+    "systemId": "cast_10151_CF68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF66UL",
+    "catalogName": "Legend CF66UL",
+    "systemId": "cast_10151_CF66UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend CF66L",
+    "catalogName": "Legend CF66L",
+    "systemId": "cast_10151_CF66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F100HHH",
+    "catalogName": "Advent CST-F100HHH",
+    "systemId": "cast_10159_F100HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F96H",
+    "catalogName": "Advent CST-F96H",
+    "systemId": "cast_10159_F96H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda CST CSSL78M",
+    "catalogName": "Barracuda CST CSSL78M",
+    "systemId": "cast_10057_CSSL78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F93MH",
+    "catalogName": "Advent CST-F93MH",
+    "systemId": "cast_10159_F93MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F86HH",
+    "catalogName": "Advent CST-F86HH",
+    "systemId": "cast_10159_F86HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F70HHH",
+    "catalogName": "Advent CST-F70HHH",
+    "systemId": "cast_10159_F70HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F70HH",
+    "catalogName": "Advent CST-F70HH",
+    "systemId": "cast_10159_F70HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evora CST CSSL98H",
+    "catalogName": "Evora CST CSSL98H",
+    "systemId": "cast_10056_CSSL98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F66L",
+    "catalogName": "Advent CST-F66L",
+    "systemId": "cast_10159_F66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F70H",
+    "catalogName": "Advent CST-F70H",
+    "systemId": "cast_10159_F70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF70MH",
+    "catalogName": "Pulse CF70MH",
+    "systemId": "cast_10149_CF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF70H",
+    "catalogName": "Pulse CF70H",
+    "systemId": "cast_10149_CF70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF70XH",
+    "catalogName": "Pulse CF70XH",
+    "systemId": "cast_10149_CF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CXF70M",
+    "catalogName": "Pulse CXF70M",
+    "systemId": "cast_10149_CXF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF66L",
+    "catalogName": "Pulse CF66L",
+    "systemId": "cast_10149_CF66L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF66ML",
+    "catalogName": "Pulse CF66ML",
+    "systemId": "cast_10149_CF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Pulse CF60UL",
+    "catalogName": "Pulse CF60UL",
+    "systemId": "cast_10149_CF60UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F66ML",
+    "catalogName": "Advent CST-F66ML",
+    "systemId": "cast_10159_F66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena CST CSM78ML",
+    "catalogName": "Cardena CST CSM78ML",
+    "systemId": "cast_10055_CSM78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CF70UL",
+    "catalogName": "Versa CF70UL",
+    "systemId": "cast_10148_CF70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CM70L",
+    "catalogName": "Versa CM70L",
+    "systemId": "cast_10148_CM70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Evora CST CSSL78MH",
+    "catalogName": "Evora CST CSSL78MH",
+    "systemId": "cast_10056_CSSL78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena CST CSM68UL",
+    "catalogName": "Cardena CST CSM68UL",
+    "systemId": "cast_10055_CSM68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CF66ML",
+    "catalogName": "Versa CF66ML",
+    "systemId": "cast_10148_CF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CM80H",
+    "catalogName": "Versa CM80H",
+    "systemId": "cast_10148_CM80H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CF77M",
+    "catalogName": "Versa CF77M",
+    "systemId": "cast_10148_CF77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CF77XH",
+    "catalogName": "Versa CF77XH",
+    "systemId": "cast_10148_CF77XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent CST-F70MH",
+    "catalogName": "Advent CST-F70MH",
+    "systemId": "cast_10159_F70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTXF98H",
+    "catalogName": "Ethnic CSTXF98H",
+    "systemId": "cast_10109_CSTXF98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versa CM66MH",
+    "catalogName": "Versa CM66MH",
+    "systemId": "cast_10148_CM66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra CF70ML",
+    "catalogName": "Integra CF70ML",
+    "systemId": "cast_10147_CF70ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTF88H",
+    "catalogName": "Ethnic CSTF88H",
+    "systemId": "cast_10109_CSTF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTXF78H",
+    "catalogName": "Ethnic CSTXF78H",
+    "systemId": "cast_10109_CSTXF78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTXF88XH",
+    "catalogName": "Ethnic CSTXF88XH",
+    "systemId": "cast_10109_CSTXF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Cardena CST CSF60L",
+    "catalogName": "Cardena CST CSF60L",
+    "systemId": "cast_10055_CSF60L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One CST S88H",
+    "catalogName": "Model One CST S88H",
+    "systemId": "cast_10020_S88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura CM77H",
+    "catalogName": "Ventura CM77H",
+    "systemId": "cast_10146_CM77H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTM78L",
+    "catalogName": "Ethnic CSTM78L",
+    "systemId": "cast_10109_CSTM78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra CF77M",
+    "catalogName": "Integra CF77M",
+    "systemId": "cast_10147_CF77M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra CF70MH",
+    "catalogName": "Integra CF70MH",
+    "systemId": "cast_10147_CF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTM68UL",
+    "catalogName": "Ethnic CSTM68UL",
+    "systemId": "cast_10109_CSTM68UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTF78ML",
+    "catalogName": "Ethnic CSTF78ML",
+    "systemId": "cast_10109_CSTF78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aeros CST CSXF60H",
+    "catalogName": "Aeros CST CSXF60H",
+    "systemId": "cast_10054_CSXF60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura CF66ML",
+    "catalogName": "Ventura CF66ML",
+    "systemId": "cast_10146_CF66ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Integra CF66M",
+    "catalogName": "Integra CF66M",
+    "systemId": "cast_10147_CF66M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura CF66MH",
+    "catalogName": "Ventura CF66MH",
+    "systemId": "cast_10146_CF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aurora CSTXF88H",
+    "catalogName": "Aurora CSTXF88H",
+    "systemId": "cast_10108_CSTXF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty CST86XH",
+    "catalogName": "Super Duty CST86XH",
+    "systemId": "cast_10018_CST86XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTM88MH",
+    "catalogName": "Ethnic CSTM88MH",
+    "systemId": "cast_10109_CSTM88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura CXF70MH",
+    "catalogName": "Ventura CXF70MH",
+    "systemId": "cast_10146_CXF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ventura CXF70M",
+    "catalogName": "Ventura CXF70M",
+    "systemId": "cast_10146_CXF70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aeros CST CSF66MH",
+    "catalogName": "Aeros CST CSF66MH",
+    "systemId": "cast_10054_CSF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic CSTF66MH",
+    "catalogName": "Ethnic CSTF66MH",
+    "systemId": "cast_10109_CSTF66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One CST S78L",
+    "catalogName": "Model One CST S78L",
+    "systemId": "cast_10020_S78L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One CST S78M",
+    "catalogName": "Model One CST S78M",
+    "systemId": "cast_10020_S78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty CST78H",
+    "catalogName": "Super Duty CST78H",
+    "systemId": "cast_10018_CST78H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty CST60MH",
+    "catalogName": "Super Duty CST60MH",
+    "systemId": "cast_10018_CST60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTXF88XH",
+    "catalogName": "Mechta CSTXF88XH",
+    "systemId": "cast_10123_CSTXF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTF68ML",
+    "catalogName": "Mechta CSTF68ML",
+    "systemId": "cast_10123_CSTF68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aurora CSTXF78MH",
+    "catalogName": "Aurora CSTXF78MH",
+    "systemId": "cast_10108_CSTXF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One CST S68MH",
+    "catalogName": "Model One CST S68MH",
+    "systemId": "cast_10020_S68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTXF88H",
+    "catalogName": "Mechta CSTXF88H",
+    "systemId": "cast_10123_CSTXF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aurora CSTF78M",
+    "catalogName": "Aurora CSTF78M",
+    "systemId": "cast_10108_CSTF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTM98MH",
+    "catalogName": "Mechta CSTM98MH",
+    "systemId": "cast_10123_CSTM98MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTF78MH",
+    "catalogName": "Mechta CSTF78MH",
+    "systemId": "cast_10123_CSTF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTXF78MH",
+    "catalogName": "Mechta CSTXF78MH",
+    "systemId": "cast_10123_CSTXF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTM70L",
+    "catalogName": "Mechta CSTM70L",
+    "systemId": "cast_10123_CSTM70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTM70UL",
+    "catalogName": "Mechta CSTM70UL",
+    "systemId": "cast_10123_CSTM70UL",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta CSTF60MH",
+    "catalogName": "Mechta CSTF60MH",
+    "systemId": "cast_10123_CSTF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia CSTF78MH",
+    "catalogName": "Karelia CSTF78MH",
+    "systemId": "cast_10107_CSTF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia CSTM78ML",
+    "catalogName": "Karelia CSTM78ML",
+    "systemId": "cast_10107_CSTM78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia CSTM68L",
+    "catalogName": "Karelia CSTM68L",
+    "systemId": "cast_10107_CSTM68L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor CSTXF88XH",
+    "catalogName": "Belmor CSTXF88XH",
+    "systemId": "cast_10106_CSTXF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia CSTF78M",
+    "catalogName": "Karelia CSTF78M",
+    "systemId": "cast_10107_CSTF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear CST 98H",
+    "catalogName": "Linear CST 98H",
+    "systemId": "cast_10017_98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy CST C80XH",
+    "catalogName": "Heavy CST C80XH",
+    "systemId": "cast_10010_C80XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor CSTF88H",
+    "catalogName": "Belmor CSTF88H",
+    "systemId": "cast_10106_CSTF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna CST 66MH",
+    "catalogName": "Fortuna CST 66MH",
+    "systemId": "cast_10019_66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lait CSTSL78ML",
+    "catalogName": "Lait CSTSL78ML",
+    "systemId": "cast_10122_CSTSL78ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Lait CSTSL70L",
+    "catalogName": "Lait CSTSL70L",
+    "systemId": "cast_10122_CSTSL70L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna CST 68MH",
+    "catalogName": "Fortuna CST 68MH",
+    "systemId": "cast_10019_68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear CST 78MH",
+    "catalogName": "Linear CST 78MH",
+    "systemId": "cast_10017_78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear CST68ML",
+    "catalogName": "Linear CST 68ML",
+    "systemId": "cast_10017_68ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna CST 60MH",
+    "catalogName": "Fortuna CST 60MH",
+    "systemId": "cast_10019_60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor CSTF78MH",
+    "catalogName": "Belmor CSTF78MH",
+    "systemId": "cast_10106_CSTF78MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor CSTF78M",
+    "catalogName": "Belmor CSTF78M",
+    "systemId": "cast_10106_CSTF78M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy CST C70XH",
+    "catalogName": "Heavy CST C70XH",
+    "systemId": "cast_10010_C70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C80M",
+    "catalogName": "Premium Stick CST C80M",
+    "systemId": "cast_10011_C80M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C80H",
+    "catalogName": "Premium Stick CST C80H",
+    "systemId": "cast_10011_C80H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C70M",
+    "catalogName": "Premium Stick CST C70M",
+    "systemId": "cast_10011_C70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C70MH",
+    "catalogName": "Premium Stick CST C70MH",
+    "systemId": "cast_10011_C70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C66H",
+    "catalogName": "Premium Stick CST C66H",
+    "systemId": "cast_10011_C66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C60MH",
+    "catalogName": "Premium Stick CST C60MH",
+    "systemId": "cast_10011_C60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C66MH",
+    "catalogName": "Premium Stick CST C66MH",
+    "systemId": "cast_10011_C66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Premium Stick CST C70H",
+    "catalogName": "Premium Stick CST C70H",
+    "systemId": "cast_10011_C70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heavy CST C66H",
+    "catalogName": "Heavy CST C66H",
+    "systemId": "cast_10010_C66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vision CST C66MH",
+    "catalogName": "Vision CST C66MH",
+    "systemId": "cast_10008_C66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow CST C70M",
+    "catalogName": "Arrow CST C70M",
+    "systemId": "cast_10009_C70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arrow CST C60M",
+    "catalogName": "Arrow CST C60M",
+    "systemId": "cast_10009_C60M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic CST C70M",
+    "catalogName": "Dynamic CST C70M",
+    "systemId": "cast_10007_C70M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic CST C66MH",
+    "catalogName": "Dynamic CST C66MH",
+    "systemId": "cast_10007_C66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic CST C60MH",
+    "catalogName": "Dynamic CST C60MH",
+    "systemId": "cast_10007_C60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dynamic CST C60H",
+    "catalogName": "Dynamic CST C60H",
+    "systemId": "cast_10007_C60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona CST C70H",
+    "catalogName": "Corona CST C70H",
+    "systemId": "cast_10006_C70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona CST C66H",
+    "catalogName": "Corona CST C66H",
+    "systemId": "cast_10006_C66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona CST C66MH",
+    "catalogName": "Corona CST C66MH",
+    "systemId": "cast_10006_C66MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Corona CST C60MH",
+    "catalogName": "Corona CST C60MH",
+    "systemId": "cast_10006_C60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima J-F72HHH",
+    "catalogName": "Ultima J-F72HHH",
+    "systemId": "jerk_10165_F72HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima J-F71HH",
+    "catalogName": "Ultima J-F71HH",
+    "systemId": "jerk_10165_F71HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima J-F70H",
+    "catalogName": "Ultima J-F70H",
+    "systemId": "jerk_10165_F70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultima J-F68MH",
+    "catalogName": "Ultima J-F68MH",
+    "systemId": "jerk_10165_F68MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent J-F70HHH",
+    "catalogName": "Advent J-F70HHH",
+    "systemId": "jerk_10164_F70HHH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Muskie Strike JSXF68XH",
+    "catalogName": "Muskie Strike JSXF68XH",
+    "systemId": "jerk_10061_JSXF68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent J-F68HH",
+    "catalogName": "Advent J-F68HH",
+    "systemId": "jerk_10164_F68HH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Advent J-F68H",
+    "catalogName": "Advent J-F68H",
+    "systemId": "jerk_10164_F68H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Muskie Strike JSF60H",
+    "catalogName": "Muskie Strike JSF60H",
+    "systemId": "jerk_10061_JSF60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Muskie Strike JSF60XH",
+    "catalogName": "Muskie Strike JSF60XH",
+    "systemId": "jerk_10061_JSF60XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda JB JSF68H",
+    "catalogName": "Barracuda JB JSF68H",
+    "systemId": "jerk_10060_JSF68H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda JB JSF68XH",
+    "catalogName": "Barracuda JB JSF68XH",
+    "systemId": "jerk_10060_JSF68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Barracuda JB JSF60MH",
+    "catalogName": "Barracuda JB JSF60MH",
+    "systemId": "jerk_10060_JSF60MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend JXF70H",
+    "catalogName": "Legend JXF70H",
+    "systemId": "jerk_10153_JXF70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legend JXF70XH",
+    "catalogName": "Legend JXF70XH",
+    "systemId": "jerk_10153_JXF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versus JF77XH",
+    "catalogName": "Versus JF77XH",
+    "systemId": "jerk_10152_JF77XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versus JF70MH",
+    "catalogName": "Versus JF70MH",
+    "systemId": "jerk_10152_JF70MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Versus JF70H",
+    "catalogName": "Versus JF70H",
+    "systemId": "jerk_10152_JF70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Jerk JXF70XH",
+    "catalogName": "Ethnic Jerk JXF70XH",
+    "systemId": "jerk_10111_JXF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Jerk JXF70H",
+    "catalogName": "Ethnic Jerk JXF70H",
+    "systemId": "jerk_10111_JXF70H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Jerk JF66H",
+    "catalogName": "Ethnic Jerk JF66H",
+    "systemId": "jerk_10111_JF66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Jerk J68XH",
+    "catalogName": "Model One Jerk J68XH",
+    "systemId": "jerk_10045_J68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Jerk J60H",
+    "catalogName": "Model One Jerk J60H",
+    "systemId": "jerk_10045_J60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Jerk J60XH",
+    "catalogName": "Model One Jerk J60XH",
+    "systemId": "jerk_10045_J60XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia Jerk JXF70XH",
+    "catalogName": "Karelia Jerk JXF70XH",
+    "systemId": "jerk_10110_JXF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia Jerk JXF66H",
+    "catalogName": "Karelia Jerk JXF66H",
+    "systemId": "jerk_10110_JXF66H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Jerk J60XH",
+    "catalogName": "Fortuna Jerk J60XH",
+    "systemId": "jerk_10044_J60XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Jerk J60H",
+    "catalogName": "Fortuna Jerk J60H",
+    "systemId": "jerk_10044_J60H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty Jerk JR68XH",
+    "catalogName": "Super Duty Jerk JR68XH",
+    "systemId": "jerk_10043_JR68XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Super Duty Jerk JR60XH",
+    "catalogName": "Super Duty Jerk JR60XH",
+    "systemId": "jerk_10043_JR60XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta JXF70XH",
+    "catalogName": "Mechta JXF70XH",
+    "systemId": "jerk_10124_JXF70XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master 800",
+    "catalogName": "Master 800",
+    "systemId": "tele_10169_800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master 700",
+    "catalogName": "Master 700",
+    "systemId": "tele_10169_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master 600",
+    "catalogName": "Master 600",
+    "systemId": "tele_10169_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master 500",
+    "catalogName": "Master 500",
+    "systemId": "tele_10169_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Ultra 800",
+    "catalogName": "Razor Ultra 800",
+    "systemId": "tele_10178_800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Ultra 700",
+    "catalogName": "Razor Ultra 700",
+    "systemId": "tele_10178_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Ultra 600",
+    "catalogName": "Razor Ultra 600",
+    "systemId": "tele_10178_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Ultra 500",
+    "catalogName": "Razor Ultra 500",
+    "systemId": "tele_10178_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor 600",
+    "catalogName": "Razor 600",
+    "systemId": "tele_10168_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor 500",
+    "catalogName": "Razor 500",
+    "systemId": "tele_10168_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor 400",
+    "catalogName": "Razor 400",
+    "systemId": "tele_10168_400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno 800",
+    "catalogName": "Inferno 800",
+    "systemId": "tele_10167_800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno 700",
+    "catalogName": "Inferno 700",
+    "systemId": "tele_10167_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno 600",
+    "catalogName": "Inferno 600",
+    "systemId": "tele_10167_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno 500",
+    "catalogName": "Inferno 500",
+    "systemId": "tele_10167_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Excellent pole 26",
+    "catalogName": "Excellent pole 26",
+    "systemId": "tele_10185_26",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Excellent pole 19",
+    "catalogName": "Excellent pole 19",
+    "systemId": "tele_10185_19",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Excellent pole 13",
+    "catalogName": "Excellent pole 13",
+    "systemId": "tele_10185_13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star TL 800",
+    "catalogName": "Crimson Star TL 800",
+    "systemId": "tele_10086_TL800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star TL 700",
+    "catalogName": "Crimson Star TL 700",
+    "systemId": "tele_10086_TL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star TL 600",
+    "catalogName": "Crimson Star TL 600",
+    "systemId": "tele_10086_TL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star TL 500",
+    "catalogName": "Crimson Star TL 500",
+    "systemId": "tele_10086_TL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon 800",
+    "catalogName": "Falcon TL 800",
+    "systemId": "tele_10084_TL800",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Falcon 600",
+    "catalogName": "Falcon TL 600",
+    "systemId": "tele_10084_TL600",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Falcon 400",
+    "catalogName": "Falcon TL 400",
+    "systemId": "tele_10084_TL400",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Spirit 700",
+    "catalogName": "Spirit 700",
+    "systemId": "tele_10166_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spirit 600",
+    "catalogName": "Spirit 600",
+    "systemId": "tele_10166_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spirit 500",
+    "catalogName": "Spirit 500",
+    "systemId": "tele_10166_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Expression 700",
+    "catalogName": "Expression TL 700",
+    "systemId": "tele_10177_TL700",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Expression 500",
+    "catalogName": "Expression TL 500",
+    "systemId": "tele_10177_TL500",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Windmaster TL 700",
+    "catalogName": "Windmaster TL 700",
+    "systemId": "tele_10085_TL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Windmaster TL 500",
+    "catalogName": "Windmaster TL 500",
+    "systemId": "tele_10085_TL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Pole 8",
+    "catalogName": "Ethnic Pole 8",
+    "systemId": "tele_10099_EP8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Pole 6",
+    "catalogName": "Ethnic Pole 6",
+    "systemId": "tele_10099_EP6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Pole 4",
+    "catalogName": "Ethnic Pole 4",
+    "systemId": "tele_10099_EP4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage TL 700",
+    "catalogName": "Heritage TL 700",
+    "systemId": "tele_10083_TL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage TL 600",
+    "catalogName": "Heritage TL 600",
+    "systemId": "tele_10083_TL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage TL 500",
+    "catalogName": "Heritage TL 500",
+    "systemId": "tele_10083_TL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Soul Pole 7",
+    "catalogName": "Soul Pole 7",
+    "systemId": "tele_10175_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Soul Pole 5",
+    "catalogName": "Soul Pole 5",
+    "systemId": "tele_10175_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crystal Pole 7",
+    "catalogName": "Crystal Pole 7",
+    "systemId": "tele_10174_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crystal Pole 5",
+    "catalogName": "Crystal Pole 5",
+    "systemId": "tele_10174_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aurora Pole 7",
+    "catalogName": "Aurora Pole 7",
+    "systemId": "tele_10098_AP7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Aurora Pole 5",
+    "catalogName": "Aurora Pole 5",
+    "systemId": "tele_10098_AP5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман UL8",
+    "catalogName": "Атаман UL8",
+    "systemId": "tele_10179_8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман UL7",
+    "catalogName": "Атаман UL7",
+    "systemId": "tele_10179_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман UL6",
+    "catalogName": "Атаман UL6",
+    "systemId": "tele_10179_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман UL5",
+    "catalogName": "Атаман UL5",
+    "systemId": "tele_10179_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман UL4",
+    "catalogName": "Атаман UL4",
+    "systemId": "tele_10179_4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман L8",
+    "catalogName": "Атаман L8",
+    "systemId": "tele_10180_8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман L7",
+    "catalogName": "Атаман L7",
+    "systemId": "tele_10180_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман L6",
+    "catalogName": "Атаман L6",
+    "systemId": "tele_10180_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман L5",
+    "catalogName": "Атаман L5",
+    "systemId": "tele_10180_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Атаман L4",
+    "catalogName": "Атаман L4",
+    "systemId": "tele_10180_4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One T700",
+    "catalogName": "Model One T700",
+    "systemId": "tele_10040_t700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка БК8",
+    "catalogName": "Рязанка БК8",
+    "systemId": "tele_10166_BK8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка БК6",
+    "catalogName": "Рязанка БК6",
+    "systemId": "tele_10166",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка БК4",
+    "catalogName": "Рязанка БК4",
+    "systemId": "tele_10166_BK4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "White Pole 6",
+    "catalogName": "White Pole 6",
+    "systemId": "tele_10097_WP6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "White Pole 4",
+    "catalogName": "White Pole 4",
+    "systemId": "tele_10097_WP4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Telescopic 8",
+    "catalogName": "Mechta Telescopic 8",
+    "systemId": "tele_10114_8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Telescopic 6",
+    "catalogName": "Mechta Telescopic 6",
+    "systemId": "tele_10114_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two T800",
+    "catalogName": "Model Two T800",
+    "systemId": "tele_10039_t800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two T700",
+    "catalogName": "Model Two T700",
+    "systemId": "tele_10039_t700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two T600",
+    "catalogName": "Model Two T600",
+    "systemId": "tele_10039_t600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two T500",
+    "catalogName": "Model Two T500",
+    "systemId": "tele_10039_t500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trophy T600",
+    "catalogName": "Trophy T600",
+    "systemId": "tele_10173_T600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Trophy T400",
+    "catalogName": "Trophy T400",
+    "systemId": "tele_10173_T400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius T700",
+    "catalogName": "Genius T700",
+    "systemId": "tele_10038_t700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius T500",
+    "catalogName": "Genius T500",
+    "systemId": "tele_10038_t500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultra Telescopic 7",
+    "catalogName": "Ultra Telescopic 7",
+    "systemId": "tele_10176_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultra Telescopic 6",
+    "catalogName": "Ultra Telescopic 6",
+    "systemId": "tele_10176_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultra Telescopic 5",
+    "catalogName": "Ultra Telescopic 5",
+    "systemId": "tele_10176_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ultra Telescopic 4",
+    "catalogName": "Ultra Telescopic 4",
+    "systemId": "tele_10176_4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Telescopic 26",
+    "catalogName": "Linear Telescopic 26",
+    "systemId": "tele_10037_t26",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Telescopic 20",
+    "catalogName": "Linear Telescopic 20",
+    "systemId": "tele_10037_t20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Telescopic 13",
+    "catalogName": "Linear Telescopic 13",
+    "systemId": "tele_10037_t13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor Pole 7",
+    "catalogName": "Belmor Pole 7",
+    "systemId": "tele_10096_BP7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Belmor Pole 5",
+    "catalogName": "Belmor Pole 5",
+    "systemId": "tele_10096_BP5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "RedStick RS23",
+    "catalogName": "RedStick RS23",
+    "systemId": "tele_10050_RS23",
+    "method": "exact"
+  },
+  {
+    "sourceName": "RedStick RS16",
+    "catalogName": "RedStick RS16",
+    "systemId": "tele_10050_RS16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Kontakt Telescopic 7",
+    "catalogName": "Kontakt Telescopic 7",
+    "systemId": "tele_10113_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Kontakt Telescopic 6",
+    "catalogName": "Kontakt Telescopic 6",
+    "systemId": "tele_10113_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Kontakt Telescopic 5",
+    "catalogName": "Kontakt Telescopic 5",
+    "systemId": "tele_10113_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "WalrusStick WS26",
+    "catalogName": "WalrusStick WS26",
+    "systemId": "tele_10049_WS26",
+    "method": "exact"
+  },
+  {
+    "sourceName": "WalrusStick WS20",
+    "catalogName": "WalrusStick WS20",
+    "systemId": "tele_10049_WS20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "WalrusStick WS13",
+    "catalogName": "WalrusStick WS13",
+    "systemId": "tele_10049_WS13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Удочка из орешника",
+    "catalogName": "Удочка из орешника",
+    "systemId": "pomor_rod_4o",
+    "method": "exact"
+  },
+  {
+    "sourceName": "StarlingStick SS20",
+    "catalogName": "StarlingStick SS20",
+    "systemId": "tele_10048_SS20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "StarlingStick SS13",
+    "catalogName": "StarlingStick SS13",
+    "systemId": "tele_10048_SS13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort Telescopic 7",
+    "catalogName": "Comfort Telescopic 7",
+    "systemId": "tele_10112_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort Telescopic 6",
+    "catalogName": "Comfort Telescopic 6",
+    "systemId": "tele_10112_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort Telescopic 5",
+    "catalogName": "Comfort Telescopic 5",
+    "systemId": "tele_10112_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort Telescopic 4",
+    "catalogName": "Comfort Telescopic 4",
+    "systemId": "tele_10112_4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "TeleStick TL20",
+    "catalogName": "TeleStick TL20",
+    "systemId": "tele_10012_tl20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "TeleStick TL16",
+    "catalogName": "TeleStick TL16",
+    "systemId": "tele_10012_tl16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "TeleStick TL13",
+    "catalogName": "TeleStick TL13",
+    "systemId": "tele_10012_tl13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master Bolognese 800",
+    "catalogName": "Master Bolognese 800",
+    "systemId": "bolo_10173_800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master Bolognese 700",
+    "catalogName": "Master Bolognese 700",
+    "systemId": "bolo_10173_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master Bolognese 600",
+    "catalogName": "Master Bolognese 600",
+    "systemId": "bolo_10173_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Master Bolognese 500",
+    "catalogName": "Master Bolognese 500",
+    "systemId": "bolo_10173_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Bolognese 600",
+    "catalogName": "Razor Bolognese 600",
+    "systemId": "bolo_10172_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Bolognese 500",
+    "catalogName": "Razor Bolognese 500",
+    "systemId": "bolo_10172_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Razor Bolognese 400",
+    "catalogName": "Razor Bolognese 400",
+    "systemId": "bolo_10172_400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno Bolognese 800",
+    "catalogName": "Inferno Bolognese 800",
+    "systemId": "bolo_10171_800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno Bolognese 700",
+    "catalogName": "Inferno Bolognese 700",
+    "systemId": "bolo_10171_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno Bolognese 600",
+    "catalogName": "Inferno Bolognese 600",
+    "systemId": "bolo_10171_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Inferno Bolognese 500",
+    "catalogName": "Inferno Bolognese 500",
+    "systemId": "bolo_10171_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rebellion BL 800",
+    "catalogName": "Rebellion BL 800",
+    "systemId": "bolo_10073_BL800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rebellion BL 600",
+    "catalogName": "Rebellion BL 600",
+    "systemId": "bolo_10073_BL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star BL 800",
+    "catalogName": "Crimson Star BL 800",
+    "systemId": "bolo_10072_BL800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star BL 700",
+    "catalogName": "Crimson Star BL 700",
+    "systemId": "bolo_10072_BL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star BL 600",
+    "catalogName": "Crimson Star BL 600",
+    "systemId": "bolo_10072_BL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Crimson Star BL 500",
+    "catalogName": "Crimson Star BL 500",
+    "systemId": "bolo_10072_BL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon BL 700",
+    "catalogName": "Falcon BL 700",
+    "systemId": "bolo_10070_BL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon BL 600",
+    "catalogName": "Falcon BL 600",
+    "systemId": "bolo_10070_BL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon BL 400",
+    "catalogName": "Falcon BL 400",
+    "systemId": "bolo_10070_BL400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spirit Bolognese 700",
+    "catalogName": "Spirit Bolognese 700",
+    "systemId": "bolo_10170_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spirit Bolognese 600",
+    "catalogName": "Spirit Bolognese 600",
+    "systemId": "bolo_10170_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Spirit Bolognese 500",
+    "catalogName": "Spirit Bolognese 500",
+    "systemId": "bolo_10170_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Windmaster BL 800",
+    "catalogName": "Windmaster BL 800",
+    "systemId": "bolo_10071_BL800",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Windmaster BL 700",
+    "catalogName": "Windmaster BL 700",
+    "systemId": "bolo_10071_BL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Windmaster BL 500",
+    "catalogName": "Windmaster BL 500",
+    "systemId": "bolo_10071_BL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage BL 700",
+    "catalogName": "Heritage BL 700",
+    "systemId": "bolo_10069_BL700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage BL 600",
+    "catalogName": "Heritage BL 600",
+    "systemId": "bolo_10069_BL600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Heritage BL 500",
+    "catalogName": "Heritage BL 500",
+    "systemId": "bolo_10069_BL500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Bolognese 8",
+    "catalogName": "Ethnic Bolognese 8",
+    "systemId": "bolo_10100_EB8",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Bolognese 6",
+    "catalogName": "Ethnic Bolognese 6",
+    "systemId": "bolo_10100_EB6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Bolognese 4",
+    "catalogName": "Ethnic Bolognese 4",
+    "systemId": "bolo_10100_EB4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Bolognese 700",
+    "catalogName": "Model One Bolognese 700",
+    "systemId": "bolo_10024_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Bolognese 500",
+    "catalogName": "Model One Bolognese 500",
+    "systemId": "bolo_10024_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Bolognese 7",
+    "catalogName": "Mechta Bolognese 7",
+    "systemId": "bolo_10115_7",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Bolognese 6",
+    "catalogName": "Mechta Bolognese 6",
+    "systemId": "bolo_10115_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Bolognese 5",
+    "catalogName": "Mechta Bolognese 5",
+    "systemId": "bolo_10115_5",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка СК6",
+    "catalogName": "Рязанка СК6",
+    "systemId": "bolo_10167",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Bolognese 700",
+    "catalogName": "Fortuna Bolognese 700",
+    "systemId": "bolo_10023_700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Bolognese 600",
+    "catalogName": "Fortuna Bolognese 600",
+    "systemId": "bolo_10023_600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Bolognese 500",
+    "catalogName": "Fortuna Bolognese 500",
+    "systemId": "bolo_10023_500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius Bolognese 600",
+    "catalogName": "Genius Bolognese 600",
+    "systemId": "bolo_10022_LB600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius Bolognese 400",
+    "catalogName": "Genius Bolognese 400",
+    "systemId": "bolo_10022_LB400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Bolognese 700",
+    "catalogName": "Linear Bolognese 700",
+    "systemId": "bolo_10021_LB700",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Bolognese 600",
+    "catalogName": "Linear Bolognese 600",
+    "systemId": "bolo_10021_LB600",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Bolognese 500",
+    "catalogName": "Linear Bolognese 500",
+    "systemId": "bolo_10021_LB500",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Linear Bolognese 400",
+    "catalogName": "Linear Bolognese 400",
+    "systemId": "bolo_10021_LB400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "KingMaster Bolognese KB26",
+    "catalogName": "KingMaster Bolognese KB26",
+    "systemId": "bolo_10046_KB26",
+    "method": "exact"
+  },
+  {
+    "sourceName": "KingMaster Bolognese KB20",
+    "catalogName": "KingMaster Bolognese KB20",
+    "systemId": "bolo_10046_KB20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "KingMaster Bolognese KB16",
+    "catalogName": "KingMaster Bolognese KB16",
+    "systemId": "bolo_10046_KB16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "S-Eagle Bolognese SB25",
+    "catalogName": "S-Eagle Bolognese SB25",
+    "systemId": "bolo_10045_SB25",
+    "method": "exact"
+  },
+  {
+    "sourceName": "S-Eagle Bolognese SB20",
+    "catalogName": "S-Eagle Bolognese SB20",
+    "systemId": "bolo_10045_SB20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "S-Eagle Bolognese SB15",
+    "catalogName": "S-Eagle Bolognese SB15",
+    "systemId": "bolo_10045_SB15",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Siren Bolognese SB20",
+    "catalogName": "Siren Bolognese SB20",
+    "systemId": "bolo_10044_SB20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Siren Bolognese SB13",
+    "catalogName": "Siren Bolognese SB13",
+    "systemId": "bolo_10044_SB13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sensiv Bolognese II SB23",
+    "catalogName": "Sensiv Bolognese II SB23",
+    "systemId": "bolo_10043n_SB23",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sensiv Bolognese II SB16",
+    "catalogName": "Sensiv Bolognese II SB16",
+    "systemId": "bolo_10043n_SB16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sensiv Bolognese II SB13",
+    "catalogName": "Sensiv Bolognese II SB13",
+    "systemId": "bolo_10043n_SB13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Monster Match 440",
+    "catalogName": "Monster Match 440",
+    "systemId": "match_10177_440",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Monster Match 400",
+    "catalogName": "Monster Match 400",
+    "systemId": "match_10177_400",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Monster Match 360",
+    "catalogName": "Monster Match 360",
+    "systemId": "match_10177_360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Monster Match 320",
+    "catalogName": "Monster Match 320",
+    "systemId": "match_10177_320",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Plasma Match 420",
+    "catalogName": "Plasma Match 420",
+    "systemId": "match_10176_420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Plasma Match 380",
+    "catalogName": "Plasma Match 380",
+    "systemId": "match_10176_380",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Plasma Match 340",
+    "catalogName": "Plasma Match 340",
+    "systemId": "match_10176_340",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Plasma Match 320",
+    "catalogName": "Plasma Match 320",
+    "systemId": "match_10176_320",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Shooting Match 450",
+    "catalogName": "Shooting Match 450",
+    "systemId": "match_10175_450",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Shooting Match 420",
+    "catalogName": "Shooting Match 420",
+    "systemId": "match_10175_420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Raven Match 360",
+    "catalogName": "Raven Match 360",
+    "systemId": "match_10174_360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Raven Match 340",
+    "catalogName": "Raven Match 340",
+    "systemId": "match_10174_340",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Raven Match 320",
+    "catalogName": "Raven Match 320",
+    "systemId": "match_10174_320",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rebellion Match 450LC",
+    "catalogName": "Rebellion Match 450LC",
+    "systemId": "match_10078_450LC",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rebellion Match 420H",
+    "catalogName": "Rebellion Match 420H",
+    "systemId": "match_10078_420H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Rebellion Match 390H",
+    "catalogName": "Rebellion Match 390H",
+    "systemId": "match_10078_390H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon Match 390XH",
+    "catalogName": "Falcon Match 390XH",
+    "systemId": "match_10076_390XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon Match 390",
+    "catalogName": "Falcon Match 390",
+    "systemId": "match_10076_390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Falcon Match 360",
+    "catalogName": "Falcon Match 360",
+    "systemId": "match_10076_360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Borray Match 450",
+    "catalogName": "Borray Match 450",
+    "systemId": "match_10077_450",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Borray Match 420",
+    "catalogName": "Borray Match 420",
+    "systemId": "match_10077_420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Borray Match 390",
+    "catalogName": "Borray Match 390",
+    "systemId": "match_10077_390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Elementary Match 420",
+    "catalogName": "Elementary Match 420",
+    "systemId": "match_10074_420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Elementary Match 390",
+    "catalogName": "Elementary Match 390",
+    "systemId": "match_10074_390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Match 420H",
+    "catalogName": "Ethnic Match 420H",
+    "systemId": "match_10102_420H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Match 380MH",
+    "catalogName": "Ethnic Match 380MH",
+    "systemId": "match_10102_380MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ethnic Match 340MH",
+    "catalogName": "Ethnic Match 340MH",
+    "systemId": "match_10102_340MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Match M140XH",
+    "catalogName": "Model One Match M140XH",
+    "systemId": "match_10028_M140XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Match M140MH",
+    "catalogName": "Model One Match M140MH",
+    "systemId": "match_10028_M140MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sport Match 4.4",
+    "catalogName": "Sport Match 4.4",
+    "systemId": "match_10118_4_4",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sport Match 3.9",
+    "catalogName": "Sport Match 3.9",
+    "systemId": "match_10118_3_9",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sport Match 3.6",
+    "catalogName": "Sport Match 3.6",
+    "systemId": "match_10118_3_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sport Match 3.3",
+    "catalogName": "Sport Match 3.3",
+    "systemId": "match_10118_3_3",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Katapulta 4.2",
+    "catalogName": "Katapulta 4.2",
+    "systemId": "match_10117_4_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Match M140MH",
+    "catalogName": "Fortuna Match M140MH",
+    "systemId": "match_10027_M140MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Match M130ML",
+    "catalogName": "Fortuna Match M130ML",
+    "systemId": "match_10027_M130ML",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia Match 380MH",
+    "catalogName": "Karelia Match 380MH",
+    "systemId": "match_10101_380MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia Match 360M",
+    "catalogName": "Karelia Match 360M",
+    "systemId": "match_10101_360M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Karelia Match 320M",
+    "catalogName": "Karelia Match 320M",
+    "systemId": "match_10101_320M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vertigo Match M150MH",
+    "catalogName": "Vertigo Match M150MH",
+    "systemId": "match_10025_M150MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vertigo Match M140H",
+    "catalogName": "Vertigo Match M140H",
+    "systemId": "match_10025_M140H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Vertigo Match M140H",
+    "catalogName": "Vertigo Match M140H",
+    "systemId": "match_10025_M140H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius Match M150M",
+    "catalogName": "Genius Match M150M",
+    "systemId": "match_10026_M150M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Genius Match M110M",
+    "catalogName": "Genius Match M110M",
+    "systemId": "match_10026_M110M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Akkord Match 4.2",
+    "catalogName": "Akkord Match 4.2",
+    "systemId": "match_10116_4_2",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Akkord Match 3.9",
+    "catalogName": "Akkord Match 3.9",
+    "systemId": "match_10116_3_9",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Akkord Match 3.6",
+    "catalogName": "Akkord Match 3.6",
+    "systemId": "match_10116_3_6",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Harp Match HM20",
+    "catalogName": "Harp Match HM20",
+    "systemId": "match_10051_HM20",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Harp Match HM16",
+    "catalogName": "Harp Match HM16",
+    "systemId": "match_10051_HM16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Harp Match HM12",
+    "catalogName": "Harp Match HM12",
+    "systemId": "match_10051_HM12",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ranger Match RM16",
+    "catalogName": "Ranger Match RM16",
+    "systemId": "match_10041_RM16",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ranger Match RM13",
+    "catalogName": "Ranger Match RM13",
+    "systemId": "match_10041_RM13",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal FM130XXH",
+    "catalogName": "Royal FM130XXH",
+    "systemId": "feeder_10091_FM130XXH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal FM130XH",
+    "catalogName": "Royal FM130XH",
+    "systemId": "feeder_10091_FM130XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal FM120H",
+    "catalogName": "Royal FM120H",
+    "systemId": "feeder_10091_FM120H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Blackwood FSL140XH",
+    "catalogName": "Blackwood FSL140XH",
+    "systemId": "feeder_10090_FSL140XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Blackwood FSL130H",
+    "catalogName": "Blackwood FSL130H",
+    "systemId": "feeder_10090_FSL130H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan FF140H",
+    "catalogName": "Bunessan FF140H",
+    "systemId": "feeder_10089_FF140H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan FF130H",
+    "catalogName": "Bunessan FF130H",
+    "systemId": "feeder_10089_FF130H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan FF120H",
+    "catalogName": "Bunessan FF120H",
+    "systemId": "feeder_10089_FF120H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coldstream FM140H",
+    "catalogName": "Coldstream FM140H",
+    "systemId": "feeder_10088_FM140H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coldstream FM130H",
+    "catalogName": "Coldstream FM130H",
+    "systemId": "feeder_10088_FM130H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coldstream FM120MH",
+    "catalogName": "Coldstream FM120MH",
+    "systemId": "feeder_10088_FM120MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Wingate FF130XH",
+    "catalogName": "Wingate FF130XH",
+    "systemId": "feeder_10087_FF130XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Wingate FF120H",
+    "catalogName": "Wingate FF120H",
+    "systemId": "feeder_10087_FF120H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Wingate FF110H",
+    "catalogName": "Wingate FF110H",
+    "systemId": "feeder_10087_FF110H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One FD450XH",
+    "catalogName": "Model One FD450XH",
+    "systemId": "feeder_10051_FD450XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One FD420H",
+    "catalogName": "Model One FD420H",
+    "systemId": "feeder_10051_FD420H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One FD390M",
+    "catalogName": "Model One FD390M",
+    "systemId": "feeder_10051_FD390M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One FD360M",
+    "catalogName": "Model One FD360M",
+    "systemId": "feeder_10051_FD360M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two FD420H",
+    "catalogName": "Model Two FD420H",
+    "systemId": "feeder_10050_FD420H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two FD390XH",
+    "catalogName": "Model Two FD390XH",
+    "systemId": "feeder_10050_FD390XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two FD360MH",
+    "catalogName": "Model Two FD360MH",
+    "systemId": "feeder_10050_FD360MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta FD440",
+    "catalogName": "Mechta FD440",
+    "systemId": "feeder_10128_FD440",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta FD420",
+    "catalogName": "Mechta FD420",
+    "systemId": "feeder_10128_FD420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two FD360M",
+    "catalogName": "Model Two FD360M",
+    "systemId": "feeder_10050_FD360M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta FD390",
+    "catalogName": "Mechta FD390",
+    "systemId": "feeder_10128_FD390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Рязанка СКФ",
+    "catalogName": "Рязанка СКФ",
+    "systemId": "feeder_10171",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta FD360",
+    "catalogName": "Mechta FD360",
+    "systemId": "feeder_10128_FD360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sentense FD340MH",
+    "catalogName": "Sentense FD340MH",
+    "systemId": "feeder_10049_FD340MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Impuls FD450",
+    "catalogName": "Impuls FD450",
+    "systemId": "feeder_10127_FD450",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Impuls FD390",
+    "catalogName": "Impuls FD390",
+    "systemId": "feeder_10127_FD390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Feeder FD420",
+    "catalogName": "Fortuna Feeder FD420",
+    "systemId": "feeder_10048_FD420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Feeder FD390",
+    "catalogName": "Fortuna Feeder FD390",
+    "systemId": "feeder_10048_FD390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Persey FD140",
+    "catalogName": "Persey FD140",
+    "systemId": "feeder_10056_FD140",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Persey FD110",
+    "catalogName": "Persey FD110",
+    "systemId": "feeder_10056_FD110",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fantazia FD410",
+    "catalogName": "Fantazia FD410",
+    "systemId": "feeder_10126_FD410",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fantazia FD390",
+    "catalogName": "Fantazia FD390",
+    "systemId": "feeder_10126_FD390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fantazia FD370",
+    "catalogName": "Fantazia FD370",
+    "systemId": "feeder_10126_FD370",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fantazia FD350",
+    "catalogName": "Fantazia FD350",
+    "systemId": "feeder_10126_FD350",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmar FD150",
+    "catalogName": "Palmar FD150",
+    "systemId": "feeder_10055_FD150",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmar FD120",
+    "catalogName": "Palmar FD120",
+    "systemId": "feeder_10055_FD120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Asteria FD130",
+    "catalogName": "Asteria FD130",
+    "systemId": "feeder_10054_FD130",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Asteria FD110",
+    "catalogName": "Asteria FD110",
+    "systemId": "feeder_10054_FD110",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort FD390",
+    "catalogName": "Comfort FD390",
+    "systemId": "feeder_10125_FD390",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort FD360",
+    "catalogName": "Comfort FD360",
+    "systemId": "feeder_10125_FD360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Comfort FD330",
+    "catalogName": "Comfort FD330",
+    "systemId": "feeder_10125_FD330",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sorento FD130",
+    "catalogName": "Sorento FD130",
+    "systemId": "feeder_10053_FD130",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sorento FD120",
+    "catalogName": "Sorento FD120",
+    "systemId": "feeder_10053_FD120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sorento FD100",
+    "catalogName": "Sorento FD100",
+    "systemId": "feeder_10053_FD100",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Picker F98MH",
+    "catalogName": "Legacy Picker F98MH",
+    "systemId": "picker_10251_f98mh",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Picker F98M",
+    "catalogName": "Legacy Picker F98M",
+    "systemId": "picker_10251_f98ml",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Picker M98M",
+    "catalogName": "Legacy Picker M98M",
+    "systemId": "picker_10251_m98ml",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage Picker M98MH",
+    "catalogName": "Sage Picker M98MH",
+    "systemId": "picker_10250_m98mh",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage Picker M98M",
+    "catalogName": "Sage Picker M98M",
+    "systemId": "picker_10250_m98ml",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal Picker PM98H",
+    "catalogName": "Royal Picker PM98H",
+    "systemId": "picker_10095_PM98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal Picker PF98H",
+    "catalogName": "Royal Picker PF98H",
+    "systemId": "picker_10095_PF98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage Picker M88M",
+    "catalogName": "Sage Picker M88M",
+    "systemId": "picker_10250_m88ml",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Royal Picker PM88MH",
+    "catalogName": "Royal Picker PM88MH",
+    "systemId": "picker_10095_PM88MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan Picker PF98XH",
+    "catalogName": "Bunessan Picker PF98XH",
+    "systemId": "picker_10093_PF98XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan Picker PF88H",
+    "catalogName": "Bunessan Picker PF88H",
+    "systemId": "picker_10093_PF88H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Bunessan Picker PXF88XH",
+    "catalogName": "Bunessan Picker PXF88XH",
+    "systemId": "picker_10093_PXF88XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Blackwood Picker PSL98MH",
+    "catalogName": "Blackwood Picker PSL98MH",
+    "systemId": "picker_10094_PSL98MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Wingate Picker PF98H",
+    "catalogName": "Wingate Picker PF98H",
+    "systemId": "picker_10092_PF98H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Picker 300MH",
+    "catalogName": "Model One Picker 300MH",
+    "systemId": "picker_10053_300MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Picker 270M",
+    "catalogName": "Model One Picker 270M",
+    "systemId": "picker_10053_270M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta P300",
+    "catalogName": "Mechta P300",
+    "systemId": "picker_10130_P300",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta P270",
+    "catalogName": "Mechta P270",
+    "systemId": "picker_10130_P270",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model One Picker 240M",
+    "catalogName": "Model One Picker 240M",
+    "systemId": "picker_10053_240L",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two Picker 300MH",
+    "catalogName": "Model Two Picker 300MH",
+    "systemId": "picker_10096_300MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Model Two Picker 270M",
+    "catalogName": "Model Two Picker 270M",
+    "systemId": "picker_10096_270M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta P240",
+    "catalogName": "Mechta P240",
+    "systemId": "picker_10130_P240",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Impuls P300",
+    "catalogName": "Impuls P300",
+    "systemId": "picker_10129_P300",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Persey PCK98",
+    "catalogName": "Persey PCK98",
+    "systemId": "picker_10058_PCK98",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Picker P300-MH",
+    "catalogName": "Fortuna Picker P300-MH",
+    "systemId": "picker_10052_P300-MH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmar PCK88",
+    "catalogName": "Palmar PCK88",
+    "systemId": "picker_10057_PCK88",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Palmar PCK78",
+    "catalogName": "Palmar PCK78",
+    "systemId": "picker_10057_PCK78",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 13-4.50",
+    "catalogName": "Legacy Ti 13-4.50",
+    "systemId": "carp_10140_13_4_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 13-4.00",
+    "catalogName": "Legacy Ti 13-4.00",
+    "systemId": "carp_10140_13_4_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 13-4.50",
+    "catalogName": "Legacy 13-4.50",
+    "systemId": "carp_10139_13_4_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 12-3.75",
+    "catalogName": "Legacy Ti 12-3.75",
+    "systemId": "carp_10140_12_3_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 12-3.50",
+    "catalogName": "Legacy Ti 12-3.50",
+    "systemId": "carp_10140_12_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 13-4.00",
+    "catalogName": "Legacy 13-4.00",
+    "systemId": "carp_10139_13_4_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 12-3.25",
+    "catalogName": "Legacy Ti 12-3.25",
+    "systemId": "carp_10140_12_3_25",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 12-3.00",
+    "catalogName": "Legacy Ti 12-3.00",
+    "systemId": "carp_10140_12_3_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 12-3.75",
+    "catalogName": "Legacy 12-3.75",
+    "systemId": "carp_10139_12_3_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy Ti 12-2.50",
+    "catalogName": "Legacy Ti 12-2.50",
+    "systemId": "carp_10140_12_2_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 12-3.50",
+    "catalogName": "Legacy 12-3.50",
+    "systemId": "carp_10139_12_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 12-3.25",
+    "catalogName": "Legacy 12-3.25",
+    "systemId": "carp_10139_12_3_25",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 12-3.00",
+    "catalogName": "Legacy 12-3.00",
+    "systemId": "carp_10139_12_3_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Legacy 12-2.50",
+    "catalogName": "Legacy 12-2.50",
+    "systemId": "carp_10139_12_2_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Avalon 13-3.75",
+    "catalogName": "Avalon 13-3.75",
+    "systemId": "carp_10138_13_3_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Avalon 12-3.50",
+    "catalogName": "Avalon 12-3.50",
+    "systemId": "carp_10138_12_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Avalon 12-3.25",
+    "catalogName": "Avalon 12-3.25",
+    "systemId": "carp_10138_12_3_25",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Avalon 12-2.75",
+    "catalogName": "Avalon 12-2.75",
+    "systemId": "carp_10138_12_2_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Atlas 13-5.00",
+    "catalogName": "Atlas 13-5.00",
+    "systemId": "carp_10137_13_5_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 13-3.50",
+    "catalogName": "Sage 13-3.50",
+    "systemId": "carp_10136_13_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 13-3.00",
+    "catalogName": "Sage 13-3.00",
+    "systemId": "carp_10136_13_3_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Atlas 12-4.50",
+    "catalogName": "Atlas 12-4.50",
+    "systemId": "carp_10137_12_4_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 12-3.50",
+    "catalogName": "Sage 12-3.50",
+    "systemId": "carp_10136_12_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 12-3.25",
+    "catalogName": "Sage 12-3.25",
+    "systemId": "carp_10136_12_3_25",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 12-3.00",
+    "catalogName": "Sage 12-3.00",
+    "systemId": "carp_10136_12_3_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Atlas 12-4.00",
+    "catalogName": "Atlas 12-4.00",
+    "systemId": "carp_10137_12_4_00",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Sage 12-2.75",
+    "catalogName": "Sage 12-2.75",
+    "systemId": "carp_10136_12_2_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Carp Dominator CM128XH",
+    "catalogName": "Carp Dominator CM128XH",
+    "systemId": "carp_10086_CM128XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Carp Dominator CF128XH",
+    "catalogName": "Carp Dominator CF128XH",
+    "systemId": "carp_10086_CF128XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Native 13-3.50",
+    "catalogName": "Native 13-3.50",
+    "systemId": "carp_10135_13_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Native 12-3.50",
+    "catalogName": "Native 12-3.50",
+    "systemId": "carp_10135_12_3_50",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Carp Dominator CSL118H",
+    "catalogName": "Carp Dominator CSL118H",
+    "systemId": "carp_10086_CSL118H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Native 12-2.75",
+    "catalogName": "Native 12-2.75",
+    "systemId": "carp_10135_12_2_75",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Carp Dominator CF118XH",
+    "catalogName": "Carp Dominator CF118XH",
+    "systemId": "carp_10086_CF118XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Carp 360XH",
+    "catalogName": "Fortuna Carp 360XH",
+    "systemId": "carp_10047_360XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Carp 360H",
+    "catalogName": "Fortuna Carp 360H",
+    "systemId": "carp_10047_360H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fortuna Carp 360M",
+    "catalogName": "Fortuna Carp 360M",
+    "systemId": "carp_10047_360M",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Carp 380",
+    "catalogName": "Mechta Carp 380",
+    "systemId": "carp_10131_380",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Carp 360",
+    "catalogName": "Mechta Carp 360",
+    "systemId": "carp_10131_360",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Mechta Carp 340",
+    "catalogName": "Mechta Carp 340",
+    "systemId": "carp_10131_340",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Classic Model Carp 360XH",
+    "catalogName": "Classic Model Carp 360XH",
+    "systemId": "carp_10046_360XH",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Classic Model Carp 360H",
+    "catalogName": "Classic Model Carp 360H",
+    "systemId": "carp_10046_360H",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Persey CP120",
+    "catalogName": "Persey CP120",
+    "systemId": "carp_10052_CP120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Persey CP110",
+    "catalogName": "Persey CP110",
+    "systemId": "carp_10052_CP110",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon Mega Jig 60260",
+    "catalogName": "Poseidon Mega Jig 60260",
+    "systemId": "pilkr_10212_60260",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon Mega Pirk 90340",
+    "catalogName": "Poseidon Mega Pirk 90340",
+    "systemId": "pilkr_10212_90340",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon Sensi 88-50190",
+    "catalogName": "Poseidon Sensi 88-50190",
+    "systemId": "pilkr_10212_88-50160",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon Sensi 80-20130",
+    "catalogName": "Poseidon Sensi 80-20130",
+    "systemId": "pilkr_10212_80-20120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ocean Queen 86-160-420",
+    "catalogName": "Ocean Queen 86-160420",
+    "systemId": "pilkr_10211_86-160420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ocean Queen 86-100-300",
+    "catalogName": "Ocean Queen 86-100300",
+    "systemId": "pilkr_10211_86-100300",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Ocean Queen 86-50150",
+    "catalogName": "Ocean Queen 86-50150",
+    "systemId": "pilkr_10211_86-50150",
+    "method": "exact"
+  },
+  {
+    "sourceName": "7 Seas - 88-120420",
+    "catalogName": "7 Seas - 88-120420",
+    "systemId": "pilkr_10210_88-120420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "7 Seas - 80-120420",
+    "catalogName": "7 Seas - 80-120420",
+    "systemId": "pilkr_10210_80-120420",
+    "method": "exact"
+  },
+  {
+    "sourceName": "7 Seas - 88-50190",
+    "catalogName": "7 Seas - 88-50190",
+    "systemId": "pilkr_10210_88-50190",
+    "method": "exact"
+  },
+  {
+    "sourceName": "7 Seas - 80-30140",
+    "catalogName": "7 Seas - 80-30140",
+    "systemId": "pilkr_10210_80-30120",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Saltmaster - Offshore 88",
+    "catalogName": "Saltmaster - Offshore 88",
+    "systemId": "pilkr_10208_os88",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Saltmaster - Inshore 92",
+    "catalogName": "Saltmaster - Inshore 92",
+    "systemId": "pilkr_10208_is92",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Saltmaster - Fjord 88",
+    "catalogName": "Saltmaster - Fjord 88",
+    "systemId": "pilkr_10208_f88",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Saltmaster - Ultra 88",
+    "catalogName": "Saltmaster - Fjord Ultra 88",
+    "systemId": "pilkr_10208_fu88",
+    "method": "alias"
+  },
+  {
+    "sourceName": "Poseidon Ultra 80-100",
+    "catalogName": "Poseidon Ultra 80-100",
+    "systemId": "boatr_10222_80_100",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon Ultra 70-100",
+    "catalogName": "Poseidon Ultra 70-100",
+    "systemId": "boatr_10222_70_100",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 80-100",
+    "catalogName": "Poseidon 80-100",
+    "systemId": "boatr_10222_8010",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 70-100",
+    "catalogName": "Poseidon 70-100",
+    "systemId": "boatr_10222_7010",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 80-080",
+    "catalogName": "Poseidon 80-080",
+    "systemId": "boatr_10222_8008",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 80-050",
+    "catalogName": "Poseidon 80-050",
+    "systemId": "boatr_10222_8005",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 70-080",
+    "catalogName": "Poseidon 70-080",
+    "systemId": "boatr_10222_7008",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Poseidon 70-050",
+    "catalogName": "Poseidon 70-050",
+    "systemId": "boatr_10222_7005",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Polar Hunter 70-030",
+    "catalogName": "Polar Hunter 70-030",
+    "systemId": "boatr_10221_030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Storm Rider 70-050",
+    "catalogName": "Storm Rider 70-050",
+    "systemId": "boatr_10220_050",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Storm Rider 70-030",
+    "catalogName": "Storm Rider 70-030",
+    "systemId": "boatr_10220_030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Deep Attack 70-095",
+    "catalogName": "Deep Attack 70-095",
+    "systemId": "boatr_10219_095",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Arctic Special 70-030",
+    "catalogName": "Arctic Special 70-030",
+    "systemId": "boatr_10218_030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tristar Deep Jig 78-050",
+    "catalogName": "Tristar Deep Jig 78-050",
+    "systemId": "boatr_10217_7805",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tristar Deep Jig 68-050",
+    "catalogName": "Tristar Deep Jig 68-050",
+    "systemId": "boatr_10217_6805",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tristar Deep Jig 78-030",
+    "catalogName": "Tristar Deep Jig 78-030",
+    "systemId": "boatr_10217_7803",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tristar Deep Jig 68-030",
+    "catalogName": "Tristar Deep Jig 68-030",
+    "systemId": "boatr_10217_6803",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Tristar Deep Jig 68-020",
+    "catalogName": "Tristar Deep Jig 68-020",
+    "systemId": "boatr_10217_6802",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Nordmaster 70-030",
+    "catalogName": "Nordmaster 70-030",
+    "systemId": "boatr_10216_030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coast Runner 70-050",
+    "catalogName": "Coast Runner 70-050",
+    "systemId": "boatr_10215_050",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coast Runner 70-040",
+    "catalogName": "Coast Runner 70-040",
+    "systemId": "boatr_10215_040",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Coast Runner 70-025",
+    "catalogName": "Coast Runner 70-025",
+    "systemId": "boatr_10215_025",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dual Strike 70-040",
+    "catalogName": "Dual Strike 70-040",
+    "systemId": "boatr_10214_740",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dual Strike 60-040",
+    "catalogName": "Dual Strike 60-040",
+    "systemId": "boatr_10214_640",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dual Strike 70-025",
+    "catalogName": "Dual Strike 70-025",
+    "systemId": "boatr_10214_725",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Dual Strike 70-015",
+    "catalogName": "Dual Strike 70-015",
+    "systemId": "boatr_10214_715",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fjordmaster 70-050",
+    "catalogName": "Fjordmaster 70-050",
+    "systemId": "boatr_10213_050",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fjordmaster 70-030",
+    "catalogName": "Fjordmaster 70-030",
+    "systemId": "boatr_10213_030",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fjordmaster 70-020",
+    "catalogName": "Fjordmaster 70-020",
+    "systemId": "boatr_10213_020",
+    "method": "exact"
+  },
+  {
+    "sourceName": "Fjordmaster 70-012",
+    "catalogName": "Fjordmaster 70-012",
+    "systemId": "boatr_10213_012",
+    "method": "exact"
+  }
+]

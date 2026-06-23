@@ -12,6 +12,8 @@
     "catalog:import": "tsx scripts/rf4-catalog-import.ts",
     "fish-images:import": "tsx scripts/rf4-fish-images.ts",
     "reels:import": "tsx scripts/rf4-reels-import.ts",
+    "reel-models:import": "tsx scripts/rf4-reel-models.ts",
+    "rods:import": "tsx scripts/rf4-rods-import.ts",
     "verify:admin-api": "tsx scripts/verify-admin-api.ts",
     "dev": "tsx watch src/index.ts"
   },

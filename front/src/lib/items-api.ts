@@ -43,7 +43,7 @@ export const typeLabels: Record<ItemType, string> = {
 
 export const itemCategories: Record<ItemType, string[]> = {
     reels: ["Безинерционные", "Байткастинговые", "Силовые", "Низкопрофильные"],
-    rods: ["Спининговые", "Доночные", "Поплавочные", "Морские"],
+    rods: ["Спиннинговые", "Доночные", "Поплавочные", "Морские"],
 };
 
 async function readError(response: Response) {

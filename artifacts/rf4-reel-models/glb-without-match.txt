@@ -1,0 +1,315 @@
+fly_5426	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\fly_5426.glb
+spin_5001	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5001.glb
+spin_5002	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5002.glb
+spin_5003	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5003.glb
+spin_5018	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5018.glb
+spin_5019	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5019.glb
+spin_5020	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5020.glb
+spin_5021	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5021.glb
+spin_5024	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5024.glb
+spin_5025	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5025.glb
+spin_5036	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5036.glb
+spin_5038	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5038.glb
+spin_5042	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5042.glb
+spin_5052	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5052.glb
+spin_5053	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5053.glb
+spin_5054	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5054.glb
+spin_5055	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5055.glb
+spin_5056	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5056.glb
+spin_5057	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5057.glb
+spin_5058	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5058.glb
+spin_5059	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5059.glb
+spin_5060	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5060.glb
+spin_5061	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5061.glb
+spin_5064	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5064.glb
+spin_5068	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5068.glb
+spin_5069	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5069.glb
+spin_5093	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5093.glb
+spin_5094	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5094.glb
+spin_5095	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5095.glb
+spin_5096	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5096.glb
+spin_5097	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5097.glb
+spin_5098	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5098.glb
+spin_5101	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5101.glb
+spin_5103	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5103.glb
+spin_5104	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5104.glb
+spin_5105	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5105.glb
+spin_5106	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5106.glb
+spin_5107	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5107.glb
+spin_5108	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5108.glb
+spin_5109	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5109.glb
+spin_5110	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5110.glb
+spin_5111	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5111.glb
+spin_5112	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5112.glb
+spin_5113	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5113.glb
+spin_5114	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5114.glb
+spin_5115	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5115.glb
+spin_5138	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5138.glb
+spin_5140	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5140.glb
+spin_5140_sbtn	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5140_sbtn.glb
+spin_5188	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5188.glb
+spin_5189	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5189.glb
+spin_5190	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5190.glb
+spin_5200	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5200.glb
+spin_5201	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5201.glb
+spin_5267	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5267.glb
+spin_5269	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5269.glb
+spin_5270	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5270.glb
+spin_5275	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5275.glb
+spin_5276	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5276.glb
+spin_5277	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5277.glb
+spin_5278	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5278.glb
+spin_5297	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5297.glb
+spin_5319_0	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5319_0.glb
+spin_5320	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5320.glb
+spin_5321	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5321.glb
+spin_5322	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5322.glb
+spin_5323	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5323.glb
+spin_5324_0	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5324_0.glb
+spin_5370	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5370.glb
+spin_5371	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5371.glb
+spin_5372	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5372.glb
+spin_5373	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5373.glb
+spin_5374	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5374.glb
+spin_5375	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5375.glb
+spin_5382	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5382.glb
+spin_5383	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5383.glb
+spin_5388	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5388.glb
+spin_5454	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5454.glb
+spin_5520	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5520.glb
+spin_5521	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5521.glb
+spin_5522	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5522.glb
+spin_5523	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5523.glb
+spin_5524	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5524.glb
+spin_5525	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5525.glb
+spin_5681	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5681.glb
+spin_5682	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5682.glb
+spin_5701	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5701.glb
+spin_5702	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5702.glb
+spin_5705	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5705.glb
+spin_5720	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5720.glb
+spin_5721	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5721.glb
+spin_5722	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5722.glb
+spin_5776	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5776.glb
+spin_5792	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5792.glb
+spin_5793	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5793.glb
+spin_5794	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5794.glb
+spin_5795	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5795.glb
+spin_5861	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5861.glb
+spin_5995	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_5995.glb
+spin_6007	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_6007.glb
+spin_6008	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_6008.glb
+spin_6018	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_6018.glb
+spin_6115	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spin\spin_6115.glb
+spool_5491	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5491.glb
+spool_5492	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5492.glb
+spool_5493	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5493.glb
+spool_5494	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5494.glb
+spool_5495	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5495.glb
+spool_5496	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5496.glb
+spool_5497	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5497.glb
+spool_5498	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5498.glb
+spool_5499	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5499.glb
+spool_5500	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5500.glb
+spool_5501	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5501.glb
+spool_5502	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5502.glb
+spool_5503	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5503.glb
+spool_5504	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5504.glb
+spool_5505	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5505.glb
+spool_5506	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5506.glb
+spool_5507	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5507.glb
+spool_5508	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5508.glb
+spool_5509	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5509.glb
+spool_5510	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5510.glb
+spool_5511	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5511.glb
+spool_5512	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5512.glb
+spool_5513	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5513.glb
+spool_5514	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5514.glb
+spool_5515	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5515.glb
+spool_5516	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5516.glb
+spool_5517	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5517.glb
+spool_5518	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5518.glb
+spool_5519	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5519.glb
+spool_5520	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5520.glb
+spool_5521	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5521.glb
+spool_5526	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5526.glb
+spool_5527	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5527.glb
+spool_5528	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5528.glb
+spool_5529	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5529.glb
+spool_5530	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5530.glb
+spool_5531	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5531.glb
+spool_5532	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5532.glb
+spool_5533	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5533.glb
+spool_5534	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5534.glb
+spool_5535	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5535.glb
+spool_5536	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5536.glb
+spool_5537	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5537.glb
+spool_5538	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5538.glb
+spool_5539	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5539.glb
+spool_5540	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5540.glb
+spool_5541	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5541.glb
+spool_5542	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5542.glb
+spool_5543	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5543.glb
+spool_5544	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5544.glb
+spool_5545	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5545.glb
+spool_5546	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5546.glb
+spool_5547	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5547.glb
+spool_5548	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5548.glb
+spool_5549	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5549.glb
+spool_5550	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5550.glb
+spool_5551	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5551.glb
+spool_5552	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5552.glb
+spool_5553	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5553.glb
+spool_5554	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5554.glb
+spool_5555	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5555.glb
+spool_5556	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5556.glb
+spool_5557	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5557.glb
+spool_5558	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5558.glb
+spool_5559	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5559.glb
+spool_5560	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5560.glb
+spool_5561	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5561.glb
+spool_5562	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5562.glb
+spool_5563	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5563.glb
+spool_5564	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5564.glb
+spool_5565	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5565.glb
+spool_5566	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5566.glb
+spool_5567	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5567.glb
+spool_5568	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5568.glb
+spool_5569	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5569.glb
+spool_5570	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5570.glb
+spool_5571	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5571.glb
+spool_5572	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5572.glb
+spool_5573	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5573.glb
+spool_5574	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5574.glb
+spool_5575	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5575.glb
+spool_5576	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5576.glb
+spool_5676	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5676.glb
+spool_5677	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5677.glb
+spool_5678	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5678.glb
+spool_5679	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5679.glb
+spool_5693	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5693.glb
+spool_5694	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5694.glb
+spool_5695	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5695.glb
+spool_5696	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5696.glb
+spool_5697	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5697.glb
+spool_5698	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5698.glb
+spool_5699	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5699.glb
+spool_5700	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5700.glb
+spool_5701	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5701.glb
+spool_5702	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5702.glb
+spool_5703	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_5703.glb
+spool_6063	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_6063.glb
+spool_7011	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7011.glb
+spool_7012	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7012.glb
+spool_7013	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7013.glb
+spool_7014	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7014.glb
+spool_7015	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7015.glb
+spool_7016	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7016.glb
+spool_7017	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7017.glb
+spool_7018	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7018.glb
+spool_7019	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7019.glb
+spool_7020	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7020.glb
+spool_7021	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7021.glb
+spool_7022	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\spool\spool_7022.glb
+bcr_5009	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5009.glb
+bcr_5010	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5010.glb
+bcr_5012	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5012.glb
+bcr_5017	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5017.glb
+bcr_5035	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5035.glb
+bcr_5048_nye	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5048_nye.glb
+bcr_5115	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5115.glb
+bcr_5116	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5116.glb
+bcr_5117	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5117.glb
+bcr_5118	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5118.glb
+bcr_5141	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5141.glb
+bcr_5199	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5199.glb
+bcr_5345	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5345.glb
+bcr_5367	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5367.glb
+bcr_5457	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5457.glb
+bcr_5461	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5461.glb
+bcr_5763	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5763.glb
+bcr_5775	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5775.glb
+bcr_5860	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5860.glb
+bcr_5924	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5924.glb
+bcr_5925	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5925.glb
+bcr_5926	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5926.glb
+bcr_5927	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5927.glb
+bcr_5970	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5970.glb
+bcr_5971	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5971.glb
+bcr_5996	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_5996.glb
+bcr_6011	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_6011.glb
+bcr_6012	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_6012.glb
+bcr_6014	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_6014.glb
+bcr_6049	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\байткастинговые\bcr_6049.glb
+bclp_5005	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5005.glb
+bclp_5006	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5006.glb
+bclp_5013	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5013.glb
+bclp_5014	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5014.glb
+bclp_5015	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5015.glb
+bclp_5016	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5016.glb
+bclp_5032	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5032.glb
+bclp_5046	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5046.glb
+bclp_5047	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5047.glb
+bclp_5049	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5049.glb
+bclp_5050	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5050.glb
+bclp_5083	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5083.glb
+bclp_5084	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5084.glb
+bclp_5085	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5085.glb
+bclp_5086	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5086.glb
+bclp_5087	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5087.glb
+bclp_5089_be	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5089_be.glb
+bclp_5092	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5092.glb
+bclp_5102	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5102.glb
+bclp_5340	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5340.glb
+bclp_5347	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5347.glb
+bclp_5381	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5381.glb
+bclp_5671	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5671.glb
+bclp_5672	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5672.glb
+bclp_5673	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5673.glb
+bclp_5674	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\низкопрофильные\bclp_5674.glb
+elcon_5998	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_5998.glb
+elcon_5999	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_5999.glb
+elcon_6000	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6000.glb
+elcon_6001	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6001.glb
+elcon_6002	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6002.glb
+elcon_6003	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6003.glb
+elcon_6004	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6004.glb
+elcon_6016	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6016.glb
+elcon_6017	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\elcon_6017.glb
+raptor-red	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\рапторы\raptor-red.glb
+conv_5147	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5147.glb
+conv_5154	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5154.glb
+conv_5156	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5156.glb
+conv_5158	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5158.glb
+conv_5211	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5211.glb
+conv_5298	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5298.glb
+conv_5305	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5305.glb
+conv_5306	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5306.glb
+conv_5307	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5307.glb
+conv_5308	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5308.glb
+conv_5311	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5311.glb
+conv_5368	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5368.glb
+conv_5372	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5372.glb
+conv_5373	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5373.glb
+conv_5374	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5374.glb
+conv_5383	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5383.glb
+conv_5384	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5384.glb
+conv_5385	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5385.glb
+conv_5386	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5386.glb
+conv_5387	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5387.glb
+conv_5388	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5388.glb
+conv_5389	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5389.glb
+conv_5406	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5406.glb
+conv_5407	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5407.glb
+conv_5412	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5412.glb
+conv_5413	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5413.glb
+conv_5710	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5710.glb
+conv_5711	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5711.glb
+conv_5712	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5712.glb
+conv_5713	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5713.glb
+conv_5973	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5973.glb
+conv_5974	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5974.glb
+conv_5975	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5975.glb
+conv_5994	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_5994.glb
+conv_7009	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_7009.glb
+conv_7010	C:\Users\danil\Desktop\rf4objects\КатушкиОбъекты\силовые мультипликаторы\conv_7010.glb
