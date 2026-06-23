@@ -111,9 +111,9 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
         const postId = postResult.rows[0].id;
 
         const versionResult = await client.query(
-            `INSERT INTO post_version (post_id, version_number, description, waterbody_id, point, fishing_method, income, fishing_minutes, proposed_spot_id, map_x, map_y, game_coordinate_x, game_coordinate_y, bait_mode)
-             VALUES ($1, 1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
-            [postId, input.description, input.waterbodyId, input.point, input.fishingMethod, input.income, input.fishingMinutes, input.proposedSpotId, input.mapX, input.mapY, input.gameCoordinateX, input.gameCoordinateY, input.baitMode],
+            `INSERT INTO post_version (post_id, version_number, description, waterbody_id, point, fishing_method, income, fishing_minutes, proposed_spot_id, map_x, map_y, game_coordinate_x, game_coordinate_y, map_x2, map_y2, game_coordinate_x2, game_coordinate_y2, bait_mode)
+             VALUES ($1, 1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING id`,
+            [postId, input.description, input.waterbodyId, input.point, input.fishingMethod, input.income, input.fishingMinutes, input.proposedSpotId, input.mapX, input.mapY, input.gameCoordinateX, input.gameCoordinateY, input.mapX2, input.mapY2, input.gameCoordinateX2, input.gameCoordinateY2, input.baitMode],
         );
         const versionId = versionResult.rows[0].id;
 
@@ -159,8 +159,8 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
     try {
         await client.query("BEGIN");
         await client.query(
-            `UPDATE post_version SET description=$1, waterbody_id=$2, point=$3, fishing_method=$4, income=$5, fishing_minutes=$6, proposed_spot_id=$7, map_x=$8, map_y=$9, game_coordinate_x=$10, game_coordinate_y=$11, bait_mode=$12 WHERE id=$13`,
-            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, content.proposedSpotId, content.mapX, content.mapY, content.gameCoordinateX, content.gameCoordinateY, content.baitMode, versionId],
+            `UPDATE post_version SET description=$1, waterbody_id=$2, point=$3, fishing_method=$4, income=$5, fishing_minutes=$6, proposed_spot_id=$7, map_x=$8, map_y=$9, game_coordinate_x=$10, game_coordinate_y=$11, map_x2=$12, map_y2=$13, game_coordinate_x2=$14, game_coordinate_y2=$15, bait_mode=$16 WHERE id=$17`,
+            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, content.proposedSpotId, content.mapX, content.mapY, content.gameCoordinateX, content.gameCoordinateY, content.mapX2, content.mapY2, content.gameCoordinateX2, content.gameCoordinateY2, content.baitMode, versionId],
         );
         await client.query(`DELETE FROM catch WHERE post_version_id = $1`, [versionId]);
         await client.query(`DELETE FROM post_media WHERE post_version_id = $1`, [versionId]);
@@ -210,6 +210,10 @@ export async function submitDraft(postId: number, author: SessionUser) {
             mapY: full.version.mapY,
             gameCoordinateX: full.version.gameCoordinateX,
             gameCoordinateY: full.version.gameCoordinateY,
+            mapX2: full.version.mapX2,
+            mapY2: full.version.mapY2,
+            gameCoordinateX2: full.version.gameCoordinateX2,
+            gameCoordinateY2: full.version.gameCoordinateY2,
             media: full.version.media.map((item: { url: string }) => item.url),
         };
         assertSubmittable(content);
@@ -266,7 +270,9 @@ export async function getPostById(id: number) {
                    pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
                    pv.waterbody_id AS "waterbodyId", w.name AS "waterbodyName", pv.proposed_spot_id AS "proposedSpotId",
                    pv.map_x::float AS "mapX", pv.map_y::float AS "mapY", pv.game_coordinate_x::float AS "gameCoordinateX",
-                   pv.game_coordinate_y::float AS "gameCoordinateY", pv.bait_mode AS "baitMode"
+                   pv.game_coordinate_y::float AS "gameCoordinateY",
+                   pv.map_x2::float AS "mapX2", pv.map_y2::float AS "mapY2", pv.game_coordinate_x2::float AS "gameCoordinateX2",
+                   pv.game_coordinate_y2::float AS "gameCoordinateY2", pv.bait_mode AS "baitMode"
             FROM post_version pv
             LEFT JOIN waterbody w ON w.id = pv.waterbody_id
             WHERE pv.id = $1

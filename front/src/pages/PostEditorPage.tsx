@@ -115,6 +115,10 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             mapY: version.mapY,
                             gameCoordinateX: version.gameCoordinateX,
                             gameCoordinateY: version.gameCoordinateY,
+                            mapX2: version.mapX2 ?? null,
+                            mapY2: version.mapY2 ?? null,
+                            gameCoordinateX2: version.gameCoordinateX2 ?? null,
+                            gameCoordinateY2: version.gameCoordinateY2 ?? null,
                         });
                         setMedia(version.media.map((item) => item.url));
                     }

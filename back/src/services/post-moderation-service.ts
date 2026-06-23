@@ -255,8 +255,8 @@ export async function moderatorUpdateContent(postId: number, moderator: SessionU
         const mediaResult = await client.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
         previousMedia = mediaResult.rows;
         await client.query(
-            `UPDATE post_version SET description=$1,waterbody_id=$2,point=$3,fishing_method=$4,income=$5,fishing_minutes=$6,proposed_spot_id=$7,map_x=$8,map_y=$9,game_coordinate_x=$10,game_coordinate_y=$11,bait_mode=$12 WHERE id=$13`,
-            [content.description,content.waterbodyId,content.point,content.fishingMethod,content.income,content.fishingMinutes,content.proposedSpotId,content.mapX,content.mapY,content.gameCoordinateX,content.gameCoordinateY,content.baitMode,versionId],
+            `UPDATE post_version SET description=$1,waterbody_id=$2,point=$3,fishing_method=$4,income=$5,fishing_minutes=$6,proposed_spot_id=$7,map_x=$8,map_y=$9,game_coordinate_x=$10,game_coordinate_y=$11,map_x2=$12,map_y2=$13,game_coordinate_x2=$14,game_coordinate_y2=$15,bait_mode=$16 WHERE id=$17`,
+            [content.description,content.waterbodyId,content.point,content.fishingMethod,content.income,content.fishingMinutes,content.proposedSpotId,content.mapX,content.mapY,content.gameCoordinateX,content.gameCoordinateY,content.mapX2,content.mapY2,content.gameCoordinateX2,content.gameCoordinateY2,content.baitMode,versionId],
         );
         await client.query(`DELETE FROM catch WHERE post_version_id = $1`, [versionId]);
         await client.query(`DELETE FROM post_media WHERE post_version_id = $1`, [versionId]);

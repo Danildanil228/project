@@ -27,11 +27,24 @@ export const postContentSchema = z.object({
     mapY: optionalMapPercent,
     gameCoordinateX: optionalCoordinate,
     gameCoordinateY: optionalCoordinate,
+    // Optional second point — only set in trolling mode (post represents an A→B run).
+    mapX2: optionalMapPercent,
+    mapY2: optionalMapPercent,
+    gameCoordinateX2: optionalCoordinate,
+    gameCoordinateY2: optionalCoordinate,
     media: z.array(z.string().trim().min(1).max(255)).max(8).optional().default([]),
 }).superRefine((data, context) => {
-    const coordinates = [data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY];
-    if (!coordinates.every((value) => value === null) && coordinates.some((value) => value === null)) {
+    const start = [data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY];
+    if (!start.every((value) => value === null) && start.some((value) => value === null)) {
         context.addIssue({ code: "custom", path: ["mapX"], message: "Для точки укажите обе координаты" });
+    }
+    const end = [data.mapX2, data.mapY2, data.gameCoordinateX2, data.gameCoordinateY2];
+    if (!end.every((value) => value === null) && end.some((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX2"], message: "Для конечной точки троллинга укажите обе координаты" });
+    }
+    // Trolling end point makes no sense without a start point.
+    if (end.some((value) => value !== null) && start.every((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX2"], message: "Сначала укажите точку A" });
     }
 });
 

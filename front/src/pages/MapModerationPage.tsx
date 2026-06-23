@@ -27,7 +27,7 @@ export function MapModerationPage({ currentUser, adminContext, onOpenAuthModal }
     const [selectedId, setSelectedId] = useState<number | null>(null);
     const [waterbody, setWaterbody] = useState<Waterbody | null>(null);
     const [baits, setBaits] = useState<Bait[]>([]);
-    const [location, setLocation] = useState<PostLocationValue>({ proposedSpotId: null, mapX: null, mapY: null, gameCoordinateX: null, gameCoordinateY: null });
+    const [location, setLocation] = useState<PostLocationValue>({ proposedSpotId: null, mapX: null, mapY: null, gameCoordinateX: null, gameCoordinateY: null, mapX2: null, mapY2: null, gameCoordinateX2: null, gameCoordinateY2: null });
     const [name, setName] = useState("");
     const [targets, setTargets] = useState<TargetDraft[]>([]);
     const [rejectReason, setRejectReason] = useState("");
@@ -64,7 +64,7 @@ export function MapModerationPage({ currentUser, adminContext, onOpenAuthModal }
                 setWaterbody(water.item);
                 setBaits(baitResponse.items);
                 setName(`Точка ${selected.gameCoordinateX}:${selected.gameCoordinateY}`);
-                setLocation({ proposedSpotId: selected.proposedSpotId, mapX: selected.mapX, mapY: selected.mapY, gameCoordinateX: selected.gameCoordinateX, gameCoordinateY: selected.gameCoordinateY });
+                setLocation({ proposedSpotId: selected.proposedSpotId, mapX: selected.mapX, mapY: selected.mapY, gameCoordinateX: selected.gameCoordinateX, gameCoordinateY: selected.gameCoordinateY, mapX2: null, mapY2: null, gameCoordinateX2: null, gameCoordinateY2: null });
                 setTargets(selected.targets.map((target) => ({ fishId: target.fishId, baitIds: target.baits.map((bait) => bait.id) })));
                 setRejectReason("");
             })

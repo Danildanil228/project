@@ -42,6 +42,11 @@ export type PostVersion = {
     mapY: number | null;
     gameCoordinateX: number | null;
     gameCoordinateY: number | null;
+    // Second point — set only for trolling posts (range A→B).
+    mapX2: number | null;
+    mapY2: number | null;
+    gameCoordinateX2: number | null;
+    gameCoordinateY2: number | null;
     baitMode: "common" | "per_fish";
     commonBaits: Array<{ id: number; name: string; kind: string }>;
     catches: CatchRow[];
@@ -97,6 +102,10 @@ export type PostContentInput = {
     mapY: number | null;
     gameCoordinateX: number | null;
     gameCoordinateY: number | null;
+    mapX2: number | null;
+    mapY2: number | null;
+    gameCoordinateX2: number | null;
+    gameCoordinateY2: number | null;
     media: string[];
 };
 
