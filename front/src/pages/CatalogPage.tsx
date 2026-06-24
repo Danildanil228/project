@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, Search, X } from "lucide-
 import { useEffect, useState, type FormEvent } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { ItemCard } from "../components/ItemCard";
+import { PageHeader } from "../components/PageHeader";
 import { ItemDataTable } from "../features/items/ItemDataTable";
 import { fetchItems, itemCategories, typeLabels, type CatalogItem, type ItemType } from "../lib/items-api";
 
@@ -77,11 +78,11 @@ export function CatalogPage() {
 
     return (
         <section className="grid gap-5">
-            <div className="grid gap-1">
-                <p className="text-xs font-extrabold uppercase text-primary">Справочник</p>
-                <h2 className="text-2xl font-bold">Каталог предметов</h2>
-                <p className="text-muted-foreground">Внутриигровые снасти с полными характеристиками.</p>
-            </div>
+            <PageHeader
+                eyebrow="Справочник"
+                title="Каталог предметов"
+                description="Внутриигровые снасти с полными характеристиками."
+            />
 
             <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex gap-2">

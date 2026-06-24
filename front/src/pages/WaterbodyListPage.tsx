@@ -1,6 +1,7 @@
 import { Map, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { PageHeader } from "../components/PageHeader";
 import { mediaUrl } from "../lib/items-api";
 import { listWaterbodies } from "../lib/reference-api";
 import type { WaterbodyListRow } from "../types/waterbody";
@@ -27,11 +28,11 @@ export function WaterbodyListPage() {
 
     return (
         <section className="grid gap-5">
-            <div>
-                <p className="text-xs font-extrabold uppercase text-primary">Карты</p>
-                <h2 className="text-2xl font-bold">Водоёмы и точки ловли</h2>
-                <p className="mt-1 text-muted-foreground">Выберите водоём, чтобы посмотреть отмеченные точки, рыбу и рабочие приманки.</p>
-            </div>
+            <PageHeader
+                eyebrow="Карты"
+                title="Водоёмы и точки ловли"
+                description="Выберите водоём, чтобы посмотреть отмеченные точки, рыбу и рабочие приманки."
+            />
 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
             {loading ? (

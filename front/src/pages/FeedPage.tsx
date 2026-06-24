@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { PenSquare } from "lucide-react";
 import { useDebounce } from "use-debounce";
 import { MultiSelectFilter, type MultiSelectOption } from "../components/MultiSelectFilter";
+import { PageHeader } from "../components/PageHeader";
 import { PostCard } from "../components/PostCard";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { listFeed } from "../lib/posts-api";
@@ -120,19 +122,19 @@ export function FeedPage({ currentUser }: FeedPageProps) {
 
     return (
         <section className="grid gap-5">
-            <div className="flex flex-wrap items-end justify-between gap-3">
-                <div className="grid gap-1">
-                    <p className="text-xs font-extrabold uppercase text-primary">Сообщество</p>
-                    <h2 className="text-2xl font-bold">Лента постов</h2>
-                    <p className="text-muted-foreground">Уловы, трофеи и точки клёва от игроков. Доступно без входа.</p>
-                </div>
-                <Link
-                    to={currentUser ? "/posts/new" : "/posts"}
-                    className="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"
-                >
-                    + Создать пост
-                </Link>
-            </div>
+            <PageHeader
+                eyebrow="Сообщество"
+                title="Лента постов"
+                description="Уловы, трофеи и точки клёва от игроков. Доступно без входа."
+                actions={
+                    <Link
+                        to={currentUser ? "/posts/new" : "/posts"}
+                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90"
+                    >
+                        <PenSquare size={15} /> Создать пост
+                    </Link>
+                }
+            />
 
             <div className="grid gap-3 rounded-lg border border-border bg-card p-4">
                 <div className="grid gap-3 sm:grid-cols-[1fr_auto_auto] sm:items-end">
