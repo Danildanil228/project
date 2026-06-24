@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { confirmPasswordChange, hasPasswordCredential, requestPasswordChange } from "../lib/account-api";
+import { confirmPasswordChange, getPasswordChangePending, hasPasswordCredential, requestPasswordChange } from "../lib/account-api";
 
 // Two-step password change for the signed-in user.
 // Step 1 — submit current + new password → server emails (or logs to console) a 6-digit code.
@@ -16,7 +16,21 @@ export function ChangePasswordForm() {
     const [message, setMessage] = useState<{ tone: "success" | "error"; text: string } | null>(null);
 
     useEffect(() => {
-        hasPasswordCredential().then(setHasPassword).catch(() => setHasPassword(false));
+        let cancelled = false;
+        hasPasswordCredential().then((value) => {
+            if (cancelled) return;
+            setHasPassword(value);
+            // If we're a credential user, check whether the previous tab/session left a
+            // pending code request alive — if so, jump straight to the code step instead
+            // of forcing the user to re-enter the old/new password.
+            if (value) {
+                getPasswordChangePending().then((status) => {
+                    if (cancelled) return;
+                    if (status.pending) setStage("verify");
+                }).catch(() => undefined);
+            }
+        }).catch(() => { if (!cancelled) setHasPassword(false); });
+        return () => { cancelled = true; };
     }, []);
 
     if (hasPassword === null) return null;

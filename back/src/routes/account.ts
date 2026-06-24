@@ -28,6 +28,29 @@ function cleanupExpired() {
     }
 }
 
+// Tells the UI whether there's a still-valid pending password change for the signed-in user. The
+// UI calls this on mount so a page reload during the email-code step lands back on the code form
+// rather than starting over. Does NOT expose the code or stashed passwords — just yes/no + remaining seconds.
+accountRouter.get("/password/pending", async (req, res, next) => {
+    try {
+        const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
+        if (!session) {
+            res.status(401).json({ message: "Unauthorized" });
+            return;
+        }
+        cleanupExpired();
+        const entry = pending.get(session.user.id);
+        if (!entry) {
+            res.json({ pending: false });
+            return;
+        }
+        const expiresIn = Math.max(0, Math.floor((entry.expiresAt - Date.now()) / 1000));
+        res.json({ pending: true, expiresIn });
+    } catch (error) {
+        next(error);
+    }
+});
+
 // Tells the UI whether a change-password form is meaningful. False means OAuth-only — hide the form.
 accountRouter.get("/has-password", async (req, res, next) => {
     try {

@@ -10,6 +10,14 @@ async function readError(response: Response) {
     }
 }
 
+// Returns whether a password-change request is already pending for the signed-in user.
+// Lets the UI restore the code-entry step after a page reload.
+export async function getPasswordChangePending(): Promise<{ pending: boolean; expiresIn: number }> {
+    const response = await fetch("/api/account/password/pending", { credentials: "include" });
+    if (!response.ok) throw new Error(await readError(response));
+    return response.json() as Promise<{ pending: boolean; expiresIn: number }>;
+}
+
 export async function hasPasswordCredential(): Promise<boolean> {
     const response = await fetch("/api/account/has-password", { credentials: "include" });
     if (!response.ok) throw new Error(await readError(response));
