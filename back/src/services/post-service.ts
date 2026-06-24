@@ -24,6 +24,14 @@ type MyPostsQuery = z.infer<typeof myPostsQuerySchema>;
 
 const editableStatuses = new Set(["draft", "rejected"]);
 
+// API output sanitiser. Curated posts purposely don't expose their underlying author — UI shows
+// "Сообщество" instead, and there's no clickable profile link. The DB still stores author_id for
+// audit ("which moderator created this curated post?") but we never surface it to the client.
+function stripAuthorIfCurated<T extends { isCurated?: boolean | null; authorId?: string | null; authorName?: string | null; authorImage?: string | null }>(row: T): T {
+    if (!row.isCurated) return row;
+    return { ...row, authorId: null, authorName: null, authorImage: null };
+}
+
 export function assertSubmittable(content: PostContent) {
     const problems: string[] = [];
     if (!content.waterbodyId) problems.push("укажите водоём");
@@ -94,19 +102,26 @@ export async function insertVersionChildren(client: PoolClient, versionId: numbe
 }
 
 export async function createPost(author: SessionUser, input: CreatePostInput) {
-    if (input.submit) assertSubmittable(input);
+    // Curated posts: only moderator+ may set this. Forces publish-without-review regardless
+    // of `submit` (the editor UI already toggles submit=true alongside isCurated).
+    const isCurated = Boolean(input.isCurated);
+    if (isCurated && !hasElevatedAccess(author, superAdminUserIds)) {
+        throw Object.assign(new Error("Только модератор может публиковать посты от сообщества"), { statusCode: 403 });
+    }
+
+    if (input.submit || isCurated) assertSubmittable(input);
     else assertHasContent(input);
     await assertCatchHabitats(input);
 
-    const publishDirectly = input.submit && input.skipModeration && hasElevatedAccess(author, superAdminUserIds);
-    const status = input.submit ? (publishDirectly ? "approved" : "pending") : "draft";
+    const publishDirectly = isCurated || (input.submit && input.skipModeration && hasElevatedAccess(author, superAdminUserIds));
+    const status = (isCurated || input.submit) ? (publishDirectly ? "approved" : "pending") : "draft";
 
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
         const postResult = await client.query(
-            `INSERT INTO post (author_id, status, published_at) VALUES ($1, $2, $3) RETURNING id`,
-            [author.id, status, publishDirectly ? new Date() : null],
+            `INSERT INTO post (author_id, status, published_at, is_curated, curated_label) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+            [author.id, status, publishDirectly ? new Date() : null, isCurated, isCurated ? (input.curatedLabel ?? null) : null],
         );
         const postId = postResult.rows[0].id;
 
@@ -124,9 +139,9 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
 
         await writeAuditLog({
             actor: author,
-            action: publishDirectly ? "post.publish-direct" : input.submit ? "post.submit" : "post.create-draft",
+            action: isCurated ? "post.curated.create" : publishDirectly ? "post.publish-direct" : input.submit ? "post.submit" : "post.create-draft",
             targetUserId: author.id,
-            metadata: { postId },
+            metadata: { postId, ...(isCurated ? { curatedLabel: input.curatedLabel ?? null } : {}) },
         });
         if (status === "pending") {
             await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
@@ -186,6 +201,62 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
         await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
     }
     return { status: "ok" as const, post: await getPostById(postId) };
+}
+
+// Curated post editor — moderator+ may rewrite a curated post irrespective of who originally
+// authored it. Status stays `approved`; we just replace the current version's content. The
+// editor UI also lets the moderator change the curated_label (or unset isCurated to demote
+// the post back to a regular pending one, but we treat that as out of scope for v1).
+export async function updateCuratedPost(postId: number, moderator: SessionUser, content: PostContent, label: string | null) {
+    if (!hasElevatedAccess(moderator, superAdminUserIds)) {
+        throw Object.assign(new Error("Только модератор может редактировать посты сообщества"), { statusCode: 403 });
+    }
+    const owned = await pool.query<{ versionId: number | null; isCurated: boolean }>(
+        `SELECT current_version_id AS "versionId", is_curated AS "isCurated" FROM post WHERE id = $1`,
+        [postId],
+    );
+    if (!owned.rows[0] || !owned.rows[0].versionId) return { status: "not-found" as const };
+    if (!owned.rows[0].isCurated) return { status: "not-curated" as const };
+
+    assertSubmittable(content);
+    await assertCatchHabitats(content);
+
+    const versionId = owned.rows[0].versionId;
+    const previousMedia = await pool.query<{ url: string }>(`SELECT url FROM post_media WHERE post_version_id = $1`, [versionId]);
+
+    const client = await pool.connect();
+    try {
+        await client.query("BEGIN");
+        await client.query(
+            `UPDATE post_version SET description=$1, waterbody_id=$2, point=$3, fishing_method=$4, income=$5, fishing_minutes=$6, proposed_spot_id=$7, map_x=$8, map_y=$9, game_coordinate_x=$10, game_coordinate_y=$11, map_x2=$12, map_y2=$13, game_coordinate_x2=$14, game_coordinate_y2=$15, bait_mode=$16 WHERE id=$17`,
+            [content.description, content.waterbodyId, content.point, content.fishingMethod, content.income, content.fishingMinutes, content.proposedSpotId, content.mapX, content.mapY, content.gameCoordinateX, content.gameCoordinateY, content.mapX2, content.mapY2, content.gameCoordinateX2, content.gameCoordinateY2, content.baitMode, versionId],
+        );
+        await client.query(`DELETE FROM catch WHERE post_version_id = $1`, [versionId]);
+        await client.query(`DELETE FROM post_media WHERE post_version_id = $1`, [versionId]);
+        await client.query(`DELETE FROM post_version_bait WHERE post_version_id = $1`, [versionId]);
+        await insertVersionChildren(client, versionId, content);
+        await client.query(`UPDATE post SET curated_label = $1, updated_at = NOW() WHERE id = $2`, [label, postId]);
+        await client.query("COMMIT");
+    } catch (error) {
+        await client.query("ROLLBACK").catch(() => undefined);
+        translateDbError(error);
+    } finally {
+        client.release();
+    }
+
+    const keep = new Set(content.media);
+    for (const row of previousMedia.rows) {
+        if (!keep.has(row.url)) await deleteUploadedMedia(row.url);
+    }
+
+    await writeAuditLog({ actor: moderator, action: "post.curated.update", targetUserId: moderator.id, metadata: { postId } });
+    return { status: "ok" as const, post: await getPostById(postId) };
+}
+
+// True when the post exists and is curated — UI uses this to decide which update endpoint to call.
+export async function isCuratedPost(postId: number): Promise<boolean> {
+    const { rows } = await pool.query<{ isCurated: boolean }>(`SELECT is_curated AS "isCurated" FROM post WHERE id = $1`, [postId]);
+    return Boolean(rows[0]?.isCurated);
 }
 
 export async function submitDraft(postId: number, author: SessionUser) {
@@ -252,16 +323,17 @@ export async function getPostById(id: number) {
                    p.rejection_reason AS "rejectionReason", p.resubmit_count AS "resubmitCount",
                    p.view_count AS "viewCount", p.pinned_at AS "pinnedAt",
                    p.created_at AS "createdAt", p.published_at AS "publishedAt",
+                   p.is_curated AS "isCurated", p.curated_label AS "curatedLabel",
                    u.name AS "authorName", u.image AS "authorImage"
             FROM post p
-            JOIN "user" u ON u.id = p.author_id
+            LEFT JOIN "user" u ON u.id = p.author_id
             WHERE p.id = $1
         `,
         [id],
     );
     if (!rows[0]) return null;
 
-    const post = rows[0];
+    const post = stripAuthorIfCurated(rows[0]);
     if (!post.currentVersionId) return { ...post, version: null };
 
     const versionResult = await pool.query(
@@ -303,7 +375,9 @@ export async function getPostById(id: number) {
 
 export async function listMyPosts(authorId: string, query: MyPostsQuery) {
     const values: unknown[] = [authorId];
-    let whereSql = `WHERE p.author_id = $1`;
+    // Curated posts are not "personal" — even though the moderator's id is the author_id (for audit),
+    // they're managed via /moderation, not via "Мои посты".
+    let whereSql = `WHERE p.author_id = $1 AND NOT p.is_curated`;
     if (query.status) {
         values.push(query.status);
         whereSql += ` AND p.status = $${values.length}`;
@@ -334,6 +408,7 @@ type PaginationQuery = z.infer<typeof paginationQuerySchema>;
 
 const feedSelect = `
     p.id, p.published_at AS "publishedAt", p.view_count AS "viewCount", p.pinned_at AS "pinnedAt",
+    p.is_curated AS "isCurated", p.curated_label AS "curatedLabel",
     u.id AS "authorId", u.name AS "authorName", u.image AS "authorImage",
     pv.description, pv.point, pv.fishing_method AS "fishingMethod", pv.income, pv.fishing_minutes AS "fishingMinutes",
     w.name AS "waterbodyName",
@@ -391,7 +466,7 @@ export async function listFeed(query: FeedQuery) {
             SELECT ${feedSelect}
             FROM post p
             JOIN post_version pv ON pv.id = p.current_version_id
-            JOIN "user" u ON u.id = p.author_id
+            LEFT JOIN "user" u ON u.id = p.author_id
             LEFT JOIN waterbody w ON w.id = pv.waterbody_id
             ${whereSql}
             ORDER BY ${orderSql}
@@ -400,7 +475,7 @@ export async function listFeed(query: FeedQuery) {
         values,
     );
 
-    return { items: rows.map(withIncomePerHour), total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
+    return { items: rows.map(withIncomePerHour).map(stripAuthorIfCurated), total: countResult.rows[0]?.count ?? 0, limit: query.limit, offset: query.offset };
 }
 
 export async function getAuthorProfile(authorId: string, query: PaginationQuery) {
@@ -424,7 +499,9 @@ export async function getAuthorProfile(authorId: string, query: PaginationQuery)
             JOIN post_version pv ON pv.id = p.current_version_id
             JOIN "user" u ON u.id = p.author_id
             LEFT JOIN waterbody w ON w.id = pv.waterbody_id
-            WHERE p.status = 'approved' AND p.author_id = $1
+            -- Curated posts intentionally don't show on the moderator's author page —
+            -- they belong to "Сообщество" in the UI, not to the moderator personally.
+            WHERE p.status = 'approved' AND p.author_id = $1 AND NOT p.is_curated
             ORDER BY p.published_at DESC, p.id DESC
             LIMIT $2 OFFSET $3
         `,

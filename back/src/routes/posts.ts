@@ -16,7 +16,7 @@ import {
     rejectSchema,
 } from "../lib/post-schemas";
 import { parseOrSend } from "../lib/validation";
-import { createPost, deleteOwnPost, getAuthorProfile, getPostById, incrementViewCount, listFeed, listMyPosts, submitDraft, updateDraft } from "../services/post-service";
+import { createPost, deleteOwnPost, getAuthorProfile, getPostById, incrementViewCount, isCuratedPost, listFeed, listMyPosts, submitDraft, updateCuratedPost, updateDraft } from "../services/post-service";
 import { approvePost, claimPost, listModerationQueue, moderatorUpdateContent, PIN_LIMIT, pinPost, rejectPost, releasePost, removePost, unpinPost } from "../services/post-moderation-service";
 
 const moderatorRoles = ["admin", "moderator"];
@@ -120,6 +120,22 @@ router.patch("/:id", async (req, res, next) => {
         const params = parseOrSend(postIdParamsSchema, req.params, res);
         const input = parseOrSend(createPostSchema, req.body, res);
         if (!params || !input) return;
+
+        // Curated posts have a separate edit path — any moderator+ may rewrite them, regardless
+        // of who originally authored. updateCuratedPost itself enforces the role check.
+        if (await isCuratedPost(params.id)) {
+            const result = await updateCuratedPost(params.id, session.user as SessionUser, input, input.curatedLabel ?? null);
+            if (result.status === "not-found") {
+                res.status(404).json({ message: "Пост не найден" });
+                return;
+            }
+            if (result.status === "not-curated") {
+                res.status(409).json({ message: "Пост не курируемый" });
+                return;
+            }
+            res.json({ post: result.post });
+            return;
+        }
 
         const result = await updateDraft(params.id, session.user as SessionUser, input, input.submit);
         if (result.status === "not-found") {

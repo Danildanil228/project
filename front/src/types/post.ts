@@ -55,7 +55,8 @@ export type PostVersion = {
 
 export type PostDetail = {
     id: number;
-    authorId: string;
+    // Curated posts have author* set to null on the wire — the UI renders "Сообщество" instead.
+    authorId: string | null;
     status: PostStatus;
     currentVersionId: number | null;
     rejectionReason: string | null;
@@ -64,8 +65,10 @@ export type PostDetail = {
     pinnedAt: string | null;
     createdAt: string;
     publishedAt: string | null;
-    authorName: string;
+    authorName: string | null;
     authorImage: string | null;
+    isCurated: boolean;
+    curatedLabel: string | null;
     version: PostVersion | null;
 };
 
@@ -112,6 +115,9 @@ export type PostContentInput = {
 export type CreatePostInput = PostContentInput & {
     submit: boolean;
     skipModeration?: boolean;
+    // Set only by moderator+ — publishes the post as "Сообщество" with no clickable author.
+    isCurated?: boolean;
+    curatedLabel?: string | null;
 };
 
 export type FeedSort = "date" | "incomePerHour";
@@ -120,9 +126,12 @@ export type FeedSort = "date" | "incomePerHour";
 export type FeedItem = {
     id: number;
     publishedAt: string | null;
-    authorId: string;
-    authorName: string;
+    // null for curated/community posts — UI renders "Сообщество" without a profile link.
+    authorId: string | null;
+    authorName: string | null;
     authorImage: string | null;
+    isCurated: boolean;
+    curatedLabel: string | null;
     description: string | null;
     point: string | null;
     fishingMethod: FishingMethod | null;

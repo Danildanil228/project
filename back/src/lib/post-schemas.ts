@@ -52,6 +52,11 @@ export const createPostSchema = postContentSchema.extend({
     submit: z.boolean().optional().default(false),
     // Only honoured for admin/moderator/super-admin: publish without review.
     skipModeration: z.boolean().optional().default(false),
+    // Curated / community posts: live in the public feed without a clickable author. Only
+    // moderator+ may set this; the service layer enforces the role check and forces status
+    // to 'approved' regardless of `submit`.
+    isCurated: z.boolean().optional().default(false),
+    curatedLabel: z.preprocess(emptyToNull, z.string().trim().max(60).nullable()),
 });
 
 export const rejectSchema = z.object({

@@ -52,6 +52,9 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     const [location, setLocation] = useState<PostLocationValue>(emptyPostLocation);
     const [media, setMedia] = useState<string[]>([]);
     const [skipModeration, setSkipModeration] = useState(false);
+    // Curated/community: moderator+ only. Bypasses moderation and renders without a clickable author.
+    const [isCurated, setIsCurated] = useState(false);
+    const [curatedLabel, setCuratedLabel] = useState("");
 
     const [uploading, setUploading] = useState(false);
     const [uploadError, setUploadError] = useState("");
@@ -78,7 +81,15 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                 if (editingId) {
                     const { post } = await getPost(editingId);
                     if (ignore) return;
-                    if (!isModerating) {
+                    // Curated posts: only moderator+ can edit, regardless of author_id.
+                    if (post.isCurated) {
+                        if (!isElevated) {
+                            setLoadError("Редактировать посты сообщества может только модератор.");
+                            return;
+                        }
+                        setIsCurated(true);
+                        setCuratedLabel(post.curatedLabel ?? "");
+                    } else if (!isModerating) {
                         if (post.authorId !== currentUser?.id) {
                             setLoadError("Это не ваш пост — редактировать нельзя.");
                             return;
@@ -265,7 +276,12 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                 navigate("/moderation");
                 return;
             }
-            const payload = toPostPayload(content, { submit, skipModeration: submit && isElevated ? skipModeration : false });
+            const payload = toPostPayload(content, {
+                submit: submit || isCurated,
+                skipModeration: submit && isElevated ? skipModeration : false,
+                isCurated: isCurated && isElevated,
+                curatedLabel: isCurated && isElevated ? curatedLabel : null,
+            });
             if (editingId) {
                 await updatePost(editingId, payload);
             } else {
@@ -448,16 +464,42 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                         </button>
                     ) : (
                         <>
-                            <button type="button" onClick={() => void save(false)} disabled={saving} className="rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-50">
-                                {saving ? "Сохранение…" : "Сохранить черновик"}
-                            </button>
+                            {/* Curated posts go straight to approved on the backend — no draft step. */}
+                            {!isCurated && (
+                                <button type="button" onClick={() => void save(false)} disabled={saving} className="rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-50">
+                                    {saving ? "Сохранение…" : "Сохранить черновик"}
+                                </button>
+                            )}
                             <button type="button" onClick={() => void save(true)} disabled={saving} className="rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground disabled:opacity-50">
-                                {isElevated && skipModeration ? "Опубликовать" : "Отправить на проверку"}
+                                {isCurated ? "Опубликовать (Сообщество)" : isElevated && skipModeration ? "Опубликовать" : "Отправить на проверку"}
                             </button>
                             {isElevated && (
                                 <div onClick={() => setSkipModeration((value) => !value)} className="flex cursor-pointer items-center gap-2 text-sm">
                                     <input type="checkbox" readOnly checked={skipModeration} className="pointer-events-none shrink-0" />
                                     <span>Опубликовать без проверки</span>
+                                </div>
+                            )}
+                            {/* Curated/community post — moderator+ only. Bypasses moderation; no clickable author in feed. */}
+                            {isElevated && (
+                                <div className="flex w-full flex-col gap-2 rounded-lg border border-dashed border-border bg-card/60 p-3 sm:w-auto sm:flex-row sm:items-center">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsCurated((value) => !value)}
+                                        className="flex items-center gap-2 text-sm"
+                                    >
+                                        <input type="checkbox" readOnly checked={isCurated} className="pointer-events-none shrink-0" />
+                                        <span>Опубликовать как «Сообщество»</span>
+                                    </button>
+                                    {isCurated && (
+                                        <input
+                                            type="text"
+                                            value={curatedLabel}
+                                            onChange={(event) => setCuratedLabel(event.target.value)}
+                                            placeholder="Подпись (необязательно), напр. «Архив»"
+                                            maxLength={60}
+                                            className="h-8 text-sm sm:w-56"
+                                        />
+                                    )}
                                 </div>
                             )}
                         </>
