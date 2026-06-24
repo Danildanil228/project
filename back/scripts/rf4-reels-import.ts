@@ -155,26 +155,42 @@ async function parsePage(page: typeof pages[number]) {
     return { rows, sourceUrl };
 }
 
+// Column order verified against the live Google Sheets CSVs that feed potryasovgame.ru's tables
+// (see "Verify the source columns" comment below). The previous version assumed a different layout
+// for Силовые and Байткастинговые, which led to meh ↔ capacity swaps in production data.
+//
+// Verify the source columns: each potryasov tile page embeds a public Google Sheet (linked via
+// <script>...docs.google.com/spreadsheets/.../pub?...output=csv...). Header row is row 1; field_N
+// in the ag-grid HTML corresponds 1:1 to column N (0-indexed) of that CSV.
 function mapCells(category: string, c: string[], sourceUrl: string): Omit<ReelRow, "system_id" | "photo"> {
     const common = { name: required(c[0]), category, brend: required(c[1]), source_url: sourceUrl };
     if (category === "Байткастинговые") return {
+        // Headers: Название,Бренд,Размер,Защита,Тест,Мод,Передача,Мод,Шестерня,Мод,Скорость,Моды,Фрикцион,Мод,Уровень,Серебро,Золото
         ...common, size: integer(c[2]), protection: c[3] === "Да", test: required(c[4]), test_mod: optional(c[5]),
-        per: required(c[6]), per_mod: optional(c[7]), speed: required(c[8]), speed_mod: optional(c[9]),
-        frik: required(c[10]), frik_mod: optional(c[11]), meh: required(c[12]), meh_mod: optional(c[13]),
+        per: required(c[6]), per_mod: optional(c[7]),
+        meh: required(c[8]), meh_mod: optional(c[9]),
+        speed: required(c[10]), speed_mod: optional(c[11]),
+        frik: required(c[12]), frik_mod: optional(c[13]),
         lvl: integer(c[14]), price_ser: optional(c[15]), price_gold: optional(c[16]), capacity: null, capacity_mod: null,
     };
     if (category === "Безинерционные") return {
+        // Headers: Название,Бренд,Размер,Тест,Защита,Передача,Мод,Скорость,Мод,Фрикцион,Мод,Шестерня,Мод,Уровень,Серебро,Золото
         ...common, size: integer(c[2]), test: required(c[3]), test_mod: null, protection: c[4] === "Да",
         per: required(c[5]), per_mod: optional(c[6]), speed: required(c[7]), speed_mod: optional(c[8]),
         frik: required(c[9]), frik_mod: optional(c[10]), meh: required(c[11]), meh_mod: optional(c[12]),
         lvl: integer(c[13]), price_ser: optional(c[14]), price_gold: optional(c[15]), capacity: null, capacity_mod: null,
     };
     if (category === "Силовые") return {
+        // Headers: Название,Бренд,Размер,Защита,Тест,Передача,Мод,Скорость,Мод,Фрикцион,Шестерня,Мод,Емкость,Серебро,Золото
+        // No level column for power reels; no frik_mod and no capacity_mod either.
         ...common, size: integer(c[2]), protection: c[3] === "Да", test: required(c[4]), test_mod: null,
         per: required(c[5]), per_mod: optional(c[6]), speed: required(c[7]), speed_mod: optional(c[8]),
-        frik: required(c[9]), frik_mod: null, capacity: optional(c[10]), capacity_mod: optional(c[11]),
-        meh: required(c[12]), meh_mod: null, lvl: null, price_ser: optional(c[13]), price_gold: optional(c[14]),
+        frik: required(c[9]), frik_mod: null,
+        meh: required(c[10]), meh_mod: optional(c[11]),
+        capacity: optional(c[12]), capacity_mod: null,
+        lvl: null, price_ser: optional(c[13]), price_gold: optional(c[14]),
     };
+    // Низкопрофильные (LP) — headers: Название,Бренд,Тест,Мод,Передача,Мод,Скорость,Мод,Фрикцион,Мод,Шестерня,Мод,Уровень,Серебро,Золото
     return {
         ...common, size: null, protection: false, test: required(c[2]), test_mod: optional(c[3]),
         per: required(c[4]), per_mod: optional(c[5]), speed: required(c[6]), speed_mod: optional(c[7]),
