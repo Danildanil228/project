@@ -195,6 +195,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                     </div>
 
                     <div className="flex items-center gap-2">
+                        <ModeToggle />
                         {currentUser && <NotificationsBell currentUser={currentUser} />}
 
                         {currentUser ? (

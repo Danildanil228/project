@@ -216,6 +216,17 @@ export async function setManagedUserRole(userId: string, role: string) {
     return response.json() as Promise<{ user: ManagedUser }>;
 }
 
+export async function setManagedUserEmailVerified(userId: string, verified: boolean) {
+    const response = await fetch(`/api/admin/users/${encodeURIComponent(userId)}/email-verified`, {
+        method: "PATCH",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verified }),
+    });
+    if (!response.ok) throw new Error(await readError(response));
+    return response.json() as Promise<{ user: ManagedUser }>;
+}
+
 async function postBulkAction(path: string, body: unknown) {
     const response = await fetch(path, {
         method: "POST",

@@ -5,6 +5,7 @@ import { ImageModal } from "../components/ImageModal";
 import { UserAvatar } from "../components/UserAvatar";
 import { PostReactions } from "../components/PostReactions";
 import { PostComments } from "../components/PostComments";
+import { PostLocationView } from "../components/PostLocationView";
 import { ReportButton } from "../components/ReportButton";
 import { mediaUrl } from "../lib/items-api";
 import { getPinInfo, getPost, pinPost, recordPostView, removeModeratedPost, unpinPost } from "../lib/posts-api";
@@ -256,6 +257,24 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                             <div className="text-xs text-muted-foreground">👁 {post.viewCount} просмотров</div>
                         )}
                     </div>
+
+                    {/* Author's map pin(s) — single point or A→B trolling range */}
+                    {version?.waterbodyId != null && (version.mapX != null || version.mapX2 != null) && (
+                        <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
+                            <h3 className="text-sm font-bold">Карта</h3>
+                            <PostLocationView
+                                waterbodyId={version.waterbodyId}
+                                mapX={version.mapX}
+                                mapY={version.mapY}
+                                mapX2={version.mapX2}
+                                mapY2={version.mapY2}
+                                gameCoordinateX={version.gameCoordinateX}
+                                gameCoordinateY={version.gameCoordinateY}
+                                gameCoordinateX2={version.gameCoordinateX2}
+                                gameCoordinateY2={version.gameCoordinateY2}
+                            />
+                        </div>
+                    )}
 
                     {/* Catches as badges */}
                     {version?.catches.length ? (

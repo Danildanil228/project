@@ -304,6 +304,31 @@ export async function updateUserRole(actor: SessionUser, targetUserId: string, r
     return rows[0];
 }
 
+// Admin/super-admin can manually mark a user's email as verified (e.g. after manual identity confirmation).
+// Idempotent — calling on an already-verified user is a no-op and still emits an audit entry for traceability.
+export async function setUserEmailVerified(actor: SessionUser, targetUserId: string, verified: boolean) {
+    const { rows } = await pool.query(
+        `
+            UPDATE "user"
+            SET "emailVerified" = $1, "updatedAt" = NOW()
+            WHERE id = $2
+            RETURNING id, name, email, "emailVerified", image, role, banned, "banReason", "banExpires", "createdAt", "updatedAt"
+        `,
+        [verified, targetUserId],
+    );
+
+    if (!rows[0]) return null;
+
+    await writeAuditLog({
+        actor,
+        action: verified ? "admin.user.email.verify" : "admin.user.email.unverify",
+        targetUserId,
+        targetEmail: rows[0].email,
+    });
+
+    return rows[0];
+}
+
 export async function listManagedAccounts(userId: string) {
     if (isSuperAdminId(userId, superAdminUserIds)) {
         return null;

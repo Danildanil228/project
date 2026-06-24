@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { ChangePasswordForm } from "../components/ChangePasswordForm";
 import { UserAvatar } from "../components/UserAvatar";
 import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
@@ -16,8 +17,6 @@ type ProfilePageProps = {
 export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpenAuthModal }: ProfilePageProps) {
     const [name, setName] = useState(currentUser?.name ?? "");
     const [image, setImage] = useState(currentUser?.image ?? "");
-    const [currentPassword, setCurrentPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
     const [sessions, setSessions] = useState<ManagedSession[]>([]);
     const [notice, setNotice] = useState("");
     const [error, setError] = useState("");
@@ -44,27 +43,6 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpe
             await unwrapAuthResult(authApi.updateUser({ name, image: image || null }));
             await onSessionRefresh();
             setNotice("Профиль обновлен");
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        }
-    }
-
-    async function changePassword(event: FormEvent) {
-        event.preventDefault();
-        setNotice("");
-        setError("");
-        try {
-            await unwrapAuthResult(
-                authApi.changePassword({
-                    currentPassword,
-                    newPassword,
-                    revokeOtherSessions: true,
-                }),
-            );
-            setCurrentPassword("");
-            setNewPassword("");
-            await loadSessions();
-            setNotice("Пароль изменен, другие сессии отозваны");
         } catch (caught) {
             setError(getErrorMessage(caught));
         }
@@ -185,20 +163,11 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpe
                     </form>
                 </section>
 
-                <form className="panel profile-card stack" onSubmit={changePassword}>
-                    <h3>Пароль</h3>
-                    <label>
-                        Текущий пароль
-                        <input type="password" value={currentPassword} onChange={(event) => setCurrentPassword(event.target.value)} required />
-                    </label>
-                    <label>
-                        Новый пароль
-                        <input type="password" minLength={8} value={newPassword} onChange={(event) => setNewPassword(event.target.value)} required />
-                    </label>
-                    <button className="secondary" type="submit">
-                        Изменить пароль
-                    </button>
-                </form>
+                {/* OAuth-only users have no password to change — ChangePasswordForm renders nothing for them.
+                    For email/password users it runs the two-step (old password → email code) flow. */}
+                <div className="panel profile-card stack">
+                    <ChangePasswordForm />
+                </div>
             </div>
 
             <section className="panel">

@@ -14,8 +14,9 @@ export const adminAccessControlRoles = {
         user: ["create", "list", "set-role", "ban", "impersonate", "delete", "set-password", "get", "update"],
         session: ["list", "revoke", "delete"],
     }),
+    // Moderators are intentionally not allowed to create or delete users — those actions stay with admin/super-admin.
     moderator: defaultAc.newRole({
-        user: ["create", "list", "set-role", "ban", "impersonate", "delete", "set-password", "get", "update"],
+        user: ["list", "set-role", "ban", "set-password", "get", "update"],
         session: ["list", "revoke", "delete"],
     }),
     user: defaultAc.newRole({
@@ -184,8 +185,12 @@ export function adminHierarchyGuard(superAdminUserIds: string[]): BetterAuthPlug
                         if (targetUser) {
                             const actorRank = highestRoleRank(session.user, superAdminUserIds);
                             const targetRank = highestRoleRank(targetUser, superAdminUserIds);
+                            // Self-service exception: revoking your own sessions from the admin panel is the same as
+                            // revoking them from /profile — allow it even though same-rank actions are normally blocked.
+                            const isSelfSessionRevoke = targetUser.id === session.user.id
+                                && (path === "/admin/revoke-user-session" || path === "/admin/revoke-user-sessions");
 
-                            if (actorRank <= targetRank) {
+                            if (actorRank <= targetRank && !isSelfSessionRevoke) {
                                 throw new APIError("FORBIDDEN", {
                                     message: "Users can manage only lower role users",
                                 });
@@ -198,6 +203,18 @@ export function adminHierarchyGuard(superAdminUserIds: string[]): BetterAuthPlug
                         if (path === "/admin/impersonate-user") {
                             throw new APIError("FORBIDDEN", {
                                 message: "Moderators cannot impersonate users",
+                            });
+                        }
+
+                        // Moderators may not create or delete users at all — that's an admin-only action.
+                        if (path === "/admin/create-user") {
+                            throw new APIError("FORBIDDEN", {
+                                message: "Moderators cannot create users",
+                            });
+                        }
+                        if (path === "/admin/remove-user") {
+                            throw new APIError("FORBIDDEN", {
+                                message: "Moderators cannot delete users",
                             });
                         }
 

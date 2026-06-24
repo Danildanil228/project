@@ -18,6 +18,7 @@ import {
     listAuditLogs,
     listManagedAccounts,
     listManagedUsers,
+    setManagedUserEmailVerified,
     setManagedUserRole,
     unlinkManagedAccount,
 } from "../lib/admin-api";
@@ -561,6 +562,15 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
         }, "Режим входа под пользователем включен");
     }
 
+    async function verifyEmail(verified: boolean) {
+        if (!selectedUser) return;
+        await runAction(async () => {
+            const { user } = await setManagedUserEmailVerified(selectedUser.id, verified);
+            setSelectedUserOverride(user);
+            await loadUsers(offset);
+        }, verified ? "Email подтверждён" : "Подтверждение email снято");
+    }
+
     async function revokeSession(token: string) {
         const confirmed = await confirm({
             title: "Отозвать сессию",
@@ -717,7 +727,10 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                         onPageChange={loadUsers}
                     />
 
-                    <CreateUserForm form={createForm} roleOptions={roleOptions} onChange={setCreateForm} onSubmit={createUser} />
+                    {/* Creating users is admin-only — moderators get list/edit/ban/role only (see admin-roles.ts). */}
+                    {(isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)) && (
+                        <CreateUserForm form={createForm} roleOptions={roleOptions} onChange={setCreateForm} onSubmit={createUser} />
+                    )}
                 </section>
 
                 <UserDetailsPanel
@@ -733,6 +746,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                     canManageSelectedUser={canManageSelectedUser}
                     canUpdateSelectedProfile={canUpdateSelectedProfile}
                     canImpersonate={isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)}
+                    canVerifyEmail={isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)}
                     isSelfSelected={isSelfSelected}
                     isSuperAdminSelected={isSuperAdminSelected}
                     onEditFormChange={setEditForm}
@@ -744,6 +758,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                     onUnbanUser={unbanUser}
                     onUpdatePassword={updatePassword}
                     onImpersonateUser={impersonateUser}
+                    onVerifyEmail={verifyEmail}
                     onRevokeSession={revokeSession}
                     onRevokeAllSessions={revokeAllSessions}
                     onUnlinkAccount={unlinkAccount}
