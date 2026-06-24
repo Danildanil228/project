@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { adminAuditPlugin, logAuthEmail, writeAuditLog } from "./audit-log";
 import { adminAccessControlRoles, adminHierarchyGuard, elevatedRoles } from "./admin-roles";
 import { pool } from "./db";
+import { deleteUploadedMedia } from "./uploads";
 
 dotenv.config();
 
@@ -81,4 +82,20 @@ export const auth = betterAuth({
             roles: adminAccessControlRoles,
         }),
     ],
+    databaseHooks: {
+        user: {
+            // Wipe the avatar file from disk whenever a user is deleted (admin or self-service).
+            // Only files under /uploads/avatars/ are touched — OAuth-provider URLs are ignored by
+            // deleteUploadedMedia's prefix check.
+            //
+            // Note: we don't validate `image` on update.before — OAuth sign-in writes the provider's
+            // own CDN URL into this column on every login, and rejecting non-local URLs would break
+            // discord/vk auth. URL-input prevention lives in the UI.
+            delete: {
+                after: async (user: { image?: string | null } | null | undefined) => {
+                    if (user?.image) await deleteUploadedMedia(user.image);
+                },
+            },
+        },
+    },
 });

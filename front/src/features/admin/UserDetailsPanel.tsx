@@ -99,14 +99,15 @@ export function UserDetailsPanel({
                             Email
                             <input type="email" value={editForm.email} disabled={!canUpdateSelectedProfile} onChange={(event) => onEditFormChange({ ...editForm, email: event.target.value })} />
                         </label>
+                        {/* Avatar is owned by the user — they upload it from their /profile page.
+                            Admins see the current value but can't paste arbitrary URLs here. */}
                         <label>
-                            Ссылка на аватар
+                            Аватар
                             <input
-                                type="url"
-                                placeholder="https://example.com/avatar.png"
-                                value={editForm.image}
-                                disabled={!canUpdateSelectedProfile}
-                                onChange={(event) => onEditFormChange({ ...editForm, image: event.target.value })}
+                                type="text"
+                                value={editForm.image || "—"}
+                                disabled
+                                title="Аватар меняется самим пользователем в разделе Профиль"
                             />
                         </label>
                         <label>

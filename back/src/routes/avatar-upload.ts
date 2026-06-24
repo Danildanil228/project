@@ -5,7 +5,7 @@ import express, { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
 import { requireAuth, requireRole } from "../lib/admin-auth";
-import { itemMediaRoot, postMediaRoot, uploadsRoot } from "../lib/uploads";
+import { deleteUploadedMedia, itemMediaRoot, postMediaRoot, uploadsRoot } from "../lib/uploads";
 import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
 
@@ -80,6 +80,12 @@ router.post(
 
             const fileName = `${randomUUID()}.${extension}`;
             await writeFile(join(avatarUploadsRoot, fileName), body, { flag: "wx" });
+
+            // Remove the previous avatar file. deleteUploadedMedia only touches /uploads/avatars/ —
+            // OAuth-provider CDN URLs (discord/vk) won't be matched, so we never delete files we
+            // don't own.
+            const previousImage = (session.user as { image?: string | null }).image;
+            if (previousImage) await deleteUploadedMedia(previousImage);
 
             const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
             const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/avatars/${fileName}`;

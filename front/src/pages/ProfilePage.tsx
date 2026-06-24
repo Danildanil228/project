@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { AvatarUploadField } from "../components/AvatarUploadField";
 import { ChangePasswordForm } from "../components/ChangePasswordForm";
 import { UserAvatar } from "../components/UserAvatar";
 import { authApi } from "../lib/auth-api";
@@ -143,10 +144,9 @@ export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpe
                             Имя
                             <input value={name} onChange={(event) => setName(event.target.value)} required />
                         </label>
-                        <label>
-                            Ссылка на аватар
-                            <input type="url" placeholder="https://example.com/avatar.png" value={image} onChange={(event) => setImage(event.target.value)} />
-                        </label>
+                        {/* Avatar uploads as a file: backend stores it under /uploads/avatars/, deletes
+                            the previous file, and returns the public URL we persist in user.image. */}
+                        <AvatarUploadField value={image} onChange={setImage} />
 
                         <div className="section-line">
                             <span>Email подтвержден: {currentUser?.emailVerified ? "да" : "нет"}</span>
