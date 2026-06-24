@@ -21,6 +21,7 @@ import { baitsRouter } from './routes/baits';
 import { spotsRouter } from './routes/spots';
 import { auditRequestContext } from './middleware/audit-request';
 import { mapSubmissionsRouter } from './routes/map-submissions';
+import { calculatorRouter } from './routes/calculator';
 import { postMapLinkingEnabled } from './lib/features';
 
 dotenv.config();
@@ -72,6 +73,7 @@ app.get('/api/auth-providers', (_req, res) => {
 
 app.use('/api/reels', createItemsRouter('reels'));
 app.use('/api/rods', createItemsRouter('rods'));
+app.use('/api/calculator', calculatorRouter);
 app.use('/api/fish', fishRouter);
 app.use('/api/waterbodies', waterbodiesRouter);
 app.use('/api/baits', baitsRouter);

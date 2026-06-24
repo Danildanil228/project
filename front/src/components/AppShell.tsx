@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import {
     BookOpen,
+    Calculator,
     ChevronDown,
     Crown,
     Database,
@@ -52,6 +53,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                 { to: "/", label: "Главная", icon: Home, end: true },
                 { to: "/feed", label: "Лента", icon: Newspaper },
                 { to: "/catalog", label: "Каталог", icon: BookOpen },
+                { to: "/calculator", label: "Прочность", icon: Calculator },
                 { to: "/waterbodies", label: "Водоёмы", icon: MapIcon },
             ],
         },

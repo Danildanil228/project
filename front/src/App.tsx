@@ -13,6 +13,7 @@ import { postMapLinkingEnabled } from "./lib/features";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((module) => ({ default: module.AuthorProfilePage })));
+const CalculatorPage = lazy(() => import("./pages/CalculatorPage").then((module) => ({ default: module.CalculatorPage })));
 const CatalogPage = lazy(() => import("./pages/CatalogPage").then((module) => ({ default: module.CatalogPage })));
 const FeedPage = lazy(() => import("./pages/FeedPage").then((module) => ({ default: module.FeedPage })));
 const FishAdminPage = lazy(() => import("./pages/FishAdminPage").then((module) => ({ default: module.FishAdminPage })));
@@ -87,6 +88,7 @@ function AppRoutes() {
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="catalog" element={<CatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
+                    <Route path="calculator" element={<CalculatorPage />} />
                     <Route path="waterbodies" element={<WaterbodyListPage />} />
                     <Route path="waterbodies/:id" element={<WaterbodyMapPage currentUser={currentUser} adminContext={adminContext} />} />
                     <Route path="feed" element={<FeedPage currentUser={currentUser} adminContext={adminContext} />} />
