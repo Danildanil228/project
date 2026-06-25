@@ -319,8 +319,10 @@ export async function getAdminOverview() {
     );
     const recent = await pool.query(
         `
-            SELECT id, action, "actorId", "actorName", "targetUserId", "targetEmail",
-                   outcome, "createdAt", "ipAddress", "userAgent", "errorMessage", metadata
+            SELECT id, action, "actorId", "actorName", "actorEmail", "actorRole",
+                   "targetUserId", "targetEmail", "targetName",
+                   outcome, "createdAt", "requestId", "ipAddress", "userAgent",
+                   method, path, metadata
             FROM "adminAuditLog"
             WHERE action LIKE 'admin.%' OR action LIKE 'better-auth.admin.%' OR action LIKE 'post.curated.%'
             ORDER BY "createdAt" DESC
