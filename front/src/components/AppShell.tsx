@@ -6,6 +6,7 @@ import {
     ChevronDown,
     Crown,
     Database,
+    FileText,
     Fish,
     Home,
     LogIn,
@@ -17,6 +18,7 @@ import {
     ShieldCheck,
     User as UserIcon,
     UserCog,
+    Users,
     X,
 } from "lucide-react";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -68,7 +70,9 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
     if (elevated || catalogAdmin) {
         const adminItems: NavItem[] = [];
         if (elevated) adminItems.push({ to: "/moderation", label: "Модерация", icon: ShieldCheck, requiresAuth: true });
-        if (elevated) adminItems.push({ to: "/admin", label: "Админ панель", icon: Crown, requiresAuth: true });
+        if (elevated) adminItems.push({ to: "/admin", label: "Сводка", icon: Crown, end: true, requiresAuth: true });
+        if (elevated) adminItems.push({ to: "/admin/users", label: "Пользователи", icon: Users, requiresAuth: true });
+        if (elevated) adminItems.push({ to: "/admin/audit", label: "Журнал", icon: FileText, requiresAuth: true });
         if (catalogAdmin) adminItems.push({ to: "/admin/reference", label: "Справочники", icon: Database, requiresAuth: true });
         groups.push({ title: "Управление", items: adminItems });
     }
