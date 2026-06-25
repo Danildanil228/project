@@ -4,6 +4,9 @@ export type WaterbodyFish = {
     id: number;
     name: string;
     rarity: FishRarity;
+    photo: string | null;
+    trophyWeightGrams: number | null;
+    rareTrophyWeightGrams: number | null;
 };
 
 export type Waterbody = {

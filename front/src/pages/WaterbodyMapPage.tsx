@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState, type FormEvent, type MouseEvent, type Poi
 import { Link, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { MultiCombobox } from "../components/MultiCombobox";
+import { WaterbodyFishList } from "../components/WaterbodyFishList";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { postMapLinkingEnabled } from "../lib/features";
@@ -322,6 +323,9 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                     </div>}
                 </aside>
             </div>
+
+            {/* Public inhabitants list — read-only fish summary under the map. */}
+            <WaterbodyFishList fish={waterbody.fish} />
 
             {formOpen && <form onSubmit={submit} className="grid gap-4 rounded-lg border border-border bg-card p-4">
                 <div className="flex items-center justify-between"><h3 className="font-bold">{editingId ? "Изменить точку" : "Новая точка"}</h3><button type="button" onClick={() => setFormOpen(false)} title="Закрыть"><X size={18} /></button></div>

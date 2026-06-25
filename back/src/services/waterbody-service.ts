@@ -53,11 +53,13 @@ export async function getWaterbody(id: number) {
 
     const fish = await pool.query(
         `
-            SELECT f.id, f.name, f.rarity
+            SELECT f.id, f.name, f.rarity, f.photo,
+                   f.trophy_weight_grams       AS "trophyWeightGrams",
+                   f.rare_trophy_weight_grams  AS "rareTrophyWeightGrams"
             FROM waterbody_fish wf
             JOIN fish f ON f.id = wf.fish_id
             WHERE wf.waterbody_id = $1
-            ORDER BY f.name ASC
+            ORDER BY f.rarity DESC, f.name ASC
         `,
         [id],
     );
