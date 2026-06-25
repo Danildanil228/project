@@ -7,6 +7,7 @@ import { hasElevatedAccess } from "../lib/admin-roles";
 import { deleteUploadedMedia } from "../lib/uploads";
 import { translateDbError } from "../lib/db-errors";
 import { notifyModerators } from "./notification-service";
+import { notifyAdmins, publicSiteUrl } from "./telegram-notify";
 import { createPendingMapSubmission } from "./map-submission-service";
 import { postMapLinkingEnabled } from "../lib/features";
 import {
@@ -145,6 +146,9 @@ export async function createPost(author: SessionUser, input: CreatePostInput) {
         });
         if (status === "pending") {
             await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
+            // Fire-and-forget the Telegram push; errors are logged inside notifyAdmins → sendMessage
+            // so a single broken chat won't roll back the post create transaction.
+            await notifyAdmins(`📝 *Новый пост на модерации*\n[Открыть #${postId}](${publicSiteUrl()}/posts/${postId})`);
         }
         if (mapSubmissionId) await notifyModerators({ type: "map_submission_new", postId, actorId: author.id, excludeUserId: author.id, data: { mapSubmissionId } });
         return getPostById(postId);
@@ -199,6 +203,7 @@ export async function updateDraft(postId: number, author: SessionUser, content: 
     await writeAuditLog({ actor: author, action: submit ? "post.submit" : "post.update-draft", targetUserId: author.id, metadata: { postId } });
     if (submit) {
         await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
+        await notifyAdmins(`📝 *Пост повторно отправлен на модерацию*\n[Открыть #${postId}](${publicSiteUrl()}/posts/${postId})`);
     }
     return { status: "ok" as const, post: await getPostById(postId) };
 }
@@ -298,6 +303,7 @@ export async function submitDraft(postId: number, author: SessionUser) {
     );
     await writeAuditLog({ actor: author, action: "post.submit", targetUserId: author.id, metadata: { postId } });
     await notifyModerators({ type: "moderation_new", postId, actorId: author.id, excludeUserId: author.id });
+    await notifyAdmins(`📝 *Новый пост на модерации*\n[Открыть #${postId}](${publicSiteUrl()}/posts/${postId})`);
     return { status: "ok" as const, post: await getPostById(postId) };
 }
 

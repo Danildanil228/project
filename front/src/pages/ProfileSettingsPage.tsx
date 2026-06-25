@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { AvatarUploadField } from "../components/AvatarUploadField";
 import { ChangePasswordForm } from "../components/ChangePasswordForm";
 import { PageHeader } from "../components/PageHeader";
+import { TelegramLinkPanel } from "../components/TelegramLinkPanel";
 import { UserAvatar } from "../components/UserAvatar";
 import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
@@ -162,9 +163,11 @@ export function ProfileSettingsPage({ currentUser, adminContext, onSessionRefres
                     </form>
                 </section>
 
-                {/* OAuth-only users have no password to change — ChangePasswordForm renders nothing for them. */}
+                {/* OAuth-only users have no password to change — ChangePasswordForm renders nothing for them.
+                    TelegramLinkPanel also self-hides for non-moderator users (the API returns 403). */}
                 <div className="panel profile-card stack">
                     <ChangePasswordForm />
+                    <TelegramLinkPanel />
                 </div>
             </div>
 

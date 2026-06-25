@@ -5,8 +5,11 @@
 import { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
+import { hasElevatedAccess } from "../lib/admin-roles";
+import { superAdminUserIds } from "../lib/admin-auth";
 import { pool } from "../lib/db";
 import { logAuthEmail, writeAuditLog } from "../lib/audit-log";
+import { getUpdates, telegramBotUsername, telegramConfigured } from "../lib/telegram";
 
 export const accountRouter = Router();
 
@@ -23,6 +26,12 @@ const pending = new Map<string, Pending>();
 type SignupOtp = { code: string; expiresAt: number };
 const signupOtps = new Map<string, SignupOtp>();
 
+// Pending Telegram link tokens. Keyed by userId. TTL 10 min. After the user sends /start <code>
+// to the bot and clicks "Проверить" in the UI, we look the code up here and turn it into a
+// permanent row in telegramLink.
+type PendingLink = { code: string; expiresAt: number };
+const pendingTelegramLinks = new Map<string, PendingLink>();
+
 function generateCode(): string {
     return String(Math.floor(100000 + Math.random() * 900000));
 }
@@ -34,6 +43,9 @@ function cleanupExpired() {
     }
     for (const [email, entry] of signupOtps.entries()) {
         if (entry.expiresAt <= now) signupOtps.delete(email);
+    }
+    for (const [userId, entry] of pendingTelegramLinks.entries()) {
+        if (entry.expiresAt <= now) pendingTelegramLinks.delete(userId);
     }
 }
 
@@ -179,6 +191,131 @@ accountRouter.post("/password/confirm", async (req, res, next) => {
             targetEmail: session.user.email,
         });
 
+        res.json({ success: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// --- Telegram link flow (moderator+ only) ------------------------------------------
+
+async function requireElevated(req: import("express").Request, res: import("express").Response) {
+    const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
+    if (!session?.user) { res.status(401).json({ message: "Unauthorized" }); return null; }
+    if (!hasElevatedAccess(session.user, superAdminUserIds)) {
+        res.status(403).json({ message: "Только для модераторов и админов" });
+        return null;
+    }
+    return session;
+}
+
+accountRouter.get("/telegram/status", async (req, res, next) => {
+    try {
+        const session = await requireElevated(req, res);
+        if (!session) return;
+        const { rows } = await pool.query<{ chatId: string; username: string | null; linkedAt: string }>(
+            `SELECT "chatId", "username", "linkedAt" FROM "telegramLink" WHERE "userId" = $1`,
+            [session.user.id],
+        );
+        const link = rows[0]
+            ? { linked: true as const, chatId: rows[0].chatId, username: rows[0].username, linkedAt: rows[0].linkedAt }
+            : { linked: false as const };
+        res.json({ ...link, botUsername: telegramBotUsername, configured: telegramConfigured });
+    } catch (error) {
+        next(error);
+    }
+});
+
+accountRouter.post("/telegram/start-link", async (req, res, next) => {
+    try {
+        const session = await requireElevated(req, res);
+        if (!session) return;
+        if (!telegramConfigured || !telegramBotUsername) {
+            res.status(503).json({ message: "Telegram-бот не настроен на сервере" });
+            return;
+        }
+        cleanupExpired();
+        const code = generateCode();
+        pendingTelegramLinks.set(session.user.id, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
+        res.json({
+            code,
+            botUsername: telegramBotUsername,
+            deepLink: `https://t.me/${telegramBotUsername}?start=${code}`,
+            expiresIn: 600,
+        });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Polls Telegram's getUpdates and matches the user's pending code against an incoming
+// /start <code> (or bare <code>) message. On match we persist chatId+username and evict
+// the pending entry.
+accountRouter.post("/telegram/finish-link", async (req, res, next) => {
+    try {
+        const session = await requireElevated(req, res);
+        if (!session) return;
+        cleanupExpired();
+        const entry = pendingTelegramLinks.get(session.user.id);
+        if (!entry) {
+            res.status(404).json({ message: "Запросите код заново" });
+            return;
+        }
+        const updates = await getUpdates();
+        const expected = entry.code;
+        const match = updates.find((update) => {
+            const text = update.message?.text?.trim() ?? "";
+            return text === `/start ${expected}` || text === expected;
+        });
+        if (!match || !match.message) {
+            res.status(404).json({ message: "Сообщение от вас в боте пока не найдено. Откройте бота и отправьте код." });
+            return;
+        }
+        const chatId = match.message.chat.id;
+        const username = match.message.from?.username ?? match.message.chat.username ?? null;
+        try {
+            await pool.query(
+                `
+                    INSERT INTO "telegramLink" ("userId", "chatId", "username")
+                    VALUES ($1, $2, $3)
+                    ON CONFLICT ("userId") DO UPDATE SET
+                        "chatId"   = EXCLUDED."chatId",
+                        "username" = EXCLUDED."username",
+                        "linkedAt" = NOW()
+                `,
+                [session.user.id, chatId, username],
+            );
+        } catch (caught) {
+            const message = caught instanceof Error ? caught.message : "Не удалось связать";
+            res.status(409).json({ message: /unique|duplicate/i.test(message) ? "Этот Telegram уже привязан к другому пользователю" : message });
+            return;
+        }
+        pendingTelegramLinks.delete(session.user.id);
+        await writeAuditLog({
+            actor: session.user,
+            action: "user.telegram.link",
+            targetUserId: session.user.id,
+            targetEmail: session.user.email,
+            metadata: { chatId, username },
+        });
+        res.json({ success: true, chatId, username });
+    } catch (error) {
+        next(error);
+    }
+});
+
+accountRouter.delete("/telegram/link", async (req, res, next) => {
+    try {
+        const session = await requireElevated(req, res);
+        if (!session) return;
+        await pool.query(`DELETE FROM "telegramLink" WHERE "userId" = $1`, [session.user.id]);
+        pendingTelegramLinks.delete(session.user.id);
+        await writeAuditLog({
+            actor: session.user,
+            action: "user.telegram.unlink",
+            targetUserId: session.user.id,
+            targetEmail: session.user.email,
+        });
         res.json({ success: true });
     } catch (error) {
         next(error);
