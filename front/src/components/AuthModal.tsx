@@ -45,6 +45,37 @@ async function checkPending(email: string): Promise<PendingStatus> {
 
 // Returns the throttle seconds the backend reports back, so the UI can disable the
 // "Отправить ещё раз" button for exactly the same window the server enforces.
+// Plain fetch wrappers for better-auth's sign-up/sign-in endpoints. We bypass the React client
+// on purpose: it ships a built-in redirectPlugin that, when the server response carries
+// { url, redirect: true }, sets window.location.href — which navigates the SPA away and looks
+// like a page reload (closing our modal). The HTTP endpoints themselves still return the same
+// data, but here we explicitly ignore the redirect hint.
+async function signUpEmail(input: { name: string; email: string; password: string }): Promise<void> {
+    const response = await fetch("/api/auth/sign-up/email", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+    });
+    if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error((body as { message?: string }).message ?? "Не удалось создать аккаунт");
+    }
+}
+
+async function signInEmail(input: { email: string; password: string }): Promise<void> {
+    const response = await fetch("/api/auth/sign-in/email", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+    });
+    if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error((body as { message?: string }).message ?? "Неверный email или пароль");
+    }
+}
+
 async function checkEmailAvailable(email: string): Promise<boolean> {
     const response = await fetch(`/api/account/email-available?email=${encodeURIComponent(email)}`, { credentials: "include" });
     if (!response.ok) throw new Error("Не удалось проверить email");
@@ -178,8 +209,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     async function handleLogin() {
         setError(""); setBusy(true);
         try {
-            const result = await authClient.signIn.email({ email, password });
-            if (result.error) throw new Error(result.error.message);
+            await signInEmail({ email, password });
             onSuccess();
             setOpen(false);
         } catch (caught) {
@@ -255,9 +285,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         if (password !== passwordConfirm) { setError("Пароли не совпадают"); return; }
         setBusy(true); setError(""); setInfo("");
         try {
-            const signup = await authClient.signUp.email({ email, password, name });
-            // better-auth: success → { data: {...}, error: null }; failure → { data: null, error: {...} }
-            if (signup.error) throw new Error(signup.error.message ?? "Не удалось создать аккаунт");
+            await signUpEmail({ email, password, name });
             const resendInSeconds = await sendSignupOtp(email);
             savePendingEmail(email);
             setResendIn(resendInSeconds);
@@ -281,8 +309,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             await confirmSignupOtp(email, code);
             clearPendingEmail();
             if (password) {
-                const result = await authClient.signIn.email({ email, password });
-                if (result.error) throw new Error(result.error.message ?? "Подтверждено, но не получилось войти");
+                await signInEmail({ email, password });
                 onSuccess();
                 setOpen(false);
                 return;
