@@ -201,7 +201,9 @@ accountRouter.get("/email-verify/pending", async (req, res, next) => {
         const entry = signupOtps.get(email);
         if (!entry) { res.json({ pending: false }); return; }
         const expiresIn = Math.max(0, Math.floor((entry.expiresAt - Date.now()) / 1000));
-        res.json({ pending: true, expiresIn });
+        // Same throttle as /email-verify/send — UI uses this to disable "Отправить ещё раз" until 0.
+        const resendInSeconds = sendThrottleSeconds(email);
+        res.json({ pending: true, expiresIn, resendInSeconds });
     } catch (error) {
         next(error);
     }
@@ -244,7 +246,9 @@ accountRouter.post("/email-verify/send", async (req, res, next) => {
         const code = generateCode();
         signupOtps.set(email, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
         await logAuthEmail("signup-otp", email, code);
-        res.json({ success: true, expiresIn: 600 });
+        // resendInSeconds tells the UI how long the "Отправить ещё раз" button must stay disabled.
+        // Matches the same throttle window enforced on subsequent /send calls.
+        res.json({ success: true, expiresIn: 600, resendInSeconds: 30 });
     } catch (error) {
         next(error);
     }

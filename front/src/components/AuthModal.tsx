@@ -33,16 +33,19 @@ function clearPendingEmail() {
     try { localStorage.removeItem(PENDING_KEY); } catch { /* ignore */ }
 }
 
-async function checkPending(email: string): Promise<boolean> {
+type PendingStatus = { pending: boolean; resendInSeconds: number };
+async function checkPending(email: string): Promise<PendingStatus> {
     try {
         const response = await fetch(`/api/account/email-verify/pending?email=${encodeURIComponent(email)}`, { credentials: "include" });
-        if (!response.ok) return false;
-        const data = await response.json() as { pending: boolean };
-        return Boolean(data.pending);
-    } catch { return false; }
+        if (!response.ok) return { pending: false, resendInSeconds: 0 };
+        const data = await response.json() as { pending?: boolean; resendInSeconds?: number };
+        return { pending: Boolean(data.pending), resendInSeconds: Math.max(0, Number(data.resendInSeconds ?? 0)) };
+    } catch { return { pending: false, resendInSeconds: 0 }; }
 }
 
-async function sendSignupOtp(email: string) {
+// Returns the throttle seconds the backend reports back, so the UI can disable the
+// "Отправить ещё раз" button for exactly the same window the server enforces.
+async function sendSignupOtp(email: string): Promise<number> {
     const response = await fetch("/api/account/email-verify/send", {
         method: "POST",
         credentials: "include",
@@ -53,6 +56,8 @@ async function sendSignupOtp(email: string) {
         const body = await response.json().catch(() => ({}));
         throw new Error((body as { message?: string }).message ?? "Не удалось отправить код");
     }
+    const data = await response.json().catch(() => ({})) as { resendInSeconds?: number };
+    return Math.max(0, Number(data.resendInSeconds ?? 0));
 }
 
 async function confirmSignupOtp(email: string, code: string) {
@@ -84,6 +89,9 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     const [info, setInfo] = useState("");
     const [busy, setBusy] = useState(false);
     const [providers, setProviders] = useState<Providers>({});
+    // Seconds remaining until "Отправить ещё раз" becomes available again. The backend reports
+    // this when we send/resend the OTP and when we check pending state on mount.
+    const [resendIn, setResendIn] = useState(0);
     const firstInputRef = useRef<HTMLInputElement>(null);
 
     // Restore the code-entry step on mount when a pending OTP is still alive on the backend.
@@ -94,16 +102,26 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         const pendingEmail = readPendingEmail();
         if (!pendingEmail) return;
         let cancelled = false;
-        checkPending(pendingEmail).then((isPending) => {
-            if (cancelled || !isPending) return;
+        checkPending(pendingEmail).then((status) => {
+            if (cancelled || !status.pending) return;
             setMode("register");
             setEmail(pendingEmail);
             setStep(4);
             setDirection("forward");
+            setResendIn(status.resendInSeconds);
             setInfo(`Введите код, отправленный на ${pendingEmail}.`);
         });
         return () => { cancelled = true; };
     }, [open]);
+
+    // Tick the resend countdown each second while step 4 is open and the timer is running.
+    // Stops at 0 — when it hits zero the button re-enables. setTimeout instead of setInterval
+    // so we never schedule overlapping ticks.
+    useEffect(() => {
+        if (resendIn <= 0) return;
+        const id = window.setTimeout(() => setResendIn((value) => Math.max(0, value - 1)), 1000);
+        return () => window.clearTimeout(id);
+    }, [resendIn]);
 
     useEffect(() => {
         if (!open) return;
@@ -198,8 +216,9 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             const signup = await authClient.signUp.email({ email, password, name });
             // better-auth: success → { data: {...}, error: null }; failure → { data: null, error: {...} }
             if (signup.error) throw new Error(signup.error.message ?? "Не удалось создать аккаунт");
-            await sendSignupOtp(email);
+            const resendInSeconds = await sendSignupOtp(email);
             savePendingEmail(email);
+            setResendIn(resendInSeconds);
             setInfo(`Код отправлен на ${email}. В dev-режиме появится в логах бэкенда.`);
             goToStep(4, "forward");
         } catch (caught) {
@@ -240,10 +259,12 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     }
 
     async function resendCode() {
+        if (resendIn > 0) return;
         setError(""); setInfo(""); setBusy(true);
         try {
-            await sendSignupOtp(email);
+            const resendInSeconds = await sendSignupOtp(email);
             savePendingEmail(email);
+            setResendIn(resendInSeconds);
             setInfo("Новый код отправлен");
         } catch (caught) {
             console.error("[auth] resend failed", caught);
@@ -315,7 +336,17 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                             )}
                             {step === 4 && (
                                 <StepShell icon={CheckCircle2} title="Введите код" description={`Мы отправили 6-значный код на ${email}.`} onBack={() => goToStep(3, "backward")} onPrimary={confirmCode} primaryLabel="Подтвердить" busy={busy} error={error} info={info}
-                                    extra={<button type="button" onClick={resendCode} disabled={busy} className="text-xs text-primary hover:underline disabled:opacity-50">Отправить код ещё раз</button>}
+                                    extra={
+                                        <button
+                                            type="button"
+                                            onClick={resendCode}
+                                            disabled={busy || resendIn > 0}
+                                            // Disabled+cursor change make the throttle obvious even before reading the label.
+                                            className="text-xs text-primary hover:underline disabled:cursor-not-allowed disabled:no-underline disabled:opacity-50"
+                                        >
+                                            {resendIn > 0 ? `Отправить код ещё раз (${resendIn})` : "Отправить код ещё раз"}
+                                        </button>
+                                    }
                                 >
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Код</span>
