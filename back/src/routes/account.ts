@@ -17,6 +17,12 @@ export const accountRouter = Router();
 type Pending = { code: string; currentPassword: string; newPassword: string; expiresAt: number };
 const pending = new Map<string, Pending>();
 
+// Same pattern, separate Map for the signup OTP flow. Keyed by email (lowercased) — the user
+// isn't logged in yet, so there's no userId. After signUpEmail succeeds the frontend calls
+// /email-verify/send, then /email-verify/confirm flips emailVerified=true.
+type SignupOtp = { code: string; expiresAt: number };
+const signupOtps = new Map<string, SignupOtp>();
+
 function generateCode(): string {
     return String(Math.floor(100000 + Math.random() * 900000));
 }
@@ -26,6 +32,19 @@ function cleanupExpired() {
     for (const [userId, entry] of pending.entries()) {
         if (entry.expiresAt <= now) pending.delete(userId);
     }
+    for (const [email, entry] of signupOtps.entries()) {
+        if (entry.expiresAt <= now) signupOtps.delete(email);
+    }
+}
+
+// Crude per-email rate limit so an attacker can't burn through codes by spamming /send.
+// Allows one code every 30s per email. Returns the seconds left to wait, or 0 if ok.
+function sendThrottleSeconds(email: string): number {
+    const entry = signupOtps.get(email);
+    if (!entry) return 0;
+    const issuedAt = entry.expiresAt - 10 * 60 * 1000;
+    const wait = Math.ceil((issuedAt + 30_000 - Date.now()) / 1000);
+    return wait > 0 ? wait : 0;
 }
 
 // Tells the UI whether there's a still-valid pending password change for the signed-in user. The
@@ -158,6 +177,97 @@ accountRouter.post("/password/confirm", async (req, res, next) => {
             actor: session.user,
             targetUserId: session.user.id,
             targetEmail: session.user.email,
+        });
+
+        res.json({ success: true });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Signup email-OTP — no session required (user just signed up but isn't verified yet).
+// Body: { email }. Generates a 6-digit code, stashes for 10 min, logs via stdout (dev).
+accountRouter.post("/email-verify/send", async (req, res, next) => {
+    try {
+        const raw = (req.body as { email?: unknown })?.email;
+        if (typeof raw !== "string" || !raw.includes("@")) {
+            res.status(400).json({ message: "Укажите email" });
+            return;
+        }
+        const email = raw.trim().toLowerCase();
+
+        // Don't leak whether the email exists or is already verified — but skip work in obvious cases.
+        const { rows } = await pool.query<{ exists: boolean; verified: boolean }>(
+            `SELECT EXISTS(SELECT 1 FROM "user" WHERE LOWER(email) = $1) AS exists,
+                    COALESCE((SELECT "emailVerified" FROM "user" WHERE LOWER(email) = $1), FALSE) AS verified`,
+            [email],
+        );
+        if (rows[0]?.verified) {
+            res.json({ success: true, alreadyVerified: true });
+            return;
+        }
+        if (!rows[0]?.exists) {
+            // Pretend we sent so an attacker can't enumerate. The frontend will time out on confirm.
+            res.json({ success: true });
+            return;
+        }
+
+        const wait = sendThrottleSeconds(email);
+        if (wait > 0) {
+            res.status(429).json({ message: `Подождите ${wait} сек. перед повторной отправкой` });
+            return;
+        }
+
+        cleanupExpired();
+        const code = generateCode();
+        signupOtps.set(email, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
+        await logAuthEmail("signup-otp", email, code);
+        res.json({ success: true, expiresIn: 600 });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Signup email-OTP confirm. Body: { email, code }. On success flips emailVerified=true.
+accountRouter.post("/email-verify/confirm", async (req, res, next) => {
+    try {
+        const body = (req.body ?? {}) as { email?: unknown; code?: unknown };
+        if (typeof body.email !== "string" || !body.email.includes("@")) {
+            res.status(400).json({ message: "Укажите email" });
+            return;
+        }
+        if (typeof body.code !== "string" || body.code.length !== 6) {
+            res.status(400).json({ message: "Введите 6-значный код" });
+            return;
+        }
+        const email = body.email.trim().toLowerCase();
+
+        cleanupExpired();
+        const entry = signupOtps.get(email);
+        if (!entry) {
+            res.status(404).json({ message: "Код не запрашивался или истёк. Запросите новый." });
+            return;
+        }
+        if (entry.code !== body.code) {
+            res.status(403).json({ message: "Неверный код" });
+            return;
+        }
+
+        const result = await pool.query<{ id: string; email: string }>(
+            `UPDATE "user" SET "emailVerified" = TRUE, "updatedAt" = NOW() WHERE LOWER(email) = $1 RETURNING id, email`,
+            [email],
+        );
+        signupOtps.delete(email);
+        if (!result.rows[0]) {
+            res.status(404).json({ message: "Пользователь не найден" });
+            return;
+        }
+
+        await writeAuditLog({
+            action: "user.email.verified",
+            targetUserId: result.rows[0].id,
+            targetEmail: result.rows[0].email,
+            metadata: { method: "signup-otp" },
         });
 
         res.json({ success: true });
