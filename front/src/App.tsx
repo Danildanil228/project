@@ -9,10 +9,14 @@ import type { AdminSecurityContext, ManagedUser } from "./types/admin";
 import { unwrapAuthResult } from "./utils/auth-client-result";
 import { AuthModalProvider, useAuthModal } from "./context/AuthModalContext";
 import { AuthModal } from "./components/AuthModal";
+import { CookieBanner } from "./components/CookieBanner";
 import { postMapLinkingEnabled } from "./lib/features";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AdminOverviewPage = lazy(() => import("./pages/AdminOverviewPage").then((module) => ({ default: module.AdminOverviewPage })));
+const PrivacyPolicyPage = lazy(() => import("./pages/legal/PrivacyPolicyPage").then((module) => ({ default: module.PrivacyPolicyPage })));
+const TermsOfUsePage = lazy(() => import("./pages/legal/TermsOfUsePage").then((module) => ({ default: module.TermsOfUsePage })));
+const RulesPage = lazy(() => import("./pages/legal/RulesPage").then((module) => ({ default: module.RulesPage })));
 const AdminAuditPage = lazy(() => import("./pages/AdminAuditPage").then((module) => ({ default: module.AdminAuditPage })));
 const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((module) => ({ default: module.AuthorProfilePage })));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage").then((module) => ({ default: module.CalculatorPage })));
@@ -116,12 +120,16 @@ function AppRoutes() {
                     <Route path="admin/waterbodies" element={<WaterbodyAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/baits" element={<BaitAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/users/:userId" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="legal/privacy" element={<PrivacyPolicyPage />} />
+                    <Route path="legal/terms" element={<TermsOfUsePage />} />
+                    <Route path="legal/rules" element={<RulesPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                     </Route>
                     <Route path="reset-password" element={<ResetPasswordPage />} />
                 </Routes>
             </Suspense>
             <AuthModal onSuccess={refetch} />
+            <CookieBanner />
         </>
     );
 }

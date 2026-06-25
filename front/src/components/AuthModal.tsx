@@ -124,6 +124,10 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
+    // User must tick "Я согласен с условиями" on step 3 before we'll send signUp.
+    // Resets on modal open; backend doesn't store this flag — the timestamp lives in the audit log
+    // via the existing register-create action.
+    const [consent, setConsent] = useState(false);
     const [code, setCode] = useState("");
 
     const [error, setError] = useState("");
@@ -180,6 +184,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             setPassword("");
             setPasswordConfirm("");
             setCode("");
+            setConsent(false);
         }
     }, [open]);
 
@@ -283,6 +288,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     async function nextFromPassword() {
         if (password.length < 8) { setError("Пароль — минимум 8 символов"); return; }
         if (password !== passwordConfirm) { setError("Пароли не совпадают"); return; }
+        if (!consent) { setError("Нужно подтвердить согласие с условиями и политикой"); return; }
         setBusy(true); setError(""); setInfo("");
         try {
             await signUpEmail({ email, password, name });
@@ -440,6 +446,17 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Повтор пароля</span>
                                         <input type="password" value={passwordConfirm} onChange={(event) => setPasswordConfirm(event.target.value)} minLength={8} autoComplete="new-password" />
+                                    </label>
+                                    {/* Consent — required before signUp goes through. Links open in a new tab so the user
+                                        doesn't lose the half-filled form. */}
+                                    <label className="flex cursor-pointer items-start gap-2 rounded-lg border border-border bg-muted/30 p-2.5 text-xs leading-relaxed">
+                                        <input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} className="mt-0.5 shrink-0" />
+                                        <span>
+                                            Я прочитал и согласен с{" "}
+                                            <a href="/legal/terms" target="_blank" rel="noreferrer" className="text-primary hover:underline">пользовательским соглашением</a>{" "}
+                                            и{" "}
+                                            <a href="/legal/privacy" target="_blank" rel="noreferrer" className="text-primary hover:underline">политикой конфиденциальности</a>.
+                                        </span>
                                     </label>
                                 </StepShell>
                             )}

@@ -262,12 +262,14 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                 </main>
 
                 {/* Footer */}
-                <footer className="mx-auto mt-8 flex w-full max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-border px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:px-6 lg:px-8">
+                <footer className="mx-auto mt-8 flex w-full max-w-[1400px] flex-col items-start justify-between gap-3 border-t border-border px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:px-6 lg:px-8">
                     <p>© {new Date().getFullYear()} RF4 Community · сообщество фанатов Russian Fishing 4</p>
-                    <p className="flex flex-wrap gap-x-4 gap-y-1">
+                    <nav className="flex flex-wrap gap-x-4 gap-y-1">
+                        <NavLink to="/legal/privacy" className="hover:text-primary">Конфиденциальность</NavLink>
+                        <NavLink to="/legal/terms" className="hover:text-primary">Соглашение</NavLink>
+                        <NavLink to="/legal/rules" className="hover:text-primary">Правила</NavLink>
                         <span>Игровые данные принадлежат FishSoft</span>
-                        <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-primary">GitHub</a>
-                    </p>
+                    </nav>
                 </footer>
             </div>
         </div>
