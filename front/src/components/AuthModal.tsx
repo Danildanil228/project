@@ -8,6 +8,39 @@ type Providers = { discord?: boolean; vk?: boolean };
 
 const TOTAL_STEPS = 4;
 const STEP_LABELS = ["Имя", "Email", "Пароль", "Код"] as const;
+// localStorage key for restoring the code-entry step after a page reload. Stores ONLY the email
+// and an absolute expiry timestamp — never the password or the code itself. The backend's
+// /email-verify/pending check is the real source of truth; localStorage just tells us which
+// email to ask about.
+const PENDING_KEY = "signup-otp-pending";
+const PENDING_TTL_MS = 10 * 60 * 1000;
+
+function savePendingEmail(email: string) {
+    try {
+        localStorage.setItem(PENDING_KEY, JSON.stringify({ email, expiresAt: Date.now() + PENDING_TTL_MS }));
+    } catch { /* ignore quota errors */ }
+}
+function readPendingEmail(): string | null {
+    try {
+        const raw = localStorage.getItem(PENDING_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw) as { email?: string; expiresAt?: number };
+        if (!parsed.email || !parsed.expiresAt || parsed.expiresAt <= Date.now()) return null;
+        return parsed.email;
+    } catch { return null; }
+}
+function clearPendingEmail() {
+    try { localStorage.removeItem(PENDING_KEY); } catch { /* ignore */ }
+}
+
+async function checkPending(email: string): Promise<boolean> {
+    try {
+        const response = await fetch(`/api/account/email-verify/pending?email=${encodeURIComponent(email)}`, { credentials: "include" });
+        if (!response.ok) return false;
+        const data = await response.json() as { pending: boolean };
+        return Boolean(data.pending);
+    } catch { return false; }
+}
 
 async function sendSignupOtp(email: string) {
     const response = await fetch("/api/account/email-verify/send", {
@@ -53,6 +86,25 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
     const [providers, setProviders] = useState<Providers>({});
     const firstInputRef = useRef<HTMLInputElement>(null);
 
+    // Restore the code-entry step on mount when a pending OTP is still alive on the backend.
+    // No password is restored, so after confirming the code we send the user back to login
+    // (email pre-filled) rather than auto-signing them in.
+    useEffect(() => {
+        if (!open) return;
+        const pendingEmail = readPendingEmail();
+        if (!pendingEmail) return;
+        let cancelled = false;
+        checkPending(pendingEmail).then((isPending) => {
+            if (cancelled || !isPending) return;
+            setMode("register");
+            setEmail(pendingEmail);
+            setStep(4);
+            setDirection("forward");
+            setInfo(`Введите код, отправленный на ${pendingEmail}.`);
+        });
+        return () => { cancelled = true; };
+    }, [open]);
+
     useEffect(() => {
         if (!open) return;
         fetch("/api/auth-providers", { credentials: "include" })
@@ -61,14 +113,14 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             .catch(() => undefined);
     }, [open]);
 
-    // Reset everything whenever the modal opens.
+    // Reset transient fields when the modal opens — but only ones that aren't restored above.
     useEffect(() => {
         if (open) {
-            setMode("login");
-            setStep(1);
-            setDirection("forward");
-            setName(""); setEmail(""); setPassword(""); setPasswordConfirm(""); setCode("");
-            setError(""); setInfo(""); setBusy(false);
+            setError("");
+            setBusy(false);
+            setPassword("");
+            setPasswordConfirm("");
+            setCode("");
         }
     }, [open]);
 
@@ -104,6 +156,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             onSuccess();
             setOpen(false);
         } catch (caught) {
+            console.error("[auth] login failed", caught);
             setError(caught instanceof Error ? caught.message : "Ошибка");
         } finally {
             setBusy(false);
@@ -117,17 +170,16 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             const result = await authClient.signIn.social({ provider, callbackURL });
             if ("error" in result && result.error) throw new Error(result.error.message ?? "Ошибка соц-входа");
         } catch (caught) {
+            console.error("[auth] social failed", caught);
             setError(caught instanceof Error ? caught.message : "Ошибка соц-входа");
         }
     }
 
-    // Step 1 (name) → step 2 (email)
     function nextFromName() {
         if (!name.trim()) { setError("Введите имя"); return; }
         goToStep(2, "forward");
     }
 
-    // Step 2 (email) → step 3 (password)
     function nextFromEmail() {
         const trimmed = email.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) { setError("Введите корректный email"); return; }
@@ -135,36 +187,52 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         goToStep(3, "forward");
     }
 
-    // Step 3 (password) → signup → send OTP → step 4
+    // Step 3 (password) → signup → send OTP → step 4. The `try` wraps both the better-auth
+    // signUpEmail and our OTP send; either failing leaves the user on step 3 with an error,
+    // never on a half-applied state.
     async function nextFromPassword() {
         if (password.length < 8) { setError("Пароль — минимум 8 символов"); return; }
         if (password !== passwordConfirm) { setError("Пароли не совпадают"); return; }
-        setBusy(true);
+        setBusy(true); setError(""); setInfo("");
         try {
             const signup = await authClient.signUp.email({ email, password, name });
+            // better-auth: success → { data: {...}, error: null }; failure → { data: null, error: {...} }
             if (signup.error) throw new Error(signup.error.message ?? "Не удалось создать аккаунт");
             await sendSignupOtp(email);
+            savePendingEmail(email);
             setInfo(`Код отправлен на ${email}. В dev-режиме появится в логах бэкенда.`);
             goToStep(4, "forward");
         } catch (caught) {
+            console.error("[auth] signup step failed", caught);
             setError(caught instanceof Error ? caught.message : "Ошибка");
         } finally {
             setBusy(false);
         }
     }
 
-    // Step 4 (code) → confirm → auto-login → close
+    // Step 4 (code) — confirm + auto sign-in if we still have the password in memory.
+    // After a page reload `password` is empty, so we fall back to "Email подтверждён, теперь войдите"
+    // and leave the user on the login screen with the email pre-filled.
     async function confirmCode() {
         if (code.length !== 6) { setError("Введите 6-значный код"); return; }
-        setBusy(true);
+        setBusy(true); setError("");
         try {
             await confirmSignupOtp(email, code);
-            // Auto sign in now that the email is verified.
-            const result = await authClient.signIn.email({ email, password });
-            if (result.error) throw new Error(result.error.message ?? "Аккаунт подтверждён, но не получилось войти");
-            onSuccess();
-            setOpen(false);
+            clearPendingEmail();
+            if (password) {
+                const result = await authClient.signIn.email({ email, password });
+                if (result.error) throw new Error(result.error.message ?? "Подтверждено, но не получилось войти");
+                onSuccess();
+                setOpen(false);
+                return;
+            }
+            // Reload path: no password in memory. Drop into login mode with email pre-filled.
+            setMode("login");
+            setStep(1);
+            setCode("");
+            setInfo("Email подтверждён. Войдите паролем.");
         } catch (caught) {
+            console.error("[auth] confirm failed", caught);
             setError(caught instanceof Error ? caught.message : "Ошибка подтверждения");
         } finally {
             setBusy(false);
@@ -175,8 +243,10 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         setError(""); setInfo(""); setBusy(true);
         try {
             await sendSignupOtp(email);
+            savePendingEmail(email);
             setInfo("Новый код отправлен");
         } catch (caught) {
+            console.error("[auth] resend failed", caught);
             setError(caught instanceof Error ? caught.message : "Не удалось отправить");
         } finally {
             setBusy(false);
@@ -193,33 +263,12 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                 role="dialog"
                 aria-modal="true"
             >
-                {/* Mode tabs */}
-                <div className="grid grid-cols-2 border-b border-border bg-muted/40 text-sm font-bold">
-                    <button
-                        type="button"
-                        onClick={() => switchMode("login")}
-                        className={`relative px-4 py-3 transition-colors ${mode === "login" ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-                    >
-                        Вход
-                        {mode === "login" && <span className="absolute inset-x-3 -bottom-px h-0.5 rounded bg-primary" />}
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => switchMode("register")}
-                        className={`relative px-4 py-3 transition-colors ${mode === "register" ? "text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-                    >
-                        Регистрация
-                        {mode === "register" && <span className="absolute inset-x-3 -bottom-px h-0.5 rounded bg-primary" />}
-                    </button>
-                </div>
-
-                {/* Body */}
                 <div className="grid gap-5 p-5 sm:p-6">
                     {mode === "register" && <RegisterProgressBar step={step} />}
 
                     {mode === "login" ? (
                         <form className="grid gap-4" onSubmit={handleLogin}>
-                            <h2 className="text-xl font-bold">С возвращением</h2>
+                            <h2 className="text-xl font-bold">Вход</h2>
                             <label className="grid gap-1 text-sm">
                                 <span className="text-muted-foreground">Email</span>
                                 <input ref={firstInputRef} type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
@@ -228,25 +277,16 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                                 <span className="text-muted-foreground">Пароль</span>
                                 <input type="password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} required minLength={8} />
                             </label>
-                            {error && <p className="alert error">{error}</p>}
+                            {info && <p className="alert success text-xs">{info}</p>}
+                            {error && <p className="alert error text-xs">{error}</p>}
                             <button type="submit" disabled={busy} className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-50">
                                 {busy && <Loader2 size={14} className="animate-spin" />}Войти
                             </button>
                         </form>
                     ) : (
-                        // Re-mount on step change so the animation re-triggers.
                         <div key={`step-${step}`} className={slideIn}>
                             {step === 1 && (
-                                <StepShell
-                                    icon={UserIcon}
-                                    title="Как вас зовут?"
-                                    description="Это имя видят другие игроки в постах и комментариях."
-                                    onPrimary={nextFromName}
-                                    primaryLabel="Далее"
-                                    busy={busy}
-                                    error={error}
-                                    info={info}
-                                >
+                                <StepShell icon={UserIcon} title="Как вас зовут?" description="Это имя видят другие игроки в постах и комментариях." onPrimary={nextFromName} primaryLabel="Далее" busy={busy} error={error} info={info}>
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Имя</span>
                                         <input ref={firstInputRef} value={name} onChange={(event) => setName(event.target.value)} maxLength={60} placeholder="Иван" autoComplete="name" />
@@ -254,17 +294,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                                 </StepShell>
                             )}
                             {step === 2 && (
-                                <StepShell
-                                    icon={Mail}
-                                    title="Ваш email"
-                                    description="На него придёт 6-значный код для подтверждения."
-                                    onBack={() => goToStep(1, "backward")}
-                                    onPrimary={nextFromEmail}
-                                    primaryLabel="Далее"
-                                    busy={busy}
-                                    error={error}
-                                    info={info}
-                                >
+                                <StepShell icon={Mail} title="Ваш email" description="На него придёт 6-значный код для подтверждения." onBack={() => goToStep(1, "backward")} onPrimary={nextFromEmail} primaryLabel="Далее" busy={busy} error={error} info={info}>
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Email</span>
                                         <input ref={firstInputRef} type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="ivan@example.com" autoComplete="email" />
@@ -272,17 +302,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                                 </StepShell>
                             )}
                             {step === 3 && (
-                                <StepShell
-                                    icon={ShieldCheck}
-                                    title="Придумайте пароль"
-                                    description="Минимум 8 символов. Используйте буквы, цифры и хотя бы один спецсимвол."
-                                    onBack={() => goToStep(2, "backward")}
-                                    onPrimary={nextFromPassword}
-                                    primaryLabel={busy ? "Отправляем код…" : "Создать аккаунт"}
-                                    busy={busy}
-                                    error={error}
-                                    info={info}
-                                >
+                                <StepShell icon={ShieldCheck} title="Придумайте пароль" description="Минимум 8 символов." onBack={() => goToStep(2, "backward")} onPrimary={nextFromPassword} primaryLabel={busy ? "Создаём аккаунт…" : "Создать аккаунт"} busy={busy} error={error} info={info}>
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Пароль</span>
                                         <input ref={firstInputRef} type="password" value={password} onChange={(event) => setPassword(event.target.value)} minLength={8} autoComplete="new-password" />
@@ -294,53 +314,37 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                                 </StepShell>
                             )}
                             {step === 4 && (
-                                <StepShell
-                                    icon={CheckCircle2}
-                                    title="Введите код"
-                                    description={`Мы отправили 6-значный код на ${email}.`}
-                                    onBack={() => goToStep(3, "backward")}
-                                    onPrimary={confirmCode}
-                                    primaryLabel="Подтвердить"
-                                    busy={busy}
-                                    error={error}
-                                    info={info}
-                                    extra={
-                                        <button type="button" onClick={resendCode} disabled={busy} className="text-xs text-primary hover:underline disabled:opacity-50">
-                                            Отправить код ещё раз
-                                        </button>
-                                    }
+                                <StepShell icon={CheckCircle2} title="Введите код" description={`Мы отправили 6-значный код на ${email}.`} onBack={() => goToStep(3, "backward")} onPrimary={confirmCode} primaryLabel="Подтвердить" busy={busy} error={error} info={info}
+                                    extra={<button type="button" onClick={resendCode} disabled={busy} className="text-xs text-primary hover:underline disabled:opacity-50">Отправить код ещё раз</button>}
                                 >
                                     <label className="grid gap-1 text-sm">
                                         <span className="text-muted-foreground">Код</span>
-                                        <input
-                                            ref={firstInputRef}
-                                            inputMode="numeric"
-                                            pattern="[0-9]{6}"
-                                            maxLength={6}
-                                            value={code}
-                                            onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))}
-                                            autoComplete="one-time-code"
-                                            placeholder="123456"
-                                            className="text-center text-2xl font-bold tracking-[0.4em]"
-                                        />
+                                        <input ref={firstInputRef} inputMode="numeric" pattern="[0-9]{6}" maxLength={6} value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, ""))} autoComplete="one-time-code" placeholder="123456" className="text-center text-2xl font-bold tracking-[0.4em]" />
                                     </label>
                                 </StepShell>
                             )}
                         </div>
                     )}
 
-                    {/* Social providers — login mode only */}
-                    {mode === "login" && (providers.discord || providers.vk) && (
+                    {/* Social providers + bottom toggle live in BOTH modes — toggle text changes */}
+                    {(providers.discord || providers.vk) && mode === "login" && (
                         <div className="grid gap-2">
                             <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground">
-                                <span className="h-px flex-1 bg-border" />
-                                или
-                                <span className="h-px flex-1 bg-border" />
+                                <span className="h-px flex-1 bg-border" />или<span className="h-px flex-1 bg-border" />
                             </div>
                             {providers.discord && <button type="button" onClick={() => handleSocial("discord")} className="rounded-lg border border-border px-4 py-2 text-sm font-semibold hover:border-primary">Войти через Discord</button>}
                             {providers.vk && <button type="button" onClick={() => handleSocial("vk")} className="rounded-lg border border-border px-4 py-2 text-sm font-semibold hover:border-primary">Войти через VK</button>}
                         </div>
                     )}
+
+                    {/* Bottom mode toggle — same place as the original modal had it */}
+                    <button
+                        type="button"
+                        onClick={() => switchMode(mode === "login" ? "register" : "login")}
+                        className="text-center text-sm text-primary hover:underline"
+                    >
+                        {mode === "login" ? "Нет аккаунта? Регистрация" : "Уже есть аккаунт? Войти"}
+                    </button>
                 </div>
             </div>
         </div>
@@ -361,7 +365,6 @@ function RegisterProgressBar({ step }: { step: number }) {
                     style={{ width: `${percent}%` }}
                 />
             </div>
-            {/* Step dots — filled / current / empty */}
             <div className="flex items-center justify-between px-0.5">
                 {STEP_LABELS.map((label, index) => {
                     const n = index + 1;
@@ -393,7 +396,7 @@ type StepShellProps = {
     title: string;
     description: string;
     onBack?: () => void;
-    onPrimary: () => void;
+    onPrimary: () => void | Promise<void>;
     primaryLabel: string;
     busy: boolean;
     error: string;
@@ -404,11 +407,19 @@ type StepShellProps = {
 
 function StepShell({ icon: Icon, title, description, onBack, onPrimary, primaryLabel, busy, error, info, children, extra }: StepShellProps) {
     return (
+        // The form's only role is to enable native Enter-to-submit behaviour. preventDefault
+        // is the first thing we do, so the page can NEVER reload from this submit handler.
+        // If you ever see the page reload here, check there isn't a stray submit-type button
+        // OUTSIDE this form picking up the same Enter.
         <form
             className="grid gap-4"
             onSubmit={(event) => {
                 event.preventDefault();
-                if (!busy) onPrimary();
+                event.stopPropagation();
+                if (busy) return;
+                Promise.resolve(onPrimary()).catch((caught) => {
+                    console.error("[auth] step primary failed", caught);
+                });
             }}
         >
             <div className="flex items-center gap-3">

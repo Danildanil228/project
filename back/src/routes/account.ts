@@ -185,6 +185,28 @@ accountRouter.post("/password/confirm", async (req, res, next) => {
     }
 });
 
+// Tells the modal whether the signed-up email already has a live OTP in our pending map.
+// Used to restore step 4 of registration after a page reload — same idea as the password-change
+// pending check. Returns false (not 404) when the email isn't known, so this is safe to call
+// from a fresh tab. No auth required.
+accountRouter.get("/email-verify/pending", async (req, res, next) => {
+    try {
+        const raw = (req.query as { email?: unknown }).email;
+        if (typeof raw !== "string" || !raw.includes("@")) {
+            res.json({ pending: false });
+            return;
+        }
+        const email = raw.trim().toLowerCase();
+        cleanupExpired();
+        const entry = signupOtps.get(email);
+        if (!entry) { res.json({ pending: false }); return; }
+        const expiresIn = Math.max(0, Math.floor((entry.expiresAt - Date.now()) / 1000));
+        res.json({ pending: true, expiresIn });
+    } catch (error) {
+        next(error);
+    }
+});
+
 // Signup email-OTP — no session required (user just signed up but isn't verified yet).
 // Body: { email }. Generates a 6-digit code, stashes for 10 min, logs via stdout (dev).
 accountRouter.post("/email-verify/send", async (req, res, next) => {
