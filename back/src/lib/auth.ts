@@ -49,8 +49,11 @@ export const auth = betterAuth({
         },
     },
     emailVerification: {
-        sendOnSignUp: true,
-        sendOnSignIn: true,
+        // We verify email with our own 6-digit OTP at /api/account/email-verify/* — better-auth's
+        // verification-link email would just be noise alongside it. Keep sendOnSignIn off too so
+        // re-login attempts on unverified accounts don't spam a second link either.
+        sendOnSignUp: false,
+        sendOnSignIn: false,
         autoSignInAfterVerification: true,
         sendVerificationEmail: async ({ user, url }) => {
             await logAuthEmail("verification", user.email, url);

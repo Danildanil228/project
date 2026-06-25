@@ -11,6 +11,7 @@ import type {
     StatusFilter,
     UserSortField,
     VerificationFilter,
+    ManagedAuditLog,
     ManagedUser,
     AuditLogFilters,
 } from "../types/admin";
@@ -44,6 +45,17 @@ export async function getAdminContext() {
     }
 
     return response.json() as Promise<AdminSecurityContext>;
+}
+
+export type AdminOverview = {
+    counts: { total: number; newLast30Days: number; unverified: number; banned: number };
+    recentActions: ManagedAuditLog[];
+};
+
+export async function getAdminOverviewData(): Promise<AdminOverview> {
+    const response = await fetch("/api/admin/overview", { credentials: "include" });
+    if (!response.ok) throw new Error(await readError(response));
+    return response.json() as Promise<AdminOverview>;
 }
 
 type ListAuditLogsInput = Partial<AuditLogFilters> & {

@@ -22,6 +22,7 @@ import {
     bulkSetUserRole,
     bulkUnbanUsers,
     exportManagedUsers,
+    getAdminOverview,
     getManagedUser,
     listManagedAccounts,
     listManagedUsers,
@@ -112,6 +113,16 @@ router.get("/audit-logs/export.csv", async (req, res, next) => {
         res.setHeader("Content-Type", "text/csv; charset=utf-8");
         res.setHeader("Content-Disposition", `attachment; filename="audit-logs-export.csv"`);
         res.send(`\uFEFF${csv}`);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get("/overview", async (req, res, next) => {
+    try {
+        const session = await requireAdmin(req, res);
+        if (!session) return;
+        res.json(await getAdminOverview());
     } catch (error) {
         next(error);
     }
