@@ -1,8 +1,8 @@
 import { PageHeader } from "../../components/PageHeader";
 import { LegalArticle, LegalSection } from "./legal-common";
 
-const REVISION = "{{дата последнего обновления, например: 1 января 2026 г.}}";
-const CONTACT_EMAIL = "{{contact@example.com}}";
+const REVISION = "25 июня 2026 года";
+const CONTACT_EMAIL = "d_silchenkov@mail.ru";
 
 export function RulesPage() {
     return (

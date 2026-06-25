@@ -1,13 +1,12 @@
 import { PageHeader } from "../../components/PageHeader";
 import { LegalArticle, LegalSection } from "./legal-common";
 
-// {{...}} — заглушки. Замени перед публикацией.
-const REVISION = "{{дата последнего обновления, например: 1 января 2026 г.}}";
-const SITE_NAME = "{{RF4 Community}}";
-const SITE_URL = "{{rf4community.ru}}";
-const OWNER = "{{Иванов Иван Иванович, ИП Иванов И.И., самозанятый}}";
-const CONTACT_EMAIL = "{{contact@example.com}}";
-const JURISDICTION = "{{Российская Федерация}}";
+const REVISION = "25 июня 2026 года";
+const SITE_NAME = "RF4 Community";
+const SITE_URL = "rf4community.ru";
+const OWNER = "Клименков Данила Алексеевич, ИП Клименков Д.А., самозанятый";
+const CONTACT_EMAIL = "d_silchenkov@mail.ru";
+const JURISDICTION = "Российской Федерации";
 
 export function TermsOfUsePage() {
     return (
