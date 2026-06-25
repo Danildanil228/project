@@ -321,7 +321,7 @@ export async function getAdminOverview() {
         `
             SELECT id, action, "actorId", "actorName", "targetUserId", "targetEmail",
                    outcome, "createdAt", "ipAddress", "userAgent", "errorMessage", metadata
-            FROM "auditLog"
+            FROM "adminAuditLog"
             WHERE action LIKE 'admin.%' OR action LIKE 'better-auth.admin.%' OR action LIKE 'post.curated.%'
             ORDER BY "createdAt" DESC
             LIMIT 10
