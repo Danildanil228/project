@@ -221,7 +221,14 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                                             onClick={() => setUserMenuOpen(false)}
                                             className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-muted"
                                         >
-                                            <Settings size={14} /> Настройки профиля
+                                            <UserIcon size={14} /> Профиль
+                                        </NavLink>
+                                        <NavLink
+                                            to="/profile/settings"
+                                            onClick={() => setUserMenuOpen(false)}
+                                            className="flex items-center gap-2 border-t border-border px-4 py-2 text-sm hover:bg-muted"
+                                        >
+                                            <Settings size={14} /> Настройки
                                         </NavLink>
                                         <button
                                             type="button"

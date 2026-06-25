@@ -1,213 +1,133 @@
-import { useEffect, useState, type FormEvent } from "react";
-import { AvatarUploadField } from "../components/AvatarUploadField";
-import { ChangePasswordForm } from "../components/ChangePasswordForm";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { CalendarDays, Mail, Newspaper, Settings, ShieldCheck, Wallet } from "lucide-react";
+import { PageHeader } from "../components/PageHeader";
 import { UserAvatar } from "../components/UserAvatar";
-import { authApi } from "../lib/auth-api";
-import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
-import { displayRoleText, formatDate, getErrorMessage, shortId } from "../utils/admin-format";
-import { unwrapAuthResult } from "../utils/auth-client-result";
+import { getAuthorProfile } from "../lib/posts-api";
+import type { AdminSecurityContext, ManagedUser } from "../types/admin";
+import { displayRoleText, formatDate, getErrorMessage } from "../utils/admin-format";
 import { MyPostsPage } from "./MyPostsPage";
 
-type ProfilePageProps = {
+type Props = {
     currentUser?: ManagedUser;
     adminContext?: AdminSecurityContext | null;
     onSessionRefresh: () => Promise<void>;
     onOpenAuthModal: () => void;
 };
 
-export function ProfilePage({ currentUser, adminContext, onSessionRefresh, onOpenAuthModal }: ProfilePageProps) {
-    const [name, setName] = useState(currentUser?.name ?? "");
-    const [image, setImage] = useState(currentUser?.image ?? "");
-    const [sessions, setSessions] = useState<ManagedSession[]>([]);
-    const [notice, setNotice] = useState("");
-    const [error, setError] = useState("");
-    const [loadingSessions, setLoadingSessions] = useState(false);
+type Stats = { postCount: number; totalIncome: number; createdAt: string | null };
 
-    async function loadSessions() {
-        setLoadingSessions(true);
-        setError("");
-        try {
-            const response = await unwrapAuthResult<ManagedSession[]>(authApi.listSessions());
-            setSessions(response ?? []);
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        } finally {
-            setLoadingSessions(false);
-        }
-    }
-
-    async function updateProfile(event: FormEvent) {
-        event.preventDefault();
-        setNotice("");
-        setError("");
-        try {
-            await unwrapAuthResult(authApi.updateUser({ name, image: image || null }));
-            await onSessionRefresh();
-            setNotice("Профиль обновлен");
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        }
-    }
-
-    async function sendVerificationEmail() {
-        if (!currentUser?.email) return;
-        setNotice("");
-        setError("");
-        try {
-            await unwrapAuthResult(
-                authApi.sendVerificationEmail({
-                    email: currentUser.email,
-                    callbackURL: `${window.location.origin}/profile`,
-                }),
-            );
-            setNotice("Ссылка подтверждения отправлена. В dev-режиме она появится в консоли бэкенда.");
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        }
-    }
-
-    async function revokeSession(token: string) {
-        setNotice("");
-        setError("");
-        try {
-            await unwrapAuthResult(authApi.revokeSession({ token }));
-            await loadSessions();
-            setNotice("Сессия отозвана");
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        }
-    }
-
-    async function revokeAllSessions() {
-        const confirmed = window.confirm("Выйти со всех устройств? Текущая сессия тоже будет завершена.");
-        if (!confirmed) return;
-        setNotice("");
-        setError("");
-        try {
-            await unwrapAuthResult(authApi.revokeSessions());
-            await onSessionRefresh();
-        } catch (caught) {
-            setError(getErrorMessage(caught));
-        }
-    }
+// Public-facing profile: identity + activity stats + own posts. Editing lives at /profile/settings.
+// onSessionRefresh is kept in the props signature for API parity with the older combined page;
+// nothing on this view triggers a session refresh.
+export function ProfilePage({ currentUser, adminContext, onOpenAuthModal }: Props) {
+    const [stats, setStats] = useState<Stats | null>(null);
+    const [statsError, setStatsError] = useState<string | null>(null);
 
     useEffect(() => {
-        queueMicrotask(() => {
-            void loadSessions();
-        });
+        if (!currentUser) return;
+        let cancelled = false;
+        getAuthorProfile(currentUser.id, { limit: 1 })
+            .then((response) => {
+                if (cancelled) return;
+                setStats({
+                    postCount: response.stats.postCount,
+                    totalIncome: response.stats.totalIncome,
+                    createdAt: response.author.createdAt ?? null,
+                });
+            })
+            .catch((caught) => { if (!cancelled) setStatsError(getErrorMessage(caught)); });
+        return () => { cancelled = true; };
     }, [currentUser?.id]);
 
     if (!currentUser) {
         return (
-            <section className="profile-page">
-                <div className="panel home-card" style={{ textAlign: "center" }}>
-                    <h2>Доступ ограничен</h2>
-                    <p className="muted">Для просмотра профиля необходимо войти в аккаунт.</p>
-                    <button className="primary" onClick={onOpenAuthModal}>
-                        Войти / Зарегистрироваться
-                    </button>
-                </div>
+            <section className="grid gap-5">
+                <PageHeader eyebrow="Профиль" title="Доступ ограничен" description="Войдите, чтобы увидеть свой профиль." />
+                <button className="primary justify-self-start" onClick={onOpenAuthModal}>
+                    Войти / Зарегистрироваться
+                </button>
             </section>
         );
     }
 
     return (
-        <section className="profile-page">
-            <div className="page-heading">
-                <p className="eyebrow">Профиль</p>
-                <h2>Настройки аккаунта</h2>
-                <p className="muted">Личные данные, пароль, подтверждение email и активные сессии.</p>
-            </div>
+        <section className="grid gap-6">
+            <PageHeader
+                eyebrow="Профиль"
+                title={currentUser.name || currentUser.email || "Профиль"}
+                description="Публичная карточка автора, статистика и ваши посты."
+                actions={
+                    <Link
+                        to="/profile/settings"
+                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-bold text-primary-foreground hover:opacity-90"
+                    >
+                        <Settings size={15} /> Настройки
+                    </Link>
+                }
+            />
 
-            {notice && <p className="alert success">{notice}</p>}
-            {error && <p className="alert error">{error}</p>}
-
-            <div className="profile-layout">
-                <section className="panel profile-card">
-                    <form className="stack" onSubmit={updateProfile}>
-                        <div className="profile-heading">
-                            <UserAvatar
-                                user={{
-                                    name: name || currentUser?.name || "",
-                                    email: currentUser?.email || "",
-                                    image,
-                                }}
-                                size="lg"
-                            />
-                            <div>
-                                <h3>{currentUser?.email}</h3>
-                                <p className="muted">Роль: {displayRoleText(currentUser, adminContext)}</p>
-                            </div>
-                        </div>
-
-                        <label>
-                            Имя
-                            <input value={name} onChange={(event) => setName(event.target.value)} required />
-                        </label>
-                        {/* Avatar uploads as a file: backend stores it under /uploads/avatars/, deletes
-                            the previous file, and returns the public URL we persist in user.image. */}
-                        <AvatarUploadField value={image} onChange={setImage} />
-
-                        <div className="section-line">
-                            <span>Email подтвержден: {currentUser?.emailVerified ? "да" : "нет"}</span>
-                            {!currentUser?.emailVerified && (
-                                <button className="secondary" type="button" onClick={sendVerificationEmail}>
-                                    Отправить подтверждение
-                                </button>
+            {/* Identity card */}
+            <article className="grid gap-4 rounded-2xl border border-border bg-card p-5 sm:p-6">
+                <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                    <UserAvatar user={currentUser} size="lg" />
+                    <div className="grid gap-1">
+                        <h3 className="text-xl font-bold">{currentUser.name || "Без имени"}</h3>
+                        <p className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                            <Mail size={13} /> {currentUser.email}
+                            {currentUser.emailVerified ? (
+                                <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-primary-soft px-2 py-0.5 text-[10px] font-bold text-primary">
+                                    <ShieldCheck size={10} /> подтверждён
+                                </span>
+                            ) : (
+                                <span className="ml-1 rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 text-[10px] font-bold text-accent-foreground">
+                                    не подтверждён
+                                </span>
                             )}
-                        </div>
-
-                        <button className="primary" type="submit">
-                            Сохранить профиль
-                        </button>
-                    </form>
-                </section>
-
-                {/* OAuth-only users have no password to change — ChangePasswordForm renders nothing for them.
-                    For email/password users it runs the two-step (old password → email code) flow. */}
-                <div className="panel profile-card stack">
-                    <ChangePasswordForm />
+                        </p>
+                        <p className="text-xs text-muted-foreground">Роль: <span className="text-foreground">{displayRoleText(currentUser, adminContext)}</span></p>
+                    </div>
                 </div>
+            </article>
+
+            {/* Stats */}
+            <div className="grid gap-3 sm:grid-cols-3">
+                <StatTile
+                    icon={Newspaper}
+                    label="Опубликовано постов"
+                    value={stats ? stats.postCount.toLocaleString("ru-RU") : "—"}
+                />
+                <StatTile
+                    icon={Wallet}
+                    label="Заработано (серебро)"
+                    value={stats ? stats.totalIncome.toLocaleString("ru-RU") : "—"}
+                />
+                <StatTile
+                    icon={CalendarDays}
+                    label="С нами с"
+                    value={stats?.createdAt ? formatDate(stats.createdAt) : "—"}
+                />
             </div>
+            {statsError && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{statsError}</p>}
 
-            <section className="panel">
-                <div className="panel-header">
-                    <div>
-                        <h2>Мои сессии</h2>
-                        <p className="muted">Устройства и браузеры, где открыт аккаунт.</p>
-                    </div>
-                    <div className="actions-row">
-                        <button className="secondary" onClick={loadSessions} disabled={loadingSessions}>
-                            Обновить
-                        </button>
-                        <button className="danger" onClick={revokeAllSessions} disabled={!sessions.length}>
-                            Выйти везде
-                        </button>
-                    </div>
-                </div>
-
-                <div className="mini-list sessions-list">
-                    {sessions.map((session) => (
-                        <div className="mini-card" key={session.id}>
-                            <div>
-                                <strong>{shortId(session.id)}</strong>
-                                <span>{session.ipAddress || "IP не указан"}</span>
-                                <span>{session.userAgent || "User-Agent не указан"}</span>
-                                <span>Истекает: {formatDate(session.expiresAt)}</span>
-                            </div>
-                            <button className="secondary" onClick={() => revokeSession(session.token)}>
-                                Отозвать
-                            </button>
-                        </div>
-                    ))}
-                    {!sessions.length && <p className="empty-panel muted">{loadingSessions ? "Загрузка..." : "Активных сессий нет"}</p>}
-                </div>
-            </section>
-
-            {/* "Мои посты" moved here from a dedicated nav entry — keeps profile-related actions together. */}
-            <section className="mt-6">
+            {/* Own posts */}
+            <div className="grid gap-3">
                 <MyPostsPage currentUser={currentUser} onOpenAuthModal={onOpenAuthModal} />
-            </section>
+            </div>
         </section>
+    );
+}
+
+function StatTile({ icon: Icon, label, value }: { icon: typeof Newspaper; label: string; value: string }) {
+    return (
+        <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4">
+            <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary">
+                <Icon size={18} />
+            </span>
+            <div className="grid leading-tight">
+                <span className="text-xs text-muted-foreground">{label}</span>
+                <strong className="text-lg tabular-nums">{value}</strong>
+            </div>
+        </div>
     );
 }

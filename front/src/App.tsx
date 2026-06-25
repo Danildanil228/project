@@ -24,6 +24,7 @@ const MapModerationPage = lazy(() => import("./pages/MapModerationPage").then((m
 const PostDetailPage = lazy(() => import("./pages/PostDetailPage").then((module) => ({ default: module.PostDetailPage })));
 const PostEditorPage = lazy(() => import("./pages/PostEditorPage").then((module) => ({ default: module.PostEditorPage })));
 const ProfilePage = lazy(() => import("./pages/ProfilePage").then((module) => ({ default: module.ProfilePage })));
+const ProfileSettingsPage = lazy(() => import("./pages/ProfileSettingsPage").then((module) => ({ default: module.ProfileSettingsPage })));
 const ReferenceAdminPage = lazy(() => import("./pages/ReferenceAdminPage").then((module) => ({ default: module.ReferenceAdminPage })));
 const ReportsPage = lazy(() => import("./pages/ReportsPage").then((module) => ({ default: module.ReportsPage })));
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage").then((module) => ({ default: module.ResetPasswordPage })));
@@ -103,6 +104,7 @@ function AppRoutes() {
                     {postMapLinkingEnabled && <Route path="moderation/map" element={<MapModerationPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />}
                     <Route path="moderation/reports" element={<ReportsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="profile/settings" element={<ProfileSettingsPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/reference" element={<ReferenceAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/catalog" element={<ItemAdminPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
