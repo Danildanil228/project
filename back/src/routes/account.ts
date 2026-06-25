@@ -185,6 +185,27 @@ accountRouter.post("/password/confirm", async (req, res, next) => {
     }
 });
 
+// Lightweight uniqueness check used by the register step 2 ("введите email") so we can stop the
+// user before they pick a password for an address that already exists. No auth required. Doesn't
+// distinguish between "taken-and-verified" and "taken-and-unverified" — both block signup the same way.
+accountRouter.get("/email-available", async (req, res, next) => {
+    try {
+        const raw = (req.query as { email?: unknown }).email;
+        if (typeof raw !== "string" || !raw.includes("@")) {
+            res.status(400).json({ message: "Укажите корректный email" });
+            return;
+        }
+        const email = raw.trim().toLowerCase();
+        const { rows } = await pool.query<{ exists: boolean }>(
+            `SELECT EXISTS(SELECT 1 FROM "user" WHERE LOWER(email) = $1) AS exists`,
+            [email],
+        );
+        res.json({ available: !rows[0]?.exists });
+    } catch (error) {
+        next(error);
+    }
+});
+
 // Tells the modal whether the signed-up email already has a live OTP in our pending map.
 // Used to restore step 4 of registration after a page reload — same idea as the password-change
 // pending check. Returns false (not 404) when the email isn't known, so this is safe to call

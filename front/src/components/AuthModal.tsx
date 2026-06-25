@@ -45,6 +45,13 @@ async function checkPending(email: string): Promise<PendingStatus> {
 
 // Returns the throttle seconds the backend reports back, so the UI can disable the
 // "Отправить ещё раз" button for exactly the same window the server enforces.
+async function checkEmailAvailable(email: string): Promise<boolean> {
+    const response = await fetch(`/api/account/email-available?email=${encodeURIComponent(email)}`, { credentials: "include" });
+    if (!response.ok) throw new Error("Не удалось проверить email");
+    const data = await response.json() as { available?: boolean };
+    return Boolean(data.available);
+}
+
 async function sendSignupOtp(email: string): Promise<number> {
     const response = await fetch("/api/account/email-verify/send", {
         method: "POST",
@@ -75,7 +82,10 @@ async function confirmSignupOtp(email: string, code: string) {
 
 export function AuthModal({ onSuccess }: AuthModalProps) {
     const { open, setOpen } = useAuthModal();
-    const [mode, setMode] = useState<"login" | "register">("login");
+    // `forgot` is a single-screen sub-mode of login — typing the email and pressing
+    // "Отправить ссылку" triggers better-auth's password-reset email and switches back to login.
+    const [mode, setMode] = useState<"login" | "register" | "forgot">("login");
+    const [forgotInfo, setForgotInfo] = useState("");
     const [step, setStep] = useState(1);
     const [direction, setDirection] = useState<"forward" | "backward">("forward");
 
@@ -165,8 +175,7 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         setError(""); setInfo("");
     }
 
-    async function handleLogin(event: React.FormEvent) {
-        event.preventDefault();
+    async function handleLogin() {
         setError(""); setBusy(true);
         try {
             const result = await authClient.signIn.email({ email, password });
@@ -175,6 +184,26 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
             setOpen(false);
         } catch (caught) {
             console.error("[auth] login failed", caught);
+            setError(caught instanceof Error ? caught.message : "Ошибка");
+        } finally {
+            setBusy(false);
+        }
+    }
+
+    async function sendResetLink() {
+        const trimmed = email.trim().toLowerCase();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) { setError("Введите корректный email"); return; }
+        setEmail(trimmed);
+        setError(""); setBusy(true);
+        try {
+            const result = await authClient.requestPasswordReset({
+                email: trimmed,
+                redirectTo: `${window.location.origin}/reset-password`,
+            });
+            if ("error" in result && result.error) throw new Error(result.error.message ?? "Не удалось отправить");
+            setForgotInfo(`Если ${trimmed} есть в базе — на него отправлена ссылка для сброса. В dev-режиме появится в логах бэкенда.`);
+        } catch (caught) {
+            console.error("[auth] forgot-password failed", caught);
             setError(caught instanceof Error ? caught.message : "Ошибка");
         } finally {
             setBusy(false);
@@ -198,11 +227,24 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
         goToStep(2, "forward");
     }
 
-    function nextFromEmail() {
-        const trimmed = email.trim();
+    async function nextFromEmail() {
+        const trimmed = email.trim().toLowerCase();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) { setError("Введите корректный email"); return; }
         setEmail(trimmed);
-        goToStep(3, "forward");
+        setBusy(true); setError("");
+        try {
+            const available = await checkEmailAvailable(trimmed);
+            if (!available) {
+                setError("Этот email уже зарегистрирован. Войдите или восстановите пароль.");
+                return;
+            }
+            goToStep(3, "forward");
+        } catch (caught) {
+            console.error("[auth] email-check failed", caught);
+            setError(caught instanceof Error ? caught.message : "Не удалось проверить email");
+        } finally {
+            setBusy(false);
+        }
     }
 
     // Step 3 (password) → signup → send OTP → step 4. The `try` wraps both the better-auth
@@ -288,7 +330,15 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                     {mode === "register" && <RegisterProgressBar step={step} />}
 
                     {mode === "login" ? (
-                        <form className="grid gap-4" onSubmit={handleLogin}>
+                        <div
+                            className="grid gap-4"
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter" && (event.target as HTMLElement).tagName === "INPUT" && !busy) {
+                                    event.preventDefault();
+                                    void handleLogin();
+                                }
+                            }}
+                        >
                             <h2 className="text-xl font-bold">Вход</h2>
                             <label className="grid gap-1 text-sm">
                                 <span className="text-muted-foreground">Email</span>
@@ -300,10 +350,42 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                             </label>
                             {info && <p className="alert success text-xs">{info}</p>}
                             {error && <p className="alert error text-xs">{error}</p>}
-                            <button type="submit" disabled={busy} className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-50">
+                            <button type="button" onClick={handleLogin} disabled={busy} className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-50">
                                 {busy && <Loader2 size={14} className="animate-spin" />}Войти
                             </button>
-                        </form>
+                        </div>
+                    ) : mode === "forgot" ? (
+                        <div
+                            className="grid gap-4"
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter" && (event.target as HTMLElement).tagName === "INPUT" && !busy) {
+                                    event.preventDefault();
+                                    void sendResetLink();
+                                }
+                            }}
+                        >
+                            <div className="flex items-center gap-3">
+                                <span className="grid size-10 place-items-center rounded-xl bg-primary-soft text-primary"><Mail size={18} /></span>
+                                <div className="grid">
+                                    <h2 className="text-lg font-bold">Восстановление пароля</h2>
+                                    <p className="text-xs text-muted-foreground">Введите ваш email — пришлём ссылку для сброса.</p>
+                                </div>
+                            </div>
+                            <label className="grid gap-1 text-sm">
+                                <span className="text-muted-foreground">Email</span>
+                                <input ref={firstInputRef} type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+                            </label>
+                            {forgotInfo && <p className="alert success text-xs">{forgotInfo}</p>}
+                            {error && <p className="alert error text-xs">{error}</p>}
+                            <div className="flex items-center justify-between gap-2">
+                                <button type="button" onClick={() => { setMode("login"); setForgotInfo(""); setError(""); }} className="inline-flex items-center gap-1 rounded-lg border border-border px-3 py-2 text-sm font-semibold hover:border-primary disabled:opacity-50">
+                                    <ArrowLeft size={14} /> Назад
+                                </button>
+                                <button type="button" onClick={sendResetLink} disabled={busy} className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-50 sm:flex-none">
+                                    {busy && <Loader2 size={14} className="animate-spin" />}Отправить ссылку
+                                </button>
+                            </div>
+                        </div>
                     ) : (
                         <div key={`step-${step}`} className={slideIn}>
                             {step === 1 && (
@@ -368,14 +450,23 @@ export function AuthModal({ onSuccess }: AuthModalProps) {
                         </div>
                     )}
 
-                    {/* Bottom mode toggle — same place as the original modal had it */}
-                    <button
-                        type="button"
-                        onClick={() => switchMode(mode === "login" ? "register" : "login")}
-                        className="text-center text-sm text-primary hover:underline"
-                    >
-                        {mode === "login" ? "Нет аккаунта? Регистрация" : "Уже есть аккаунт? Войти"}
-                    </button>
+                    {/* Bottom mode toggles. Login shows two (forgot + register), register shows one (login),
+                        forgot shows none (the inline "Назад" button covers it). */}
+                    {mode === "login" && (
+                        <div className="grid gap-1 text-center text-sm">
+                            <button type="button" onClick={() => { setMode("forgot"); setError(""); setForgotInfo(""); }} className="text-primary hover:underline">
+                                Забыли пароль?
+                            </button>
+                            <button type="button" onClick={() => switchMode("register")} className="text-primary hover:underline">
+                                Нет аккаунта? Регистрация
+                            </button>
+                        </div>
+                    )}
+                    {mode === "register" && (
+                        <button type="button" onClick={() => switchMode("login")} className="text-center text-sm text-primary hover:underline">
+                            Уже есть аккаунт? Войти
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
@@ -437,20 +528,25 @@ type StepShellProps = {
 };
 
 function StepShell({ icon: Icon, title, description, onBack, onPrimary, primaryLabel, busy, error, info, children, extra }: StepShellProps) {
+    // No <form> here on purpose — submit-events have a default action that reloads the page,
+    // and any combination of stray autocomplete + preventDefault edge-cases proved fragile.
+    // Plain div + explicit button.onClick is bullet-proof. Enter-to-advance is implemented by
+    // a single onKeyDown on the wrapper that calls primary when the focused element is an input.
+    function triggerPrimary() {
+        if (busy) return;
+        Promise.resolve(onPrimary()).catch((caught) => {
+            console.error("[auth] step primary failed", caught);
+        });
+    }
     return (
-        // The form's only role is to enable native Enter-to-submit behaviour. preventDefault
-        // is the first thing we do, so the page can NEVER reload from this submit handler.
-        // If you ever see the page reload here, check there isn't a stray submit-type button
-        // OUTSIDE this form picking up the same Enter.
-        <form
+        <div
             className="grid gap-4"
-            onSubmit={(event) => {
+            onKeyDown={(event) => {
+                if (event.key !== "Enter") return;
+                const target = event.target as HTMLElement;
+                if (target.tagName !== "INPUT") return;
                 event.preventDefault();
-                event.stopPropagation();
-                if (busy) return;
-                Promise.resolve(onPrimary()).catch((caught) => {
-                    console.error("[auth] step primary failed", caught);
-                });
+                triggerPrimary();
             }}
         >
             <div className="flex items-center gap-3">
@@ -475,7 +571,8 @@ function StepShell({ icon: Icon, title, description, onBack, onPrimary, primaryL
                     </button>
                 ) : <span />}
                 <button
-                    type="submit"
+                    type="button"
+                    onClick={triggerPrimary}
                     disabled={busy}
                     className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-50 sm:flex-none"
                 >
@@ -486,6 +583,6 @@ function StepShell({ icon: Icon, title, description, onBack, onPrimary, primaryL
             </div>
 
             {extra && <div className="text-center">{extra}</div>}
-        </form>
+        </div>
     );
 }
