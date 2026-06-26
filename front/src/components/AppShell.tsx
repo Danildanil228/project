@@ -268,7 +268,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                         <NavLink to="/legal/privacy" className="hover:text-primary">Конфиденциальность</NavLink>
                         <NavLink to="/legal/terms" className="hover:text-primary">Соглашение</NavLink>
                         <NavLink to="/legal/rules" className="hover:text-primary">Правила</NavLink>
-                        <span>Игровые данные принадлежат FishSoft</span>
+                        <span>Игровые данные принадлежат <a href="https://rf4game.com">rf4game.com</a></span>
                     </nav>
                 </footer>
             </div>

@@ -126,7 +126,7 @@ export function CalculatorPage() {
             </div>
 
             {/* Weak-link summary */}
-            <div
+            {/* <div
                 className={`flex flex-col items-start justify-between gap-3 rounded-2xl border p-5 sm:flex-row sm:items-center ${
                     hasBoth
                         ? "border-accent/40 bg-accent/10"
@@ -162,10 +162,10 @@ export function CalculatorPage() {
                         <AlertTriangle size={12} /> Сильно изношено
                     </span>
                 )}
-            </div>
+            </div> */}
 
             {/* Formula explainer */}
-            <details
+            {/* <details
                 open={formulaOpen}
                 onToggle={(event) => setFormulaOpen((event.target as HTMLDetailsElement).open)}
                 className="rounded-2xl border border-border bg-card"
@@ -194,7 +194,7 @@ export function CalculatorPage() {
                         Удилища и катушки используют одинаковую формулу; разница лишь в каталоге.
                     </p>
                 </div>
-            </details>
+            </details> */}
         </section>
     );
 }
