@@ -1,21 +1,26 @@
-import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, Search, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { useDebounce } from "use-debounce";
 import { ItemCard } from "../components/ItemCard";
 import { PageHeader } from "../components/PageHeader";
+import { SelectMenu } from "../components/SelectMenu";
 import { ItemDataTable } from "../features/items/ItemDataTable";
 import { fetchItems, itemCategories, typeLabels, type CatalogItem, type ItemType } from "../lib/items-api";
 
 type ViewMode = "cards" | "rows";
 type SortDirection = "asc" | "desc";
 
-const itemTypes: ItemType[] = ["reels", "rods"];
+type CatalogPageProps = {
+    initialType: ItemType;
+};
 
-export function CatalogPage() {
-    const [type, setType] = useState<ItemType>("reels");
+export function CatalogPage({ initialType }: CatalogPageProps) {
+    const [type, setType] = useState<ItemType>(initialType);
     const [view, setView] = useState<ViewMode>(() => localStorage.getItem("catalog-view") === "rows" ? "rows" : "cards");
     const [searchInput, setSearchInput] = useState("");
-    const [appliedSearch, setAppliedSearch] = useState("");
+    const [debouncedSearch] = useDebounce(searchInput.trim(), 300);
     const [category, setCategory] = useState("");
     const [sortBy, setSortBy] = useState("name");
     const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
@@ -27,11 +32,24 @@ export function CatalogPage() {
         setOffset(0);
     }, [view]);
 
+    useEffect(() => {
+        setType(initialType);
+        setCategory("");
+        setSearchInput("");
+        setSortBy("name");
+        setSortDirection("asc");
+        setOffset(0);
+    }, [initialType]);
+
+    useEffect(() => {
+        setOffset(0);
+    }, [debouncedSearch]);
+
     // react-query dedupes identical concurrent fetches (StrictMode mounts share the cache),
     // keeps previous data while a new page loads (no flicker on pagination), and caches results for 30s.
     const { data, isFetching, error: queryError } = useQuery({
-        queryKey: ["catalog", type, { search: appliedSearch, category, sortBy, sortDirection, limit: pageSize, offset }],
-        queryFn: () => fetchItems(type, { search: appliedSearch, category, sortBy, sortDirection, limit: pageSize, offset }),
+        queryKey: ["catalog", type, { search: debouncedSearch, category, sortBy, sortDirection, limit: pageSize, offset }],
+        queryFn: () => fetchItems(type, { search: debouncedSearch, category, sortBy, sortDirection, limit: pageSize, offset }),
         placeholderData: keepPreviousData,
     });
     const items = (data?.items ?? []) as CatalogItem[];
@@ -39,21 +57,9 @@ export function CatalogPage() {
     const loading = isFetching;
     const error = queryError instanceof Error ? queryError.message : "";
 
-    function changeType(next: ItemType) {
-        if (next === type) return;
-        setType(next);
-        setCategory("");
-        setSearchInput("");
-        setAppliedSearch("");
-        setSortBy("name");
-        setSortDirection("asc");
-        setOffset(0);
-    }
-
     function applySearch(event: FormEvent) {
         event.preventDefault();
         setOffset(0);
-        setAppliedSearch(searchInput.trim());
     }
 
     function changeSort(field: string) {
@@ -67,44 +73,37 @@ export function CatalogPage() {
 
     function clearFilters() {
         setSearchInput("");
-        setAppliedSearch("");
         setCategory("");
         setOffset(0);
     }
 
     const from = total === 0 ? 0 : offset + 1;
     const to = Math.min(offset + pageSize, total);
-    const hasFilters = Boolean(appliedSearch || category);
+    const hasFilters = Boolean(debouncedSearch || category);
 
     return (
         <section className="grid gap-5">
             <PageHeader
                 eyebrow="Справочник"
-                title="Каталог предметов"
+                title={typeLabels[type]}
                 description="Внутриигровые снасти с полными характеристиками."
             />
 
-            <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex gap-2">
-                    {itemTypes.map((value) => (
-                        <button key={value} type="button" onClick={() => changeType(value)} className={`rounded-lg px-4 py-2 text-sm font-bold transition-colors ${type === value ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground hover:bg-muted"}`}>
-                            {typeLabels[value]}
-                        </button>
-                    ))}
-                </div>
+            <Link to="/catalog" className="w-fit text-sm font-bold text-primary hover:underline">← К каталогу</Link>
+
+            <div className="flex justify-end">
                 <div className="inline-flex rounded-lg border border-border p-1" aria-label="Вид каталога">
                     <button type="button" onClick={() => setView("cards")} title="Карточками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "cards" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><LayoutGrid size={15} /> Карточки</button>
                     <button type="button" onClick={() => setView("rows")} title="Строками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "rows" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><Rows3 size={15} /> Строки</button>
                 </div>
             </div>
 
-            <form onSubmit={applySearch} className="grid gap-3 border-y border-border py-4 lg:grid-cols-[minmax(260px,1fr)_220px_220px_auto_auto] lg:items-end">
+            <form onSubmit={applySearch} className="grid gap-3 border-y border-border py-4 lg:grid-cols-[minmax(260px,1fr)_220px_220px_auto] lg:items-end">
                 <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Поиск по всем характеристикам</span><input value={searchInput} onChange={(event) => setSearchInput(event.target.value)} placeholder="Название, бренд, тест, механизм…" /></label>
-                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Категория</span><select value={category} onChange={(event) => { setOffset(0); setCategory(event.target.value); }}><option value="">Все категории</option>{itemCategories[type].map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Категория</span><SelectMenu value={category} onChange={(value) => { setOffset(0); setCategory(value); }} options={[{ value: "", label: "Все категории" }, ...itemCategories[type].map((value) => ({ value, label: value }))]} /></label>
                 {view === "cards" ? (
-                    <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Сортировка</span><select value={`${sortBy}:${sortDirection}`} onChange={(event) => { const [field, direction] = event.target.value.split(":"); setSortBy(field); setSortDirection(direction as SortDirection); setOffset(0); }}><option value="name:asc">Название А→Я</option><option value="name:desc">Название Я→А</option><option value="brend:asc">Бренд А→Я</option><option value="lvl:asc">Уровень ↑</option><option value="lvl:desc">Уровень ↓</option></select></label>
+                    <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Сортировка</span><SelectMenu value={`${sortBy}:${sortDirection}`} onChange={(value) => { const [field, direction] = value.split(":"); setSortBy(field); setSortDirection(direction as SortDirection); setOffset(0); }} options={[{ value: "name:asc", label: "Название А→Я" }, { value: "name:desc", label: "Название Я→А" }, { value: "brend:asc", label: "Бренд А→Я" }, { value: "lvl:asc", label: "Уровень ↑" }, { value: "lvl:desc", label: "Уровень ↓" }]} /></label>
                 ) : <div className="hidden lg:block" />}
-                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground"><Search size={16} /> Найти</button>
                 <button type="button" onClick={clearFilters} disabled={!hasFilters} title="Сбросить фильтры" className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-40"><X size={16} /> Сбросить</button>
             </form>
 

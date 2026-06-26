@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
+import { InteractiveMap } from "./InteractiveMap";
 import { mediaUrl } from "../lib/items-api";
 import { getWaterbody } from "../lib/reference-api";
 import type { Waterbody } from "../types/waterbody";
@@ -39,13 +41,12 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
 
     return (
         <div className="grid gap-2">
-            <div className="relative aspect-square min-h-64 overflow-hidden rounded-lg border border-border bg-muted">
-                {waterbody.photo ? (
-                    <img src={mediaUrl(waterbody.photo)} alt={`Карта водоёма ${waterbody.name}`} className="absolute inset-0 h-full w-full object-contain" />
-                ) : (
-                    <div className="grid h-full place-items-center p-6 text-center text-sm text-muted-foreground">У водоёма нет изображения карты</div>
-                )}
-
+            <InteractiveMap
+                imageSrc={waterbody.photo ? mediaUrl(waterbody.photo) : null}
+                imageAlt={`Карта водоёма ${waterbody.name}`}
+                emptyText="У водоёма нет изображения карты"
+                className="aspect-square min-h-64"
+            >
                 {/* Trolling A→B dashed line drawn under the markers */}
                 {trolling && (
                     <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -55,19 +56,19 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
 
                 {hasPointA && (
                     <div
-                        className="pointer-events-none absolute z-10 grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-background bg-destructive text-[10px] font-bold text-white shadow"
+                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"
                         style={{ left: `${mapX}%`, top: `${mapY}%` }}
                         title={gameCoordinateX != null && gameCoordinateY != null ? `${gameCoordinateX}:${gameCoordinateY}` : undefined}
-                    >{trolling ? "А" : ""}</div>
+                    ><MapPin size={17} /></div>
                 )}
                 {trolling && (
                     <div
-                        className="pointer-events-none absolute z-10 grid size-6 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-background bg-blue-600 text-[10px] font-bold text-white shadow"
+                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"
                         style={{ left: `${mapX2}%`, top: `${mapY2}%` }}
                         title={gameCoordinateX2 != null && gameCoordinateY2 != null ? `${gameCoordinateX2}:${gameCoordinateY2}` : undefined}
-                    >Б</div>
+                    ><MapPin size={17} /></div>
                 )}
-            </div>
+            </InteractiveMap>
             {trolling ? (
                 <p className="text-xs text-muted-foreground">
                     Троллинг А→Б{gameCoordinateX != null && gameCoordinateY != null && gameCoordinateX2 != null && gameCoordinateY2 != null ? `: ${gameCoordinateX}:${gameCoordinateY} → ${gameCoordinateX2}:${gameCoordinateY2}` : ""}

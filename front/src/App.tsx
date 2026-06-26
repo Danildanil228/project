@@ -21,6 +21,9 @@ const AdminAuditPage = lazy(() => import("./pages/AdminAuditPage").then((module)
 const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((module) => ({ default: module.AuthorProfilePage })));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage").then((module) => ({ default: module.CalculatorPage })));
 const CatalogPage = lazy(() => import("./pages/CatalogPage").then((module) => ({ default: module.CatalogPage })));
+const CatalogHomePage = lazy(() => import("./pages/CatalogHomePage").then((module) => ({ default: module.CatalogHomePage })));
+const BaitCatalogPage = lazy(() => import("./pages/BaitCatalogPage").then((module) => ({ default: module.BaitCatalogPage })));
+const FishCatalogPage = lazy(() => import("./pages/FishCatalogPage").then((module) => ({ default: module.FishCatalogPage })));
 const FeedPage = lazy(() => import("./pages/FeedPage").then((module) => ({ default: module.FeedPage })));
 const FishAdminPage = lazy(() => import("./pages/FishAdminPage").then((module) => ({ default: module.FishAdminPage })));
 const ItemAdminPage = lazy(() => import("./pages/ItemAdminPage").then((module) => ({ default: module.ItemAdminPage })));
@@ -93,7 +96,11 @@ function AppRoutes() {
                         }
                     >
                     <Route index element={<HomePage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
-                    <Route path="catalog" element={<CatalogPage />} />
+                    <Route path="catalog" element={<CatalogHomePage />} />
+                    <Route path="catalog/reels" element={<CatalogPage initialType="reels" />} />
+                    <Route path="catalog/rods" element={<CatalogPage initialType="rods" />} />
+                    <Route path="catalog/baits" element={<BaitCatalogPage />} />
+                    <Route path="catalog/fish" element={<FishCatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
                     <Route path="calculator" element={<CalculatorPage />} />
                     <Route path="waterbodies" element={<WaterbodyListPage />} />

@@ -2,6 +2,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { itemFields, type ItemFieldDef } from "../../lib/item-fields";
 import { mediaUrl, type ItemType } from "../../lib/items-api";
 import { uploadItemMedia } from "../../lib/items-admin-api";
+import { SelectMenu } from "../../components/SelectMenu";
 
 type ItemFormProps = {
     type: ItemType;
@@ -70,18 +71,11 @@ export function ItemForm({ type, initial, submitting, error, onSubmit, onCancel 
                             {field.required && " *"}
                         </span>
                         {field.kind === "select" ? (
-                            <select
+                            <SelectMenu
                                 value={values[field.key] as string}
-                                onChange={(event) => setField(field.key, event.target.value)}
-                                required={field.required}
-                            >
-                                <option value="">—</option>
-                                {field.options?.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
+                                onChange={(value) => setField(field.key, value)}
+                                options={[{ value: "", label: "—" }, ...(field.options ?? []).map((option) => ({ value: option, label: option }))]}
+                            />
                         ) : field.kind === "checkbox" ? (
                             <span className="flex h-[42px] items-center gap-2">
                                 <input

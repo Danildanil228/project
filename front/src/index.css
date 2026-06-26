@@ -128,12 +128,41 @@
   input, select, textarea {
     width: 100%;
     border: 1px solid var(--input);
-    border-radius: calc(var(--radius) - 4px);
+    border-radius: calc(var(--radius) - 2px);
     background: var(--card);
     color: var(--foreground);
     padding: 10px 12px;
     outline: none;
     transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  select {
+    min-height: 42px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border-color: var(--border);
+    background-color: var(--background);
+    padding-right: 38px;
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%),
+      linear-gradient(to right, var(--border), var(--border));
+    background-position: calc(100% - 18px) 53%, calc(100% - 13px) 53%, calc(100% - 34px) 50%;
+    background-size: 5px 5px, 5px 5px, 1px 55%;
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--foreground) 7%, transparent);
+    color-scheme: light dark;
+  }
+
+  select:hover {
+    border-color: color-mix(in srgb, var(--primary) 55%, var(--input));
+    background-color: color-mix(in srgb, var(--background) 86%, var(--muted));
+  }
+
+  select option {
+    background: var(--card);
+    color: var(--foreground);
   }
 
   input[type="checkbox"], input[type="radio"] { width: auto; padding: 0; }

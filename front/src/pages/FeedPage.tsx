@@ -5,6 +5,7 @@ import { useDebounce } from "use-debounce";
 import { MultiSelectFilter, type MultiSelectOption } from "../components/MultiSelectFilter";
 import { PageHeader } from "../components/PageHeader";
 import { PostCard } from "../components/PostCard";
+import { SelectMenu } from "../components/SelectMenu";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { listFeed } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -144,21 +145,11 @@ export function FeedPage({ currentUser }: FeedPageProps) {
                     </label>
                     <label className="grid gap-1 text-sm">
                         <span className="text-muted-foreground">Вид ловли</span>
-                        <select value={method} onChange={(event) => setMethod(event.target.value as FishingMethod | "")}>
-                            <option value="">Все</option>
-                            {fishingMethods.map((value) => (
-                                <option key={value} value={value}>
-                                    {value}
-                                </option>
-                            ))}
-                        </select>
+                        <SelectMenu value={method} onChange={(value) => setMethod(value as FishingMethod | "")} options={[{ value: "", label: "Все" }, ...fishingMethods.map((value) => ({ value, label: value }))]} />
                     </label>
                     <label className="grid gap-1 text-sm">
                         <span className="text-muted-foreground">Сортировка</span>
-                        <select value={sortBy} onChange={(event) => setSortBy(event.target.value as FeedSort)}>
-                            <option value="date">Сначала новые</option>
-                            <option value="incomePerHour">По заработку в час</option>
-                        </select>
+                        <SelectMenu value={sortBy} onChange={(value) => setSortBy(value as FeedSort)} options={[{ value: "date", label: "Сначала новые" }, { value: "incomePerHour", label: "По заработку в час" }]} />
                     </label>
                 </div>
 

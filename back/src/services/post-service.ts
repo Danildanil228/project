@@ -361,7 +361,7 @@ export async function getPostById(id: number) {
     if (!version) return { ...post, version: null };
 
     const catches = await pool.query(
-        `SELECT c.id, c.fish_id AS "fishId", f.name AS "fishName", f.rarity FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = $1 ORDER BY c.id`,
+        `SELECT c.id, c.fish_id AS "fishId", f.name AS "fishName", f.photo AS "fishPhoto", f.rarity FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = $1 ORDER BY c.id`,
         [version.id],
     );
     const media = await pool.query(`SELECT id, url, order_index AS "orderIndex" FROM post_media WHERE post_version_id = $1 ORDER BY order_index, id`, [version.id]);

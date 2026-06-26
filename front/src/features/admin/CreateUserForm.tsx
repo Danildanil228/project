@@ -1,4 +1,5 @@
 import type { UserFormState } from "../../types/admin";
+import { SelectMenu } from "../../components/SelectMenu";
 
 type CreateUserFormProps = {
     form: UserFormState;
@@ -37,13 +38,7 @@ export function CreateUserForm({ form, roleOptions, onChange, onSubmit }: Create
                 </label>
                 <label>
                     Роль
-                    <select value={form.role} onChange={(event) => onChange({ ...form, role: event.target.value })}>
-                        {roleOptions.map((role) => (
-                            <option key={role} value={role}>
-                                {role}
-                            </option>
-                        ))}
-                    </select>
+                    <SelectMenu value={form.role} onChange={(value) => onChange({ ...form, role: value })} options={roleOptions.map((role) => ({ value: role, label: role }))} />
                 </label>
             </div>
             <button className="primary" type="submit">

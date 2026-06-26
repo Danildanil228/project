@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, Pencil, Plus, Search, Trash2, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { useConfirmDialog } from "../components/ConfirmDialog";
+import { SelectMenu } from "../components/SelectMenu";
 import { ItemForm } from "../features/items/ItemForm";
 import { fetchItems, itemCategories, typeLabels, type ItemType } from "../lib/items-api";
 import { createItemRequest, deleteItemRequest, updateItemRequest } from "../lib/items-admin-api";
@@ -100,7 +101,7 @@ export function ItemAdminPage({ currentUser, adminContext, onOpenAuthModal }: It
 
             <form onSubmit={(event: FormEvent) => { event.preventDefault(); void loadRows(type, 0); }} className="grid gap-3 border-y border-border py-4 md:grid-cols-2 xl:grid-cols-[minmax(220px,1fr)_180px_170px_170px_110px_110px_auto_auto] xl:items-end">
                 <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Поиск по всем полям</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Название, бренд, характеристика…" /></label>
-                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Категория</span><select value={category} onChange={(event) => setCategory(event.target.value)}><option value="">Все</option>{itemCategories[type].map((value) => <option key={value}>{value}</option>)}</select></label>
+                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Категория</span><SelectMenu value={category} onChange={setCategory} options={[{ value: "", label: "Все" }, ...itemCategories[type].map((value) => ({ value, label: value }))]} /></label>
                 <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Бренд</span><input value={brand} onChange={(event) => setBrand(event.target.value)} placeholder="Например, Reef" /></label>
                 {type === "rods" ? <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Тип удилища</span><input value={rodType} onChange={(event) => setRodType(event.target.value)} /></label> : <div className="hidden xl:block" />}
                 <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Ур. от</span><input type="number" min="0" value={minLvl} onChange={(event) => setMinLvl(event.target.value)} /></label>

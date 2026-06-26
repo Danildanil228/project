@@ -1,7 +1,8 @@
 import { ArrowLeft, MapPin, Pencil, Plus, Save, Trash2, X } from "lucide-react";
-import { useEffect, useMemo, useState, type FormEvent, type MouseEvent, type PointerEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
+import { InteractiveMap, type MapPoint } from "../components/InteractiveMap";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { WaterbodyFishList } from "../components/WaterbodyFishList";
 import { mediaUrl } from "../lib/items-api";
@@ -132,28 +133,22 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
         setFormOpen(true);
     }
 
-    function chooseMarker(event: MouseEvent<HTMLDivElement>) {
+    function chooseMarker(point: MapPoint) {
         if (!canManage || !formOpen) return;
         if (!coordinateBounds) {
             setError("Сначала задайте границы игровых координат в справочнике водоёмов");
             return;
         }
-        const rect = event.currentTarget.getBoundingClientRect();
-        const clickedMapX = ((event.clientX - rect.left) / rect.width) * 100;
-        const clickedMapY = ((event.clientY - rect.top) / rect.height) * 100;
-        const game = mapPercentToGame(clickedMapX, clickedMapY, coordinateBounds);
+        const game = mapPercentToGame(point.mapX, point.mapY, coordinateBounds);
         const roundedGame = { x: Math.round(game.x), y: Math.round(game.y) };
         const marker = gameToMapPercent(roundedGame.x, roundedGame.y, coordinateBounds);
         setForm((current) => ({ ...current, ...marker, gameCoordinateX: roundedGame.x, gameCoordinateY: roundedGame.y }));
     }
 
-    function trackCoordinate(event: PointerEvent<HTMLDivElement>) {
+    function trackCoordinate(point: MapPoint) {
         if (!coordinateBounds) return;
-        const rect = event.currentTarget.getBoundingClientRect();
-        const mapX = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
-        const mapY = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
-        const game = mapPercentToGame(mapX, mapY, coordinateBounds);
-        setCursorCoordinate({ mapX, mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
+        const game = mapPercentToGame(point.mapX, point.mapY, coordinateBounds);
+        setCursorCoordinate({ mapX: point.mapX, mapY: point.mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
     }
 
     function updateGameCoordinate(field: "gameCoordinateX" | "gameCoordinateY", value: string) {
@@ -228,20 +223,18 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
-                <div
-                    className="relative aspect-square min-h-64 overflow-hidden rounded-lg border border-border bg-muted sm:min-h-80"
-                    onClick={chooseMarker}
-                    onPointerMove={trackCoordinate}
-                    onPointerLeave={() => setCursorCoordinate(null)}
+                <InteractiveMap
+                    imageSrc={waterbody.photo ? mediaUrl(waterbody.photo) : null}
+                    imageAlt={`Карта водоёма ${waterbody.name}`}
+                    emptyText="Загрузите изображение карты в справочнике водоёмов"
+                    className="mx-auto aspect-[4/3] min-h-56 w-full max-w-3xl sm:min-h-72"
+                    onMapClick={chooseMarker}
+                    onMapPointerMove={trackCoordinate}
+                    onMapPointerLeave={() => setCursorCoordinate(null)}
                     role={formOpen && canManage ? "button" : undefined}
                     tabIndex={formOpen && canManage ? 0 : undefined}
-                    data-testid="waterbody-map"
+                    testId="waterbody-map"
                 >
-                    {waterbody.photo ? (
-                        <img src={mediaUrl(waterbody.photo)} alt={`Карта водоёма ${waterbody.name}`} className="absolute inset-0 h-full w-full object-contain" />
-                    ) : (
-                        <div className="grid h-full place-items-center p-8 text-center text-muted-foreground">Загрузите изображение карты в справочнике водоёмов</div>
-                    )}
                     {spots.map((spot) => (
                         <button
                             key={spot.id}
@@ -254,7 +247,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                             style={{ left: `${spot.mapX}%`, top: `${spot.mapY}%` }}
                         ><MapPin size={17} /></button>
                     ))}
-                    {formOpen && <div data-testid="draft-spot-marker" className="pointer-events-none absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-background bg-destructive shadow" style={{ left: `${form.mapX}%`, top: `${form.mapY}%` }} />}
+                    {formOpen && <div data-testid="draft-spot-marker" className="pointer-events-none absolute grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow" style={{ left: `${form.mapX}%`, top: `${form.mapY}%` }}><MapPin size={17} /></div>}
                     {cursorCoordinate && (
                         <div
                             data-testid="map-coordinate-tooltip"
@@ -268,7 +261,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                             X: {cursorCoordinate.gameX}, Y: {cursorCoordinate.gameY}
                         </div>
                     )}
-                </div>
+                </InteractiveMap>
 
                 <aside className="min-w-0 rounded-lg border border-border bg-card">
                     <div className="border-b border-border px-4 py-3"><h3 className="font-bold">Точки ({spots.length})</h3></div>
@@ -292,7 +285,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                             {selected.fish.length ? <div className="flex flex-wrap gap-2">
                                 {selected.fish.map((item) => (
                                     <div key={item.id} title={item.name} className="grid w-20 gap-1 text-center">
-                                        {item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} className="h-16 w-20 rounded border border-border bg-background object-contain" /> : <div className="flex h-16 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
+                                        {item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} className="h-14 w-20 rounded border border-border bg-background object-contain p-1" /> : <div className="flex h-14 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
                                         <span className="line-clamp-2 text-xs">{item.name}</span>
                                     </div>
                                 ))}

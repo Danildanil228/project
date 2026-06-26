@@ -16,6 +16,7 @@ export type CatchRow = {
     id: number;
     fishId: number;
     fishName: string;
+    fishPhoto: string | null;
     rarity: string;
     baits: Array<{ id: number; name: string; kind: string }>;
 };

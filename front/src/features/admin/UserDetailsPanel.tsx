@@ -1,4 +1,5 @@
 import { ChangePasswordForm } from "../../components/ChangePasswordForm";
+import { SelectMenu } from "../../components/SelectMenu";
 import { UserAvatar } from "../../components/UserAvatar";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
@@ -112,13 +113,7 @@ export function UserDetailsPanel({
                         </label>
                         <label>
                             Роль
-                            <select value={editForm.role} disabled={!canManageSelectedUser || isSelfSelected} onChange={(event) => onEditFormChange({ ...editForm, role: event.target.value })}>
-                                {roleOptions.map((role) => (
-                                    <option key={role} value={role}>
-                                        {role}
-                                    </option>
-                                ))}
-                            </select>
+                            <SelectMenu value={editForm.role} disabled={!canManageSelectedUser || isSelfSelected} onChange={(value) => onEditFormChange({ ...editForm, role: value })} options={roleOptions.map((role) => ({ value: role, label: role }))} />
                         </label>
                         <button className="primary" type="submit" disabled={!canUpdateSelectedProfile}>
                             Сохранить

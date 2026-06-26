@@ -4,7 +4,8 @@ import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { PhotoDropzone } from "../components/PhotoDropzone";
 import { emptyPostLocation, PostLocationPicker, type PostLocationValue } from "../components/PostLocationPicker";
-import { getWaterbody, listBaits, listFish, listWaterbodies } from "../lib/reference-api";
+import { SelectMenu } from "../components/SelectMenu";
+import { getWaterbody, listAllBaits, listFish, listWaterbodies } from "../lib/reference-api";
 import { postLocationDetailsEnabled } from "../lib/features";
 import { createPost, getPost, moderatorEditPost, toPostPayload, updatePost, uploadPostMedia } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -72,7 +73,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
 
         async function load() {
             try {
-                const [fish, water, baits] = await Promise.all([listFish({ limit: 500 }), listWaterbodies({ limit: 200 }), listBaits({ limit: 500 })]);
+                const [fish, water, baits] = await Promise.all([listFish({ limit: 500 }), listWaterbodies({ limit: 200 }), listAllBaits()]);
                 if (ignore) return;
                 setAllFish(fish.items);
                 setWaterbodies(water.items);
@@ -360,10 +361,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             </label>
                             <label className="grid gap-1 text-sm">
                                 <span className="text-muted-foreground">Вид ловли *</span>
-                                <select name="fishingMethod" value={fishingMethod} onChange={(event) => setFishingMethod(event.target.value as FishingMethod | "")}>
-                                    <option value="">— выберите вид —</option>
-                                    {fishingMethods.map((method) => <option key={method} value={method}>{method}</option>)}
-                                </select>
+                                <SelectMenu value={fishingMethod} onChange={(value) => setFishingMethod(value as FishingMethod | "")} options={[{ value: "", label: "— выберите вид —" }, ...fishingMethods.map((method) => ({ value: method, label: method }))]} />
                             </label>
                             <label className="grid gap-1 text-sm sm:col-span-2">
                                 <span className="text-muted-foreground">Точка *</span>

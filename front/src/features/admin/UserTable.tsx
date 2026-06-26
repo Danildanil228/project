@@ -1,4 +1,5 @@
 import { UserAvatar } from "../../components/UserAvatar";
+import { SelectMenu } from "../../components/SelectMenu";
 import type {
     AdminSecurityContext,
     ManagedUser,
@@ -123,26 +124,10 @@ export function UserTable({
                 }}
             >
                 <input placeholder="Поиск" value={searchValue} onChange={(event) => onSearchValueChange(event.target.value)} />
-                <select value={searchField} onChange={(event) => onSearchFieldChange(event.target.value as SearchField)}>
-                    <option value="email">Email</option>
-                    <option value="name">Имя</option>
-                </select>
-                <select value={roleFilter} onChange={(event) => onRoleFilterChange(event.target.value as RoleFilter)}>
-                    <option value="all">Все роли</option>
-                    <option value="admin">admin</option>
-                    <option value="moderator">moderator</option>
-                    <option value="user">user</option>
-                </select>
-                <select value={statusFilter} onChange={(event) => onStatusFilterChange(event.target.value as StatusFilter)}>
-                    <option value="all">Все статусы</option>
-                    <option value="active">Активные</option>
-                    <option value="banned">Заблокированные</option>
-                </select>
-                <select value={verificationFilter} onChange={(event) => onVerificationFilterChange(event.target.value as VerificationFilter)}>
-                    <option value="all">Любой email</option>
-                    <option value="verified">Email подтвержден</option>
-                    <option value="unverified">Email не подтвержден</option>
-                </select>
+                <SelectMenu value={searchField} onChange={(value) => onSearchFieldChange(value as SearchField)} options={[{ value: "email", label: "Email" }, { value: "name", label: "Имя" }]} />
+                <SelectMenu value={roleFilter} onChange={(value) => onRoleFilterChange(value as RoleFilter)} options={[{ value: "all", label: "Все роли" }, { value: "admin", label: "admin" }, { value: "moderator", label: "moderator" }, { value: "user", label: "user" }]} />
+                <SelectMenu value={statusFilter} onChange={(value) => onStatusFilterChange(value as StatusFilter)} options={[{ value: "all", label: "Все статусы" }, { value: "active", label: "Активные" }, { value: "banned", label: "Заблокированные" }]} />
+                <SelectMenu value={verificationFilter} onChange={(value) => onVerificationFilterChange(value as VerificationFilter)} options={[{ value: "all", label: "Любой email" }, { value: "verified", label: "Email подтвержден" }, { value: "unverified", label: "Email не подтвержден" }]} />
                 <button className="secondary" type="submit">
                     Найти
                 </button>
@@ -151,16 +136,7 @@ export function UserTable({
             {hasBulkSelection && (
                 <div className="bulk-toolbar">
                     <strong>Выбрано: {selectedUserIds.length}</strong>
-                    <select defaultValue="" onChange={(event) => event.target.value && onBulkSetRole(event.target.value)}>
-                        <option value="" disabled>
-                            Изменить роль
-                        </option>
-                        {roleOptions.map((role) => (
-                            <option key={role} value={role}>
-                                {role}
-                            </option>
-                        ))}
-                    </select>
+                    <SelectMenu value="" onChange={(value) => value && onBulkSetRole(value)} options={[{ value: "", label: "Изменить роль" }, ...roleOptions.map((role) => ({ value: role, label: role }))]} />
                     <button className="secondary" type="button" onClick={onBulkBan}>
                         Заблокировать
                     </button>
@@ -261,11 +237,7 @@ export function UserTable({
                 <span>
                     {totalUsers ? offset + 1 : 0}-{Math.min(offset + pageSize, totalUsers || offset + users.length)} из {totalUsers}
                 </span>
-                <select className="page-size-select" value={pageSize} onChange={(event) => onPageSizeChange(Number(event.target.value))}>
-                    <option value={10}>10</option>
-                    <option value={25}>25</option>
-                    <option value={50}>50</option>
-                </select>
+                <SelectMenu className="page-size-select" value={String(pageSize)} onChange={(value) => onPageSizeChange(Number(value))} options={[{ value: "10", label: "10" }, { value: "25", label: "25" }, { value: "50", label: "50" }]} />
                 <button
                     className="secondary"
                     disabled={offset + pageSize >= totalUsers || loadingUsers}

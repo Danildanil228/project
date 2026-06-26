@@ -173,32 +173,32 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
             </div>
 
             {/* Two-column layout: gallery left, info right */}
-            <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+            <div className="grid items-start gap-4 lg:grid-cols-[1.4fr_1fr]">
                 {/* Gallery */}
-                <div className="grid gap-2">
+                <div className="grid content-start gap-2">
                     {photos.length > 0 ? (
                         <>
                             <button
                                 type="button"
                                 onClick={() => setModalIndex(activeImage)}
-                                className="block overflow-hidden rounded-lg border border-border bg-muted"
+                                className="block aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted"
                                 aria-label="Открыть фото"
                             >
-                                <img src={mediaUrl(photos[activeImage])} alt="" className="max-h-[28rem] w-full object-contain" />
+                                <img src={mediaUrl(photos[activeImage])} alt="" className="h-full w-full object-contain" />
                             </button>
                             {photos.length > 1 && (
-                                <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+                                <div className="flex gap-2 overflow-x-auto pb-1">
                                     {photos.map((url, index) => (
                                         <button
                                             key={url}
                                             type="button"
                                             onClick={() => setActiveImage(index)}
-                                            className={`overflow-hidden rounded-lg border transition-colors ${
+                                            className={`h-16 w-24 shrink-0 overflow-hidden rounded-lg border transition-colors ${
                                                 index === activeImage ? "border-primary" : "border-border hover:border-primary"
                                             }`}
                                             aria-label={`Фото ${index + 1}`}
                                         >
-                                            <img src={mediaUrl(url)} alt="" loading="lazy" className="aspect-square w-full object-cover" />
+                                            <img src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full object-cover" />
                                         </button>
                                     ))}
                                 </div>
@@ -294,11 +294,26 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                     {version?.catches.length ? (
                         <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
                             <h3 className="text-sm font-bold">Улов</h3>
-                            <div className="flex flex-wrap gap-1.5">
+                            <div className="grid gap-1.5">
                                 {version.catches.map((item) => (
-                                    <span key={item.id} className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">
-                                        {item.fishName}
-                                    </span>
+                                    <div key={item.id} className="flex items-center gap-2 rounded-md bg-muted/70 px-2 py-1.5">
+                                        {item.fishPhoto ? (
+                                            <img src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background object-contain" />
+                                        ) : (
+                                            <div className="grid h-10 w-14 shrink-0 place-items-center rounded border border-border bg-background text-[10px] text-muted-foreground">Нет фото</div>
+                                        )}
+                                        <div className="min-w-0 text-sm">
+                                            <div className="flex flex-wrap items-center gap-1.5">
+                                                <strong className="truncate">{item.fishName}</strong>
+                                                <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground">{item.rarity}</span>
+                                            </div>
+                                            {item.baits.length > 0 && (
+                                                <p className="truncate text-xs text-muted-foreground">
+                                                    {item.baits.map((bait) => bait.name).join(", ")}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
                         </div>

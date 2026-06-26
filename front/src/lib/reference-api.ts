@@ -87,6 +87,22 @@ export function listBaits(params: { search?: string; domain?: BaitDomain | ""; c
     return requestJson<ListResponse<Bait>>(`/api/baits?${query}`);
 }
 
+export async function listAllBaits(params: Omit<Parameters<typeof listBaits>[0], "limit" | "offset"> = {}) {
+    const limit = 500;
+    const first = await listBaits({ ...params, limit, offset: 0 });
+    const items = [...first.items];
+    let offset = first.items.length;
+
+    while (items.length < first.total && offset > 0) {
+        const response = await listBaits({ ...params, limit, offset });
+        items.push(...response.items);
+        if (response.items.length === 0) break;
+        offset += response.items.length;
+    }
+
+    return { items, total: first.total, limit: items.length, offset: 0 };
+}
+
 export function getBaitCatalogMeta() {
     return requestJson<BaitCatalogMeta>(`/api/baits/meta`);
 }

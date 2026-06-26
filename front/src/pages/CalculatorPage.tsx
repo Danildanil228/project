@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Cog, Fish  } from "lucide-react";
 import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { PageHeader } from "../components/PageHeader";
+import { SelectMenu } from "../components/SelectMenu";
 import { currentStrength, fetchCalculatorItems, formatKg, parseStrength } from "../lib/calculator-api";
 
 export function CalculatorPage() {
@@ -263,10 +264,7 @@ function GearBlock({
             <div className="grid gap-2">
                 <label className="grid gap-1.5 text-xs">
                     <span className="text-muted-foreground">Категория</span>
-                    <select value={category} onChange={(event) => onCategoryChange(event.target.value)} className="text-sm">
-                        <option value="">Все категории</option>
-                        {categories.map((value) => <option key={value} value={value}>{value}</option>)}
-                    </select>
+                    <SelectMenu value={category} onChange={onCategoryChange} options={[{ value: "", label: "Все категории" }, ...categories.map((value) => ({ value, label: value }))]} />
                 </label>
                 <label className="grid gap-1.5 text-xs">
                     <span className="text-muted-foreground">Модель</span>

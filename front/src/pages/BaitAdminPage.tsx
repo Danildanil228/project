@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, Pencil, Plus, Save, Trash2, X } from "lucide
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
+import { SelectMenu } from "../components/SelectMenu";
 import { mediaUrl } from "../lib/items-api";
 import { createBait, deleteBait, getBaitCatalogMeta, listBaits, updateBait } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -150,8 +151,8 @@ export function BaitAdminPage({ currentUser, adminContext, onOpenAuthModal }: Pr
 
             <form className="grid gap-3 border-y border-border py-4 lg:grid-cols-[minmax(240px,1fr)_180px_240px_auto]" onSubmit={(event) => { event.preventDefault(); void load(0); }}>
                 <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Поиск по названию" />
-                <select value={domain} onChange={(event) => { setDomain(event.target.value as BaitDomain | ""); setCategoryCode(""); }}><option value="">Все разделы</option><option value="bait">Наживки</option><option value="lure">Приманки</option></select>
-                <select value={categoryCode} onChange={(event) => setCategoryCode(event.target.value)}><option value="">Все категории</option>{filterCategories.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select>
+                <SelectMenu value={domain} onChange={(value) => { setDomain(value as BaitDomain | ""); setCategoryCode(""); }} options={[{ value: "", label: "Все разделы" }, { value: "bait", label: "Наживки" }, { value: "lure", label: "Приманки" }]} />
+                <SelectMenu value={categoryCode} onChange={setCategoryCode} options={[{ value: "", label: "Все категории" }, ...filterCategories.map((item) => ({ value: item.code, label: item.name }))]} />
                 <button type="submit" className="rounded-lg border border-border px-4 py-2 text-sm font-bold">Найти</button>
             </form>
 
@@ -160,8 +161,8 @@ export function BaitAdminPage({ currentUser, adminContext, onOpenAuthModal }: Pr
                 {formError && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{formError}</p>}
                 <div className="grid gap-3 md:grid-cols-3">
                     <label className="grid gap-1 text-sm"><span>Название *</span><input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required maxLength={150} /></label>
-                    <label className="grid gap-1 text-sm"><span>Раздел *</span><select value={form.domain} onChange={(event) => changeFormDomain(event.target.value as BaitDomain)}><option value="bait">Наживка</option><option value="lure">Приманка</option></select></label>
-                    <label className="grid gap-1 text-sm"><span>Категория *</span><select value={form.categoryCode} onChange={(event) => setForm({ ...form, categoryCode: event.target.value })} required><option value="">Выберите категорию</option>{formCategories.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select></label>
+                    <label className="grid gap-1 text-sm"><span>Раздел *</span><SelectMenu value={form.domain} onChange={(value) => changeFormDomain(value as BaitDomain)} options={[{ value: "bait", label: "Наживка" }, { value: "lure", label: "Приманка" }]} /></label>
+                    <label className="grid gap-1 text-sm"><span>Категория *</span><SelectMenu value={form.categoryCode} onChange={(value) => setForm({ ...form, categoryCode: value })} options={[{ value: "", label: "Выберите категорию" }, ...formCategories.map((item) => ({ value: item.code, label: item.name }))]} /></label>
                 </div>
                 <PhotoUploadField value={form.photo} onChange={(photo) => setForm({ ...form, photo })} />
                 <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isActive} onChange={(event) => setForm({ ...form, isActive: event.target.checked })} />Показывать пользователям</label>

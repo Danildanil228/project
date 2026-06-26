@@ -35,9 +35,9 @@ function FishRow({ fish }: { fish: WaterbodyFish }) {
     return (
         <li className="flex items-center gap-3 rounded-xl border border-border bg-background/50 p-3">
             {fish.photo ? (
-                <img src={mediaUrl(fish.photo)} alt={fish.name} className="size-14 shrink-0 rounded-lg border border-border object-cover" />
+                <img src={mediaUrl(fish.photo)} alt={fish.name} className="h-12 w-16 shrink-0 rounded-lg border border-border bg-background object-contain p-1" />
             ) : (
-                <span className="grid size-14 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground"><Fish size={20} /></span>
+                <span className="grid h-12 w-16 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground"><Fish size={20} /></span>
             )}
             <div className="grid min-w-0 gap-1">
                 <strong className="truncate text-sm">{fish.name}</strong>

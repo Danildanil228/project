@@ -129,7 +129,7 @@ export function NotificationsBell({ currentUser }: NotificationsBellProps) {
             </button>
 
             {open && (
-                <div className="absolute right-0 z-30 mt-1 w-80 max-w-[90vw] rounded-lg border border-border bg-card shadow-lg">
+                <div className="fixed inset-x-3 top-16 z-30 max-h-[calc(100vh-5rem)] overflow-hidden rounded-lg border border-border bg-card shadow-lg sm:absolute sm:inset-auto sm:right-0 sm:top-auto sm:mt-1 sm:w-80 sm:max-w-[90vw]">
                     <div className="flex items-center justify-between border-b border-border p-2">
                         <span className="text-sm font-bold">Уведомления</span>
                         {unread > 0 && (
@@ -138,7 +138,7 @@ export function NotificationsBell({ currentUser }: NotificationsBellProps) {
                             </button>
                         )}
                     </div>
-                    <div className="max-h-96 overflow-y-auto">
+                    <div className="max-h-[calc(100vh-9rem)] overflow-y-auto sm:max-h-96">
                         {loading ? (
                             <p className="p-4 text-center text-sm text-muted-foreground">Загрузка…</p>
                         ) : items.length === 0 ? (

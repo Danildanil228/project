@@ -1,5 +1,6 @@
 import { MapPin, X } from "lucide-react";
-import { useEffect, useMemo, useState, type MouseEvent, type PointerEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { InteractiveMap, type MapPoint } from "./InteractiveMap";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { getWaterbody, listSpots } from "../lib/reference-api";
@@ -71,12 +72,9 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
 
     const bounds = useMemo(() => waterbody && hasCoordinateBounds(waterbody) ? waterbody : null, [waterbody]);
 
-    function chooseNewLocation(event: MouseEvent<HTMLDivElement>) {
+    function chooseNewLocation(point: MapPoint) {
         if (!bounds) return;
-        const rect = event.currentTarget.getBoundingClientRect();
-        const clickedMapX = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
-        const clickedMapY = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
-        const game = mapPercentToGame(clickedMapX, clickedMapY, bounds);
+        const game = mapPercentToGame(point.mapX, point.mapY, bounds);
         const gameCoordinateX = Math.round(game.x);
         const gameCoordinateY = Math.round(game.y);
         const marker = gameToMapPercent(gameCoordinateX, gameCoordinateY, bounds);
@@ -154,13 +152,10 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
         }
     }
 
-    function trackCoordinate(event: PointerEvent<HTMLDivElement>) {
+    function trackCoordinate(point: MapPoint) {
         if (!bounds) return;
-        const rect = event.currentTarget.getBoundingClientRect();
-        const mapX = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
-        const mapY = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
-        const game = mapPercentToGame(mapX, mapY, bounds);
-        setCursor({ mapX, mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
+        const game = mapPercentToGame(point.mapX, point.mapY, bounds);
+        setCursor({ mapX: point.mapX, mapY: point.mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
     }
 
     if (loading) return <div className="grid min-h-64 place-items-center rounded-lg border border-border bg-muted text-sm text-muted-foreground">Загрузка карты…</div>;
@@ -197,16 +192,17 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
             </div>
 
             {!bounds && <p className="rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-sm text-amber-700 dark:text-amber-400">Для этого водоёма ещё не настроены границы игровых координат.</p>}
-            <div
-                className="relative aspect-square min-h-64 overflow-hidden rounded-lg border border-border bg-muted"
-                onClick={chooseNewLocation}
-                onPointerMove={trackCoordinate}
-                onPointerLeave={() => setCursor(null)}
+            <InteractiveMap
+                imageSrc={waterbody.photo ? mediaUrl(waterbody.photo) : null}
+                imageAlt={`Карта водоёма ${waterbody.name}`}
+                emptyText="У водоёма нет изображения карты"
+                className="aspect-square min-h-64"
+                onMapClick={chooseNewLocation}
+                onMapPointerMove={trackCoordinate}
+                onMapPointerLeave={() => setCursor(null)}
                 role={bounds ? "button" : undefined}
-                data-testid="post-location-map"
+                testId="post-location-map"
             >
-                {waterbody.photo ? <img src={mediaUrl(waterbody.photo)} alt={`Карта водоёма ${waterbody.name}`} className="absolute inset-0 h-full w-full object-contain" /> : <div className="grid h-full place-items-center p-6 text-center text-sm text-muted-foreground">У водоёма нет изображения карты</div>}
-
                 {/* Trolling line — SVG overlay between A and B, drawn under markers */}
                 {trollingActive && value.mapX !== null && value.mapY !== null && value.mapX2 !== null && value.mapY2 !== null && (
                     <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -229,20 +225,20 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
                 {/* Marker A (and the only marker in point mode) */}
                 {value.mapX !== null && value.mapY !== null && value.proposedSpotId === null && (
                     <div
-                        className="pointer-events-none absolute z-10 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-background bg-destructive text-[10px] font-bold text-white shadow"
+                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"
                         style={{ left: `${value.mapX}%`, top: `${value.mapY}%` }}
-                    >{trollingActive ? "А" : ""}</div>
+                    ><MapPin size={17} /></div>
                 )}
                 {/* Marker B — trolling only */}
                 {trollingActive && value.mapX2 !== null && value.mapY2 !== null && (
                     <div
-                        className="pointer-events-none absolute z-10 grid size-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-background bg-blue-600 text-[10px] font-bold text-white shadow"
+                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"
                         style={{ left: `${value.mapX2}%`, top: `${value.mapY2}%` }}
-                    >Б</div>
+                    ><MapPin size={17} /></div>
                 )}
 
                 {cursor && <div className="pointer-events-none absolute z-30 whitespace-nowrap rounded bg-black/80 px-2 py-1 text-xs font-bold text-white" style={{ left: `${cursor.mapX}%`, top: `${cursor.mapY}%`, transform: `translate(${cursor.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursor.mapY > 85 ? "calc(-100% - 12px)" : "12px"})` }}>X: {cursor.gameX}, Y: {cursor.gameY}</div>}
-            </div>
+            </InteractiveMap>
 
             {/* Coordinate inputs — one pair for point mode, two pairs for trolling */}
             <div className="grid gap-3 sm:grid-cols-2">

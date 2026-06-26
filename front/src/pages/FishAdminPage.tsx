@@ -2,6 +2,7 @@ import { Pencil, Plus, Save, Search, Trash2, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
+import { SelectMenu } from "../components/SelectMenu";
 import { mediaUrl } from "../lib/items-api";
 import { createFish, createFishBulk, deleteFish, listFish, listWaterbodies, updateFish } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -269,8 +270,8 @@ export function FishAdminPage({ currentUser, adminContext, onOpenAuthModal }: Fi
 
             <form onSubmit={(event) => { event.preventDefault(); void load(); }} className="grid gap-3 border-y border-border py-4 md:grid-cols-2 lg:grid-cols-[minmax(240px,1fr)_190px_240px_auto_auto] lg:items-end">
                 <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Поиск по названию</span><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Например, карп" /></label>
-                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Редкость</span><select value={rarityFilter} onChange={(event) => setRarityFilter(event.target.value)}><option value="">Все</option>{fishRarities.map((rarity) => <option key={rarity} value={rarity}>{rarity}</option>)}</select></label>
-                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Водоём обитания</span><select value={waterbodyFilter} onChange={(event) => setWaterbodyFilter(event.target.value)}><option value="">Все водоёмы</option>{waterbodies.map((waterbody) => <option key={waterbody.id} value={waterbody.id}>{waterbody.name}</option>)}</select></label>
+                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Редкость</span><SelectMenu value={rarityFilter} onChange={setRarityFilter} options={[{ value: "", label: "Все" }, ...fishRarities.map((rarity) => ({ value: rarity, label: rarity }))]} /></label>
+                <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Водоём обитания</span><SelectMenu value={waterbodyFilter} onChange={setWaterbodyFilter} options={[{ value: "", label: "Все водоёмы" }, ...waterbodies.map((waterbody) => ({ value: String(waterbody.id), label: waterbody.name }))]} /></label>
                 <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"><Search size={16} /> Найти</button>
                 <button type="button" onClick={resetFilters} className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-bold"><X size={16} /> Сбросить</button>
             </form>
@@ -281,7 +282,7 @@ export function FishAdminPage({ currentUser, adminContext, onOpenAuthModal }: Fi
                     {formError && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{formError}</p>}
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                         <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Название *</span><input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required maxLength={100} /></label>
-                        <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Редкость *</span><select value={form.rarity} onChange={(event) => setForm({ ...form, rarity: event.target.value as FishRarity })}>{fishRarities.map((rarity) => <option key={rarity} value={rarity}>{rarity}</option>)}</select></label>
+                        <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Редкость *</span><SelectMenu value={form.rarity} onChange={(value) => setForm({ ...form, rarity: value as FishRarity })} options={fishRarities.map((rarity) => ({ value: rarity, label: rarity }))} /></label>
                         <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Водоёмы обитания</span><WaterbodyPicker waterbodies={waterbodies} selected={form.waterbodyIds} onChange={(waterbodyIds) => setForm({ ...form, waterbodyIds })} /></label>
                         <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Вес трофея, г *</span><input type="number" min="1" max="100000000" step="1" required value={form.trophyWeightGrams} onChange={(event) => setForm({ ...form, trophyWeightGrams: event.target.value })} /></label>
                         <label className="grid gap-1 text-sm"><span className="text-muted-foreground">Вес редкого трофея, г *</span><input type="number" min={form.trophyWeightGrams || "1"} max="100000000" step="1" required value={form.rareTrophyWeightGrams} onChange={(event) => setForm({ ...form, rareTrophyWeightGrams: event.target.value })} /></label>
@@ -301,7 +302,7 @@ export function FishAdminPage({ currentUser, adminContext, onOpenAuthModal }: Fi
                             {bulkRows.map((row) => (
                                 <div key={row.key} className="grid grid-cols-[minmax(180px,1fr)_160px_150px_180px_minmax(220px,1fr)_40px] items-start gap-2">
                                     <input aria-label="Название рыбы" maxLength={100} value={row.name} onChange={(event) => updateBulkRow(row.key, { name: event.target.value })} />
-                                    <select aria-label="Редкость" value={row.rarity} onChange={(event) => updateBulkRow(row.key, { rarity: event.target.value as FishRarity })}>{fishRarities.map((rarity) => <option key={rarity} value={rarity}>{rarity}</option>)}</select>
+                                    <SelectMenu value={row.rarity} onChange={(value) => updateBulkRow(row.key, { rarity: value as FishRarity })} options={fishRarities.map((rarity) => ({ value: rarity, label: rarity }))} />
                                     <input aria-label="Вес трофея в граммах" type="number" min="1" max="100000000" step="1" required={Boolean(row.name.trim())} value={row.trophyWeightGrams} onChange={(event) => updateBulkRow(row.key, { trophyWeightGrams: event.target.value })} />
                                     <input aria-label="Вес редкого трофея в граммах" type="number" min={row.trophyWeightGrams || "1"} max="100000000" step="1" required={Boolean(row.name.trim())} value={row.rareTrophyWeightGrams} onChange={(event) => updateBulkRow(row.key, { rareTrophyWeightGrams: event.target.value })} />
                                     <WaterbodyPicker waterbodies={waterbodies} selected={row.waterbodyIds} onChange={(waterbodyIds) => updateBulkRow(row.key, { waterbodyIds })} />

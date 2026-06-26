@@ -1,4 +1,5 @@
 import { CheckCircle2, ChevronDown, Download, RefreshCw, XCircle } from "lucide-react";
+import { SelectMenu } from "../../components/SelectMenu";
 import type { AuditLogFilters, ManagedAuditLog } from "../../types/admin";
 import { formatDate } from "../../utils/admin-format";
 import { auditActionText, auditClientText, auditDetails, auditRoleText, auditSummary } from "../../utils/audit-format";
@@ -123,31 +124,8 @@ export function AuditLogPanel({
                     value={filters.targetEmail}
                     onChange={(event) => onFiltersChange({ ...filters, targetEmail: event.target.value })}
                 />
-                <select
-                    aria-label="Раздел действий"
-                    value={filters.action}
-                    onChange={(event) => onFiltersChange({ ...filters, action: event.target.value })}
-                >
-                    <option value="">Все действия</option>
-                    <option value="auth">Авторизация и безопасность</option>
-                    <option value="post.">Публикации и модерация</option>
-                    <option value="comment.">Комментарии</option>
-                    <option value="reaction.">Реакции</option>
-                    <option value="report.">Жалобы</option>
-                    <option value="notification.">Уведомления</option>
-                    <option value="upload.">Загрузки файлов</option>
-                    <option value="admin">Администрирование</option>
-                    <option value="request.failed">Отклонённые запросы</option>
-                </select>
-                <select
-                    aria-label="Результат действия"
-                    value={filters.outcome}
-                    onChange={(event) => onFiltersChange({ ...filters, outcome: event.target.value as AuditLogFilters["outcome"] })}
-                >
-                    <option value="">Любой результат</option>
-                    <option value="success">Успешно</option>
-                    <option value="failure">Ошибка</option>
-                </select>
+                <SelectMenu value={filters.action} onChange={(value) => onFiltersChange({ ...filters, action: value })} options={[{ value: "", label: "Все действия" }, { value: "auth", label: "Авторизация и безопасность" }, { value: "post.", label: "Публикации и модерация" }, { value: "comment.", label: "Комментарии" }, { value: "reaction.", label: "Реакции" }, { value: "report.", label: "Жалобы" }, { value: "notification.", label: "Уведомления" }, { value: "upload.", label: "Загрузки файлов" }, { value: "admin", label: "Администрирование" }, { value: "request.failed", label: "Отклонённые запросы" }]} />
+                <SelectMenu value={filters.outcome} onChange={(value) => onFiltersChange({ ...filters, outcome: value as AuditLogFilters["outcome"] })} options={[{ value: "", label: "Любой результат" }, { value: "success", label: "Успешно" }, { value: "failure", label: "Ошибка" }]} />
                 <input
                     aria-label="Дата с"
                     type="datetime-local"
