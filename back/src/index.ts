@@ -10,6 +10,7 @@ import { securityHeaders } from './middleware/security-headers';
 import { adminAccountsRouter } from './routes/admin-accounts';
 import { avatarUploadRouter } from './routes/avatar-upload';
 import { uploadsRoot } from './lib/uploads';
+import { pool } from './lib/db';
 import { createItemsRouter } from './routes/items';
 import { fishRouter } from './routes/fish';
 import { waterbodiesRouter } from './routes/waterbodies';

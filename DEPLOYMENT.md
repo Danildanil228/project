@@ -149,6 +149,11 @@ DISCORD_CLIENT_ID=
 DISCORD_CLIENT_SECRET=
 VK_CLIENT_ID=
 VK_CLIENT_SECRET=
+
+# Telegram notifications for moderators (optional).
+# Без этих переменных уведомления просто не отправляются — приложение работает.
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_BOT_USERNAME=
 EOF
 
 chown rf4:rf4 /var/www/rf4/back/.env
@@ -348,6 +353,133 @@ tar -czf /var/backups/rf4/uploads-$(date +%F-%H%M).tar.gz \
 
 Копии необходимо периодически переносить за пределы VPS.
 
+## 15a. Перенос данных с локальной машины (Windows) на сервер
+
+Используется, когда уже есть готовая локальная база (PostgreSQL 18) и каталог
+загрузок, которые нужно поднять на чистом сервере (PostgreSQL 16).
+
+### 15a.1. Особенность версий: pg_dump 18 → pg 16
+
+Локальный pg_dump 18 умеет создавать дамп, который PostgreSQL 16 не примет
+(возможны изменения в формате COPY/комментариев). Стабильный путь — **взять
+pg_dump той же major-версии, что и сервер (16)**.
+
+На Windows достаточно поставить PostgreSQL 16 «client tools» в дополнение к
+существующей PG 18 — это не сломает PG 18:
+
+- EDB установщик: <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>
+- При установке снимите галочку «PostgreSQL Server», оставьте только
+  «Command Line Tools». Установится в `C:\Program Files\PostgreSQL\16\bin\`.
+
+После установки команды pg_dump 16 не попадут в PATH автоматически — вызывайте
+по полному пути.
+
+### 15a.2. Сделать дамп локальной базы
+
+PowerShell (от вашей Windows-учётки), один файл на всю БД:
+
+```powershell
+$env:PGPASSWORD = "<пароль_от_локального_postgres>"
+& "C:\Program Files\PostgreSQL\16\bin\pg_dump.exe" `
+    --host=localhost --port=5432 `
+    --username=postgres `
+    --dbname=project `
+    --no-owner --no-privileges `
+    --format=plain `
+    --file=C:\Users\danil\Desktop\project-dump.sql
+Remove-Item Env:\PGPASSWORD
+```
+
+Опции:
+
+- `--no-owner --no-privileges` — снимает упоминания владельца таблиц
+  (`danil`/`postgres`), на сервере владельцем станет `rf4_app`.
+- `--format=plain` — обычный SQL, читаемый и редактируемый при необходимости.
+
+Размер файла:
+
+```powershell
+Get-Item C:\Users\danil\Desktop\project-dump.sql | Select-Object Length
+```
+
+### 15a.3. Залить дамп на сервер
+
+```powershell
+# на Windows
+scp C:\Users\danil\Desktop\project-dump.sql `
+    root@SERVER_IP:/root/project-dump.sql
+```
+
+На сервере:
+
+```bash
+# Очистить и восстановить чистую схему
+sudo -u postgres dropdb --if-exists rf4db
+sudo -u postgres psql <<SQL
+CREATE DATABASE rf4db OWNER rf4_app;
+\connect rf4db
+GRANT ALL ON SCHEMA public TO rf4_app;
+ALTER SCHEMA public OWNER TO rf4_app;
+SQL
+
+# Импорт дампа: подключаемся как rf4_app, чтобы owner объектов был корректный
+PGPASSWORD="<DB_PASSWORD_из_.env>" psql \
+  --host=127.0.0.1 --username=rf4_app --dbname=rf4db \
+  --single-transaction --set ON_ERROR_STOP=on \
+  --file=/root/project-dump.sql
+```
+
+После импорта проверьте таблицу миграций:
+
+```bash
+sudo -u postgres psql -d rf4db -c \
+  'SELECT id, "appliedAt" FROM "appMigration" ORDER BY id;'
+```
+
+Должны быть все 001–027.
+
+### 15a.4. Скопировать каталог uploads
+
+Каталог `back/uploads/` весит несколько ГБ — `rsync` устойчив к обрывам:
+
+```bash
+# на Windows (через Git Bash или WSL)
+rsync -avz --progress \
+  /c/Users/danil/Desktop/project/back/uploads/ \
+  root@SERVER_IP:/var/www/rf4/back/uploads/
+```
+
+После переноса вернуть владельца:
+
+```bash
+chown -R rf4:rf4 /var/www/rf4/back/uploads
+chmod -R u=rwX,g=rX,o= /var/www/rf4/back/uploads
+```
+
+### 15a.5. Финальный перезапуск
+
+```bash
+systemctl restart rf4-api
+journalctl -u rf4-api -n 50 --no-pager
+curl --fail https://materialhouse.ru/api/auth-providers
+```
+
+### 15a.6. Если pg_dump 18 не подходит
+
+Если по какой-то причине поставить pg_dump 16 нельзя:
+
+```powershell
+& "C:\Program Files\PostgreSQL\18\bin\pg_dump.exe" `
+    --host=localhost --port=5432 --username=postgres --dbname=project `
+    --no-owner --no-privileges `
+    --quote-all-identifiers `
+    --column-inserts `
+    --file=C:\Users\danil\Desktop\project-dump.sql
+```
+
+`--column-inserts` пишет данные как `INSERT ... VALUES (...)` вместо `COPY` —
+медленнее, но значительно стабильнее между разными major-версиями.
+
 ## 16. Диагностика
 
 ```bash
@@ -364,7 +496,7 @@ sudo -u postgres psql -d rf4db -c 'SELECT id, "appliedAt" FROM "appMigration" OR
 - `80/443` доступны снаружи через Nginx;
 - `3000` слушает только `127.0.0.1`;
 - `5432` не открыт в интернет;
-- миграции `001`-`010` присутствуют в `appMigration`.
+- миграции `001`-`027` присутствуют в `appMigration`.
 
 ## 17. Усиление SSH после успешного деплоя
 
