@@ -81,7 +81,7 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
                         )}
                         <Link
                             to="/feed"
-                            className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-semibold backdrop-blur transition hover:bg-white/20"
+                            className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-semibold backdrop-blur transition hover:bg-white/20 text-primary-foreground"
                         >
                             <Newspaper size={16} /> Открыть ленту
                         </Link>
@@ -149,7 +149,7 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
             {canOpenAdmin && (
                 <section className="flex flex-col items-start justify-between gap-3 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:p-8">
                     <div>
-                        <p className="text-xs font-extrabold uppercase tracking-wider text-accent-foreground">Для администратора</p>
+                        <p className="text-xs font-extrabold uppercase tracking-wider text-primary">Для администратора</p>
                         <h3 className="mt-1 text-lg font-bold">Управление проектом</h3>
                         <p className="mt-1 max-w-md text-sm text-muted-foreground">
                             Пользователи, модерация постов, справочники, журнал аудита.
@@ -170,10 +170,14 @@ export function HomePage({ currentUser, adminContext, onOpenAuthModal }: HomePag
 function FeatureBlock({ icon: Icon, title, text }: { icon: typeof Fish; title: string; text: string }) {
     return (
         <div className="grid gap-2">
-            <span className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
-                <Icon size={16} />
-            </span>
-            <h3 className="text-base font-semibold">{title}</h3>
+            <div className="flex gap-3 items-center">
+                <span className="grid size-9 place-items-center rounded-lg bg-primary-soft text-primary">
+                    <Icon size={16} />
+                </span>
+                <h3 className="text-base font-semibold">{title}</h3>
+            </div>
+            
+            
             <p className="text-sm text-muted-foreground">{text}</p>
         </div>
     );
