@@ -5,7 +5,7 @@ import { MultiCombobox } from "../components/MultiCombobox";
 import { PhotoDropzone } from "../components/PhotoDropzone";
 import { emptyPostLocation, PostLocationPicker, type PostLocationValue } from "../components/PostLocationPicker";
 import { getWaterbody, listBaits, listFish, listWaterbodies } from "../lib/reference-api";
-import { postMapLinkingEnabled } from "../lib/features";
+import { postLocationDetailsEnabled } from "../lib/features";
 import { createPost, getPost, moderatorEditPost, toPostPayload, updatePost, uploadPostMedia } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import type { Bait } from "../types/bait";
@@ -221,10 +221,10 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
             fishingMethod: fishingMethod || null,
             income: income !== "" ? Number(income) : null,
             fishingMinutes: totalMinutes > 0 ? totalMinutes : null,
-            catches: fishIds.map((fishId) => ({ fishId, baitIds: postMapLinkingEnabled && baitMode === "per_fish" ? fishBaitIds[fishId] ?? [] : [] })),
-            baitMode: postMapLinkingEnabled ? baitMode : "common",
-            commonBaitIds: postMapLinkingEnabled && baitMode === "common" ? commonBaitIds : [],
-            ...(postMapLinkingEnabled ? location : emptyPostLocation),
+            catches: fishIds.map((fishId) => ({ fishId, baitIds: postLocationDetailsEnabled && baitMode === "per_fish" ? fishBaitIds[fishId] ?? [] : [] })),
+            baitMode: postLocationDetailsEnabled ? baitMode : "common",
+            commonBaitIds: postLocationDetailsEnabled && baitMode === "common" ? commonBaitIds : [],
+            ...(postLocationDetailsEnabled ? location : emptyPostLocation),
             media,
         };
     }
@@ -376,7 +376,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             <textarea value={description} onChange={(event) => setDescription(event.target.value)} rows={5} maxLength={5000} placeholder="Как ловилось, какие снасти и условия…" className="resize-y" />
                         </label>
                     </div>
-                    {postMapLinkingEnabled && waterbodyId && <PostLocationPicker key={waterbodyId} waterbodyId={waterbodyId} value={location} onChange={setLocation} />}
+                    {postLocationDetailsEnabled && waterbodyId && <PostLocationPicker key={waterbodyId} waterbodyId={waterbodyId} value={location} onChange={setLocation} />}
                 </div>
 
                 {/* Разнорыбица — улов */}
@@ -398,7 +398,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                         />
                     )}
 
-                    {postMapLinkingEnabled && fishIds.length > 0 && (
+                    {postLocationDetailsEnabled && fishIds.length > 0 && (
                         <div className="grid gap-3 border-t border-border pt-3">
                             <div className="flex flex-wrap items-center justify-between gap-2">
                                 <h4 className="text-sm font-bold">Наживки и приманки</h4>
