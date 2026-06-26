@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { AlertTriangle, ChevronDown, Cog, Fish, GitFork, Info } from "lucide-react";
+import { Cog, Fish  } from "lucide-react";
 import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { PageHeader } from "../components/PageHeader";
 import { currentStrength, fetchCalculatorItems, formatKg, parseStrength } from "../lib/calculator-api";
@@ -18,7 +18,6 @@ export function CalculatorPage() {
     const [reelWear, setReelWear] = useState(0);
     const [rodCategory, setRodCategory] = useState<string>("");
     const [reelCategory, setReelCategory] = useState<string>("");
-    const [formulaOpen, setFormulaOpen] = useState(false);
 
     const rodCategories = useMemo(() => unique(data?.rods.map((r) => r.category)), [data?.rods]);
     const reelCategories = useMemo(() => unique(data?.reels.map((r) => r.category)), [data?.reels]);
@@ -57,7 +56,6 @@ export function CalculatorPage() {
 
     const hasBoth = rod && reel;
     const weakLink = hasBoth ? (rodCurrent <= reelCurrent ? "rod" : "reel") : null;
-    const weakValue = hasBoth ? Math.min(rodCurrent, reelCurrent) : 0;
 
     if (isLoading) {
         return (
