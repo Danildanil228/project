@@ -1,3 +1,4 @@
+import { ChangePasswordForm } from "../../components/ChangePasswordForm";
 import { UserAvatar } from "../../components/UserAvatar";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
@@ -16,6 +17,7 @@ type UserDetailsPanelProps = {
     canManageSelectedUser: boolean;
     canUpdateSelectedProfile: boolean;
     canImpersonate: boolean;
+    canVerifyEmail: boolean;
     isSelfSelected: boolean;
     isSuperAdminSelected: boolean;
     onEditFormChange: (form: EditUserFormState) => void;
@@ -27,6 +29,7 @@ type UserDetailsPanelProps = {
     onUnbanUser: () => void;
     onUpdatePassword: () => void;
     onImpersonateUser: () => void;
+    onVerifyEmail: (verified: boolean) => void;
     onRevokeSession: (token: string) => void;
     onRevokeAllSessions: () => void;
     onUnlinkAccount: (accountId: string) => void;
@@ -45,6 +48,7 @@ export function UserDetailsPanel({
     canManageSelectedUser,
     canUpdateSelectedProfile,
     canImpersonate,
+    canVerifyEmail,
     isSelfSelected,
     isSuperAdminSelected,
     onEditFormChange,
@@ -56,6 +60,7 @@ export function UserDetailsPanel({
     onUnbanUser,
     onUpdatePassword,
     onImpersonateUser,
+    onVerifyEmail,
     onRevokeSession,
     onRevokeAllSessions,
     onUnlinkAccount,
@@ -94,14 +99,15 @@ export function UserDetailsPanel({
                             Email
                             <input type="email" value={editForm.email} disabled={!canUpdateSelectedProfile} onChange={(event) => onEditFormChange({ ...editForm, email: event.target.value })} />
                         </label>
+                        {/* Avatar is owned by the user — they upload it from their /profile page.
+                            Admins see the current value but can't paste arbitrary URLs here. */}
                         <label>
-                            Ссылка на аватар
+                            Аватар
                             <input
-                                type="url"
-                                placeholder="https://example.com/avatar.png"
-                                value={editForm.image}
-                                disabled={!canUpdateSelectedProfile}
-                                onChange={(event) => onEditFormChange({ ...editForm, image: event.target.value })}
+                                type="text"
+                                value={editForm.image || "—"}
+                                disabled
+                                title="Аватар меняется самим пользователем в разделе Профиль"
                             />
                         </label>
                         <label>
@@ -118,6 +124,25 @@ export function UserDetailsPanel({
                             Сохранить
                         </button>
                     </form>
+
+                    {/* Email verification — admin/super-admin only. Lets us approve users whose verification email
+                        bounced or who registered before SMTP was configured. */}
+                    {canVerifyEmail && (
+                        <div className="actions-row" style={{ alignItems: "center" }}>
+                            <span className={`self-badge ${selectedUser.emailVerified ? "" : "alert warning"}`} style={{ paddingInline: 8 }}>
+                                Email: {selectedUser.emailVerified ? "подтверждён" : "не подтверждён"}
+                            </span>
+                            {selectedUser.emailVerified ? (
+                                <button className="secondary" type="button" onClick={() => onVerifyEmail(false)} disabled={isSuperAdminSelected}>
+                                    Снять подтверждение
+                                </button>
+                            ) : (
+                                <button className="primary" type="button" onClick={() => onVerifyEmail(true)} disabled={isSuperAdminSelected}>
+                                    Подтвердить email
+                                </button>
+                            )}
+                        </div>
+                    )}
 
                     <div className="actions-row">
                         {canImpersonate && (
@@ -158,6 +183,11 @@ export function UserDetailsPanel({
                         </div>
                     </section>
 
+                    {isSelfSelected ? (
+                        // Self → use the two-step (old password + email code) flow.
+                        // ChangePasswordForm hides itself when the account is OAuth-only.
+                        <ChangePasswordForm />
+                    ) : (
                     <form
                         className="subsection"
                         onSubmit={(event) => {
@@ -174,11 +204,13 @@ export function UserDetailsPanel({
                             Сменить пароль
                         </button>
                     </form>
+                    )}
 
                     <section className="subsection">
                         <div className="section-line">
                             <h3>Сессии</h3>
-                            <button className="secondary" onClick={onRevokeAllSessions} disabled={!sessions.length || !canManageSelectedUser}>
+                            {/* Self can revoke own sessions even though they're not "manageable" by role hierarchy. */}
+                            <button className="secondary" onClick={onRevokeAllSessions} disabled={!sessions.length || (!canManageSelectedUser && !isSelfSelected)}>
                                 Отозвать все
                             </button>
                         </div>
@@ -193,7 +225,7 @@ export function UserDetailsPanel({
                                             <span>{item.ipAddress || "IP не указан"}</span>
                                             <span>{formatDate(item.expiresAt)}</span>
                                         </div>
-                                        <button className="secondary" onClick={() => onRevokeSession(item.token)} disabled={!canManageSelectedUser}>
+                                        <button className="secondary" onClick={() => onRevokeSession(item.token)} disabled={!canManageSelectedUser && !isSelfSelected}>
                                             Отозвать
                                         </button>
                                     </div>

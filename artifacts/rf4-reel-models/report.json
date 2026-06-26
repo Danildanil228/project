@@ -1,0 +1,2301 @@
+{
+  "totalReels": 395,
+  "glbFound": 710,
+  "glbAssigned": 395,
+  "reelsAlreadyHad": 394,
+  "reelsWithoutSystemId": [],
+  "glbWithoutMatch": [
+    "fly_5426\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\fly_5426.glb",
+    "spin_5001\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5001.glb",
+    "spin_5002\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5002.glb",
+    "spin_5003\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5003.glb",
+    "spin_5018\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5018.glb",
+    "spin_5019\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5019.glb",
+    "spin_5020\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5020.glb",
+    "spin_5021\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5021.glb",
+    "spin_5024\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5024.glb",
+    "spin_5025\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5025.glb",
+    "spin_5036\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5036.glb",
+    "spin_5038\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5038.glb",
+    "spin_5042\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5042.glb",
+    "spin_5052\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5052.glb",
+    "spin_5053\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5053.glb",
+    "spin_5054\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5054.glb",
+    "spin_5055\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5055.glb",
+    "spin_5056\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5056.glb",
+    "spin_5057\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5057.glb",
+    "spin_5058\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5058.glb",
+    "spin_5059\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5059.glb",
+    "spin_5060\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5060.glb",
+    "spin_5061\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5061.glb",
+    "spin_5064\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5064.glb",
+    "spin_5068\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5068.glb",
+    "spin_5069\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5069.glb",
+    "spin_5093\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5093.glb",
+    "spin_5094\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5094.glb",
+    "spin_5095\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5095.glb",
+    "spin_5096\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5096.glb",
+    "spin_5097\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5097.glb",
+    "spin_5098\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5098.glb",
+    "spin_5101\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5101.glb",
+    "spin_5103\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5103.glb",
+    "spin_5104\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5104.glb",
+    "spin_5105\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5105.glb",
+    "spin_5106\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5106.glb",
+    "spin_5107\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5107.glb",
+    "spin_5108\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5108.glb",
+    "spin_5109\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5109.glb",
+    "spin_5110\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5110.glb",
+    "spin_5111\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5111.glb",
+    "spin_5112\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5112.glb",
+    "spin_5113\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5113.glb",
+    "spin_5114\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5114.glb",
+    "spin_5115\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5115.glb",
+    "spin_5138\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5138.glb",
+    "spin_5140\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5140.glb",
+    "spin_5140_sbtn\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5140_sbtn.glb",
+    "spin_5188\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5188.glb",
+    "spin_5189\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5189.glb",
+    "spin_5190\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5190.glb",
+    "spin_5200\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5200.glb",
+    "spin_5201\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5201.glb",
+    "spin_5267\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5267.glb",
+    "spin_5269\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5269.glb",
+    "spin_5270\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5270.glb",
+    "spin_5275\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5275.glb",
+    "spin_5276\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5276.glb",
+    "spin_5277\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5277.glb",
+    "spin_5278\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5278.glb",
+    "spin_5297\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5297.glb",
+    "spin_5319_0\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5319_0.glb",
+    "spin_5320\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5320.glb",
+    "spin_5321\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5321.glb",
+    "spin_5322\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5322.glb",
+    "spin_5323\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5323.glb",
+    "spin_5324_0\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5324_0.glb",
+    "spin_5370\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5370.glb",
+    "spin_5371\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5371.glb",
+    "spin_5372\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5372.glb",
+    "spin_5373\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5373.glb",
+    "spin_5374\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5374.glb",
+    "spin_5375\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5375.glb",
+    "spin_5382\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5382.glb",
+    "spin_5383\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5383.glb",
+    "spin_5388\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5388.glb",
+    "spin_5454\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5454.glb",
+    "spin_5520\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5520.glb",
+    "spin_5521\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5521.glb",
+    "spin_5522\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5522.glb",
+    "spin_5523\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5523.glb",
+    "spin_5524\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5524.glb",
+    "spin_5525\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5525.glb",
+    "spin_5681\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5681.glb",
+    "spin_5682\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5682.glb",
+    "spin_5701\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5701.glb",
+    "spin_5702\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5702.glb",
+    "spin_5705\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5705.glb",
+    "spin_5720\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5720.glb",
+    "spin_5721\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5721.glb",
+    "spin_5722\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5722.glb",
+    "spin_5776\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5776.glb",
+    "spin_5792\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5792.glb",
+    "spin_5793\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5793.glb",
+    "spin_5794\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5794.glb",
+    "spin_5795\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5795.glb",
+    "spin_5861\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5861.glb",
+    "spin_5995\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5995.glb",
+    "spin_6007\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6007.glb",
+    "spin_6008\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6008.glb",
+    "spin_6018\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6018.glb",
+    "spin_6115\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6115.glb",
+    "spool_5491\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5491.glb",
+    "spool_5492\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5492.glb",
+    "spool_5493\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5493.glb",
+    "spool_5494\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5494.glb",
+    "spool_5495\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5495.glb",
+    "spool_5496\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5496.glb",
+    "spool_5497\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5497.glb",
+    "spool_5498\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5498.glb",
+    "spool_5499\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5499.glb",
+    "spool_5500\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5500.glb",
+    "spool_5501\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5501.glb",
+    "spool_5502\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5502.glb",
+    "spool_5503\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5503.glb",
+    "spool_5504\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5504.glb",
+    "spool_5505\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5505.glb",
+    "spool_5506\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5506.glb",
+    "spool_5507\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5507.glb",
+    "spool_5508\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5508.glb",
+    "spool_5509\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5509.glb",
+    "spool_5510\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5510.glb",
+    "spool_5511\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5511.glb",
+    "spool_5512\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5512.glb",
+    "spool_5513\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5513.glb",
+    "spool_5514\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5514.glb",
+    "spool_5515\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5515.glb",
+    "spool_5516\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5516.glb",
+    "spool_5517\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5517.glb",
+    "spool_5518\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5518.glb",
+    "spool_5519\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5519.glb",
+    "spool_5520\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5520.glb",
+    "spool_5521\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5521.glb",
+    "spool_5526\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5526.glb",
+    "spool_5527\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5527.glb",
+    "spool_5528\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5528.glb",
+    "spool_5529\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5529.glb",
+    "spool_5530\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5530.glb",
+    "spool_5531\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5531.glb",
+    "spool_5532\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5532.glb",
+    "spool_5533\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5533.glb",
+    "spool_5534\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5534.glb",
+    "spool_5535\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5535.glb",
+    "spool_5536\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5536.glb",
+    "spool_5537\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5537.glb",
+    "spool_5538\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5538.glb",
+    "spool_5539\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5539.glb",
+    "spool_5540\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5540.glb",
+    "spool_5541\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5541.glb",
+    "spool_5542\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5542.glb",
+    "spool_5543\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5543.glb",
+    "spool_5544\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5544.glb",
+    "spool_5545\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5545.glb",
+    "spool_5546\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5546.glb",
+    "spool_5547\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5547.glb",
+    "spool_5548\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5548.glb",
+    "spool_5549\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5549.glb",
+    "spool_5550\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5550.glb",
+    "spool_5551\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5551.glb",
+    "spool_5552\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5552.glb",
+    "spool_5553\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5553.glb",
+    "spool_5554\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5554.glb",
+    "spool_5555\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5555.glb",
+    "spool_5556\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5556.glb",
+    "spool_5557\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5557.glb",
+    "spool_5558\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5558.glb",
+    "spool_5559\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5559.glb",
+    "spool_5560\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5560.glb",
+    "spool_5561\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5561.glb",
+    "spool_5562\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5562.glb",
+    "spool_5563\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5563.glb",
+    "spool_5564\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5564.glb",
+    "spool_5565\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5565.glb",
+    "spool_5566\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5566.glb",
+    "spool_5567\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5567.glb",
+    "spool_5568\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5568.glb",
+    "spool_5569\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5569.glb",
+    "spool_5570\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5570.glb",
+    "spool_5571\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5571.glb",
+    "spool_5572\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5572.glb",
+    "spool_5573\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5573.glb",
+    "spool_5574\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5574.glb",
+    "spool_5575\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5575.glb",
+    "spool_5576\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5576.glb",
+    "spool_5676\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5676.glb",
+    "spool_5677\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5677.glb",
+    "spool_5678\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5678.glb",
+    "spool_5679\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5679.glb",
+    "spool_5693\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5693.glb",
+    "spool_5694\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5694.glb",
+    "spool_5695\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5695.glb",
+    "spool_5696\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5696.glb",
+    "spool_5697\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5697.glb",
+    "spool_5698\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5698.glb",
+    "spool_5699\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5699.glb",
+    "spool_5700\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5700.glb",
+    "spool_5701\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5701.glb",
+    "spool_5702\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5702.glb",
+    "spool_5703\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_5703.glb",
+    "spool_6063\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_6063.glb",
+    "spool_7011\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7011.glb",
+    "spool_7012\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7012.glb",
+    "spool_7013\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7013.glb",
+    "spool_7014\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7014.glb",
+    "spool_7015\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7015.glb",
+    "spool_7016\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7016.glb",
+    "spool_7017\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7017.glb",
+    "spool_7018\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7018.glb",
+    "spool_7019\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7019.glb",
+    "spool_7020\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7020.glb",
+    "spool_7021\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7021.glb",
+    "spool_7022\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spool\\spool_7022.glb",
+    "bcr_5009\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5009.glb",
+    "bcr_5010\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5010.glb",
+    "bcr_5012\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5012.glb",
+    "bcr_5017\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5017.glb",
+    "bcr_5035\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5035.glb",
+    "bcr_5048_nye\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5048_nye.glb",
+    "bcr_5115\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5115.glb",
+    "bcr_5116\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5116.glb",
+    "bcr_5117\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5117.glb",
+    "bcr_5118\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5118.glb",
+    "bcr_5141\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5141.glb",
+    "bcr_5199\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5199.glb",
+    "bcr_5345\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5345.glb",
+    "bcr_5367\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5367.glb",
+    "bcr_5457\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5457.glb",
+    "bcr_5461\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5461.glb",
+    "bcr_5763\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5763.glb",
+    "bcr_5775\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5775.glb",
+    "bcr_5860\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5860.glb",
+    "bcr_5924\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5924.glb",
+    "bcr_5925\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5925.glb",
+    "bcr_5926\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5926.glb",
+    "bcr_5927\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5927.glb",
+    "bcr_5970\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5970.glb",
+    "bcr_5971\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5971.glb",
+    "bcr_5996\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5996.glb",
+    "bcr_6011\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6011.glb",
+    "bcr_6012\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6012.glb",
+    "bcr_6014\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6014.glb",
+    "bcr_6049\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6049.glb",
+    "bclp_5005\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5005.glb",
+    "bclp_5006\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5006.glb",
+    "bclp_5013\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5013.glb",
+    "bclp_5014\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5014.glb",
+    "bclp_5015\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5015.glb",
+    "bclp_5016\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5016.glb",
+    "bclp_5032\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5032.glb",
+    "bclp_5046\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5046.glb",
+    "bclp_5047\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5047.glb",
+    "bclp_5049\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5049.glb",
+    "bclp_5050\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5050.glb",
+    "bclp_5083\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5083.glb",
+    "bclp_5084\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5084.glb",
+    "bclp_5085\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5085.glb",
+    "bclp_5086\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5086.glb",
+    "bclp_5087\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5087.glb",
+    "bclp_5089_be\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5089_be.glb",
+    "bclp_5092\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5092.glb",
+    "bclp_5102\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5102.glb",
+    "bclp_5340\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5340.glb",
+    "bclp_5347\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5347.glb",
+    "bclp_5381\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5381.glb",
+    "bclp_5671\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5671.glb",
+    "bclp_5672\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5672.glb",
+    "bclp_5673\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5673.glb",
+    "bclp_5674\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5674.glb",
+    "elcon_5998\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_5998.glb",
+    "elcon_5999\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_5999.glb",
+    "elcon_6000\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6000.glb",
+    "elcon_6001\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6001.glb",
+    "elcon_6002\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6002.glb",
+    "elcon_6003\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6003.glb",
+    "elcon_6004\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6004.glb",
+    "elcon_6016\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6016.glb",
+    "elcon_6017\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_6017.glb",
+    "raptor-red\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\raptor-red.glb",
+    "conv_5147\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5147.glb",
+    "conv_5154\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5154.glb",
+    "conv_5156\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5156.glb",
+    "conv_5158\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5158.glb",
+    "conv_5211\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5211.glb",
+    "conv_5298\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5298.glb",
+    "conv_5305\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5305.glb",
+    "conv_5306\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5306.glb",
+    "conv_5307\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5307.glb",
+    "conv_5308\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5308.glb",
+    "conv_5311\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5311.glb",
+    "conv_5368\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5368.glb",
+    "conv_5372\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5372.glb",
+    "conv_5373\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5373.glb",
+    "conv_5374\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5374.glb",
+    "conv_5383\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5383.glb",
+    "conv_5384\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5384.glb",
+    "conv_5385\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5385.glb",
+    "conv_5386\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5386.glb",
+    "conv_5387\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5387.glb",
+    "conv_5388\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5388.glb",
+    "conv_5389\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5389.glb",
+    "conv_5406\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5406.glb",
+    "conv_5407\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5407.glb",
+    "conv_5412\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5412.glb",
+    "conv_5413\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5413.glb",
+    "conv_5710\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5710.glb",
+    "conv_5711\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5711.glb",
+    "conv_5712\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5712.glb",
+    "conv_5713\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5713.glb",
+    "conv_5973\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5973.glb",
+    "conv_5974\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5974.glb",
+    "conv_5975\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5975.glb",
+    "conv_5994\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5994.glb",
+    "conv_7009\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_7009.glb",
+    "conv_7010\tC:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_7010.glb"
+  ],
+  "matched": [
+    {
+      "system_id": "bcr_6010",
+      "name": "Rocket Jet SG80",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6010.glb"
+    },
+    {
+      "system_id": "bcr_5462",
+      "name": "Minister CS ES60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5462.glb"
+    },
+    {
+      "system_id": "bcr_6013",
+      "name": "Phantom Super",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6013.glb"
+    },
+    {
+      "system_id": "bcr_6009",
+      "name": "Rocket Jet SG70",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_6009.glb"
+    },
+    {
+      "system_id": "bcr_5079",
+      "name": "Centauri ZC80",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5079.glb"
+    },
+    {
+      "system_id": "bcr_5078",
+      "name": "Centauri ZC70",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5078.glb"
+    },
+    {
+      "system_id": "bcr_5975",
+      "name": "Classic SG70",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5975.glb"
+    },
+    {
+      "system_id": "bcr_5366",
+      "name": "Monster LD60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5366.glb"
+    },
+    {
+      "system_id": "bcr_5365",
+      "name": "Minister NGT LD60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5365.glb"
+    },
+    {
+      "system_id": "bcr_5364",
+      "name": "Minister NGT LD50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5364.glb"
+    },
+    {
+      "system_id": "bcr_5460",
+      "name": "Minister CS LD60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5460.glb"
+    },
+    {
+      "system_id": "bcr_5458",
+      "name": "Minister CS PG60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5458.glb"
+    },
+    {
+      "system_id": "bcr_5459",
+      "name": "Minister CS SR60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5459.glb"
+    },
+    {
+      "system_id": "bcr_5456",
+      "name": "Minister CS SG60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5456.glb"
+    },
+    {
+      "system_id": "bcr_5362",
+      "name": "ZM-3 Spear SG70",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5362.glb"
+    },
+    {
+      "system_id": "bcr_5361",
+      "name": "ZM Ranger Z70",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5361.glb"
+    },
+    {
+      "system_id": "bcr_5360",
+      "name": "ZM Ranger Z60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5360.glb"
+    },
+    {
+      "system_id": "bcr_5455",
+      "name": "Minister CS 60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5455.glb"
+    },
+    {
+      "system_id": "bcr_5923",
+      "name": "Imperial R605",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5923.glb"
+    },
+    {
+      "system_id": "bcr_5077",
+      "name": "ZM-Steelness ZMS60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5077.glb"
+    },
+    {
+      "system_id": "bcr_5076",
+      "name": "ZM-Steelness ZMS50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5076.glb"
+    },
+    {
+      "system_id": "bcr_5452",
+      "name": "SAL5000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5452.glb"
+    },
+    {
+      "system_id": "bcr_5048",
+      "name": "Billionare HV 60R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5048.glb"
+    },
+    {
+      "system_id": "bcr_5072",
+      "name": "ZM-4 Z60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5072.glb"
+    },
+    {
+      "system_id": "bcr_5723",
+      "name": "ZM-4 Z-60 8-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5723.glb"
+    },
+    {
+      "system_id": "bcr_5071",
+      "name": "ZM-4 Z50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5071.glb"
+    },
+    {
+      "system_id": "bcr_5007",
+      "name": "ZM-4 Z40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5007.glb"
+    },
+    {
+      "system_id": "bcr_5717",
+      "name": "ZM-4 Z-40 8-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5717.glb"
+    },
+    {
+      "system_id": "bcr_5764",
+      "name": "Castmaster  LGR1973",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5764.glb"
+    },
+    {
+      "system_id": "bcr_5062",
+      "name": "SteelHead 600-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5062.glb"
+    },
+    {
+      "system_id": "bcr_5011",
+      "name": "SteelHead 500-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5011.glb"
+    },
+    {
+      "system_id": "bcr_5070",
+      "name": "Billionare 60R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5070.glb"
+    },
+    {
+      "system_id": "bcr_5008",
+      "name": "Billionare 50R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5008.glb"
+    },
+    {
+      "system_id": "bcr_5075",
+      "name": "ZM-3 Z60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5075.glb"
+    },
+    {
+      "system_id": "bcr_5074",
+      "name": "ZM-3 Z50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5074.glb"
+    },
+    {
+      "system_id": "bcr_5073",
+      "name": "ZM-3 Z40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5073.glb"
+    },
+    {
+      "system_id": "bcr_5389",
+      "name": "Minister 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5389.glb"
+    },
+    {
+      "system_id": "bcr_5081",
+      "name": "Black Box ZBB60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5081.glb"
+    },
+    {
+      "system_id": "bcr_5080",
+      "name": "Black Box ZBB50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5080.glb"
+    },
+    {
+      "system_id": "bcr_5120",
+      "name": "Compact ZC60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5120.glb"
+    },
+    {
+      "system_id": "bcr_5082",
+      "name": "Compact ZC50",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5082.glb"
+    },
+    {
+      "system_id": "bcr_5119",
+      "name": "Compact ZC40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5119.glb"
+    },
+    {
+      "system_id": "bcr_5198",
+      "name": "Zodiac 500-R2",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5198.glb"
+    },
+    {
+      "system_id": "bcr_5197",
+      "name": "Spider 400-R2",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5197.glb"
+    },
+    {
+      "system_id": "bcr_5034",
+      "name": "Magellan 400",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5034.glb"
+    },
+    {
+      "system_id": "bcr_5196",
+      "name": "Winner Round II",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\байткастинговые\\bcr_5196.glb"
+    },
+    {
+      "system_id": "spin_5691",
+      "name": "Furia 30000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5691.glb"
+    },
+    {
+      "system_id": "spin_5274",
+      "name": "Turion SW 30000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5274.glb"
+    },
+    {
+      "system_id": "spin_6046",
+      "name": "Venga II 30000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6046.glb"
+    },
+    {
+      "system_id": "spin_7002",
+      "name": "Venga II 30000 Super 9",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7002.glb"
+    },
+    {
+      "system_id": "spin_6047",
+      "name": "Venga II 30000 First Edition",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6047.glb"
+    },
+    {
+      "system_id": "spin_5326",
+      "name": "Goliaf 30000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5326.glb"
+    },
+    {
+      "system_id": "spin_5690",
+      "name": "Furia 20000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5690.glb"
+    },
+    {
+      "system_id": "spin_5273",
+      "name": "Turion SW 20000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5273.glb"
+    },
+    {
+      "system_id": "spin_5325",
+      "name": "Goliaf 20000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5325.glb"
+    },
+    {
+      "system_id": "spin_5272",
+      "name": "Turion SW 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5272.glb"
+    },
+    {
+      "system_id": "spin_5689",
+      "name": "Furia 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5689.glb"
+    },
+    {
+      "system_id": "spin_5688",
+      "name": "Furia 10000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5688.glb"
+    },
+    {
+      "system_id": "spin_6045",
+      "name": "Venga II 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6045.glb"
+    },
+    {
+      "system_id": "spin_7001",
+      "name": "Venga II 10000 Super 9",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7001.glb"
+    },
+    {
+      "system_id": "spin_6041",
+      "name": "Venga Classic 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6041.glb"
+    },
+    {
+      "system_id": "spin_6042",
+      "name": "Venga II 10000 Final",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6042.glb"
+    },
+    {
+      "system_id": "spin_5928",
+      "name": "Venga 10000 6 An.",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5928.glb"
+    },
+    {
+      "system_id": "spin_5324",
+      "name": "Goliaf 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5324.glb"
+    },
+    {
+      "system_id": "spin_6118",
+      "name": "Admiral II 10000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6118.glb"
+    },
+    {
+      "system_id": "spin_6038",
+      "name": "Admiral II 10000S Superior",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6038.glb"
+    },
+    {
+      "system_id": "spin_5699",
+      "name": "Olaf Stark SP-SWG 100",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5699.glb"
+    },
+    {
+      "system_id": "spin_5319",
+      "name": "Azimut 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5319.glb"
+    },
+    {
+      "system_id": "spin_5679",
+      "name": "Tagara II 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5679.glb"
+    },
+    {
+      "system_id": "spin_5719",
+      "name": "Tagara II 10000 8-An.",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5719.glb"
+    },
+    {
+      "system_id": "spin_5152",
+      "name": "Tagara 10000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5152.glb"
+    },
+    {
+      "system_id": "spin_5271",
+      "name": "Turion SW 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5271.glb"
+    },
+    {
+      "system_id": "spin_6044",
+      "name": "Venga II 8000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6044.glb"
+    },
+    {
+      "system_id": "spin_5139",
+      "name": "Venga 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5139.glb"
+    },
+    {
+      "system_id": "c_spin_5382",
+      "name": "Megara 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5382.glb"
+    },
+    {
+      "system_id": "spin_5817",
+      "name": "Overlord 88",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5817.glb"
+    },
+    {
+      "system_id": "spin_5687",
+      "name": "Bestia II 8000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5687.glb"
+    },
+    {
+      "system_id": "spin_5137",
+      "name": "Bestia 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5137.glb"
+    },
+    {
+      "system_id": "spin_5318",
+      "name": "Azimut 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5318.glb"
+    },
+    {
+      "system_id": "spin_6112",
+      "name": "Admiral II 8000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6112.glb"
+    },
+    {
+      "system_id": "spin_5222",
+      "name": "Admiral 8000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5222.glb"
+    },
+    {
+      "system_id": "spin_5678",
+      "name": "Tagara II 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5678.glb"
+    },
+    {
+      "system_id": "spin_5151",
+      "name": "Tagara 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5151.glb"
+    },
+    {
+      "system_id": "spin_5451",
+      "name": "Silver 80",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5451.glb"
+    },
+    {
+      "system_id": "spin_6090",
+      "name": "Everest III 8000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6090.glb"
+    },
+    {
+      "system_id": "spin_5118",
+      "name": "Everest II 8000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5118.glb"
+    },
+    {
+      "system_id": "spin_6006",
+      "name": "Everest-24 8000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6006.glb"
+    },
+    {
+      "system_id": "spin_5700",
+      "name": "SG8000 Ultra Power",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5700.glb"
+    },
+    {
+      "system_id": "c_spin_5383",
+      "name": "Evia 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5383.glb"
+    },
+    {
+      "system_id": "spin_7016",
+      "name": "Hunter 80S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7016.glb"
+    },
+    {
+      "system_id": "spin_7005",
+      "name": "Hunter 80S 9-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7005.glb"
+    },
+    {
+      "system_id": "spin_5127",
+      "name": "Natora 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5127.glb"
+    },
+    {
+      "system_id": "spin_6020",
+      "name": "Natora 8000 Super Seven",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6020.glb"
+    },
+    {
+      "system_id": "spin_6027",
+      "name": "Velara 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6027.glb"
+    },
+    {
+      "system_id": "spin_6029",
+      "name": "Velara 8000 Mystique",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6029.glb"
+    },
+    {
+      "system_id": "c_spin_5387",
+      "name": "Caliber 80 SLC",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5387.glb"
+    },
+    {
+      "system_id": "spin_5078",
+      "name": "Model 827",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5078.glb"
+    },
+    {
+      "system_id": "spin_6005",
+      "name": "Narga 8000 Super 7",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6005.glb"
+    },
+    {
+      "system_id": "spin_5121",
+      "name": "Narga 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5121.glb"
+    },
+    {
+      "system_id": "c_spin_5386",
+      "name": "Caliber HSV 80 SLC",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5386.glb"
+    },
+    {
+      "system_id": "spin_5703",
+      "name": "Caliber HSV 80 SLC Raven",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5703.glb"
+    },
+    {
+      "system_id": "spin_5195",
+      "name": "Alfa 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5195.glb"
+    },
+    {
+      "system_id": "spin_5045",
+      "name": "Gold 80s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5045.glb"
+    },
+    {
+      "system_id": "c_spin_5385",
+      "name": "Titan 8000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5385.glb"
+    },
+    {
+      "system_id": "spin_6043",
+      "name": "Venga II 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6043.glb"
+    },
+    {
+      "system_id": "spin_6040",
+      "name": "Venga Classic 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6040.glb"
+    },
+    {
+      "system_id": "spin_6111",
+      "name": "Admiral II 6000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6111.glb"
+    },
+    {
+      "system_id": "spin_6037",
+      "name": "Admiral II 6000S Superior",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6037.glb"
+    },
+    {
+      "system_id": "spin_5221",
+      "name": "Admiral 6000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5221.glb"
+    },
+    {
+      "system_id": "spin_5680",
+      "name": "Chronica II 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5680.glb"
+    },
+    {
+      "system_id": "spin_5686",
+      "name": "Bestia II 6000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5686.glb"
+    },
+    {
+      "system_id": "spin_5216",
+      "name": "Major ltd 2 6000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5216.glb"
+    },
+    {
+      "system_id": "spin_5136",
+      "name": "Bestia 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5136.glb"
+    },
+    {
+      "system_id": "spin_5698",
+      "name": "Olaf SP 60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5698.glb"
+    },
+    {
+      "system_id": "spin_5401",
+      "name": "P-Series 2 GS 60S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5401.glb"
+    },
+    {
+      "system_id": "spin_5819",
+      "name": "Azimut 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5819.glb"
+    },
+    {
+      "system_id": "spin_5677",
+      "name": "Tagara II 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5677.glb"
+    },
+    {
+      "system_id": "spin_5150_S8",
+      "name": "Tagara 6000 Super 8",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5150_S8.glb"
+    },
+    {
+      "system_id": "spin_6048",
+      "name": "Overlord 656",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6048.glb"
+    },
+    {
+      "system_id": "spin_5150",
+      "name": "Tagara 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5150.glb"
+    },
+    {
+      "system_id": "spin_5344",
+      "name": "Z-Series 2 60S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5344.glb"
+    },
+    {
+      "system_id": "spin_5453",
+      "name": "Full Metal 60",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5453.glb"
+    },
+    {
+      "system_id": "spin_6019",
+      "name": "Evia 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6019.glb"
+    },
+    {
+      "system_id": "spin_6089",
+      "name": "Everest III 6000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6089.glb"
+    },
+    {
+      "system_id": "spin_7015",
+      "name": "Hunter 60S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7015.glb"
+    },
+    {
+      "system_id": "spin_7004",
+      "name": "Hunter 60S 9-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7004.glb"
+    },
+    {
+      "system_id": "spin_6087",
+      "name": "Horizon III 6000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6087.glb"
+    },
+    {
+      "system_id": "spin_5117",
+      "name": "Everest II 6000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5117.glb"
+    },
+    {
+      "system_id": "spin_5100",
+      "name": "Commandor GS 60S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5100.glb"
+    },
+    {
+      "system_id": "spin_5126",
+      "name": "Natora 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5126.glb"
+    },
+    {
+      "system_id": "spin_6039",
+      "name": "Natora 6000 Supercarp",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6039.glb"
+    },
+    {
+      "system_id": "spin_6026",
+      "name": "Velara 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6026.glb"
+    },
+    {
+      "system_id": "spin_6028",
+      "name": "Velara 6000 Mystique",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6028.glb"
+    },
+    {
+      "system_id": "spin_5120",
+      "name": "Narga 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5120.glb"
+    },
+    {
+      "system_id": "spin_5362",
+      "name": "Commandor 2 60S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5362.glb"
+    },
+    {
+      "system_id": "spin_5194",
+      "name": "Alfa 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5194.glb"
+    },
+    {
+      "system_id": "spin_5044",
+      "name": "Gold 60s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5044.glb"
+    },
+    {
+      "system_id": "spin_5398",
+      "name": "Pulsar 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5398.glb"
+    },
+    {
+      "system_id": "spin_5066",
+      "name": "Sabre 60s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5066.glb"
+    },
+    {
+      "system_id": "c_spin_5384",
+      "name": "Super Cast 6000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\c_spin\\c_spin_5384.glb"
+    },
+    {
+      "system_id": "spin_5187",
+      "name": "Proton 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5187.glb"
+    },
+    {
+      "system_id": "spin_5030",
+      "name": "Pride 6000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5030.glb"
+    },
+    {
+      "system_id": "spin_5027",
+      "name": "Adriatica 5000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5027.glb"
+    },
+    {
+      "system_id": "spin_5369",
+      "name": "Chronica 6000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5369.glb"
+    },
+    {
+      "system_id": "spin_5135",
+      "name": "Bestia 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5135.glb"
+    },
+    {
+      "system_id": "spin_6110",
+      "name": "Admiral II 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6110.glb"
+    },
+    {
+      "system_id": "spin_5220",
+      "name": "Admiral 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5220.glb"
+    },
+    {
+      "system_id": "spin_5149",
+      "name": "Tagara 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5149.glb"
+    },
+    {
+      "system_id": "spin_5402",
+      "name": "P-Series 2 GS 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5402.glb"
+    },
+    {
+      "system_id": "spin_5818",
+      "name": "Azimut 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5818.glb"
+    },
+    {
+      "system_id": "spin_5345",
+      "name": "Z-Series 2 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5345.glb"
+    },
+    {
+      "system_id": "spin_5215",
+      "name": "Major ltd 2 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5215.glb"
+    },
+    {
+      "system_id": "spin_5213",
+      "name": "Major 2 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5213.glb"
+    },
+    {
+      "system_id": "spin_6088",
+      "name": "Everest III 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6088.glb"
+    },
+    {
+      "system_id": "spin_7014",
+      "name": "Hunter 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7014.glb"
+    },
+    {
+      "system_id": "spin_5116",
+      "name": "Everest II 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5116.glb"
+    },
+    {
+      "system_id": "spin_5099",
+      "name": "Commandor GS 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5099.glb"
+    },
+    {
+      "system_id": "spin_5125",
+      "name": "Natora 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5125.glb"
+    },
+    {
+      "system_id": "spin_5317",
+      "name": "Conquest II 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5317.glb"
+    },
+    {
+      "system_id": "spin_5363",
+      "name": "Commandor 2 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5363.glb"
+    },
+    {
+      "system_id": "spin_5119",
+      "name": "Narga 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5119.glb"
+    },
+    {
+      "system_id": "spin_5225",
+      "name": "Bird 2 GSX 40S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5225.glb"
+    },
+    {
+      "system_id": "spin_5193",
+      "name": "Alfa 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5193.glb"
+    },
+    {
+      "system_id": "spin_5390",
+      "name": "Model De Luxe 430S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5390.glb"
+    },
+    {
+      "system_id": "spin_5041",
+      "name": "Sabre 40s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5041.glb"
+    },
+    {
+      "system_id": "spin_5069_2",
+      "name": "Horizon 2 4000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5069_2.glb"
+    },
+    {
+      "system_id": "spin_5399",
+      "name": "Pulsar 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5399.glb"
+    },
+    {
+      "system_id": "spin_5186",
+      "name": "Proton 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5186.glb"
+    },
+    {
+      "system_id": "spin_5029",
+      "name": "Pride 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5029.glb"
+    },
+    {
+      "system_id": "spin_5360",
+      "name": "Hercules G2 40s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5360.glb"
+    },
+    {
+      "system_id": "spin_5184",
+      "name": "Element PRO 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5184.glb"
+    },
+    {
+      "system_id": "spin_5063",
+      "name": "Dragon 40s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5063.glb"
+    },
+    {
+      "system_id": "spin_5180",
+      "name": "Element 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5180.glb"
+    },
+    {
+      "system_id": "spin_5825",
+      "name": "Lagoon-HP 2 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5825.glb"
+    },
+    {
+      "system_id": "spin_5357",
+      "name": "Lacerti-S 2 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5357.glb"
+    },
+    {
+      "system_id": "spin_5358",
+      "name": "Lacerti 2 4000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5358.glb"
+    },
+    {
+      "system_id": "spin_6102",
+      "name": "Lacerti-SX NG 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6102.glb"
+    },
+    {
+      "system_id": "spin_6101",
+      "name": "Lacerti NG 4000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6101.glb"
+    },
+    {
+      "system_id": "spin_6093",
+      "name": "Aviator SP 3000 XHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6093.glb"
+    },
+    {
+      "system_id": "spin_5685",
+      "name": "Bestia II 3000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5685.glb"
+    },
+    {
+      "system_id": "spin_5697",
+      "name": "Olaf SP 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5697.glb"
+    },
+    {
+      "system_id": "spin_5676",
+      "name": "Tagara II 3000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5676.glb"
+    },
+    {
+      "system_id": "spin_5134",
+      "name": "Bestia 3000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5134.glb"
+    },
+    {
+      "system_id": "spin_5403",
+      "name": "P-Series 2 GS 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5403.glb"
+    },
+    {
+      "system_id": "spin_6115_g",
+      "name": "Mayor III 3000S + 9 Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6115_g.glb"
+    },
+    {
+      "system_id": "spin_5346",
+      "name": "Z-Series 2 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5346.glb"
+    },
+    {
+      "system_id": "spin_5214",
+      "name": "Mayor ltd 2 3000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5214.glb"
+    },
+    {
+      "system_id": "spin_5124",
+      "name": "Natora 3000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5124.glb"
+    },
+    {
+      "system_id": "spin_6025",
+      "name": "Velara 3000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6025.glb"
+    },
+    {
+      "system_id": "spin_5352",
+      "name": "Corsair 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5352.glb"
+    },
+    {
+      "system_id": "spin_6086",
+      "name": "Horizon III 3000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6086.glb"
+    },
+    {
+      "system_id": "spin_7006",
+      "name": "Horizon III 3000S 9-Anniversary",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7006.glb"
+    },
+    {
+      "system_id": "spin_5364",
+      "name": "Commandor 2 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5364.glb"
+    },
+    {
+      "system_id": "spin_5224",
+      "name": "Bird 2 GSX 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5224.glb"
+    },
+    {
+      "system_id": "spin_5043",
+      "name": "Gold 30s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5043.glb"
+    },
+    {
+      "system_id": "spin_5227",
+      "name": "Bird 2 GS 30S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5227.glb"
+    },
+    {
+      "system_id": "spin_5052_2",
+      "name": "Mosquito 2 3000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5052_2.glb"
+    },
+    {
+      "system_id": "spin_5068_2",
+      "name": "Horizon 2 3000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5068_2.glb"
+    },
+    {
+      "system_id": "spin_5217",
+      "name": "Meteor 30s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5217.glb"
+    },
+    {
+      "system_id": "spin_5065",
+      "name": "Pegasus 30s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5065.glb"
+    },
+    {
+      "system_id": "spin_5037",
+      "name": "Dragon 30s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5037.glb"
+    },
+    {
+      "system_id": "spin_5183",
+      "name": "Element PRO 3000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5183.glb"
+    },
+    {
+      "system_id": "spin_5026",
+      "name": "Adriatica 3000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5026.glb"
+    },
+    {
+      "system_id": "spin_5179",
+      "name": "Element 3000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5179.glb"
+    },
+    {
+      "system_id": "spin_5359",
+      "name": "Hydra G2 30s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5359.glb"
+    },
+    {
+      "system_id": "spin_5022",
+      "name": "Lagoon 3000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5022.glb"
+    },
+    {
+      "system_id": "spin_5823",
+      "name": "Libra 2 3000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5823.glb"
+    },
+    {
+      "system_id": "spin_5821",
+      "name": "Spark 2 3000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5821.glb"
+    },
+    {
+      "system_id": "spin_6092",
+      "name": "Aviator SP 2000 XHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6092.glb"
+    },
+    {
+      "system_id": "spin_5684",
+      "name": "Bestia II 2000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5684.glb"
+    },
+    {
+      "system_id": "spin_5425",
+      "name": "Overlord 3RS 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5425.glb"
+    },
+    {
+      "system_id": "spin_5356",
+      "name": "JSX Inferno 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5356.glb"
+    },
+    {
+      "system_id": "spin_5423",
+      "name": "Overlord 3GS 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5423.glb"
+    },
+    {
+      "system_id": "spin_5354",
+      "name": "JSX 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5354.glb"
+    },
+    {
+      "system_id": "spin_6114",
+      "name": "Major III 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6114.glb"
+    },
+    {
+      "system_id": "spin_5133",
+      "name": "Bestia 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5133.glb"
+    },
+    {
+      "system_id": "spin_5421",
+      "name": "Overlord 3BS 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5421.glb"
+    },
+    {
+      "system_id": "spin_5696",
+      "name": "Olaf SP 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5696.glb"
+    },
+    {
+      "system_id": "spin_5419",
+      "name": "Overlord 3E 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5419.glb"
+    },
+    {
+      "system_id": "spin_5404",
+      "name": "P-Series 2 GS 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5404.glb"
+    },
+    {
+      "system_id": "spin_5219",
+      "name": "Admiral 2000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5219.glb"
+    },
+    {
+      "system_id": "spin_5347",
+      "name": "Z-Series 2 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5347.glb"
+    },
+    {
+      "system_id": "spin_5417",
+      "name": "Overlord 3B 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5417.glb"
+    },
+    {
+      "system_id": "spin_5212",
+      "name": "Major 2 2000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5212.glb"
+    },
+    {
+      "system_id": "spin_5415",
+      "name": "Overlord 3 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5415.glb"
+    },
+    {
+      "system_id": "spin_5724",
+      "name": "Overlord 3 20S 8-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5724.glb"
+    },
+    {
+      "system_id": "spin_5123",
+      "name": "Natora 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5123.glb"
+    },
+    {
+      "system_id": "spin_5351",
+      "name": "Corsair 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5351.glb"
+    },
+    {
+      "system_id": "spin_5365",
+      "name": "Commandor 2 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5365.glb"
+    },
+    {
+      "system_id": "spin_5268",
+      "name": "Narga 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5268.glb"
+    },
+    {
+      "system_id": "spin_5316",
+      "name": "Conquest II 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5316.glb"
+    },
+    {
+      "system_id": "spin_5349",
+      "name": "Bird 2 GSX 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5349.glb"
+    },
+    {
+      "system_id": "spin_6085",
+      "name": "Horizon III 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6085.glb"
+    },
+    {
+      "system_id": "spinreel_pelengas",
+      "name": "Pelengas",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spinreel_pelengas.glb"
+    },
+    {
+      "system_id": "spinreel_pelengas_2017",
+      "name": "Pelengas 2017",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spinreel_pelengas_2017.glb"
+    },
+    {
+      "system_id": "spinreel_pelengas_2025",
+      "name": "Pelengas 2025",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spinreel_pelengas_2025.glb"
+    },
+    {
+      "system_id": "spinreel_pelengas_2026",
+      "name": "Pelengas 2026",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spinreel_pelengas_2026.glb"
+    },
+    {
+      "system_id": "spin_5192",
+      "name": "Alfa 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5192.glb"
+    },
+    {
+      "system_id": "spin_5103_2",
+      "name": "Bird 2 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5103_2.glb"
+    },
+    {
+      "system_id": "spin_5001_2",
+      "name": "Horizon 2 2000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5001_2.glb"
+    },
+    {
+      "system_id": "old_spinreel",
+      "name": "Vyatka-2",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\old_spinreel.glb"
+    },
+    {
+      "system_id": "spin_5400",
+      "name": "Pulsar 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5400.glb"
+    },
+    {
+      "system_id": "spin_5040",
+      "name": "Sirius 20S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5040.glb"
+    },
+    {
+      "system_id": "spin_5185",
+      "name": "Proton 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5185.glb"
+    },
+    {
+      "system_id": "spin_5361",
+      "name": "Hercules G2 20s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5361.glb"
+    },
+    {
+      "system_id": "spin_5028",
+      "name": "Pride 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5028.glb"
+    },
+    {
+      "system_id": "spin_5182",
+      "name": "Element PRO 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5182.glb"
+    },
+    {
+      "system_id": "spin_5178",
+      "name": "Element 2000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5178.glb"
+    },
+    {
+      "system_id": "spin_5824",
+      "name": "Lagoon-HP 2 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5824.glb"
+    },
+    {
+      "system_id": "spin_5826",
+      "name": "Hydra Smart 2 25s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5826.glb"
+    },
+    {
+      "system_id": "spin_5822",
+      "name": "Libra 2 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5822.glb"
+    },
+    {
+      "system_id": "spin_5820",
+      "name": "Spark 2 2000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5820.glb"
+    },
+    {
+      "system_id": "spin_6091",
+      "name": "Aviator SP 1000 XHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6091.glb"
+    },
+    {
+      "system_id": "spin_7003",
+      "name": "Aviator SP 1000 XHS 9-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_7003.glb"
+    },
+    {
+      "system_id": "spin_5683",
+      "name": "Bestia II 1000 SHS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5683.glb"
+    },
+    {
+      "system_id": "spin_5424",
+      "name": "Overlord 3RS 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5424.glb"
+    },
+    {
+      "system_id": "spin_5355",
+      "name": "JSX Inferno 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5355.glb"
+    },
+    {
+      "system_id": "spin_5422",
+      "name": "Overlord 3GS 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5422.glb"
+    },
+    {
+      "system_id": "spin_5353",
+      "name": "JSX 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5353.glb"
+    },
+    {
+      "system_id": "spin_6113",
+      "name": "Major III 1000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6113.glb"
+    },
+    {
+      "system_id": "spin_5420",
+      "name": "Overlord 3BS 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5420.glb"
+    },
+    {
+      "system_id": "spin_5132",
+      "name": "Bestia 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5132.glb"
+    },
+    {
+      "system_id": "spin_5405",
+      "name": "P-Series 2 GS 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5405.glb"
+    },
+    {
+      "system_id": "spin_5418",
+      "name": "Overlord 3E 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5418.glb"
+    },
+    {
+      "system_id": "spin_5695",
+      "name": "Olaf SP 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5695.glb"
+    },
+    {
+      "system_id": "spin_5218",
+      "name": "Admiral 1000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5218.glb"
+    },
+    {
+      "system_id": "spin_5348",
+      "name": "Z-Series 2 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5348.glb"
+    },
+    {
+      "system_id": "spin_5416",
+      "name": "Overlord 3B 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5416.glb"
+    },
+    {
+      "system_id": "spin_5414",
+      "name": "Overlord 3 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5414.glb"
+    },
+    {
+      "system_id": "spin_5122",
+      "name": "Natora 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5122.glb"
+    },
+    {
+      "system_id": "spin_6024",
+      "name": "Velara 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6024.glb"
+    },
+    {
+      "system_id": "spin_5350",
+      "name": "Corsair 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5350.glb"
+    },
+    {
+      "system_id": "spin_6084",
+      "name": "Horizon III 1000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_6084.glb"
+    },
+    {
+      "system_id": "spin_5765",
+      "name": "Fisher MT10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5765.glb"
+    },
+    {
+      "system_id": "spin_5223",
+      "name": "Bird 2 GSX 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5223.glb"
+    },
+    {
+      "system_id": "spin_5191",
+      "name": "Alfa 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5191.glb"
+    },
+    {
+      "system_id": "spin_5226",
+      "name": "Bird 2 GS 10S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5226.glb"
+    },
+    {
+      "system_id": "spin_5051",
+      "name": "EasySpin 1000s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5051.glb"
+    },
+    {
+      "system_id": "spin_5039",
+      "name": "Pegasus 10s",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5039.glb"
+    },
+    {
+      "system_id": "spin_5181",
+      "name": "Element PRO 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5181.glb"
+    },
+    {
+      "system_id": "spin_5177",
+      "name": "Element 1000",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5177.glb"
+    },
+    {
+      "system_id": "spin_5023",
+      "name": "Lagoon 1000S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\spin\\spin_5023.glb"
+    },
+    {
+      "system_id": "elcon_5969",
+      "name": "Electro Raptor 40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_5969.glb"
+    },
+    {
+      "system_id": "elcon_5968",
+      "name": "Electro Raptor 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\рапторы\\elcon_5968.glb"
+    },
+    {
+      "system_id": "conv_5972",
+      "name": "Borealica 40DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5972.glb"
+    },
+    {
+      "system_id": "conv_5313",
+      "name": "Borealica 30DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5313.glb"
+    },
+    {
+      "system_id": "conv_5312",
+      "name": "Borealica 20DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5312.glb"
+    },
+    {
+      "system_id": "conv_5174",
+      "name": "Imperial C40 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5174.glb"
+    },
+    {
+      "system_id": "conv_5411",
+      "name": "Triumph 30 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5411.glb"
+    },
+    {
+      "system_id": "conv_5718",
+      "name": "Triumph 30 2S 8-An.",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5718.glb"
+    },
+    {
+      "system_id": "conv_5410",
+      "name": "Triumph 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5410.glb"
+    },
+    {
+      "system_id": "conv_5409",
+      "name": "Triumph 10 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5409.glb"
+    },
+    {
+      "system_id": "conv_5173",
+      "name": "Venga C 40 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5173.glb"
+    },
+    {
+      "system_id": "conv_7008",
+      "name": "Venga C 40 2S 9-An.",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_7008.glb"
+    },
+    {
+      "system_id": "conv_5172",
+      "name": "Venga C 30 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5172.glb"
+    },
+    {
+      "system_id": "conv_5171",
+      "name": "Venga C 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5171.glb"
+    },
+    {
+      "system_id": "conv_5310",
+      "name": "Albacore 40 DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5310.glb"
+    },
+    {
+      "system_id": "conv_5309",
+      "name": "Albacore 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5309.glb"
+    },
+    {
+      "system_id": "conv_5170",
+      "name": "Taiga 40 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5170.glb"
+    },
+    {
+      "system_id": "conv_5169",
+      "name": "Taiga 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5169.glb"
+    },
+    {
+      "system_id": "conv_5993",
+      "name": "California 40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5993.glb"
+    },
+    {
+      "system_id": "conv_6105",
+      "name": "Tongar 2Gen 30 DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_6105.glb"
+    },
+    {
+      "system_id": "conv_6104",
+      "name": "Tongar 2Gen 20 DS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_6104.glb"
+    },
+    {
+      "system_id": "conv_6103",
+      "name": "Tongar 2Gen 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_6103.glb"
+    },
+    {
+      "system_id": "conv_5168",
+      "name": "Tera L-LD 40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5168.glb"
+    },
+    {
+      "system_id": "conv_5167",
+      "name": "Tera L-LD 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5167.glb"
+    },
+    {
+      "system_id": "conv_5166",
+      "name": "Tera L-LD 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5166.glb"
+    },
+    {
+      "system_id": "conv_5382",
+      "name": "Cardinal 30 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5382.glb"
+    },
+    {
+      "system_id": "conv_5381",
+      "name": "Cardinal 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5381.glb"
+    },
+    {
+      "system_id": "conv_5380",
+      "name": "Cardinal 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5380.glb"
+    },
+    {
+      "system_id": "conv_5379",
+      "name": "Cardinal 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5379.glb"
+    },
+    {
+      "system_id": "conv_5378",
+      "name": "Cardinal 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5378.glb"
+    },
+    {
+      "system_id": "conv_5304",
+      "name": "Palomar 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5304.glb"
+    },
+    {
+      "system_id": "conv_5303",
+      "name": "Palomar 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5303.glb"
+    },
+    {
+      "system_id": "conv_5302",
+      "name": "Palomar 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5302.glb"
+    },
+    {
+      "system_id": "conv_5165",
+      "name": "Tera C-LW 40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5165.glb"
+    },
+    {
+      "system_id": "conv_5164",
+      "name": "Tera C-LW 30LC",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5164.glb"
+    },
+    {
+      "system_id": "conv_5163",
+      "name": "Tera C-LW 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5163.glb"
+    },
+    {
+      "system_id": "conv_5162",
+      "name": "Tera C-LW 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5162.glb"
+    },
+    {
+      "system_id": "conv_5392",
+      "name": "Billionaire CNV 30 MS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5392.glb"
+    },
+    {
+      "system_id": "conv_5391",
+      "name": "Billionaire CNV 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5391.glb"
+    },
+    {
+      "system_id": "conv_5390",
+      "name": "Billionaire CNV 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5390.glb"
+    },
+    {
+      "system_id": "conv_5161",
+      "name": "Taiga C 40",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5161.glb"
+    },
+    {
+      "system_id": "conv_5160",
+      "name": "Taiga C 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5160.glb"
+    },
+    {
+      "system_id": "conv_6015",
+      "name": "Taiga C 30 2S 7-An.",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_6015.glb"
+    },
+    {
+      "system_id": "conv_5159",
+      "name": "Taiga C 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5159.glb"
+    },
+    {
+      "system_id": "conv_5377",
+      "name": "Rigal 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5377.glb"
+    },
+    {
+      "system_id": "conv_5301",
+      "name": "Oriental 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5301.glb"
+    },
+    {
+      "system_id": "conv_5708",
+      "name": "Oriental Noble F30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5708.glb"
+    },
+    {
+      "system_id": "conv_5300",
+      "name": "Oriental 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5300.glb"
+    },
+    {
+      "system_id": "conv_5706",
+      "name": "Oriental Noble F20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5706.glb"
+    },
+    {
+      "system_id": "conv_5397",
+      "name": "SteelHead C-30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5397.glb"
+    },
+    {
+      "system_id": "conv_5396",
+      "name": "SteelHead C-20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5396.glb"
+    },
+    {
+      "system_id": "conv_5395",
+      "name": "SteelHead C-10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5395.glb"
+    },
+    {
+      "system_id": "conv_5157",
+      "name": "Isinga C-LW 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5157.glb"
+    },
+    {
+      "system_id": "conv_5155",
+      "name": "Isinga C-LW 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5155.glb"
+    },
+    {
+      "system_id": "conv_5153",
+      "name": "Isinga C-LW 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5153.glb"
+    },
+    {
+      "system_id": "conv_5299",
+      "name": "Argus 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5299.glb"
+    },
+    {
+      "system_id": "conv_5297",
+      "name": "Argus 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5297.glb"
+    },
+    {
+      "system_id": "conv_5296",
+      "name": "Argus 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5296.glb"
+    },
+    {
+      "system_id": "conv_5376",
+      "name": "Halibut 20 2S",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5376.glb"
+    },
+    {
+      "system_id": "conv_5375",
+      "name": "Halibut 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5375.glb"
+    },
+    {
+      "system_id": "conv_5229",
+      "name": "Altitude 20 DLC",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5229.glb"
+    },
+    {
+      "system_id": "conv_5228",
+      "name": "Altitude 10 DLC",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5228.glb"
+    },
+    {
+      "system_id": "conv_5148",
+      "name": "Hamra C-LW 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5148.glb"
+    },
+    {
+      "system_id": "conv_5146",
+      "name": "Hamra C-LW 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5146.glb"
+    },
+    {
+      "system_id": "conv_5145",
+      "name": "Hamra C-LW 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5145.glb"
+    },
+    {
+      "system_id": "conv_5371",
+      "name": "Seagull 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5371.glb"
+    },
+    {
+      "system_id": "conv_5370",
+      "name": "Seagull 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5370.glb"
+    },
+    {
+      "system_id": "conv_5144",
+      "name": "Narga C-LW 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5144.glb"
+    },
+    {
+      "system_id": "conv_5143",
+      "name": "Narga C-LW 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5143.glb"
+    },
+    {
+      "system_id": "conv_5142",
+      "name": "Narga C-LW 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5142.glb"
+    },
+    {
+      "system_id": "conv_5369",
+      "name": "Simplex 400",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5369.glb"
+    },
+    {
+      "system_id": "conv_5367",
+      "name": "Simplex 300",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5367.glb"
+    },
+    {
+      "system_id": "conv_5366",
+      "name": "Simplex 200",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5366.glb"
+    },
+    {
+      "system_id": "conv_5394",
+      "name": "Zodiac С-20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5394.glb"
+    },
+    {
+      "system_id": "conv_5393",
+      "name": "Zodiac С-10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5393.glb"
+    },
+    {
+      "system_id": "conv_5210",
+      "name": "Winner Trolling 30",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5210.glb"
+    },
+    {
+      "system_id": "conv_5209",
+      "name": "Winner Trolling 20",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5209.glb"
+    },
+    {
+      "system_id": "conv_5208",
+      "name": "Winner Trolling 10",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\силовые мультипликаторы\\conv_5208.glb"
+    },
+    {
+      "system_id": "bclp_5380",
+      "name": "Jet-Series ULX LP-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5380.glb"
+    },
+    {
+      "system_id": "bclp_5358",
+      "name": "JSX Inferno LP-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5358.glb"
+    },
+    {
+      "system_id": "bclp_5103",
+      "name": "Jet-Series JSXHS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5103.glb"
+    },
+    {
+      "system_id": "bclp_5004",
+      "name": "Jet-Series JSX-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5004.glb"
+    },
+    {
+      "system_id": "bclp_5379",
+      "name": "Polestar ELT LP-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5379.glb"
+    },
+    {
+      "system_id": "bclp_5675",
+      "name": "Skipper LP-R HS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5675.glb"
+    },
+    {
+      "system_id": "bclp_5701",
+      "name": "Magma XHS-LP",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5701.glb"
+    },
+    {
+      "system_id": "bclp_7007",
+      "name": "Magma XHS-LP 9-Years",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_7007.glb"
+    },
+    {
+      "system_id": "bclp_5357",
+      "name": "Jet-Bullet LP HS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5357.glb"
+    },
+    {
+      "system_id": "bclp_5700",
+      "name": "Olaf HS-LP",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5700.glb"
+    },
+    {
+      "system_id": "bclp_5091",
+      "name": "Jet-Series JSGHS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5091.glb"
+    },
+    {
+      "system_id": "bclp_5090",
+      "name": "Jet-Series JSG-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5090.glb"
+    },
+    {
+      "system_id": "bclp_5331",
+      "name": "Pillar 2 TPC-R-HS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5331.glb"
+    },
+    {
+      "system_id": "bclp_5330",
+      "name": "Pillar 2 TPC-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5330.glb"
+    },
+    {
+      "system_id": "bclp_5088",
+      "name": "Zero GS ZG-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5088.glb"
+    },
+    {
+      "system_id": "bclp_5406",
+      "name": "Mayor 2 TMC-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5406.glb"
+    },
+    {
+      "system_id": "bclp_5089",
+      "name": "Jet-Series JS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5089.glb"
+    },
+    {
+      "system_id": "bclp_5335",
+      "name": "Zero 2 Z-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5335.glb"
+    },
+    {
+      "system_id": "bclp_5336",
+      "name": "Zero 2 ZHS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5336.glb"
+    },
+    {
+      "system_id": "bclp_5670",
+      "name": "Alfa Pro LP",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5670.glb"
+    },
+    {
+      "system_id": "bclp_5334",
+      "name": "Pro Bird 2 MS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5334.glb"
+    },
+    {
+      "system_id": "bclp_5329",
+      "name": "Spectrum TSH-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5329.glb"
+    },
+    {
+      "system_id": "bclp_5333",
+      "name": "Silver Bird 2 LS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5333.glb"
+    },
+    {
+      "system_id": "bclp_5328",
+      "name": "Charger 2 TC-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5328.glb"
+    },
+    {
+      "system_id": "bclp_5067",
+      "name": "T-Tech STT-HSR",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5067.glb"
+    },
+    {
+      "system_id": "bclp_5033",
+      "name": "T-Tech STT-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5033.glb"
+    },
+    {
+      "system_id": "bclp_5327",
+      "name": "Nitro 2 TN-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5327.glb"
+    },
+    {
+      "system_id": "bclp_5343",
+      "name": "Thunderbolt SSP HS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5343.glb"
+    },
+    {
+      "system_id": "bclp_5342",
+      "name": "SportPro X2 MS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5342.glb"
+    },
+    {
+      "system_id": "bclp_5332",
+      "name": "Black Bird 2 LS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5332.glb"
+    },
+    {
+      "system_id": "bclp_5341",
+      "name": "Riva 2 MS-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5341.glb"
+    },
+    {
+      "system_id": "bclp_5031",
+      "name": "Energy SNB-R",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5031.glb"
+    },
+    {
+      "system_id": "bclp_6100",
+      "name": "Winner NG LP-HS",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_6100.glb"
+    },
+    {
+      "system_id": "bclp_5339",
+      "name": "Opyimus",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5339.glb"
+    },
+    {
+      "system_id": "bclp_5338",
+      "name": "Profisher",
+      "source": "C:\\Users\\danil\\Desktop\\rf4objects\\КатушкиОбъекты\\низкопрофильные\\bclp_5338.glb"
+    }
+  ]
+}

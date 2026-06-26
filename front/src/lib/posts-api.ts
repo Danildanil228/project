@@ -150,12 +150,14 @@ export async function uploadPostMedia(file: File): Promise<{ url: string }> {
 }
 
 // Builds the API payload from the editor form, normalising blanks to nulls.
-export function toPostPayload(content: PostContentInput, options: { submit: boolean; skipModeration?: boolean }): CreatePostInput {
+export function toPostPayload(content: PostContentInput, options: { submit: boolean; skipModeration?: boolean; isCurated?: boolean; curatedLabel?: string | null }): CreatePostInput {
     return {
         ...content,
         description: content.description.trim(),
         point: content.point?.trim() ? content.point.trim() : null,
         submit: options.submit,
         skipModeration: options.skipModeration ?? false,
+        isCurated: options.isCurated ?? false,
+        curatedLabel: options.curatedLabel?.trim() ? options.curatedLabel.trim() : null,
     };
 }

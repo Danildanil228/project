@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { AdminMessages } from "../features/admin/AdminMessages";
 import { AdminStats } from "../features/admin/AdminStats";
-import { AuditLogPanel } from "../features/admin/AuditLogPanel";
+// AuditLogPanel now lives in /admin/audit (see AdminAuditPage).
 import { CreateUserForm } from "../features/admin/CreateUserForm";
 import { UserDetailsPanel } from "../features/admin/UserDetailsPanel";
 import { UserTable } from "../features/admin/UserTable";
@@ -12,19 +12,18 @@ import {
     bulkBanManagedUsers,
     bulkSetManagedUserRole,
     bulkUnbanManagedUsers,
-    exportAuditLogsCsv,
     exportManagedUsersCsv,
     getManagedUser,
     listAuditLogs,
     listManagedAccounts,
     listManagedUsers,
+    setManagedUserEmailVerified,
     setManagedUserRole,
     unlinkManagedAccount,
 } from "../lib/admin-api";
 import { authApi } from "../lib/auth-api";
 import type {
     AdminSecurityContext,
-    AuditLogFilters,
     BanFormState,
     EditUserFormState,
     ManagedAuditLog,
@@ -65,17 +64,6 @@ const emptyCreateForm: UserFormState = {
     role: "user",
 };
 
-const emptyAuditLogFilters: AuditLogFilters = {
-    actorEmail: "",
-    targetEmail: "",
-    action: "",
-    outcome: "",
-    from: "",
-    to: "",
-};
-
-const auditLogPageSize = 30;
-
 export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenAuthModal }: AdminPageProps) {
     const navigate = useNavigate();
     const { userId: routeUserId } = useParams<{ userId: string }>();
@@ -114,12 +102,8 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
     const [sessions, setSessions] = useState<ManagedSession[]>([]);
     const [accounts, setAccounts] = useState<ManagedAccount[]>([]);
     const [loadingDetails, setLoadingDetails] = useState(false);
-    const [auditLogs, setAuditLogs] = useState<ManagedAuditLog[]>([]);
+    // auditLogs state removed — list lives on /admin/audit. We still load per-user audit below.
     const [selectedUserAuditLogs, setSelectedUserAuditLogs] = useState<ManagedAuditLog[]>([]);
-    const [auditLogFilters, setAuditLogFilters] = useState<AuditLogFilters>(emptyAuditLogFilters);
-    const [auditLogTotal, setAuditLogTotal] = useState(0);
-    const [auditLogOffset, setAuditLogOffset] = useState(0);
-    const [loadingAuditLogs, setLoadingAuditLogs] = useState(false);
 
     const selectedUser = useMemo(() => users.find((user) => user.id === selectedUserId) ?? selectedUserOverride, [selectedUserId, selectedUserOverride, users]);
     const roleOptions = useMemo(() => manageableRoleOptions(currentUser, adminContext), [adminContext, currentUser]);
@@ -242,25 +226,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
         }
     }
 
-    async function loadAuditLogs(nextOffset = auditLogOffset, nextFilters = auditLogFilters) {
-        setLoadingAuditLogs(true);
-
-        try {
-            const response = await listAuditLogs({
-                limit: auditLogPageSize,
-                offset: nextOffset,
-                ...nextFilters,
-            });
-            setAuditLogs(response.logs ?? []);
-            setAuditLogTotal(response.total ?? 0);
-            setAuditLogOffset(nextOffset);
-        } catch (error) {
-            setAdminError(getErrorMessage(error));
-        } finally {
-            setLoadingAuditLogs(false);
-        }
-    }
-
     async function runAction(action: () => Promise<void>, successMessage: string) {
         setNotice("");
         setAdminError("");
@@ -269,7 +234,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
             await action();
             setNotice(successMessage);
             await loadUsers(offset);
-            await loadAuditLogs();
             if (selectedUserId) {
                 await loadSelectedUserProfile(selectedUserId);
                 await loadUserDetails(selectedUserId);
@@ -278,11 +242,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
         } catch (error) {
             setAdminError(getErrorMessage(error));
         }
-    }
-
-    function resetAuditFilters() {
-        setAuditLogFilters(emptyAuditLogFilters);
-        void loadAuditLogs(0, emptyAuditLogFilters);
     }
 
     function selectUser(userId: string) {
@@ -306,30 +265,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
             link.remove();
             window.URL.revokeObjectURL(url);
             setNotice("CSV выгрузка подготовлена");
-            await loadAuditLogs();
-        } catch (error) {
-            setAdminError(getErrorMessage(error));
-        }
-    }
-
-    async function exportAuditCsv() {
-        setNotice("");
-        setAdminError("");
-
-        try {
-            const blob = await exportAuditLogsCsv({
-                ...auditLogFilters,
-                limit: 5000,
-            });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = `audit-logs-export-${new Date().toISOString().slice(0, 10)}.csv`;
-            document.body.append(link);
-            link.click();
-            link.remove();
-            window.URL.revokeObjectURL(url);
-            setNotice("CSV журнала действий подготовлен");
         } catch (error) {
             setAdminError(getErrorMessage(error));
         }
@@ -542,7 +477,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
             setSelectedUserOverride(null);
             setSessions([]);
             setAccounts([]);
-            navigate("/admin");
+            navigate("/admin/users");
         }, "Пользователь удален");
     }
 
@@ -559,6 +494,15 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
             await unwrapAuthResult(adminApi.impersonateUser({ userId: selectedUser.id }));
             await onSessionRefresh();
         }, "Режим входа под пользователем включен");
+    }
+
+    async function verifyEmail(verified: boolean) {
+        if (!selectedUser) return;
+        await runAction(async () => {
+            const { user } = await setManagedUserEmailVerified(selectedUser.id, verified);
+            setSelectedUserOverride(user);
+            await loadUsers(offset);
+        }, verified ? "Email подтверждён" : "Подтверждение email снято");
     }
 
     async function revokeSession(token: string) {
@@ -608,7 +552,6 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
     useEffect(() => {
         if (!currentUser?.id) return;
         void loadUsers(0);
-        void loadAuditLogs(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser?.id]);
 
@@ -717,7 +660,10 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                         onPageChange={loadUsers}
                     />
 
-                    <CreateUserForm form={createForm} roleOptions={roleOptions} onChange={setCreateForm} onSubmit={createUser} />
+                    {/* Creating users is admin-only — moderators get list/edit/ban/role only (see admin-roles.ts). */}
+                    {(isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)) && (
+                        <CreateUserForm form={createForm} roleOptions={roleOptions} onChange={setCreateForm} onSubmit={createUser} />
+                    )}
                 </section>
 
                 <UserDetailsPanel
@@ -733,6 +679,7 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                     canManageSelectedUser={canManageSelectedUser}
                     canUpdateSelectedProfile={canUpdateSelectedProfile}
                     canImpersonate={isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)}
+                    canVerifyEmail={isAdminUser(currentUser) || isSuperAdminUser(currentUser, adminContext)}
                     isSelfSelected={isSelfSelected}
                     isSuperAdminSelected={isSuperAdminSelected}
                     onEditFormChange={setEditForm}
@@ -744,26 +691,14 @@ export function AdminPage({ currentUser, adminContext, onSessionRefresh, onOpenA
                     onUnbanUser={unbanUser}
                     onUpdatePassword={updatePassword}
                     onImpersonateUser={impersonateUser}
+                    onVerifyEmail={verifyEmail}
                     onRevokeSession={revokeSession}
                     onRevokeAllSessions={revokeAllSessions}
                     onUnlinkAccount={unlinkAccount}
                 />
             </section>
 
-            <AuditLogPanel
-                logs={auditLogs}
-                filters={auditLogFilters}
-                total={auditLogTotal}
-                offset={auditLogOffset}
-                pageSize={auditLogPageSize}
-                loading={loadingAuditLogs}
-                onFiltersChange={setAuditLogFilters}
-                onRefresh={() => loadAuditLogs(auditLogOffset)}
-                onApplyFilters={() => loadAuditLogs(0)}
-                onResetFilters={resetAuditFilters}
-                onPageChange={(nextOffset) => loadAuditLogs(nextOffset)}
-                onExportCsv={exportAuditCsv}
-            />
+            {/* Audit log moved to /admin/audit — see AdminAuditPage. */}
             {dialog}
         </section>
     );

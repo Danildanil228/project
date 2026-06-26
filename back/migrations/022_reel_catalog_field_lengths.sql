@@ -1,0 +1,16 @@
+-- Modern and switchable reels use compound values such as "5,4:1↔2,4:1".
+ALTER TABLE reels
+    ALTER COLUMN test TYPE VARCHAR(50),
+    ALTER COLUMN test_mod TYPE VARCHAR(50),
+    ALTER COLUMN per TYPE VARCHAR(50),
+    ALTER COLUMN per_mod TYPE VARCHAR(50),
+    ALTER COLUMN speed TYPE VARCHAR(50),
+    ALTER COLUMN speed_mod TYPE VARCHAR(50),
+    ALTER COLUMN frik TYPE VARCHAR(50),
+    ALTER COLUMN frik_mod TYPE VARCHAR(50),
+    ALTER COLUMN meh TYPE VARCHAR(50),
+    ALTER COLUMN meh_mod TYPE VARCHAR(50),
+    ALTER COLUMN price_ser TYPE VARCHAR(50),
+    ALTER COLUMN price_gold TYPE VARCHAR(50),
+    ALTER COLUMN capacity TYPE VARCHAR(50),
+    ALTER COLUMN capacity_mod TYPE VARCHAR(50);

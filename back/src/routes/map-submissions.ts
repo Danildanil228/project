@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { requireRole,type SessionUser } from "../lib/admin-auth";
+import { mapSubmissionApproveSchema,mapSubmissionIdSchema,mapSubmissionListSchema,mapSubmissionRejectSchema } from "../lib/map-submission-schemas";
+import { parseOrSend } from "../lib/validation";
+import { approveMapSubmission,listMapSubmissions,rejectMapSubmission } from "../services/map-submission-service";
+const router=Router(),roles=["admin","moderator"];
+router.get("/",async(req,res,next)=>{try{if(!(await requireRole(req,res,roles)))return;const query=parseOrSend(mapSubmissionListSchema,req.query,res);if(query)res.json(await listMapSubmissions(query));}catch(error){next(error);}});
+router.post("/:id/approve",async(req,res,next)=>{try{const session=await requireRole(req,res,roles);if(!session)return;const params=parseOrSend(mapSubmissionIdSchema,req.params,res),body=parseOrSend(mapSubmissionApproveSchema,req.body,res);if(!params||!body)return;const result=await approveMapSubmission(params.id,session.user as SessionUser,body);if(result.status==="not-found")return void res.status(404).json({message:"Заявка не найдена"});if(result.status==="self")return void res.status(403).json({message:"Нельзя подтверждать собственную точку"});if(result.status==="invalid")return void res.status(409).json({message:"Заявка уже обработана"});res.json(result);}catch(error){next(error);}});
+router.post("/:id/reject",async(req,res,next)=>{try{const session=await requireRole(req,res,roles);if(!session)return;const params=parseOrSend(mapSubmissionIdSchema,req.params,res),body=parseOrSend(mapSubmissionRejectSchema,req.body,res);if(!params||!body)return;const result=await rejectMapSubmission(params.id,session.user as SessionUser,body.reason);if(result.status==="invalid")return void res.status(409).json({message:"Заявку нельзя отклонить, включая собственную"});res.json(result);}catch(error){next(error);}});
+export const mapSubmissionsRouter=router;

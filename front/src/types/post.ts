@@ -17,6 +17,7 @@ export type CatchRow = {
     fishId: number;
     fishName: string;
     rarity: string;
+    baits: Array<{ id: number; name: string; kind: string }>;
 };
 
 export type MediaRow = {
@@ -36,13 +37,26 @@ export type PostVersion = {
     incomePerHour: number | null;
     waterbodyId: number | null;
     waterbodyName: string | null;
+    proposedSpotId: number | null;
+    mapX: number | null;
+    mapY: number | null;
+    gameCoordinateX: number | null;
+    gameCoordinateY: number | null;
+    // Second point — set only for trolling posts (range A→B).
+    mapX2: number | null;
+    mapY2: number | null;
+    gameCoordinateX2: number | null;
+    gameCoordinateY2: number | null;
+    baitMode: "common" | "per_fish";
+    commonBaits: Array<{ id: number; name: string; kind: string }>;
     catches: CatchRow[];
     media: MediaRow[];
 };
 
 export type PostDetail = {
     id: number;
-    authorId: string;
+    // Curated posts have author* set to null on the wire — the UI renders "Сообщество" instead.
+    authorId: string | null;
     status: PostStatus;
     currentVersionId: number | null;
     rejectionReason: string | null;
@@ -51,8 +65,10 @@ export type PostDetail = {
     pinnedAt: string | null;
     createdAt: string;
     publishedAt: string | null;
-    authorName: string;
+    authorName: string | null;
     authorImage: string | null;
+    isCurated: boolean;
+    curatedLabel: string | null;
     version: PostVersion | null;
 };
 
@@ -71,6 +87,7 @@ export type MyPostRow = {
 // Editor payload pieces
 export type CatchInput = {
     fishId: number;
+    baitIds: number[];
 };
 
 export type PostContentInput = {
@@ -81,12 +98,26 @@ export type PostContentInput = {
     income: number | null;
     fishingMinutes: number | null;
     catches: CatchInput[];
+    baitMode: "common" | "per_fish";
+    commonBaitIds: number[];
+    proposedSpotId: number | null;
+    mapX: number | null;
+    mapY: number | null;
+    gameCoordinateX: number | null;
+    gameCoordinateY: number | null;
+    mapX2: number | null;
+    mapY2: number | null;
+    gameCoordinateX2: number | null;
+    gameCoordinateY2: number | null;
     media: string[];
 };
 
 export type CreatePostInput = PostContentInput & {
     submit: boolean;
     skipModeration?: boolean;
+    // Set only by moderator+ — publishes the post as "Сообщество" with no clickable author.
+    isCurated?: boolean;
+    curatedLabel?: string | null;
 };
 
 export type FeedSort = "date" | "incomePerHour";
@@ -95,9 +126,12 @@ export type FeedSort = "date" | "incomePerHour";
 export type FeedItem = {
     id: number;
     publishedAt: string | null;
-    authorId: string;
-    authorName: string;
+    // null for curated/community posts — UI renders "Сообщество" without a profile link.
+    authorId: string | null;
+    authorName: string | null;
     authorImage: string | null;
+    isCurated: boolean;
+    curatedLabel: string | null;
     description: string | null;
     point: string | null;
     fishingMethod: FishingMethod | null;
@@ -129,7 +163,7 @@ export type ReactionSummary = {
     mine: 1 | -1 | 0;
 };
 
-export type NotificationType = "comment" | "post_approved" | "post_rejected" | "post_removed" | "moderation_new" | "report_new";
+export type NotificationType = "comment" | "post_approved" | "post_rejected" | "post_removed" | "moderation_new" | "report_new" | "map_submission_new" | "map_submission_approved" | "map_submission_rejected";
 
 export type NotificationRow = {
     id: number;

@@ -22,9 +22,11 @@ import {
     bulkSetUserRole,
     bulkUnbanUsers,
     exportManagedUsers,
+    getAdminOverview,
     getManagedUser,
     listManagedAccounts,
     listManagedUsers,
+    setUserEmailVerified,
     unlinkManagedAccount,
     updateUserRole,
     validateBulkTargets,
@@ -116,6 +118,16 @@ router.get("/audit-logs/export.csv", async (req, res, next) => {
     }
 });
 
+router.get("/overview", async (req, res, next) => {
+    try {
+        const session = await requireAdmin(req, res);
+        if (!session) return;
+        res.json(await getAdminOverview());
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.get("/context", async (req, res, next) => {
     try {
         const session = await auth.api.getSession({
@@ -199,6 +211,37 @@ router.post("/users/bulk-unban", async (req, res, next) => {
         }
 
         res.json({ updated: await bulkUnbanUsers(actor, body) });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.patch("/users/:userId/email-verified", async (req, res, next) => {
+    try {
+        const session = await requireAdmin(req, res);
+        if (!session) return;
+
+        const params = parseOrSend(userIdParamsSchema, req.params, res);
+        if (!params) return;
+
+        // Body: { verified: boolean }. Default to true so the typical "approve email" UI is a one-click POST.
+        const verified = (req.body as { verified?: unknown })?.verified !== false;
+        const actor = session.user as SessionUser;
+
+        // Only admin and super-admin may flip email verification; moderators cannot.
+        const isAdmin = ["admin"].some((role) => (Array.isArray(actor.role) ? actor.role : String(actor.role ?? "").split(",")).map((r) => r.trim()).includes(role));
+        if (!isAdmin && !isSuperAdmin(actor, superAdminUserIds)) {
+            res.status(403).json({ message: "Forbidden" });
+            return;
+        }
+
+        const user = await setUserEmailVerified(actor, params.userId, verified);
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+
+        res.json({ user });
     } catch (error) {
         next(error);
     }

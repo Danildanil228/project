@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
+import { Newspaper } from "lucide-react";
 import { UserAvatar } from "./UserAvatar";
 import { ImageModal } from "./ImageModal";
 import { mediaUrl } from "../lib/items-api";
@@ -148,12 +149,24 @@ export function PostCard({ post }: PostCardProps) {
                     <span title="Просмотры">👁 {post.viewCount}</span>
                 </div>
 
-                {/* Author + time */}
+                {/* Author + time. Curated posts have no clickable profile — render as "Сообщество". */}
                 <div className="flex items-center justify-between gap-2 border-t border-border pt-2">
-                    <Link to={`/posts/author/${post.authorId}`} className="flex min-w-0 items-center gap-2 hover:text-primary">
-                        <UserAvatar user={{ name: post.authorName, image: post.authorImage, email: "" }} size="sm" />
-                        <span className="truncate text-sm">{post.authorName}</span>
-                    </Link>
+                    {post.isCurated || !post.authorId ? (
+                        <div className="flex min-w-0 items-center gap-2" title="Пост от сообщества">
+                            <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary-soft text-primary">
+                                <Newspaper size={13} />
+                            </span>
+                            <div className="grid leading-tight">
+                                <span className="truncate text-sm font-semibold">Сообщество</span>
+                                {post.curatedLabel && <span className="truncate text-[10px] text-muted-foreground">{post.curatedLabel}</span>}
+                            </div>
+                        </div>
+                    ) : (
+                        <Link to={`/posts/author/${post.authorId}`} className="flex min-w-0 items-center gap-2 hover:text-primary">
+                            <UserAvatar user={{ name: post.authorName ?? "", image: post.authorImage, email: "" }} size="sm" />
+                            <span className="truncate text-sm">{post.authorName}</span>
+                        </Link>
+                    )}
                     <span className="shrink-0 text-xs text-muted-foreground">{timeAgo(post.publishedAt)}</span>
                 </div>
             </div>

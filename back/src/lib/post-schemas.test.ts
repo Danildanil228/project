@@ -27,9 +27,16 @@ test("createPostSchema normalises empty fields and coerces catches", () => {
         assert.equal(result.data.waterbodyId, 13);
         assert.equal(result.data.point, null);
         assert.equal(result.data.fishingMinutes, null);
-        assert.deepEqual(result.data.catches[0], { fishId: 4 });
+        assert.deepEqual(result.data.catches[0], { fishId: 4, baitIds: [] });
+        assert.equal(result.data.baitMode, "common");
+        assert.deepEqual(result.data.commonBaitIds, []);
         assert.equal(result.data.submit, true);
     }
+});
+
+test("createPostSchema requires a complete map location", () => {
+    const result = createPostSchema.safeParse({ mapX: 50, mapY: 40, gameCoordinateX: 75 });
+    assert.equal(result.success, false);
 });
 
 test("createPostSchema rejects more than 8 media items", () => {

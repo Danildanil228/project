@@ -10,6 +10,7 @@ const reelFields: [keyof Reel, string][] = [
     ["lvl", "Уровень"],
     ["size", "Размер"],
     ["test", "Тест"],
+    ["test_mod", "Тест (мод.)"],
     ["protection", "Защита от воды"],
     ["per", "Передаточное число"],
     ["per_mod", "Передаточное (мод.)"],
@@ -20,6 +21,7 @@ const reelFields: [keyof Reel, string][] = [
     ["meh", "Механизм"],
     ["meh_mod", "Механизм (мод.)"],
     ["capacity", "Ёмкость шпули"],
+    ["capacity_mod", "Ёмкость шпули (мод.)"],
     ["price_ser", "Цена (серебро)"],
     ["price_gold", "Цена (золото)"],
 ];
@@ -104,7 +106,7 @@ export function ItemDetailPage() {
                                 style={{ width: "100%", height: "360px" }}
                             />
                         ) : photo ? (
-                            <img src={mediaUrl(photo)} alt={item.name} className="h-[360px] w-full bg-muted object-contain" />
+                            <img src={mediaUrl(photo)} alt={item.name} title={item.name} className="h-[360px] w-full bg-muted object-contain" />
                         ) : (
                             <div className="flex h-[360px] items-center justify-center bg-muted text-muted-foreground">Нет изображения</div>
                         )}

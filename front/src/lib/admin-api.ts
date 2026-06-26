@@ -11,6 +11,7 @@ import type {
     StatusFilter,
     UserSortField,
     VerificationFilter,
+    ManagedAuditLog,
     ManagedUser,
     AuditLogFilters,
 } from "../types/admin";
@@ -44,6 +45,17 @@ export async function getAdminContext() {
     }
 
     return response.json() as Promise<AdminSecurityContext>;
+}
+
+export type AdminOverview = {
+    counts: { total: number; newLast30Days: number; unverified: number; banned: number };
+    recentActions: ManagedAuditLog[];
+};
+
+export async function getAdminOverviewData(): Promise<AdminOverview> {
+    const response = await fetch("/api/admin/overview", { credentials: "include" });
+    if (!response.ok) throw new Error(await readError(response));
+    return response.json() as Promise<AdminOverview>;
 }
 
 type ListAuditLogsInput = Partial<AuditLogFilters> & {
@@ -213,6 +225,17 @@ export async function setManagedUserRole(userId: string, role: string) {
         throw new Error(await readError(response));
     }
 
+    return response.json() as Promise<{ user: ManagedUser }>;
+}
+
+export async function setManagedUserEmailVerified(userId: string, verified: boolean) {
+    const response = await fetch(`/api/admin/users/${encodeURIComponent(userId)}/email-verified`, {
+        method: "PATCH",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verified }),
+    });
+    if (!response.ok) throw new Error(await readError(response));
     return response.json() as Promise<{ user: ManagedUser }>;
 }
 

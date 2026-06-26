@@ -9,7 +9,10 @@ export type NotificationType =
     | "post_rejected"
     | "post_removed"
     | "moderation_new"
-    | "report_new";
+    | "report_new"
+    | "map_submission_new"
+    | "map_submission_approved"
+    | "map_submission_rejected";
 
 type CreateNotificationInput = {
     userId: string;

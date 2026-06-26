@@ -233,7 +233,7 @@ export function adminAuditPlugin(): BetterAuthPlugin {
     };
 }
 
-export async function logAuthEmail(type: "verification" | "password-reset", email: string, url: string) {
+export async function logAuthEmail(type: "verification" | "password-reset" | "password-change-code" | "signup-otp", email: string, url: string) {
     console.info(`[auth-email:${type}] ${email}: ${url}`);
 
     await writeAuditLog({

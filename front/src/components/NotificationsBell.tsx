@@ -4,6 +4,7 @@ import { listNotifications, markNotificationsRead, notificationsUnreadCount } fr
 import type { ManagedUser } from "../types/admin";
 import type { NotificationRow, NotificationType } from "../types/post";
 import { formatDate } from "../utils/admin-format";
+import { postMapLinkingEnabled } from "../lib/features";
 
 type NotificationsBellProps = {
     currentUser?: ManagedUser;
@@ -18,6 +19,9 @@ function describe(notification: NotificationRow): string {
         post_removed: "Ваш пост удалён модератором",
         moderation_new: "Новый пост ожидает модерации",
         report_new: "Новая жалоба на пост",
+        map_submission_new: "Новая точка ожидает проверки",
+        map_submission_approved: "Ваша точка опубликована на карте",
+        map_submission_rejected: "Ваша точка отклонена",
     };
     return labels[notification.type] ?? "Уведомление";
 }
@@ -27,6 +31,7 @@ function extra(notification: NotificationRow): string | null {
     if (notification.type === "comment" && typeof data.snippet === "string") return data.snippet;
     if (notification.type === "post_rejected" && typeof data.reason === "string") return `Причина: ${data.reason}`;
     if (notification.type === "report_new" && typeof data.reason === "string") return data.reason;
+    if (notification.type === "map_submission_rejected" && typeof data.reason === "string") return `Причина: ${data.reason}`;
     return null;
 }
 
@@ -96,6 +101,8 @@ export function NotificationsBell({ currentUser }: NotificationsBellProps) {
         }
         if (notification.type === "report_new") {
             navigate("/moderation/reports");
+        } else if (postMapLinkingEnabled && notification.type === "map_submission_new") {
+            navigate("/moderation/map");
         } else if (notification.type === "moderation_new") {
             navigate("/moderation");
         } else if (notification.postId) {

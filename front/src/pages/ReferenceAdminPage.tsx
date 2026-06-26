@@ -12,6 +12,7 @@ const sections = [
     { to: "/admin/catalog", title: "Снасти", description: "Катушки и удилища с характеристиками" },
     { to: "/admin/fish", title: "Рыба", description: "Виды рыбы и их редкость" },
     { to: "/admin/waterbodies", title: "Водоёмы", description: "Водоёмы и обитающая в них рыба" },
+    { to: "/admin/baits", title: "Наживки", description: "Наживки, приманки и компоненты прикормки" },
 ];
 
 export function ReferenceAdminPage({ currentUser, adminContext, onOpenAuthModal }: ReferenceAdminPageProps) {
@@ -40,7 +41,7 @@ export function ReferenceAdminPage({ currentUser, adminContext, onOpenAuthModal 
                 <h2 className="text-2xl font-bold">Справочники</h2>
                 <p className="text-muted-foreground">Управление игровыми данными: снасти, рыба, водоёмы.</p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {sections.map((section) => (
                     <Link key={section.to} to={section.to} className="grid gap-1 rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary">
                         <h3 className="text-lg font-bold">{section.title}</h3>

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { ImageModal } from "../components/ImageModal";
+import { Newspaper } from "lucide-react";
 import { UserAvatar } from "../components/UserAvatar";
 import { PostReactions } from "../components/PostReactions";
 import { PostComments } from "../components/PostComments";
+import { PostLocationView } from "../components/PostLocationView";
 import { ReportButton } from "../components/ReportButton";
 import { mediaUrl } from "../lib/items-api";
 import { getPinInfo, getPost, pinPost, recordPostView, removeModeratedPost, unpinPost } from "../lib/posts-api";
@@ -211,14 +213,27 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
 
                 {/* Info column */}
                 <div className="grid content-start gap-3">
-                    {/* Author */}
-                    <Link to={`/posts/author/${post.authorId}`} className="flex items-center gap-3 hover:text-primary">
-                        <UserAvatar user={{ name: post.authorName, image: post.authorImage, email: "" }} size="md" />
-                        <div>
-                            <strong className="block">{post.authorName}</strong>
-                            <span className="text-xs text-muted-foreground">{formatDate(post.publishedAt ?? post.createdAt)}</span>
+                    {/* Author. Curated posts show "Сообщество" without a profile link. */}
+                    {post.isCurated || !post.authorId ? (
+                        <div className="flex items-center gap-3">
+                            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-primary-soft text-primary">
+                                <Newspaper size={18} />
+                            </span>
+                            <div>
+                                <strong className="block">Сообщество</strong>
+                                {post.curatedLabel && <span className="block text-xs text-muted-foreground">{post.curatedLabel}</span>}
+                                <span className="text-xs text-muted-foreground">{formatDate(post.publishedAt ?? post.createdAt)}</span>
+                            </div>
                         </div>
-                    </Link>
+                    ) : (
+                        <Link to={`/posts/author/${post.authorId}`} className="flex items-center gap-3 hover:text-primary">
+                            <UserAvatar user={{ name: post.authorName ?? "", image: post.authorImage, email: "" }} size="md" />
+                            <div>
+                                <strong className="block">{post.authorName}</strong>
+                                <span className="text-xs text-muted-foreground">{formatDate(post.publishedAt ?? post.createdAt)}</span>
+                            </div>
+                        </Link>
+                    )}
 
                     {/* Meta */}
                     <div className="grid gap-2 rounded-lg border border-border bg-card p-3 text-sm">
@@ -257,6 +272,24 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                         )}
                     </div>
 
+                    {/* Author's map pin(s) — single point or A→B trolling range */}
+                    {version?.waterbodyId != null && (version.mapX != null || version.mapX2 != null) && (
+                        <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
+                            <h3 className="text-sm font-bold">Карта</h3>
+                            <PostLocationView
+                                waterbodyId={version.waterbodyId}
+                                mapX={version.mapX}
+                                mapY={version.mapY}
+                                mapX2={version.mapX2}
+                                mapY2={version.mapY2}
+                                gameCoordinateX={version.gameCoordinateX}
+                                gameCoordinateY={version.gameCoordinateY}
+                                gameCoordinateX2={version.gameCoordinateX2}
+                                gameCoordinateY2={version.gameCoordinateY2}
+                            />
+                        </div>
+                    )}
+
                     {/* Catches as badges */}
                     {version?.catches.length ? (
                         <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
@@ -284,7 +317,11 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                         <div className="flex flex-wrap gap-2">
                             {(moderator || isOwner) && (
                                 <Link
-                                    to={moderator && !isOwner ? `/posts/${post.id}/moderate` : `/posts/${post.id}/edit`}
+                                    // Curated posts always go through the regular editor (which PATCHes
+                                    // /posts/:id — the route dispatches to updateCuratedPost on the
+                                    // backend). The /moderate path is only for the claim+approve flow
+                                    // on pending user-authored posts.
+                                    to={post.isCurated ? `/posts/${post.id}/edit` : moderator && !isOwner ? `/posts/${post.id}/moderate` : `/posts/${post.id}/edit`}
                                     className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-primary"
                                 >
                                     Редактировать

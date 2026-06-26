@@ -6,7 +6,11 @@ const emptyToNull = (value: unknown) => (value === "" || value === undefined ? n
 
 const catchInputSchema = z.object({
     fishId: z.coerce.number().int().positive(),
+    baitIds: z.array(z.coerce.number().int().positive()).max(50).optional().default([]).transform((ids) => [...new Set(ids)]),
 });
+
+const optionalCoordinate = z.preprocess(emptyToNull, z.coerce.number().min(-999999.99).max(999999.99).nullable());
+const optionalMapPercent = z.preprocess(emptyToNull, z.coerce.number().min(0).max(100).nullable());
 
 export const postContentSchema = z.object({
     description: z.string().trim().max(5000).optional().default(""),
@@ -16,13 +20,43 @@ export const postContentSchema = z.object({
     income: z.preprocess(emptyToNull, z.coerce.number().int().min(0).max(1_000_000_000).nullable()),
     fishingMinutes: z.preprocess(emptyToNull, z.coerce.number().int().min(1).max(100_000).nullable()),
     catches: z.array(catchInputSchema).max(50).optional().default([]),
+    baitMode: z.enum(["common", "per_fish"]).optional().default("common"),
+    commonBaitIds: z.array(z.coerce.number().int().positive()).max(50).optional().default([]).transform((ids) => [...new Set(ids)]),
+    proposedSpotId: z.preprocess(emptyToNull, z.coerce.number().int().positive().nullable()),
+    mapX: optionalMapPercent,
+    mapY: optionalMapPercent,
+    gameCoordinateX: optionalCoordinate,
+    gameCoordinateY: optionalCoordinate,
+    // Optional second point — only set in trolling mode (post represents an A→B run).
+    mapX2: optionalMapPercent,
+    mapY2: optionalMapPercent,
+    gameCoordinateX2: optionalCoordinate,
+    gameCoordinateY2: optionalCoordinate,
     media: z.array(z.string().trim().min(1).max(255)).max(8).optional().default([]),
+}).superRefine((data, context) => {
+    const start = [data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY];
+    if (!start.every((value) => value === null) && start.some((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX"], message: "Для точки укажите обе координаты" });
+    }
+    const end = [data.mapX2, data.mapY2, data.gameCoordinateX2, data.gameCoordinateY2];
+    if (!end.every((value) => value === null) && end.some((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX2"], message: "Для конечной точки троллинга укажите обе координаты" });
+    }
+    // Trolling end point makes no sense without a start point.
+    if (end.some((value) => value !== null) && start.every((value) => value === null)) {
+        context.addIssue({ code: "custom", path: ["mapX2"], message: "Сначала укажите точку A" });
+    }
 });
 
 export const createPostSchema = postContentSchema.extend({
     submit: z.boolean().optional().default(false),
     // Only honoured for admin/moderator/super-admin: publish without review.
     skipModeration: z.boolean().optional().default(false),
+    // Curated / community posts: live in the public feed without a clickable author. Only
+    // moderator+ may set this; the service layer enforces the role check and forces status
+    // to 'approved' regardless of `submit`.
+    isCurated: z.boolean().optional().default(false),
+    curatedLabel: z.preprocess(emptyToNull, z.string().trim().max(60).nullable()),
 });
 
 export const rejectSchema = z.object({

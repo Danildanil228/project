@@ -1,0 +1,96 @@
+﻿domain,systemId,name,category,brandSystemId,variantCode,imagePath
+bait,black_leech,Пиявка,worms,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\black_leech.png
+bait,bloodworm,Мотыль,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\bloodworm.png
+bait,bread,Хлеб,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\bread.png
+bait,cabbage,Капустный лист,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\cabbage.png
+bait,caddisfly,Ручейник,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\caddisfly.png
+bait,caviar,Икра,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\caviar.png
+bait,cheese_cube,Сырный кубик,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\cheese_cube.png
+bait,corn,Зерна кукурузы,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\corn.png
+bait,crab_meat,Крабовое мясо,crustaceans,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\crab_meat.png
+bait,crawfish_meat,Раковая шейка,crustaceans,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\crawfish_meat.png
+bait,cricket,Сверчок,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\cricket.png
+bait,fb_bf_makrel,Большое филе - Макрель,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_bf_makrel.png
+bait,fb_bf_saida,Большое филе - Сайда,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_bf_saida.png
+bait,fb_bf_seld,Большое филе - Сельдь,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_bf_seld.png
+bait,fb_d_makrel,Мёртвая макрель,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_d_makrel.png
+bait,fb_d_saida,Мёртвая сайда,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_d_saida.png
+bait,fb_d_seld,Мёртвая сельдь,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_d_seld.png
+bait,fb_gf_makrel,Огромное филе - Макрель,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_gf_makrel.png
+bait,fb_gf_saida,Огромное филе - Сайда,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_gf_saida.png
+bait,fb_gf_seld,Огромное филе - Сельдь,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_gf_seld.png
+bait,fb_lf_makrel,Маленькое филе - Макрель,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_lf_makrel.png
+bait,fb_lf_saida,Маленькое филе - Сайда,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_lf_saida.png
+bait,fb_lf_seld,Маленькое филе - Сельдь,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_lf_seld.png
+bait,fb_sf_makrel,Полоска филе - Макрель,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_sf_makrel.png
+bait,fb_sf_saida,Полоска филе - Сайда,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_sf_saida.png
+bait,fb_sf_seld,Полоска филе - Сельдь,dead_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_sf_seld.png
+bait,dorbeetle,Жук навозный,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dorbeetle.png
+bait,dough_cottage,Тесто творожное,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dough_cottage.png
+bait,dough_egg,Тесто яичное,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dough_egg.png
+bait,dough_garlic,Тесто чесночное,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dough_garlic.png
+bait,dough_honey,Тесто медовое,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dough_honey.png
+bait,dough_sweet,Тесто сладкое,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\dough_sweet.png
+bait,bait_dreissena,Мясо дрейссены,crustaceans,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\bait_dreissena.png
+bait,fb_lugworm,Червяк пескожил,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_lugworm.png
+bait,fb_mussel,Мясо мидии,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_mussel.png
+bait,fb_nereis,Нереис,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_nereis.png
+bait,fb_scallop,Мясо морского гребешка,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_scallop.png
+bait,fb_shrimp,Креветка,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_shrimp.png
+bait,fb_squid,Мясо кальмара,marine_bait,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fb_squid.png
+bait,fish_pieces,Кусочки рыбы,fish_fillet,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fish_pieces.png
+bait,fly,Муха,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\fly.png
+bait,gadfly,Овод,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gadfly.png
+bait,gadfly_little,Слепень,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gadfly_little.png
+bait,grasshopper,Кузнечик,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\grasshopper.png
+bait,gryllotalpa,Медведка,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gryllotalpa.png
+bait,bluegill_lf,Солнечник синежаберный,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\bluegill_lf.png
+bait,c_bleak_lf,Уклейка,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\c_bleak_lf.png
+bait,c_carp_lf,Карась золотой,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\c_carp_lf.png
+bait,c_roach_lf,Плотва обыкновенная,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\c_roach_lf.png
+bait,c_roach_syb_lf_3,Плотва сибирская,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\c_roach_syb_lf_3.png
+bait,crucian_lf,Карась серебряный,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\crucian_lf.png
+bait,gizshad_lf,Доросома северная,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gizshad_lf.png
+bait,golian_lf_2,Гольян озерный,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\golian_lf_2.png
+bait,gudgeon_lf,Пескарь,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gudgeon_lf.png
+bait,gudgeon_syb_lf,Пескарь сибирский,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gudgeon_syb_lf.png
+bait,lamprey_lf,Минога,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\lamprey_lf.png
+bait,perch_lf,Окунь,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\perch_lf.png
+bait,redsunfish_lf,Солнечник красноухий,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\redsunfish_lf.png
+bait,ruffe_lf,Ёрш,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\ruffe_lf.png
+bait,s_bream_lf,Густера,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\s_bream_lf.png
+bait,snetok_lf,Снеток,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\snetok_lf.png
+bait,sybgolec_lf,Голец сибирский-усач,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\sybgolec_lf.png
+bait,tiulka_lf,Тюлька,live_fish,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\tiulka_lf.png
+bait,maggot,Опарыш,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\maggot.png
+bait,maggot_caster,Кастер,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\maggot_caster.png
+bait,maybug,Майский жук,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\maybug.png
+bait,maybug_larva,Личинка майского жука,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\maybug_larva.png
+bait,mayfly,Поденка,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\mayfly.png
+bait,gammarus_fresh,Бокоплав пресноводный,crustaceans,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\gammarus_fresh.png
+bait,muckworm,Червь навозный,worms,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\muckworm.png
+bait,naiad,Личинка поденки,live,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\naiad.png
+bait,hvz_t_nuts,Тигровый орех,natural,van_zandt,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\hvz_t_nuts.png
+bait,peas,Горошек,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\peas.png
+bait,porridge_corn,Каша кукурузная,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\porridge_corn.png
+bait,porridge_oatmeal,Каша овсяная,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\porridge_oatmeal.png
+bait,porridge_pea,Каша гороховая,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\porridge_pea.png
+bait,porridge_pearl_barley,Каша перловая,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\porridge_pearl_barley.png
+bait,porridge_semolina,Каша манная,porridge_dough,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\porridge_semolina.png
+bait,potato,Картофельный кубик,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\potato.png
+bait,scolytinae,Личинка короеда,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\scolytinae.png
+bait,stonefly_nymph,Личинка веснянки,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\stonefly_nymph.png
+bait,sunflower_cake,Жмых,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\sunflower_cake.png
+bait,unibeetle_larva,Личинка жука-носорога,larvae,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\unibeetle_larva.png
+bait,unio_crassus,Мясо перловицы,crustaceans,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\unio_crassus.png
+bait,vypolzok_01,Выползок,worms,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\vypolzok_01.png
+bait,waterbug,Жук-плавунец,insects,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\waterbug.png
+bait,watergrass,Пучок водорослей,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\watergrass.png
+bait,wheat_grain,Зерна пшеницы,natural,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\wheat_grain.png
+bait,worm_01,Червь,worms,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_01.png
+bait,worm_asurv,"Червь навозный ""Астраханский живучий""",sets,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_asurv.png
+bait,worm_msor,"Червь ""Московский сортовой""",sets,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_msor.png
+bait,worm_orlen,"Червь ""Ленинградский""",sets,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_orlen.png
+bait,worm_sur,"Червь ""Сурский Навозник""",sets,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_sur.png
+bait,worm_volh,"Червь навозный ""Волховский""",sets,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\worm_volh.png
+bait,baitfrog,Лягушка,live,,,C:\Users\danil\Desktop\rr4\RepeatAllFilesCopy\AssetRipper_export_20260621_111439\Assets\Resources\previews\baitfrog.png

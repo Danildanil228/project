@@ -2,6 +2,7 @@ import { pool } from "../lib/db";
 import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
 import { createNotification, notifyModerators } from "./notification-service";
+import { notifyAdmins, publicSiteUrl } from "./telegram-notify";
 
 export async function createReport(postId: number, reporter: SessionUser, reason: string) {
     const post = await pool.query<{ status: string; authorId: string }>(
@@ -20,6 +21,7 @@ export async function createReport(postId: number, reporter: SessionUser, reason
 
     await writeAuditLog({ actor: reporter, action: "report.create", targetUserId: post.rows[0].authorId, metadata: { postId, reportId: inserted.rows[0].id, reason } });
     await notifyModerators({ type: "report_new", postId, actorId: reporter.id, data: { reason: reason.slice(0, 120) }, excludeUserId: reporter.id });
+    await notifyAdmins(`🚩 *Новая жалоба* на пост #${postId}\n${reason.slice(0, 200)}\n[Очередь жалоб](${publicSiteUrl()}/moderation/reports)`);
 
     return { status: "ok" as const };
 }

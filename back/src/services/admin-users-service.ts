@@ -304,6 +304,62 @@ export async function updateUserRole(actor: SessionUser, targetUserId: string, r
     return rows[0];
 }
 
+// Lightweight aggregate for the admin overview page: total users + a few well-known buckets +
+// the 10 most recent admin-tagged audit entries. One round-trip; cheap enough to call on every
+// page load while still useful for "is anything blocking my next action?" framing.
+export async function getAdminOverview() {
+    const counts = await pool.query<{ total: number; newLast30Days: number; unverified: number; banned: number }>(
+        `
+            SELECT
+                (SELECT COUNT(*)::int FROM "user")                                                  AS total,
+                (SELECT COUNT(*)::int FROM "user" WHERE "createdAt" >= NOW() - INTERVAL '30 days')  AS "newLast30Days",
+                (SELECT COUNT(*)::int FROM "user" WHERE NOT "emailVerified")                        AS unverified,
+                (SELECT COUNT(*)::int FROM "user" WHERE banned)                                     AS banned
+        `,
+    );
+    const recent = await pool.query(
+        `
+            SELECT id, action, "actorId", "actorName", "actorEmail", "actorRole",
+                   "targetUserId", "targetEmail", "targetName",
+                   outcome, "createdAt", "requestId", "ipAddress", "userAgent",
+                   method, path, metadata
+            FROM "adminAuditLog"
+            WHERE action LIKE 'admin.%' OR action LIKE 'better-auth.admin.%' OR action LIKE 'post.curated.%'
+            ORDER BY "createdAt" DESC
+            LIMIT 10
+        `,
+    );
+    return {
+        counts: counts.rows[0] ?? { total: 0, newLast30Days: 0, unverified: 0, banned: 0 },
+        recentActions: recent.rows,
+    };
+}
+
+// Admin/super-admin can manually mark a user's email as verified (e.g. after manual identity confirmation).
+// Idempotent — calling on an already-verified user is a no-op and still emits an audit entry for traceability.
+export async function setUserEmailVerified(actor: SessionUser, targetUserId: string, verified: boolean) {
+    const { rows } = await pool.query(
+        `
+            UPDATE "user"
+            SET "emailVerified" = $1, "updatedAt" = NOW()
+            WHERE id = $2
+            RETURNING id, name, email, "emailVerified", image, role, banned, "banReason", "banExpires", "createdAt", "updatedAt"
+        `,
+        [verified, targetUserId],
+    );
+
+    if (!rows[0]) return null;
+
+    await writeAuditLog({
+        actor,
+        action: verified ? "admin.user.email.verify" : "admin.user.email.unverify",
+        targetUserId,
+        targetEmail: rows[0].email,
+    });
+
+    return rows[0];
+}
+
 export async function listManagedAccounts(userId: string) {
     if (isSuperAdminId(userId, superAdminUserIds)) {
         return null;

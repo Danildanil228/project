@@ -3,9 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { PhotoDropzone } from "../components/PhotoDropzone";
-import { listFish, listWaterbodies } from "../lib/reference-api";
+import { emptyPostLocation, PostLocationPicker, type PostLocationValue } from "../components/PostLocationPicker";
+import { getWaterbody, listBaits, listFish, listWaterbodies } from "../lib/reference-api";
+import { postMapLinkingEnabled } from "../lib/features";
 import { createPost, getPost, moderatorEditPost, toPostPayload, updatePost, uploadPostMedia } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
+import type { Bait } from "../types/bait";
 import type { Fish } from "../types/fish";
 import type { WaterbodyListRow } from "../types/waterbody";
 import { fishingMethods, type FishingMethod, type PostContentInput } from "../types/post";
@@ -29,6 +32,8 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     const isModerating = mode === "moderate";
 
     const [allFish, setAllFish] = useState<Fish[]>([]);
+    const [allBaits, setAllBaits] = useState<Bait[]>([]);
+    const [habitatFishIds, setHabitatFishIds] = useState<number[] | null>(null);
     const [waterbodies, setWaterbodies] = useState<WaterbodyListRow[]>([]);
     const [loading, setLoading] = useState(true);
     const [loadError, setLoadError] = useState("");
@@ -41,8 +46,15 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     const [hours, setHours] = useState("");
     const [minutes, setMinutes] = useState("");
     const [fishIds, setFishIds] = useState<number[]>([]);
+    const [baitMode, setBaitMode] = useState<"common" | "per_fish">("common");
+    const [commonBaitIds, setCommonBaitIds] = useState<number[]>([]);
+    const [fishBaitIds, setFishBaitIds] = useState<Record<number, number[]>>({});
+    const [location, setLocation] = useState<PostLocationValue>(emptyPostLocation);
     const [media, setMedia] = useState<string[]>([]);
     const [skipModeration, setSkipModeration] = useState(false);
+    // Curated/community: moderator+ only. Bypasses moderation and renders without a clickable author.
+    const [isCurated, setIsCurated] = useState(false);
+    const [curatedLabel, setCuratedLabel] = useState("");
 
     const [uploading, setUploading] = useState(false);
     const [uploadError, setUploadError] = useState("");
@@ -60,15 +72,24 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
 
         async function load() {
             try {
-                const [fish, water] = await Promise.all([listFish({ limit: 500 }), listWaterbodies({ limit: 200 })]);
+                const [fish, water, baits] = await Promise.all([listFish({ limit: 500 }), listWaterbodies({ limit: 200 }), listBaits({ limit: 500 })]);
                 if (ignore) return;
                 setAllFish(fish.items);
                 setWaterbodies(water.items);
+                setAllBaits(baits.items);
 
                 if (editingId) {
                     const { post } = await getPost(editingId);
                     if (ignore) return;
-                    if (!isModerating) {
+                    // Curated posts: only moderator+ can edit, regardless of author_id.
+                    if (post.isCurated) {
+                        if (!isElevated) {
+                            setLoadError("Редактировать посты сообщества может только модератор.");
+                            return;
+                        }
+                        setIsCurated(true);
+                        setCuratedLabel(post.curatedLabel ?? "");
+                    } else if (!isModerating) {
                         if (post.authorId !== currentUser?.id) {
                             setLoadError("Это не ваш пост — редактировать нельзя.");
                             return;
@@ -96,6 +117,20 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             setMinutes(String(version.fishingMinutes % 60));
                         }
                         setFishIds(version.catches.map((item) => item.fishId));
+                        setBaitMode(version.baitMode);
+                        setCommonBaitIds(version.commonBaits.map((item) => item.id));
+                        setFishBaitIds(Object.fromEntries(version.catches.map((item) => [item.fishId, item.baits.map((bait) => bait.id)])));
+                        setLocation({
+                            proposedSpotId: version.proposedSpotId,
+                            mapX: version.mapX,
+                            mapY: version.mapY,
+                            gameCoordinateX: version.gameCoordinateX,
+                            gameCoordinateY: version.gameCoordinateY,
+                            mapX2: version.mapX2 ?? null,
+                            mapY2: version.mapY2 ?? null,
+                            gameCoordinateX2: version.gameCoordinateX2 ?? null,
+                            gameCoordinateY2: version.gameCoordinateY2 ?? null,
+                        });
                         setMedia(version.media.map((item) => item.url));
                     }
                 }
@@ -114,6 +149,15 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser?.id, editingId]);
 
+    useEffect(() => {
+        if (!waterbodyId) { setHabitatFishIds(null); return; }
+        let ignore = false;
+        getWaterbody(waterbodyId)
+            .then(({ item }) => { if (!ignore) setHabitatFishIds(item.fish.map((fish) => fish.id)); })
+            .catch(() => { if (!ignore) setHabitatFishIds([]); });
+        return () => { ignore = true; };
+    }, [waterbodyId]);
+
     const totalMinutes = (Number(hours) || 0) * 60 + (Number(minutes) || 0);
     const incomePerHourPreview = useMemo(() => {
         const incomeNumber = Number(income);
@@ -126,9 +170,25 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
         [waterbodies],
     );
     const fishOptions = useMemo<ComboboxOption[]>(
-        () => allFish.map((fish) => ({ id: fish.id, name: fish.name, hint: fish.rarity })),
-        [allFish],
+        () => allFish.filter((fish) => habitatFishIds?.includes(fish.id)).map((fish) => ({ id: fish.id, name: fish.name, hint: fish.rarity })),
+        [allFish, habitatFishIds],
     );
+    const baitOptions = useMemo<ComboboxOption[]>(
+        () => allBaits.map((bait) => ({ id: bait.id, name: bait.name, hint: bait.kind })),
+        [allBaits],
+    );
+
+    function changeWaterbody(nextId: number | null) {
+        setWaterbodyId(nextId);
+        setLocation(emptyPostLocation);
+        setFishIds([]);
+        setFishBaitIds({});
+    }
+
+    function changeFish(nextIds: number[]) {
+        setFishIds(nextIds);
+        setFishBaitIds((current) => Object.fromEntries(Object.entries(current).filter(([fishId]) => nextIds.includes(Number(fishId)))));
+    }
 
     async function handleAddFiles(files: File[]) {
         const slots = maxPhotos - media.length;
@@ -161,7 +221,10 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
             fishingMethod: fishingMethod || null,
             income: income !== "" ? Number(income) : null,
             fishingMinutes: totalMinutes > 0 ? totalMinutes : null,
-            catches: fishIds.map((fishId) => ({ fishId })),
+            catches: fishIds.map((fishId) => ({ fishId, baitIds: postMapLinkingEnabled && baitMode === "per_fish" ? fishBaitIds[fishId] ?? [] : [] })),
+            baitMode: postMapLinkingEnabled ? baitMode : "common",
+            commonBaitIds: postMapLinkingEnabled && baitMode === "common" ? commonBaitIds : [],
+            ...(postMapLinkingEnabled ? location : emptyPostLocation),
             media,
         };
     }
@@ -185,6 +248,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
             content.income != null ||
             content.fishingMinutes != null ||
             content.catches.length > 0 ||
+            content.gameCoordinateX != null ||
             content.media.length > 0;
         return hasAny ? null : "Пустой черновик сохранить нельзя — заполните хотя бы одно поле.";
     }
@@ -212,7 +276,12 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                 navigate("/moderation");
                 return;
             }
-            const payload = toPostPayload(content, { submit, skipModeration: submit && isElevated ? skipModeration : false });
+            const payload = toPostPayload(content, {
+                submit: submit || isCurated,
+                skipModeration: submit && isElevated ? skipModeration : false,
+                isCurated: isCurated && isElevated,
+                curatedLabel: isCurated && isElevated ? curatedLabel : null,
+            });
             if (editingId) {
                 await updatePost(editingId, payload);
             } else {
@@ -276,46 +345,38 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
             {formError && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{formError}</p>}
 
             <form onSubmit={onSubmit} className="grid gap-5">
-                <div className="grid gap-4 rounded-lg border border-border bg-card p-4">
-                    <div className="grid gap-3 sm:grid-cols-2">
+                <div className={`grid gap-4 rounded-lg border border-border bg-card p-4 ${waterbodyId ? "lg:grid-cols-[minmax(0,1fr)_minmax(320px,460px)]" : ""}`}>
+                    <div className="grid content-start gap-4">
+                        <div className="grid gap-3 sm:grid-cols-2">
+                            <label className="grid gap-1 text-sm">
+                                <span className="text-muted-foreground">Водоём *</span>
+                                <Combobox
+                                    options={waterbodyOptions}
+                                    value={waterbodyId}
+                                    onChange={changeWaterbody}
+                                    placeholder="— выберите водоём —"
+                                    searchPlaceholder="Поиск водоёма…"
+                                />
+                            </label>
+                            <label className="grid gap-1 text-sm">
+                                <span className="text-muted-foreground">Вид ловли *</span>
+                                <select name="fishingMethod" value={fishingMethod} onChange={(event) => setFishingMethod(event.target.value as FishingMethod | "")}>
+                                    <option value="">— выберите вид —</option>
+                                    {fishingMethods.map((method) => <option key={method} value={method}>{method}</option>)}
+                                </select>
+                            </label>
+                            <label className="grid gap-1 text-sm sm:col-span-2">
+                                <span className="text-muted-foreground">Точка *</span>
+                                <input value={point} onChange={(event) => setPoint(event.target.value)} maxLength={50} placeholder="Например, 75:88 или клипса 35 м" />
+                            </label>
+                        </div>
+
                         <label className="grid gap-1 text-sm">
-                            <span className="text-muted-foreground">Водоём *</span>
-                            <Combobox
-                                options={waterbodyOptions}
-                                value={waterbodyId}
-                                onChange={setWaterbodyId}
-                                placeholder="— выберите водоём —"
-                                searchPlaceholder="Поиск водоёма…"
-                            />
-                        </label>
-                        <label className="grid gap-1 text-sm">
-                            <span className="text-muted-foreground">Вид ловли *</span>
-                            <select name="fishingMethod" value={fishingMethod} onChange={(event) => setFishingMethod(event.target.value as FishingMethod | "")}>
-                                <option value="">— выберите вид —</option>
-                                {fishingMethods.map((method) => (
-                                    <option key={method} value={method}>
-                                        {method}
-                                    </option>
-                                ))}
-                            </select>
-                        </label>
-                        <label className="grid gap-1 text-sm">
-                            <span className="text-muted-foreground">Точка *</span>
-                            <input value={point} onChange={(event) => setPoint(event.target.value)} maxLength={50} placeholder="75:88, или A4, или A4 + клипса" />
+                            <span className="text-muted-foreground">Описание</span>
+                            <textarea value={description} onChange={(event) => setDescription(event.target.value)} rows={5} maxLength={5000} placeholder="Как ловилось, какие снасти и условия…" className="resize-y" />
                         </label>
                     </div>
-
-                    <label className="grid gap-1 text-sm">
-                        <span className="text-muted-foreground">Описание</span>
-                        <textarea
-                            value={description}
-                            onChange={(event) => setDescription(event.target.value)}
-                            rows={4}
-                            maxLength={5000}
-                            placeholder="Как ловилось, на что, какие условия…"
-                            className="resize-y"
-                        />
-                    </label>
+                    {postMapLinkingEnabled && waterbodyId && <PostLocationPicker key={waterbodyId} waterbodyId={waterbodyId} value={location} onChange={setLocation} />}
                 </div>
 
                 {/* Разнорыбица — улов */}
@@ -325,16 +386,41 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                         <span className="text-xs text-muted-foreground">Можно добавить несколько видов рыб (разнорыбица)</span>
                     </div>
 
-                    {allFish.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">В справочнике пока нет рыбы — попросите администратора добавить её.</p>
+                    {fishOptions.length === 0 ? (
+                        <p className="text-sm text-muted-foreground">{waterbodyId ? "Для этого водоёма не указан список обитателей." : "Сначала выберите водоём."}</p>
                     ) : (
                         <MultiCombobox
                             options={fishOptions}
                             selected={fishIds}
-                            onChange={setFishIds}
+                            onChange={changeFish}
                             placeholder="+ Добавить рыбу"
                             searchPlaceholder="Поиск рыбы…"
                         />
+                    )}
+
+                    {postMapLinkingEnabled && fishIds.length > 0 && (
+                        <div className="grid gap-3 border-t border-border pt-3">
+                            <div className="flex flex-wrap items-center justify-between gap-2">
+                                <h4 className="text-sm font-bold">Наживки и приманки</h4>
+                                <div className="inline-flex rounded-lg border border-border p-1 text-xs">
+                                    <button type="button" onClick={() => setBaitMode("common")} className={`rounded px-3 py-1.5 ${baitMode === "common" ? "bg-primary font-bold text-primary-foreground" : "text-muted-foreground"}`}>Общие для улова</button>
+                                    <button type="button" onClick={() => setBaitMode("per_fish")} className={`rounded px-3 py-1.5 ${baitMode === "per_fish" ? "bg-primary font-bold text-primary-foreground" : "text-muted-foreground"}`}>Отдельно по рыбе</button>
+                                </div>
+                            </div>
+                            {baitMode === "common" ? (
+                                <MultiCombobox options={baitOptions} selected={commonBaitIds} onChange={setCommonBaitIds} placeholder="+ Добавить наживку" searchPlaceholder="Поиск наживки…" />
+                            ) : (
+                                <div className="grid gap-3">
+                                    {fishIds.map((fishId) => (
+                                        <label key={fishId} className="grid gap-1 text-sm sm:grid-cols-[180px_1fr] sm:items-start">
+                                            <span className="pt-2 font-medium">{allFish.find((fish) => fish.id === fishId)?.name}</span>
+                                            <MultiCombobox options={baitOptions} selected={fishBaitIds[fishId] ?? []} onChange={(ids) => setFishBaitIds((current) => ({ ...current, [fishId]: ids }))} placeholder="+ Добавить наживку" searchPlaceholder="Поиск наживки…" />
+                                        </label>
+                                    ))}
+                                </div>
+                            )}
+                            <p className="text-xs text-muted-foreground">Это поле необязательно. Модератор сможет уточнить данные перед публикацией точки на карте.</p>
+                        </div>
                     )}
                 </div>
 
@@ -378,16 +464,42 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                         </button>
                     ) : (
                         <>
-                            <button type="button" onClick={() => void save(false)} disabled={saving} className="rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-50">
-                                {saving ? "Сохранение…" : "Сохранить черновик"}
-                            </button>
+                            {/* Curated posts go straight to approved on the backend — no draft step. */}
+                            {!isCurated && (
+                                <button type="button" onClick={() => void save(false)} disabled={saving} className="rounded-lg border border-border px-4 py-2.5 text-sm font-bold disabled:opacity-50">
+                                    {saving ? "Сохранение…" : "Сохранить черновик"}
+                                </button>
+                            )}
                             <button type="button" onClick={() => void save(true)} disabled={saving} className="rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground disabled:opacity-50">
-                                {isElevated && skipModeration ? "Опубликовать" : "Отправить на проверку"}
+                                {isCurated ? "Опубликовать (Сообщество)" : isElevated && skipModeration ? "Опубликовать" : "Отправить на проверку"}
                             </button>
                             {isElevated && (
                                 <div onClick={() => setSkipModeration((value) => !value)} className="flex cursor-pointer items-center gap-2 text-sm">
                                     <input type="checkbox" readOnly checked={skipModeration} className="pointer-events-none shrink-0" />
                                     <span>Опубликовать без проверки</span>
+                                </div>
+                            )}
+                            {/* Curated/community post — moderator+ only. Bypasses moderation; no clickable author in feed. */}
+                            {isElevated && (
+                                <div className="flex w-full flex-col gap-2 rounded-lg border border-dashed border-border bg-card/60 p-3 sm:w-auto sm:flex-row sm:items-center">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsCurated((value) => !value)}
+                                        className="flex items-center gap-2 text-sm"
+                                    >
+                                        <input type="checkbox" readOnly checked={isCurated} className="pointer-events-none shrink-0" />
+                                        <span>Опубликовать как «Сообщество»</span>
+                                    </button>
+                                    {isCurated && (
+                                        <input
+                                            type="text"
+                                            value={curatedLabel}
+                                            onChange={(event) => setCuratedLabel(event.target.value)}
+                                            placeholder="Подпись (необязательно), напр. «Архив»"
+                                            maxLength={60}
+                                            className="h-8 text-sm sm:w-56"
+                                        />
+                                    )}
                                 </div>
                             )}
                         </>

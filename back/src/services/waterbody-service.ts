@@ -24,7 +24,8 @@ export async function listWaterbodies(query: ListQuery) {
     values.push(query.limit, query.offset);
     const { rows } = await pool.query(
         `
-            SELECT w.id, w.name, w.photo, COUNT(wf.fish_id)::int AS "fishCount"
+            SELECT w.id, w.name, w.photo, COUNT(wf.fish_id)::int AS "fishCount",
+                   (SELECT COUNT(*)::int FROM spot s WHERE s.waterbody_id = w.id AND s.is_active = TRUE) AS "spotCount"
             FROM waterbody w
             LEFT JOIN waterbody_fish wf ON wf.waterbody_id = w.id
             ${whereSql}
@@ -39,16 +40,26 @@ export async function listWaterbodies(query: ListQuery) {
 }
 
 export async function getWaterbody(id: number) {
-    const { rows } = await pool.query(`SELECT id, name, photo FROM waterbody WHERE id = $1`, [id]);
+    const { rows } = await pool.query(
+        `SELECT id, name, photo,
+                coordinate_min_x::float AS "coordinateMinX",
+                coordinate_min_y::float AS "coordinateMinY",
+                coordinate_max_x::float AS "coordinateMaxX",
+                coordinate_max_y::float AS "coordinateMaxY"
+         FROM waterbody WHERE id = $1`,
+        [id],
+    );
     if (!rows[0]) return null;
 
     const fish = await pool.query(
         `
-            SELECT f.id, f.name, f.rarity
+            SELECT f.id, f.name, f.rarity, f.photo,
+                   f.trophy_weight_grams       AS "trophyWeightGrams",
+                   f.rare_trophy_weight_grams  AS "rareTrophyWeightGrams"
             FROM waterbody_fish wf
             JOIN fish f ON f.id = wf.fish_id
             WHERE wf.waterbody_id = $1
-            ORDER BY f.name ASC
+            ORDER BY f.rarity DESC, f.name ASC
         `,
         [id],
     );
@@ -60,7 +71,12 @@ export async function createWaterbody(data: WaterbodyCreate, actor: SessionUser)
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
-        const { rows } = await client.query(`INSERT INTO waterbody (name, photo) VALUES ($1, $2) RETURNING id, name`, [data.name, data.photo ?? null]);
+        const { rows } = await client.query(
+            `INSERT INTO waterbody (
+                name, photo, coordinate_min_x, coordinate_min_y, coordinate_max_x, coordinate_max_y
+             ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, name`,
+            [data.name, data.photo ?? null, data.coordinateMinX, data.coordinateMinY, data.coordinateMaxX, data.coordinateMaxY],
+        );
         const waterbodyId = rows[0].id;
 
         if (data.fishIds.length) {
@@ -86,10 +102,18 @@ export async function updateWaterbody(id: number, data: WaterbodyUpdate, actor: 
 
         const fields: string[] = [];
         const values: unknown[] = [];
-        for (const key of ["name", "photo"] as const) {
+        const columns = {
+            name: "name",
+            photo: "photo",
+            coordinateMinX: "coordinate_min_x",
+            coordinateMinY: "coordinate_min_y",
+            coordinateMaxX: "coordinate_max_x",
+            coordinateMaxY: "coordinate_max_y",
+        } as const;
+        for (const [key, column] of Object.entries(columns)) {
             if (key in data) {
                 values.push((data as Record<string, unknown>)[key] ?? null);
-                fields.push(`${key} = $${values.length}`);
+                fields.push(`${column} = $${values.length}`);
             }
         }
 
@@ -109,10 +133,26 @@ export async function updateWaterbody(id: number, data: WaterbodyUpdate, actor: 
         }
 
         if ("fishIds" in data && data.fishIds) {
-            await client.query(`DELETE FROM waterbody_fish WHERE waterbody_id = $1`, [id]);
+            await client.query(
+                `DELETE FROM waterbody_fish WHERE waterbody_id = $1 AND NOT (fish_id = ANY($2::int[]))`,
+                [id, data.fishIds],
+            );
             if (data.fishIds.length) {
-                await client.query(`INSERT INTO waterbody_fish (waterbody_id, fish_id) SELECT $1, UNNEST($2::int[])`, [id, data.fishIds]);
+                await client.query(
+                    `INSERT INTO waterbody_fish (waterbody_id, fish_id)
+                     SELECT $1, UNNEST($2::int[])
+                     ON CONFLICT DO NOTHING`,
+                    [id, data.fishIds],
+                );
             }
+            await client.query(
+                `DELETE FROM spot_fish sf
+                 USING spot s
+                 WHERE sf.spot_id = s.id
+                   AND s.waterbody_id = $1
+                   AND NOT (sf.fish_id = ANY($2::int[]))`,
+                [id, data.fishIds],
+            );
         }
 
         await client.query("COMMIT");
