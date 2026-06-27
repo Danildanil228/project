@@ -15,7 +15,17 @@ export function PostCard({ post }: PostCardProps) {
     const [modalIndex, setModalIndex] = useState<number | null>(null);
 
     const hasPhotos = post.mediaUrls.length > 0;
-    const secondaryPhotos = post.mediaUrls.slice(1);
+    const previewPhotos = post.mediaUrls.slice(1, 5);
+    const tabletPhotos = previewPhotos.slice(0, 2);
+    const tabletGridClass = tabletPhotos.length === 1 ? "sm:grid-cols-1" : "sm:grid-cols-2";
+    const desktopGridClass = previewPhotos.length === 1
+        ? "lg:grid-cols-1"
+        : previewPhotos.length === 2
+            ? "lg:grid-cols-2"
+            : previewPhotos.length === 3
+                ? "lg:grid-cols-3"
+                : "lg:grid-cols-4";
+
     return (
         <article className={`flex flex-col overflow-hidden rounded-lg border bg-card transition-colors hover:border-primary ${
             post.pinnedAt ? "border-amber-400/60 ring-1 ring-amber-400/30" : "border-border"
@@ -36,20 +46,29 @@ export function PostCard({ post }: PostCardProps) {
                             aria-label="Открыть главное фото"
                         >
                             <img src={mediaUrl(post.mediaUrls[0])} alt="" loading="lazy" className="h-full w-full object-cover" />
+                            {post.mediaUrls.length > 1 && (
+                                <span className="absolute right-2 top-2 rounded bg-black/65 px-2 py-1 text-xs font-bold text-white sm:hidden">1 / {post.mediaUrls.length}</span>
+                            )}
                         </button>
-                        {secondaryPhotos.length > 0 && (
-                            <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${Math.min(4, secondaryPhotos.length)}, minmax(0, 1fr))` }}>
-                                {secondaryPhotos.map((url, index) => (
-                                    <button
-                                        key={`${url}-${index + 1}`}
-                                        type="button"
-                                        onClick={() => setModalIndex(index + 1)}
-                                        className="block aspect-square min-h-0 w-full overflow-hidden"
-                                        aria-label={`Открыть фото ${index + 2}`}
-                                    >
-                                        <img src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full object-cover" />
-                                    </button>
-                                ))}
+                        {previewPhotos.length > 0 && (
+                            <div className={`hidden gap-1 sm:grid ${tabletGridClass} ${desktopGridClass}`}>
+                                {previewPhotos.map((url, index) => {
+                                    const tabletHiddenCount = index === tabletPhotos.length - 1 ? post.mediaUrls.length - 1 - tabletPhotos.length : 0;
+                                    const desktopHiddenCount = index === previewPhotos.length - 1 ? post.mediaUrls.length - 1 - previewPhotos.length : 0;
+                                    return (
+                                        <button
+                                            key={`${url}-${index + 1}`}
+                                            type="button"
+                                            onClick={() => setModalIndex(index + 1)}
+                                            className={`relative h-20 min-w-0 overflow-hidden ${index >= 2 ? "hidden lg:block" : "block"}`}
+                                            aria-label={`Открыть фото ${index + 2}`}
+                                        >
+                                            <img src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full object-cover" />
+                                            {tabletHiddenCount > 0 && <span className="absolute inset-0 grid place-items-center bg-black/55 text-lg font-bold text-white lg:hidden">+{tabletHiddenCount}</span>}
+                                            {desktopHiddenCount > 0 && <span className="absolute inset-0 hidden place-items-center bg-black/55 text-lg font-bold text-white lg:grid">+{desktopHiddenCount}</span>}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         )}
                     </div>

@@ -1,10 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { listNotifications, markNotificationsRead, notificationsUnreadCount } from "../lib/engagement-api";
+import {
+    getNotificationSoundSettings,
+    listNotifications,
+    markNotificationsRead,
+    notificationsUnreadCount,
+    subscribeToNotificationEvents,
+} from "../lib/engagement-api";
 import type { ManagedUser } from "../types/admin";
 import type { NotificationRow, NotificationType } from "../types/post";
 import { formatDate } from "../utils/admin-format";
 import { postMapLinkingEnabled } from "../lib/features";
+import { installNotificationAudioUnlock, notificationSoundSettingsEvent, playNotificationSound } from "../lib/notification-sound";
+import { defaultNotificationSoundSettings, type NotificationSoundSettings } from "../types/notification-sound";
 
 type NotificationsBellProps = {
     currentUser?: ManagedUser;
@@ -37,25 +45,55 @@ function extra(notification: NotificationRow): string | null {
 
 export function NotificationsBell({ currentUser }: NotificationsBellProps) {
     const navigate = useNavigate();
+    const currentUserId = currentUser?.id;
     const [open, setOpen] = useState(false);
     const [unread, setUnread] = useState(0);
     const [items, setItems] = useState<NotificationRow[]>([]);
     const [loading, setLoading] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const latestUnreadIdRef = useRef<number | null | undefined>(undefined);
+    const soundSettingsRef = useRef<NotificationSoundSettings>(defaultNotificationSoundSettings);
 
     const refreshCount = useCallback(() => {
-        if (!currentUser) return;
+        if (!currentUserId) return;
         notificationsUnreadCount()
-            .then(({ unread: value }) => setUnread(value))
+            .then(({ unread: value, latestId }) => {
+                const previousLatestId = latestUnreadIdRef.current;
+                if (previousLatestId !== undefined && latestId !== null && (previousLatestId === null || latestId > previousLatestId)) {
+                    void playNotificationSound(soundSettingsRef.current);
+                }
+                latestUnreadIdRef.current = latestId;
+                setUnread(value);
+            })
             .catch(() => undefined);
-    }, [currentUser]);
+    }, [currentUserId]);
+
+    useEffect(() => {
+        latestUnreadIdRef.current = undefined;
+        soundSettingsRef.current = defaultNotificationSoundSettings;
+        installNotificationAudioUnlock();
+        if (currentUserId) {
+            getNotificationSoundSettings()
+                .then((settings) => { soundSettingsRef.current = settings; })
+                .catch(() => undefined);
+        }
+        const onSettingsChanged = (event: Event) => {
+            soundSettingsRef.current = (event as CustomEvent<NotificationSoundSettings>).detail;
+        };
+        window.addEventListener(notificationSoundSettingsEvent, onSettingsChanged);
+        return () => window.removeEventListener(notificationSoundSettingsEvent, onSettingsChanged);
+    }, [currentUserId]);
 
     useEffect(() => {
         refreshCount();
-        if (!currentUser) return;
+        if (!currentUserId) return;
+        const unsubscribe = subscribeToNotificationEvents(refreshCount, refreshCount);
         const timer = window.setInterval(refreshCount, 60_000);
-        return () => window.clearInterval(timer);
-    }, [currentUser, refreshCount]);
+        return () => {
+            unsubscribe();
+            window.clearInterval(timer);
+        };
+    }, [currentUserId, refreshCount]);
 
     useEffect(() => {
         if (!open) return;

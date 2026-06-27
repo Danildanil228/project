@@ -1,4 +1,5 @@
 import type { CommentRow, NotificationRow, ReactionSummary, ReportRow, ReportStatus } from "../types/post";
+import type { NotificationSoundSettings } from "../types/notification-sound";
 
 type ListResponse<T> = { items: T[]; total: number; limit: number; offset: number };
 
@@ -68,8 +69,45 @@ export function listNotifications(params: { unreadOnly?: boolean; limit?: number
     return requestJson<ListResponse<NotificationRow>>(`/api/notifications?${query.toString()}`);
 }
 export function notificationsUnreadCount() {
-    return requestJson<{ unread: number }>(`/api/notifications/unread-count`);
+    return requestJson<{ unread: number; latestId: number | null }>(`/api/notifications/unread-count`);
 }
+
+export function subscribeToNotificationEvents(onNotification: () => void, onConnected?: () => void) {
+    const source = new EventSource("/api/notifications/stream", { withCredentials: true });
+    source.addEventListener("notification", onNotification);
+    source.addEventListener("open", () => onConnected?.());
+    return () => source.close();
+}
+
 export function markNotificationsRead(ids?: number[]) {
     return requestJson<{ unread: number }>(`/api/notifications/read`, withBody("POST", ids ? { ids } : {}));
+}
+
+export function getNotificationSoundSettings() {
+    return requestJson<NotificationSoundSettings>(`/api/notifications/sound`);
+}
+
+export function updateNotificationSoundSettings(settings: Pick<NotificationSoundSettings, "enabled" | "sound" | "volume">) {
+    return requestJson<NotificationSoundSettings>(`/api/notifications/sound`, withBody("PATCH", settings));
+}
+
+function audioContentType(file: File) {
+    if (file.type) return file.type;
+    const extension = file.name.split(".").pop()?.toLowerCase();
+    return ({ mp3: "audio/mpeg", wav: "audio/wav", ogg: "audio/ogg", webm: "audio/webm", m4a: "audio/mp4" } as Record<string, string>)[extension ?? ""] ?? "application/octet-stream";
+}
+
+export async function uploadNotificationSound(file: File) {
+    const response = await fetch(`/api/notifications/sound/custom`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": audioContentType(file) },
+        body: file,
+    });
+    if (!response.ok) throw new Error(await readError(response));
+    return response.json() as Promise<NotificationSoundSettings>;
+}
+
+export function deleteNotificationSound() {
+    return requestJson<NotificationSoundSettings>(`/api/notifications/sound/custom`, { method: "DELETE" });
 }

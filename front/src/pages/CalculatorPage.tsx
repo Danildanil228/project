@@ -4,6 +4,7 @@ import { Cog, Fish  } from "lucide-react";
 import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
+import { RangeControl } from "../components/RangeControl";
 import { currentStrength, fetchCalculatorItems, formatKg, parseStrength } from "../lib/calculator-api";
 
 export function CalculatorPage() {
@@ -279,25 +280,13 @@ function GearBlock({
                 {meta && <p className="text-xs text-muted-foreground">{meta}</p>}
             </div>
 
-            <div className="grid gap-2">
-                <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Износ</span>
-                    <span className="font-mono font-bold">{wear}%</span>
-                </div>
-                <input
-                    type="range"
-                    min={0}
-                    max={100}
-                    step={1}
-                    value={wear}
-                    disabled={!selectedId}
-                    onChange={(event) => onWearChange(Number.parseInt(event.target.value, 10))}
-                    className="accent-primary disabled:opacity-40"
-                />
-                <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>0%</span><span>50%</span><span>100%</span>
-                </div>
-            </div>
+            <RangeControl
+                label="Износ"
+                value={wear}
+                valueLabel={`${wear}%`}
+                disabled={!selectedId}
+                onChange={onWearChange}
+            />
 
             {/* Strength bar */}
             <div className="grid gap-2 rounded-xl border border-border bg-muted/30 p-4">

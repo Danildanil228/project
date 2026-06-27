@@ -403,6 +403,20 @@ td small {
   padding: 18px;
 }
 
+.settings-card {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.profile-security-card:empty {
+  display: none;
+}
+
+.profile-layout:has(> .profile-security-card:empty) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .profile-heading,
 .avatar-preview,
 .user-cell {
@@ -1058,5 +1072,20 @@ tbody tr:hover {
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer base {
+  input:focus,
+  input:focus-visible,
+  select:focus,
+  select:focus-visible,
+  textarea:focus,
+  textarea:focus-visible,
+  button:focus,
+  button:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
   }
 }

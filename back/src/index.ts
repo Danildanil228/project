@@ -25,6 +25,7 @@ import { mapSubmissionsRouter } from './routes/map-submissions';
 import { calculatorRouter } from './routes/calculator';
 import { accountRouter } from './routes/account';
 import { postMapLinkingEnabled } from './lib/features';
+import { startNotificationRealtime, stopNotificationRealtime } from './services/notification-realtime';
 
 dotenv.config();
 
@@ -64,6 +65,7 @@ app.use(express.json());
 app.use('/api/admin', adminAccountsRouter);
 
 await runMigrations();
+await startNotificationRealtime();
 
 app.get('/health', (_req, res) => {
     res.json({ status: "ok" });
@@ -100,6 +102,7 @@ const server = app.listen(port, host, () => {
 async function shutdown(signal: string) {
     console.log(`${signal} received, shutting down`);
     server.close(async () => {
+        stopNotificationRealtime();
         await pool.end().catch(() => undefined);
         process.exit(0);
     });

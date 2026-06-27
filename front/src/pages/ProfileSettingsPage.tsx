@@ -5,6 +5,7 @@ import { AvatarUploadField } from "../components/AvatarUploadField";
 import { ChangePasswordForm } from "../components/ChangePasswordForm";
 import { PageHeader } from "../components/PageHeader";
 import { TelegramLinkPanel } from "../components/TelegramLinkPanel";
+import { NotificationSoundSettings } from "../components/NotificationSoundSettings";
 import { UserAvatar } from "../components/UserAvatar";
 import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
@@ -116,7 +117,7 @@ export function ProfileSettingsPage({ currentUser, adminContext, onSessionRefres
             <PageHeader
                 eyebrow="Аккаунт"
                 title="Настройки профиля"
-                description="Имя, аватар, пароль, подтверждение email и активные сессии."
+                description="Профиль, безопасность, уведомления и активные сессии."
                 actions={
                     <Link to="/profile" className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm font-semibold hover:border-primary">
                         <ArrowLeft size={14} /> К профилю
@@ -165,11 +166,13 @@ export function ProfileSettingsPage({ currentUser, adminContext, onSessionRefres
 
                 {/* OAuth-only users have no password to change — ChangePasswordForm renders nothing for them.
                     TelegramLinkPanel also self-hides for non-moderator users (the API returns 403). */}
-                <div className="panel profile-card stack">
+                <div className="panel profile-card stack profile-security-card">
                     <ChangePasswordForm />
                     <TelegramLinkPanel />
                 </div>
             </div>
+
+            <NotificationSoundSettings />
 
             <section className="panel">
                 <div className="panel-header">

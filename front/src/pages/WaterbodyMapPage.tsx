@@ -2,7 +2,7 @@ import { ArrowLeft, MapPin, Pencil, Plus, Save, Trash2, X } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
-import { InteractiveMap, type MapPoint } from "../components/InteractiveMap";
+import { InteractiveMap, MapFixedOverlay, type MapPoint } from "../components/InteractiveMap";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { WaterbodyFishList } from "../components/WaterbodyFishList";
 import { mediaUrl } from "../lib/items-api";
@@ -222,12 +222,12 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
             {notice && <p className="rounded-lg border border-green-500/40 bg-green-500/10 px-3 py-2 text-sm text-green-700 dark:text-green-400">{notice}</p>}
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
-            <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="mx-auto grid w-full max-w-4xl min-w-0 items-start gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
                 <InteractiveMap
                     imageSrc={waterbody.photo ? mediaUrl(waterbody.photo) : null}
                     imageAlt={`Карта водоёма ${waterbody.name}`}
                     emptyText="Загрузите изображение карты в справочнике водоёмов"
-                    className="mx-auto aspect-[4/3] min-h-56 w-full max-w-3xl sm:min-h-72"
+                    className="aspect-square min-h-56 w-full sm:min-h-72"
                     onMapClick={chooseMarker}
                     onMapPointerMove={trackCoordinate}
                     onMapPointerLeave={() => setCursorCoordinate(null)}
@@ -236,34 +236,41 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                     testId="waterbody-map"
                 >
                     {spots.map((spot) => (
-                        <button
+                        <MapFixedOverlay
                             key={spot.id}
-                            type="button"
-                            title={spot.name}
-                            aria-label={`Точка: ${spot.name}`}
-                            data-testid={`spot-marker-${spot.id}`}
-                            onClick={(event) => { event.stopPropagation(); setSelectedId(spot.id); }}
-                            className={`absolute grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 shadow-sm ${selectedId === spot.id ? "border-primary-foreground bg-primary text-primary-foreground" : "border-background bg-foreground text-background"} ${!spot.isActive ? "opacity-50" : ""}`}
-                            style={{ left: `${spot.mapX}%`, top: `${spot.mapY}%` }}
-                        ><MapPin size={17} /></button>
+                            mapX={spot.mapX}
+                            mapY={spot.mapY}
+                            className="absolute z-10"
+                        >
+                            <button
+                                type="button"
+                                title={spot.name}
+                                aria-label={`Точка: ${spot.name}`}
+                                data-testid={`spot-marker-${spot.id}`}
+                                onClick={(event) => { event.stopPropagation(); setSelectedId(spot.id); }}
+                                className={`grid size-8 place-items-center rounded-full border-2 shadow-sm ${selectedId === spot.id ? "border-primary-foreground bg-primary text-primary-foreground" : "border-background bg-foreground text-background"} ${!spot.isActive ? "opacity-50" : ""}`}
+                            ><MapPin size={17} /></button>
+                        </MapFixedOverlay>
                     ))}
-                    {formOpen && <div data-testid="draft-spot-marker" className="pointer-events-none absolute grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow" style={{ left: `${form.mapX}%`, top: `${form.mapY}%` }}><MapPin size={17} /></div>}
+                    {formOpen && (
+                        <MapFixedOverlay mapX={form.mapX} mapY={form.mapY} className="pointer-events-none absolute z-10">
+                            <div data-testid="draft-spot-marker" className="grid size-8 place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"><MapPin size={17} /></div>
+                        </MapFixedOverlay>
+                    )}
                     {cursorCoordinate && (
-                        <div
+                        <MapFixedOverlay
+                            mapX={cursorCoordinate.mapX}
+                            mapY={cursorCoordinate.mapY}
+                            transform={`translate(${cursorCoordinate.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursorCoordinate.mapY > 85 ? "calc(-100% - 12px)" : "12px"})`}
                             data-testid="map-coordinate-tooltip"
                             className="pointer-events-none absolute z-30 whitespace-nowrap rounded bg-black/80 px-2 py-1 text-xs font-bold text-white shadow"
-                            style={{
-                                left: `${cursorCoordinate.mapX}%`,
-                                top: `${cursorCoordinate.mapY}%`,
-                                transform: `translate(${cursorCoordinate.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursorCoordinate.mapY > 85 ? "calc(-100% - 12px)" : "12px"})`,
-                            }}
                         >
                             X: {cursorCoordinate.gameX}, Y: {cursorCoordinate.gameY}
-                        </div>
+                        </MapFixedOverlay>
                     )}
                 </InteractiveMap>
 
-                <aside className="min-w-0 rounded-lg border border-border bg-card">
+                <aside className="min-w-0 self-start rounded-lg border border-border bg-card">
                     <div className="border-b border-border px-4 py-3"><h3 className="font-bold">Точки ({spots.length})</h3></div>
                     <div className="max-h-48 overflow-y-auto border-b border-border">
                         {spots.length === 0 ? <p className="p-4 text-sm text-muted-foreground">На карте пока нет точек</p> : spots.map((spot) => (
@@ -317,9 +324,6 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                 </aside>
             </div>
 
-            {/* Public inhabitants list — read-only fish summary under the map. */}
-            <WaterbodyFishList fish={waterbody.fish} />
-
             {formOpen && <form onSubmit={submit} className="grid gap-4 rounded-lg border border-border bg-card p-4">
                 <div className="flex items-center justify-between"><h3 className="font-bold">{editingId ? "Изменить точку" : "Новая точка"}</h3><button type="button" onClick={() => setFormOpen(false)} title="Закрыть"><X size={18} /></button></div>
                 <p className="text-sm text-muted-foreground">Нажмите на карту или введите игровую координату — маркер обновится автоматически.</p>
@@ -339,6 +343,9 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                 <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isActive} onChange={(event) => setForm({ ...form, isActive: event.target.checked })} />Показывать точку пользователям</label>
                 <div><button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground disabled:opacity-50"><Save size={16} /> {submitting ? "Сохранение…" : "Сохранить"}</button></div>
             </form>}
+
+            {/* Public inhabitants list — read-only fish summary under the map and point editor. */}
+            <WaterbodyFishList fish={waterbody.fish} />
             {dialog}
         </section>
     );
