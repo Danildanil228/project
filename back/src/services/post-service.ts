@@ -12,6 +12,7 @@ import { createPendingMapSubmission } from "./map-submission-service";
 import { postMapLinkingEnabled } from "../lib/features";
 import {
     incomePerHour,
+    parseFeedSearch,
     type createPostSchema,
     type feedQuerySchema,
     type myPostsQuerySchema,
@@ -81,7 +82,10 @@ export async function insertVersionChildren(client: PoolClient, versionId: numbe
     for (const item of content.catches) {
         if (seenFishIds.has(item.fishId)) continue;
         seenFishIds.add(item.fishId);
-        await client.query(`INSERT INTO catch (post_version_id, fish_id) VALUES ($1, $2)`, [versionId, item.fishId]);
+        await client.query(
+            `INSERT INTO catch (post_version_id, fish_id, trophy_type) VALUES ($1, $2, $3)`,
+            [versionId, item.fishId, item.trophyType],
+        );
     }
     if (content.baitMode === "common") {
         for (const baitId of content.commonBaitIds) {
@@ -278,7 +282,11 @@ export async function submitDraft(postId: number, author: SessionUser) {
             fishingMethod: full.version.fishingMethod,
             income: full.version.income,
             fishingMinutes: full.version.fishingMinutes,
-            catches: full.version.catches.map((item: { fishId: number; baits: Array<{ id: number }> }) => ({ fishId: item.fishId, baitIds: item.baits.map((bait) => bait.id) })),
+            catches: full.version.catches.map((item: { fishId: number; trophyType: "normal" | "trophy" | "rare_trophy"; baits: Array<{ id: number }> }) => ({
+                fishId: item.fishId,
+                trophyType: item.trophyType,
+                baitIds: item.baits.map((bait) => bait.id),
+            })),
             baitMode: full.version.baitMode,
             commonBaitIds: full.version.commonBaits.map((item: { id: number }) => item.id),
             proposedSpotId: full.version.proposedSpotId,
@@ -361,7 +369,11 @@ export async function getPostById(id: number) {
     if (!version) return { ...post, version: null };
 
     const catches = await pool.query(
-        `SELECT c.id, c.fish_id AS "fishId", f.name AS "fishName", f.photo AS "fishPhoto", f.rarity FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = $1 ORDER BY c.id`,
+        `SELECT c.id, c.fish_id AS "fishId", c.trophy_type AS "trophyType", f.name AS "fishName", f.photo AS "fishPhoto", f.rarity
+         FROM catch c
+         JOIN fish f ON f.id = c.fish_id
+         WHERE c.post_version_id = $1
+         ORDER BY CASE c.trophy_type WHEN 'rare_trophy' THEN 0 WHEN 'trophy' THEN 1 ELSE 2 END, c.id`,
         [version.id],
     );
     const media = await pool.query(`SELECT id, url, order_index AS "orderIndex" FROM post_media WHERE post_version_id = $1 ORDER BY order_index, id`, [version.id]);
@@ -420,7 +432,14 @@ const feedSelect = `
     w.name AS "waterbodyName",
     COALESCE((SELECT json_agg(url ORDER BY order_index, id) FROM post_media WHERE post_version_id = pv.id), '[]'::json) AS "mediaUrls",
     (SELECT COUNT(*)::int FROM catch WHERE post_version_id = pv.id) AS "catchCount",
-    COALESCE((SELECT json_agg(f.name ORDER BY c.id) FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = pv.id), '[]'::json) AS "fishNames",
+    COALESCE((
+        SELECT json_agg(
+            json_build_object('fishId', f.id, 'fishName', f.name, 'trophyType', c.trophy_type)
+            ORDER BY CASE c.trophy_type WHEN 'rare_trophy' THEN 0 WHEN 'trophy' THEN 1 ELSE 2 END, c.id
+        )
+        FROM catch c JOIN fish f ON f.id = c.fish_id
+        WHERE c.post_version_id = pv.id
+    ), '[]'::json) AS catches,
     (SELECT COUNT(*)::int FROM reaction WHERE post_id = p.id AND value = 1) AS likes,
     (SELECT COUNT(*)::int FROM reaction WHERE post_id = p.id AND value = -1) AS dislikes
 `;
@@ -432,9 +451,22 @@ function withIncomePerHour<T extends { income: number | null; fishingMinutes: nu
 export async function listFeed(query: FeedQuery) {
     const where: string[] = [`p.status = 'approved'`];
     const values: unknown[] = [];
+    const parsedSearch = parseFeedSearch(query.search);
 
-    if (query.search) {
-        values.push(`%${query.search}%`);
+    if (parsedSearch.trophyType) {
+        values.push(parsedSearch.trophyType);
+        const trophyIdx = values.length;
+        if (parsedSearch.text) {
+            values.push(`%${parsedSearch.text}%`);
+            const textIdx = values.length;
+            where.push(
+                `EXISTS (SELECT 1 FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = pv.id AND c.trophy_type = $${trophyIdx} AND f.name ILIKE $${textIdx})`,
+            );
+        } else {
+            where.push(`EXISTS (SELECT 1 FROM catch c WHERE c.post_version_id = pv.id AND c.trophy_type = $${trophyIdx})`);
+        }
+    } else if (parsedSearch.text) {
+        values.push(`%${parsedSearch.text}%`);
         const idx = values.length;
         where.push(
             `(pv.description ILIKE $${idx} OR pv.point ILIKE $${idx} OR w.name ILIKE $${idx} OR EXISTS (SELECT 1 FROM catch c JOIN fish f ON f.id = c.fish_id WHERE c.post_version_id = pv.id AND f.name ILIKE $${idx}))`,
@@ -447,6 +479,10 @@ export async function listFeed(query: FeedQuery) {
     if (query.fishingMethod) {
         values.push(query.fishingMethod);
         where.push(`pv.fishing_method = $${values.length}`);
+    }
+    if (query.trophyType) {
+        values.push(query.trophyType);
+        where.push(`EXISTS (SELECT 1 FROM catch c WHERE c.post_version_id = pv.id AND c.trophy_type = $${values.length})`);
     }
     if (query.fishIds.length) {
         values.push(query.fishIds);

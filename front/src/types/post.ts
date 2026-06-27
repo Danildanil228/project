@@ -2,6 +2,13 @@ export const fishingMethods = ["Поплавок", "Донка", "Спиннин
 export type FishingMethod = (typeof fishingMethods)[number];
 
 export type PostStatus = "draft" | "pending" | "in_review" | "approved" | "rejected" | "deleted";
+export type CatchTrophyType = "normal" | "trophy" | "rare_trophy";
+
+export const catchTrophyTypeLabels: Record<CatchTrophyType, string> = {
+    normal: "Обычная",
+    trophy: "Трофей",
+    rare_trophy: "Супертрофей",
+};
 
 export const postStatusLabels: Record<PostStatus, string> = {
     draft: "Черновик",
@@ -18,6 +25,7 @@ export type CatchRow = {
     fishName: string;
     fishPhoto: string | null;
     rarity: string;
+    trophyType: CatchTrophyType;
     baits: Array<{ id: number; name: string; kind: string }>;
 };
 
@@ -88,6 +96,7 @@ export type MyPostRow = {
 // Editor payload pieces
 export type CatchInput = {
     fishId: number;
+    trophyType: CatchTrophyType;
     baitIds: number[];
 };
 
@@ -122,6 +131,13 @@ export type CreatePostInput = PostContentInput & {
 };
 
 export type FeedSort = "date" | "incomePerHour";
+export type FeedTrophyFilter = "" | Exclude<CatchTrophyType, "normal">;
+
+export type FeedCatch = {
+    fishId: number;
+    fishName: string;
+    trophyType: CatchTrophyType;
+};
 
 // Card shape returned by the public feed and the author profile.
 export type FeedItem = {
@@ -142,7 +158,7 @@ export type FeedItem = {
     waterbodyName: string | null;
     mediaUrls: string[];
     catchCount: number;
-    fishNames: string[];
+    catches: FeedCatch[];
     likes: number;
     dislikes: number;
     viewCount: number;

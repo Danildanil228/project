@@ -6,6 +6,7 @@ import { ImageModal } from "./ImageModal";
 import { mediaUrl } from "../lib/items-api";
 import type { FeedItem } from "../types/post";
 import { timeAgo } from "../utils/admin-format";
+import { CatchTrophyBadge } from "./CatchTrophyBadge";
 
 type PostCardProps = {
     post: FeedItem;
@@ -91,15 +92,16 @@ export function PostCard({ post }: PostCardProps) {
                         )}
                     </div>
 
-                    {post.fishNames.length > 0 && (
+                    {post.catches.length > 0 && (
                         <div className="flex flex-wrap gap-1">
-                            {post.fishNames.slice(0, 6).map((name) => (
-                                <span key={name} className="rounded-full bg-muted px-2 py-0.5 text-xs">
-                                    {name}
+                            {post.catches.slice(0, 6).map((item) => (
+                                <span key={item.fishId} className="inline-flex items-center gap-1 rounded-full bg-muted px-2 py-0.5 text-xs">
+                                    <span>{item.fishName}</span>
+                                    <CatchTrophyBadge type={item.trophyType} />
                                 </span>
                             ))}
-                            {post.fishNames.length > 6 && (
-                                <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">+{post.fishNames.length - 6}</span>
+                            {post.catches.length > 6 && (
+                                <span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">+{post.catches.length - 6}</span>
                             )}
                         </div>
                     )}
