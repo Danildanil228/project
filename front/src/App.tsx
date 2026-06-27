@@ -44,11 +44,16 @@ const WaterbodyMapPage = lazy(() => import("./pages/WaterbodyMapPage").then((mod
 
 function AppRoutes() {
     const { data: session, isPending, refetch } = authClient.useSession();
+    const [sessionInitialized, setSessionInitialized] = useState(!isPending);
     const [adminContext, setAdminContext] = useState<AdminSecurityContext | null>(null);
     const currentUser = session?.user as ManagedUser | undefined;
     const currentUserId = session?.user?.id;
     const isImpersonating = Boolean((session?.session as { impersonatedBy?: string } | undefined)?.impersonatedBy);
     const { setOpen } = useAuthModal();
+
+    useEffect(() => {
+        if (!isPending) setSessionInitialized(true);
+    }, [isPending]);
 
     useEffect(() => {
         let ignore = false;
@@ -75,7 +80,9 @@ function AppRoutes() {
         await refetch();
     }
 
-    if (isPending) {
+    // Better Auth refetches on tab focus. For guests that temporarily sets isPending=true,
+    // but the mounted route must stay alive so filters and calculator selections are preserved.
+    if (isPending && !sessionInitialized) {
         return <main className="center-screen">Загрузка...</main>;
     }
 
