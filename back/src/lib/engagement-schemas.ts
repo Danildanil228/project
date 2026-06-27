@@ -43,6 +43,12 @@ export const notificationQuerySchema = z.object({
     offset: z.coerce.number().int().min(0).default(0),
 });
 
+export const notificationSoundSettingsSchema = z.object({
+    enabled: z.boolean(),
+    sound: z.enum(["default", "soft", "chime", "double", "custom"]),
+    volume: z.coerce.number().min(0).max(1),
+});
+
 export const markReadSchema = z.object({
     ids: z.array(z.coerce.number().int().positive()).max(100).optional(),
 });

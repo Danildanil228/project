@@ -1,9 +1,10 @@
-import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
+import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
 import { getBaitCatalogMeta, listBaits } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { baitDomainLabels, type Bait, type BaitCatalogMeta, type BaitDomain } from "../types/bait";
@@ -11,7 +12,6 @@ import { getErrorMessage } from "../utils/admin-format";
 
 const pageSize = 80;
 const emptyMeta: BaitCatalogMeta = { categories: [] };
-type ViewMode = "cards" | "rows";
 
 export function BaitCatalogPage() {
     const [rows, setRows] = useState<Bait[]>([]);
@@ -22,7 +22,7 @@ export function BaitCatalogPage() {
     const [debouncedSearch] = useDebounce(search.trim(), 300);
     const [domain, setDomain] = useState<BaitDomain | "">("");
     const [categoryCode, setCategoryCode] = useState("");
-    const [view, setView] = useState<ViewMode>(() => localStorage.getItem("bait-catalog-view") === "rows" ? "rows" : "cards");
+    const [view, setView] = useCatalogView();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -48,10 +48,6 @@ export function BaitCatalogPage() {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("bait-catalog-view", view);
-    }, [view]);
-
-    useEffect(() => {
         void load(0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedSearch, domain, categoryCode]);
@@ -72,10 +68,7 @@ export function BaitCatalogPage() {
             <PageHeader eyebrow="Каталог" title="Приманки и наживки" description="Публичный справочник с фото, разделами и категориями." />
             <div className="flex flex-wrap items-center justify-between gap-3">
                 <Link to="/catalog" className="w-fit text-sm font-bold text-primary hover:underline">← К каталогу</Link>
-                <div className="inline-flex rounded-lg border border-border p-1" aria-label="Вид справочника">
-                    <button type="button" onClick={() => setView("cards")} title="Карточками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "cards" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><LayoutGrid size={15} /> Карточки</button>
-                    <button type="button" onClick={() => setView("rows")} title="Строками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "rows" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><Rows3 size={15} /> Строки</button>
-                </div>
+                <CatalogViewToggle value={view} onChange={setView} />
             </div>
 
             <div className="grid gap-3 border-y border-border py-4 lg:grid-cols-[minmax(260px,1fr)_190px_240px_auto] lg:items-end">

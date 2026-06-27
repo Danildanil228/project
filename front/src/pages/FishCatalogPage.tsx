@@ -1,16 +1,15 @@
-import { LayoutGrid, Rows3, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
+import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { fishRarities, type Fish, type FishRarity } from "../types/fish";
 import type { WaterbodyListRow } from "../types/waterbody";
 import { getErrorMessage } from "../utils/admin-format";
-
-type ViewMode = "cards" | "rows";
 
 function formatWeight(grams: number | null) {
     if (grams === null) return "—";
@@ -25,7 +24,7 @@ export function FishCatalogPage() {
     const [debouncedSearch] = useDebounce(search.trim(), 300);
     const [rarity, setRarity] = useState<FishRarity | "">("");
     const [waterbodyId, setWaterbodyId] = useState("");
-    const [view, setView] = useState<ViewMode>(() => localStorage.getItem("fish-catalog-view") === "rows" ? "rows" : "cards");
+    const [view, setView] = useCatalogView();
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -58,10 +57,6 @@ export function FishCatalogPage() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedSearch, rarity, waterbodyId]);
 
-    useEffect(() => {
-        localStorage.setItem("fish-catalog-view", view);
-    }, [view]);
-
     function reset() {
         setSearch("");
         setRarity("");
@@ -75,10 +70,7 @@ export function FishCatalogPage() {
             <PageHeader eyebrow="Каталог" title="Рыба" description="Публичный справочник рыб с фото, трофейными весами и водоемами." />
             <div className="flex flex-wrap items-center justify-between gap-3">
                 <Link to="/catalog" className="w-fit text-sm font-bold text-primary hover:underline">← К каталогу</Link>
-                <div className="inline-flex rounded-lg border border-border p-1" aria-label="Вид справочника">
-                    <button type="button" onClick={() => setView("cards")} title="Карточками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "cards" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><LayoutGrid size={15} /> Карточки</button>
-                    <button type="button" onClick={() => setView("rows")} title="Строками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "rows" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><Rows3 size={15} /> Строки</button>
-                </div>
+                <CatalogViewToggle value={view} onChange={setView} />
             </div>
 
             <div className="grid gap-3 border-y border-border py-4 md:grid-cols-2 lg:grid-cols-[minmax(260px,1fr)_190px_240px_auto] lg:items-end">

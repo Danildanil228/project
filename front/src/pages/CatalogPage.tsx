@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, LayoutGrid, Rows3, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
@@ -6,10 +6,10 @@ import { useDebounce } from "use-debounce";
 import { ItemCard } from "../components/ItemCard";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
+import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
 import { ItemDataTable } from "../features/items/ItemDataTable";
 import { fetchItems, itemCategories, typeLabels, type CatalogItem, type ItemType } from "../lib/items-api";
 
-type ViewMode = "cards" | "rows";
 type SortDirection = "asc" | "desc";
 
 type CatalogPageProps = {
@@ -18,7 +18,7 @@ type CatalogPageProps = {
 
 export function CatalogPage({ initialType }: CatalogPageProps) {
     const [type, setType] = useState<ItemType>(initialType);
-    const [view, setView] = useState<ViewMode>(() => localStorage.getItem("catalog-view") === "rows" ? "rows" : "cards");
+    const [view, setView] = useCatalogView();
     const [searchInput, setSearchInput] = useState("");
     const [debouncedSearch] = useDebounce(searchInput.trim(), 300);
     const [category, setCategory] = useState("");
@@ -28,7 +28,6 @@ export function CatalogPage({ initialType }: CatalogPageProps) {
     const pageSize = view === "cards" ? 24 : 50;
 
     useEffect(() => {
-        localStorage.setItem("catalog-view", view);
         setOffset(0);
     }, [view]);
 
@@ -92,10 +91,7 @@ export function CatalogPage({ initialType }: CatalogPageProps) {
             <Link to="/catalog" className="w-fit text-sm font-bold text-primary hover:underline">← К каталогу</Link>
 
             <div className="flex justify-end">
-                <div className="inline-flex rounded-lg border border-border p-1" aria-label="Вид каталога">
-                    <button type="button" onClick={() => setView("cards")} title="Карточками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "cards" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><LayoutGrid size={15} /> Карточки</button>
-                    <button type="button" onClick={() => setView("rows")} title="Строками" className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${view === "rows" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}><Rows3 size={15} /> Строки</button>
-                </div>
+                <CatalogViewToggle value={view} onChange={setView} />
             </div>
 
             <form onSubmit={applySearch} className="grid gap-3 border-y border-border py-4 lg:grid-cols-[minmax(260px,1fr)_220px_220px_auto] lg:items-end">

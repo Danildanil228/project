@@ -30,7 +30,8 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     const params = useParams();
     const editingId = params.id ? Number(params.id) : null;
     const isElevated = hasElevatedUserAccess(currentUser, adminContext);
-    const isModerating = mode === "moderate";
+    const moderationRoute = mode === "moderate";
+    const [isModerating, setIsModerating] = useState(moderationRoute);
 
     const [allFish, setAllFish] = useState<Fish[]>([]);
     const [allBaits, setAllBaits] = useState<Bait[]>([]);
@@ -70,6 +71,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
         let ignore = false;
         setLoading(true);
         setLoadError("");
+        setIsModerating(moderationRoute);
 
         async function load() {
             try {
@@ -90,14 +92,20 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                         }
                         setIsCurated(true);
                         setCuratedLabel(post.curatedLabel ?? "");
-                    } else if (!isModerating) {
+                    } else if (!moderationRoute) {
                         if (post.authorId !== currentUser?.id) {
                             setLoadError("Это не ваш пост — редактировать нельзя.");
                             return;
                         }
                         if (post.status !== "draft" && post.status !== "rejected") {
-                            setLoadError("Этот пост сейчас нельзя редактировать (он на проверке или опубликован).");
-                            return;
+                            if (isElevated && (post.status === "approved" || post.status === "in_review")) {
+                                // An elevated user edits their own published post through the same
+                                // guarded endpoint used for other users' published posts.
+                                setIsModerating(true);
+                            } else {
+                                setLoadError("Этот пост сейчас нельзя редактировать (он на проверке или опубликован).");
+                                return;
+                            }
                         }
                     } else if (!isElevated) {
                         setLoadError("Доступ только для модераторов.");
@@ -148,7 +156,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
         };
         // currentUser?.id is the stable identity; depending on the object would refetch on every session re-render.
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentUser?.id, editingId]);
+    }, [currentUser?.id, editingId, isElevated, moderationRoute]);
 
     useEffect(() => {
         if (!waterbodyId) { setHabitatFishIds(null); return; }

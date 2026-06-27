@@ -67,6 +67,9 @@ const actionLabels: Record<string, string> = {
     "report.rejected": "Отклонение жалобы",
     "notification.read": "Прочтение уведомлений",
     "notification.read-all": "Прочтение всех уведомлений",
+    "notification.sound.update": "Настройка звука уведомлений",
+    "notification.sound.upload": "Загрузка звука уведомлений",
+    "notification.sound.delete": "Удаление звука уведомлений",
     "upload.avatar": "Загрузка аватара",
     "upload.post-image": "Загрузка изображения поста",
     "upload.item-image": "Загрузка изображения предмета",
@@ -251,6 +254,9 @@ export function auditSummary(log: ManagedAuditLog) {
         case "report.rejected": return `${actor} отклонил жалобу${reportId ? ` #${reportId}` : ""}`;
         case "notification.read": return `${actor} отметил выбранные уведомления прочитанными`;
         case "notification.read-all": return `${actor} отметил все уведомления прочитанными`;
+        case "notification.sound.update": return `${actor} изменил настройки звука уведомлений`;
+        case "notification.sound.upload": return `${actor} загрузил собственный звук уведомлений`;
+        case "notification.sound.delete": return `${actor} удалил собственный звук уведомлений`;
         case "upload.avatar": return `${actor} загрузил новый аватар`;
         case "upload.post-image": return `${actor} загрузил изображение для поста`;
         case "upload.item-image": return `${actor} загрузил изображение предмета`;

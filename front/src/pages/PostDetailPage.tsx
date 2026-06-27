@@ -135,6 +135,11 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
     const photos = version?.media.map((item) => item.url) ?? [];
     const isOwner = currentUser?.id === post.authorId;
     const moderator = canModerate(currentUser, adminContext);
+    const authorCanEdit = isOwner && (post.status === "draft" || post.status === "rejected");
+    const moderatorCanEdit = moderator && !post.isCurated && (post.status === "approved" || post.status === "in_review");
+    const curatedCanEdit = moderator && post.isCurated;
+    const canEdit = authorCanEdit || moderatorCanEdit || curatedCanEdit;
+    const editPath = moderatorCanEdit ? `/posts/${post.id}/moderate` : `/posts/${post.id}/edit`;
 
     return (
         <section className="grid gap-5">
@@ -187,13 +192,13 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                 <img src={mediaUrl(photos[activeImage])} alt="" className="h-full w-full object-contain" />
                             </button>
                             {photos.length > 1 && (
-                                <div className="flex gap-2 overflow-x-auto pb-1">
+                                <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
                                     {photos.map((url, index) => (
                                         <button
                                             key={url}
                                             type="button"
                                             onClick={() => setActiveImage(index)}
-                                            className={`h-16 w-24 shrink-0 overflow-hidden rounded-lg border transition-colors ${
+                                            className={`aspect-[4/3] min-w-0 overflow-hidden rounded-lg border transition-colors ${
                                                 index === activeImage ? "border-primary" : "border-border hover:border-primary"
                                             }`}
                                             aria-label={`Фото ${index + 1}`}
@@ -328,15 +333,11 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                     )}
 
                     {/* Moderator actions */}
-                    {(moderator || isOwner) && (
+                    {(canEdit || moderator) && (
                         <div className="flex flex-wrap gap-2">
-                            {(moderator || isOwner) && (
+                            {canEdit && (
                                 <Link
-                                    // Curated posts always go through the regular editor (which PATCHes
-                                    // /posts/:id — the route dispatches to updateCuratedPost on the
-                                    // backend). The /moderate path is only for the claim+approve flow
-                                    // on pending user-authored posts.
-                                    to={post.isCurated ? `/posts/${post.id}/edit` : moderator && !isOwner ? `/posts/${post.id}/moderate` : `/posts/${post.id}/edit`}
+                                    to={editPath}
                                     className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold hover:border-primary"
                                 >
                                     Редактировать

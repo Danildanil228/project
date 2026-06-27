@@ -1,6 +1,6 @@
 import { MapPin, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { InteractiveMap, type MapPoint } from "./InteractiveMap";
+import { InteractiveMap, MapFixedOverlay, type MapPoint } from "./InteractiveMap";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { getWaterbody, listSpots } from "../lib/reference-api";
@@ -212,32 +212,44 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
                 )}
 
                 {spots.map((spot) => (
-                    <button
+                    <MapFixedOverlay
                         key={spot.id}
-                        type="button"
-                        title={spot.name}
-                        onClick={(event) => { event.stopPropagation(); selectSpot(spot); }}
-                        className={`absolute grid size-7 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 shadow ${value.proposedSpotId === spot.id ? "border-primary-foreground bg-primary text-primary-foreground" : "border-background bg-foreground text-background"}`}
-                        style={{ left: `${spot.mapX}%`, top: `${spot.mapY}%` }}
-                    ><MapPin size={15} /></button>
+                        mapX={spot.mapX}
+                        mapY={spot.mapY}
+                        className="absolute z-10"
+                    >
+                        <button
+                            type="button"
+                            title={spot.name}
+                            onClick={(event) => { event.stopPropagation(); selectSpot(spot); }}
+                            className={`grid size-7 place-items-center rounded-full border-2 shadow ${value.proposedSpotId === spot.id ? "border-primary-foreground bg-primary text-primary-foreground" : "border-background bg-foreground text-background"}`}
+                        ><MapPin size={15} /></button>
+                    </MapFixedOverlay>
                 ))}
 
                 {/* Marker A (and the only marker in point mode) */}
                 {value.mapX !== null && value.mapY !== null && value.proposedSpotId === null && (
-                    <div
-                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"
-                        style={{ left: `${value.mapX}%`, top: `${value.mapY}%` }}
-                    ><MapPin size={17} /></div>
+                    <MapFixedOverlay mapX={value.mapX} mapY={value.mapY} className="pointer-events-none absolute z-10">
+                        <div className="grid size-8 place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"><MapPin size={17} /></div>
+                    </MapFixedOverlay>
                 )}
                 {/* Marker B — trolling only */}
                 {trollingActive && value.mapX2 !== null && value.mapY2 !== null && (
-                    <div
-                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"
-                        style={{ left: `${value.mapX2}%`, top: `${value.mapY2}%` }}
-                    ><MapPin size={17} /></div>
+                    <MapFixedOverlay mapX={value.mapX2} mapY={value.mapY2} className="pointer-events-none absolute z-10">
+                        <div className="grid size-8 place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"><MapPin size={17} /></div>
+                    </MapFixedOverlay>
                 )}
 
-                {cursor && <div className="pointer-events-none absolute z-30 whitespace-nowrap rounded bg-black/80 px-2 py-1 text-xs font-bold text-white" style={{ left: `${cursor.mapX}%`, top: `${cursor.mapY}%`, transform: `translate(${cursor.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursor.mapY > 85 ? "calc(-100% - 12px)" : "12px"})` }}>X: {cursor.gameX}, Y: {cursor.gameY}</div>}
+                {cursor && (
+                    <MapFixedOverlay
+                        mapX={cursor.mapX}
+                        mapY={cursor.mapY}
+                        transform={`translate(${cursor.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursor.mapY > 85 ? "calc(-100% - 12px)" : "12px"})`}
+                        className="pointer-events-none absolute z-30 whitespace-nowrap rounded bg-black/80 px-2 py-1 text-xs font-bold text-white shadow"
+                    >
+                        X: {cursor.gameX}, Y: {cursor.gameY}
+                    </MapFixedOverlay>
+                )}
             </InteractiveMap>
 
             {/* Coordinate inputs — one pair for point mode, two pairs for trolling */}

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MapPin } from "lucide-react";
-import { InteractiveMap } from "./InteractiveMap";
+import { InteractiveMap, MapFixedOverlay, type MapPoint } from "./InteractiveMap";
 import { mediaUrl } from "../lib/items-api";
+import { hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { getWaterbody } from "../lib/reference-api";
 import type { Waterbody } from "../types/waterbody";
 
@@ -22,6 +23,7 @@ type Props = {
 export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCoordinateX, gameCoordinateY, gameCoordinateX2, gameCoordinateY2 }: Props) {
     const [waterbody, setWaterbody] = useState<Waterbody | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [cursor, setCursor] = useState<{ mapX: number; mapY: number; gameX: number; gameY: number } | null>(null);
 
     useEffect(() => {
         let cancelled = false;
@@ -31,6 +33,14 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
             .catch((caught) => { if (!cancelled) setError(caught instanceof Error ? caught.message : "Не удалось загрузить водоём"); });
         return () => { cancelled = true; };
     }, [waterbodyId]);
+
+    const bounds = useMemo(() => waterbody && hasCoordinateBounds(waterbody) ? waterbody : null, [waterbody]);
+
+    function trackCoordinate(point: MapPoint) {
+        if (!bounds) return;
+        const game = mapPercentToGame(point.mapX, point.mapY, bounds);
+        setCursor({ mapX: point.mapX, mapY: point.mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
+    }
 
     if (error) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>;
     if (!waterbody) return <p className="rounded-lg border border-border bg-card p-3 text-sm text-muted-foreground">Загрузка карты…</p>;
@@ -46,6 +56,9 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
                 imageAlt={`Карта водоёма ${waterbody.name}`}
                 emptyText="У водоёма нет изображения карты"
                 className="aspect-square min-h-64"
+                onMapPointerMove={trackCoordinate}
+                onMapPointerLeave={() => setCursor(null)}
+                testId="post-location-map"
             >
                 {/* Trolling A→B dashed line drawn under the markers */}
                 {trolling && (
@@ -55,18 +68,34 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
                 )}
 
                 {hasPointA && (
-                    <div
-                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"
-                        style={{ left: `${mapX}%`, top: `${mapY}%` }}
+                    <MapFixedOverlay
+                        mapX={mapX}
+                        mapY={mapY}
+                        className="pointer-events-none absolute z-10"
                         title={gameCoordinateX != null && gameCoordinateY != null ? `${gameCoordinateX}:${gameCoordinateY}` : undefined}
-                    ><MapPin size={17} /></div>
+                    >
+                        <div className="grid size-8 place-items-center rounded-full border-2 border-background bg-primary text-primary-foreground shadow"><MapPin size={17} /></div>
+                    </MapFixedOverlay>
                 )}
                 {trolling && (
-                    <div
-                        className="pointer-events-none absolute z-10 grid size-8 -translate-x-1/2 -translate-y-full place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"
-                        style={{ left: `${mapX2}%`, top: `${mapY2}%` }}
+                    <MapFixedOverlay
+                        mapX={mapX2!}
+                        mapY={mapY2!}
+                        className="pointer-events-none absolute z-10"
                         title={gameCoordinateX2 != null && gameCoordinateY2 != null ? `${gameCoordinateX2}:${gameCoordinateY2}` : undefined}
-                    ><MapPin size={17} /></div>
+                    >
+                        <div className="grid size-8 place-items-center rounded-full border-2 border-background bg-blue-600 text-white shadow"><MapPin size={17} /></div>
+                    </MapFixedOverlay>
+                )}
+                {cursor && (
+                    <MapFixedOverlay
+                        mapX={cursor.mapX}
+                        mapY={cursor.mapY}
+                        transform={`translate(${cursor.mapX > 72 ? "calc(-100% - 12px)" : "12px"}, ${cursor.mapY > 85 ? "calc(-100% - 12px)" : "12px"})`}
+                        className="pointer-events-none absolute z-30 whitespace-nowrap rounded bg-black/80 px-2 py-1 text-xs font-bold text-white shadow"
+                    >
+                        X: {cursor.gameX}, Y: {cursor.gameY}
+                    </MapFixedOverlay>
                 )}
             </InteractiveMap>
             {trolling ? (
