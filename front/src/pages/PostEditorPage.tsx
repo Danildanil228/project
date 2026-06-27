@@ -12,7 +12,7 @@ import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import type { Bait } from "../types/bait";
 import type { Fish } from "../types/fish";
 import type { WaterbodyListRow } from "../types/waterbody";
-import { fishingMethods, type FishingMethod, type PostContentInput } from "../types/post";
+import { catchTrophyTypeLabels, fishingMethods, type CatchTrophyType, type FishingMethod, type PostContentInput } from "../types/post";
 import { getErrorMessage, hasElevatedUserAccess } from "../utils/admin-format";
 
 type PostEditorPageProps = {
@@ -24,6 +24,10 @@ type PostEditorPageProps = {
 };
 
 const maxPhotos = 8;
+const trophyTypeOptions = (Object.entries(catchTrophyTypeLabels) as Array<[CatchTrophyType, string]>).map(([value, label]) => ({
+    value,
+    label: value === "rare_trophy" ? `${label} (редкий трофей)` : label,
+}));
 
 export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mode = "author" }: PostEditorPageProps) {
     const navigate = useNavigate();
@@ -48,6 +52,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     const [hours, setHours] = useState("");
     const [minutes, setMinutes] = useState("");
     const [fishIds, setFishIds] = useState<number[]>([]);
+    const [fishTrophyTypes, setFishTrophyTypes] = useState<Record<number, CatchTrophyType>>({});
     const [baitMode, setBaitMode] = useState<"common" | "per_fish">("common");
     const [commonBaitIds, setCommonBaitIds] = useState<number[]>([]);
     const [fishBaitIds, setFishBaitIds] = useState<Record<number, number[]>>({});
@@ -126,6 +131,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             setMinutes(String(version.fishingMinutes % 60));
                         }
                         setFishIds(version.catches.map((item) => item.fishId));
+                        setFishTrophyTypes(Object.fromEntries(version.catches.map((item) => [item.fishId, item.trophyType])));
                         setBaitMode(version.baitMode);
                         setCommonBaitIds(version.commonBaits.map((item) => item.id));
                         setFishBaitIds(Object.fromEntries(version.catches.map((item) => [item.fishId, item.baits.map((bait) => bait.id)])));
@@ -191,11 +197,13 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
         setWaterbodyId(nextId);
         setLocation(emptyPostLocation);
         setFishIds([]);
+        setFishTrophyTypes({});
         setFishBaitIds({});
     }
 
     function changeFish(nextIds: number[]) {
         setFishIds(nextIds);
+        setFishTrophyTypes((current) => Object.fromEntries(nextIds.map((fishId) => [fishId, current[fishId] ?? "normal"])));
         setFishBaitIds((current) => Object.fromEntries(Object.entries(current).filter(([fishId]) => nextIds.includes(Number(fishId)))));
     }
 
@@ -230,7 +238,11 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
             fishingMethod: fishingMethod || null,
             income: income !== "" ? Number(income) : null,
             fishingMinutes: totalMinutes > 0 ? totalMinutes : null,
-            catches: fishIds.map((fishId) => ({ fishId, baitIds: postLocationDetailsEnabled && baitMode === "per_fish" ? fishBaitIds[fishId] ?? [] : [] })),
+            catches: fishIds.map((fishId) => ({
+                fishId,
+                trophyType: fishTrophyTypes[fishId] ?? "normal",
+                baitIds: postLocationDetailsEnabled && baitMode === "per_fish" ? fishBaitIds[fishId] ?? [] : [],
+            })),
             baitMode: postLocationDetailsEnabled ? baitMode : "common",
             commonBaitIds: postLocationDetailsEnabled && baitMode === "common" ? commonBaitIds : [],
             ...(postLocationDetailsEnabled ? location : emptyPostLocation),
@@ -402,6 +414,30 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             placeholder="+ Добавить рыбу"
                             searchPlaceholder="Поиск рыбы…"
                         />
+                    )}
+
+                    {fishIds.length > 0 && (
+                        <div className="grid gap-2 border-t border-border pt-3">
+                            <div>
+                                <h4 className="text-sm font-bold">Тип улова</h4>
+                                <p className="text-xs text-muted-foreground">Для каждой рыбы можно отметить трофей или супертрофей.</p>
+                            </div>
+                            <div className="grid gap-2 sm:grid-cols-2">
+                                {fishIds.map((fishId) => {
+                                    const fish = allFish.find((item) => item.id === fishId);
+                                    return (
+                                        <div key={fishId} className="grid gap-2 rounded-lg border border-border bg-muted/30 p-2 sm:grid-cols-[minmax(0,1fr)_10rem] sm:items-center">
+                                            <span className="truncate text-sm font-semibold">{fish?.name ?? `Рыба #${fishId}`}</span>
+                                            <SelectMenu
+                                                value={fishTrophyTypes[fishId] ?? "normal"}
+                                                onChange={(value) => setFishTrophyTypes((current) => ({ ...current, [fishId]: value as CatchTrophyType }))}
+                                                options={trophyTypeOptions}
+                                            />
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     )}
 
                     {postLocationDetailsEnabled && fishIds.length > 0 && (

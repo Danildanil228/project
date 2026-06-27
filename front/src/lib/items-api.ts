@@ -51,10 +51,22 @@ async function readError(response: Response) {
     return data?.message || `Запрос не выполнен (${response.status})`;
 }
 
-// Resolves a stored media value to a usable src: absolute URLs as-is, bare names from the public folder.
+const localMediaHosts = new Set(["localhost", "127.0.0.1", "::1"]);
+
+// Resolves stored media to a usable src and repairs legacy URLs that pointed at the uploader's localhost.
 export function mediaUrl(value?: string | null) {
     if (!value) return "";
-    if (/^https?:\/\//i.test(value)) return value;
+    if (/^https?:\/\//i.test(value)) {
+        try {
+            const parsed = new URL(value);
+            if (localMediaHosts.has(parsed.hostname) && parsed.pathname.startsWith("/uploads/")) {
+                return `${parsed.pathname}${parsed.search}${parsed.hash}`;
+            }
+        } catch {
+            return value;
+        }
+        return value;
+    }
     return `/${value.replace(/^\/+/, "")}`;
 }
 

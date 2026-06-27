@@ -7,6 +7,7 @@ import { UserAvatar } from "../components/UserAvatar";
 import { PostReactions } from "../components/PostReactions";
 import { PostComments } from "../components/PostComments";
 import { PostLocationView } from "../components/PostLocationView";
+import { CatchTrophyBadge } from "../components/CatchTrophyBadge";
 import { ReportButton } from "../components/ReportButton";
 import { mediaUrl } from "../lib/items-api";
 import { getPinInfo, getPost, pinPost, recordPostView, removeModeratedPost, unpinPost } from "../lib/posts-api";
@@ -310,6 +311,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                         <div className="min-w-0 text-sm">
                                             <div className="flex flex-wrap items-center gap-1.5">
                                                 <strong className="truncate">{item.fishName}</strong>
+                                                <CatchTrophyBadge type={item.trophyType} />
                                                 <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground">{item.rarity}</span>
                                             </div>
                                             {item.baits.length > 0 && (

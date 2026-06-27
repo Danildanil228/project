@@ -1,11 +1,13 @@
 import { z } from "zod";
 
 export const fishingMethods = ["Поплавок", "Донка", "Спиннинг", "Морская"] as const;
+export const catchTrophyTypes = ["normal", "trophy", "rare_trophy"] as const;
 
 const emptyToNull = (value: unknown) => (value === "" || value === undefined ? null : value);
 
 const catchInputSchema = z.object({
     fishId: z.coerce.number().int().positive(),
+    trophyType: z.enum(catchTrophyTypes).optional().default("normal"),
     baitIds: z.array(z.coerce.number().int().positive()).max(50).optional().default([]).transform((ids) => [...new Set(ids)]),
 });
 
@@ -96,10 +98,28 @@ export const feedQuerySchema = z.object({
     fishIds: z.preprocess(toNumberArray, z.array(z.coerce.number().int().positive()).max(50)),
     waterbodyIds: z.preprocess(toNumberArray, z.array(z.coerce.number().int().positive()).max(50)),
     fishingMethod: z.enum(fishingMethods).or(z.literal("")).optional().default(""),
+    trophyType: z.enum(["trophy", "rare_trophy"]).or(z.literal("")).optional().default(""),
     sortBy: z.enum(["date", "incomePerHour"]).optional().default("date"),
     limit: z.coerce.number().int().min(1).max(50).default(20),
     offset: z.coerce.number().int().min(0).default(0),
 });
+
+export function parseFeedSearch(search: string) {
+    let text = search.trim().replace(/\s+/g, " ");
+    let trophyType: "trophy" | "rare_trophy" | null = null;
+
+    const rareMarker = /(^|\s)(?:супер\s*трофе\p{L}*|супертрофе\p{L}*|редк\p{L}*\s+трофе\p{L}*)(?=\s|$)/iu;
+    const trophyMarker = /(^|\s)трофе\p{L}*(?=\s|$)/iu;
+    if (rareMarker.test(text)) {
+        trophyType = "rare_trophy";
+        text = text.replace(rareMarker, " ");
+    } else if (trophyMarker.test(text)) {
+        trophyType = "trophy";
+        text = text.replace(trophyMarker, " ");
+    }
+
+    return { text: text.trim().replace(/\s+/g, " "), trophyType };
+}
 
 export const authorIdParamsSchema = z.object({
     authorId: z.string().trim().min(1).max(100),

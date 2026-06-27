@@ -200,8 +200,8 @@ router.post(
             const fileName = `${randomUUID()}.${extension}`;
             await writeFile(join(postMediaRoot, fileName), body, { flag: "wx" });
 
-            const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
-            const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/posts/${fileName}`;
+            // Store a same-origin path so uploads remain valid across local, staging and production hosts.
+            const url = `/uploads/posts/${fileName}`;
             await writeAuditLog({
                 actor: session.user as SessionUser,
                 action: "upload.post-image",
