@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "@google/model-viewer";
 import { fetchItem, mediaUrl, type ItemType } from "../lib/items-api";
 import type { Reel } from "../types/reel";
 import type { Rod } from "../types/rod";
+import { DetailSkeleton } from "../components/LoadingState";
+import { LoadingImage } from "../components/LoadingImage";
+import { ModelViewerPanel } from "../components/ModelViewerPanel";
 
 const reelFields: [keyof Reel, string][] = [
     ["brend", "Бренд"],
@@ -89,24 +91,16 @@ export function ItemDetailPage() {
             </Link>
 
             {loading ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <DetailSkeleton />
             ) : error ? (
                 <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>
             ) : item ? (
                 <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
                     <div className="overflow-hidden rounded-lg border border-border bg-card">
                         {model ? (
-                            <model-viewer
-                                src={mediaUrl(model)}
-                                alt={item.name}
-                                camera-controls
-                                auto-rotate
-                                shadow-intensity="0"
-                                environment-image="neutral"
-                                style={{ width: "100%", height: "360px" }}
-                            />
+                            <ModelViewerPanel src={model} alt={item.name} poster={photo} />
                         ) : photo ? (
-                            <img src={mediaUrl(photo)} alt={item.name} title={item.name} className="h-[360px] w-full bg-muted object-contain" />
+                            <LoadingImage src={mediaUrl(photo)} alt={item.name} title={item.name} className="h-[360px] w-full" imageClassName="object-contain" />
                         ) : (
                             <div className="flex h-[360px] items-center justify-center bg-muted text-muted-foreground">Нет изображения</div>
                         )}

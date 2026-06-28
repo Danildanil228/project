@@ -1,5 +1,6 @@
 import { CheckCircle2, ChevronDown, Download, RefreshCw, XCircle } from "lucide-react";
 import { SelectMenu } from "../../components/SelectMenu";
+import { ListSkeleton } from "../../components/LoadingState";
 import type { AuditLogFilters, ManagedAuditLog } from "../../types/admin";
 import { formatDate } from "../../utils/admin-format";
 import { auditActionText, auditClientText, auditDetails, auditRoleText, auditSummary } from "../../utils/audit-format";
@@ -153,7 +154,7 @@ export function AuditLogPanel({
 
             <div className="audit-list">
                 {logs.map((log) => <AuditLogItem key={log.id} log={log} />)}
-                {!logs.length && <p className="empty-panel muted">{loading ? "Загрузка..." : "Записей пока нет"}</p>}
+                {!logs.length && (loading ? <ListSkeleton count={6} /> : <p className="empty-panel muted">Записей пока нет</p>)}
             </div>
         </section>
     );

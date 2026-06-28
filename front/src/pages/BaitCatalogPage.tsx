@@ -5,6 +5,8 @@ import { useDebounce } from "use-debounce";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
+import { LoadingImage } from "../components/LoadingImage";
+import { CardGridSkeleton, TableSkeleton } from "../components/LoadingState";
 import { getBaitCatalogMeta, listBaits } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { baitDomainLabels, type Bait, type BaitCatalogMeta, type BaitDomain } from "../types/bait";
@@ -79,11 +81,11 @@ export function BaitCatalogPage() {
             </div>
 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-            {loading ? <p className="py-10 text-center text-muted-foreground">Загрузка…</p> : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
+            {loading ? (view === "cards" ? <CardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" /> : <TableSkeleton columns={4} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                     {rows.map((item) => (
                         <article key={item.id} className="grid gap-2 rounded-lg border border-border bg-card p-3">
-                            {item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="aspect-square w-full rounded bg-muted object-contain" /> : <div className="grid aspect-square place-items-center rounded bg-muted text-xs text-muted-foreground">Нет фото</div>}
+                            {item.photo ? <LoadingImage src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="aspect-square w-full rounded bg-muted" imageClassName="object-contain" /> : <div className="grid aspect-square place-items-center rounded bg-muted text-xs text-muted-foreground">Нет фото</div>}
                             <div>
                                 <h3 className="line-clamp-2 text-sm">{item.name}</h3>
                                 <p className="text-xs text-muted-foreground">{baitDomainLabels[item.domain]} · {item.categoryName ?? "Без категории"}</p>
@@ -105,7 +107,7 @@ export function BaitCatalogPage() {
                         <tbody>
                             {rows.map((item) => (
                                 <tr key={item.id} className="border-t border-border">
-                                    <td className="p-3">{item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-14 w-14 rounded border border-border object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
+                                    <td className="p-3">{item.photo ? <LoadingImage src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-14 w-14 rounded border border-border" imageClassName="object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
                                     <td className="p-3 font-medium">{item.name}</td>
                                     <td className="p-3">{baitDomainLabels[item.domain]}</td>
                                     <td className="p-3">{item.categoryName ?? "Без категории"}</td>

@@ -3,6 +3,8 @@ import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
+import { LoadingImage } from "../components/LoadingImage";
+import { TableRowsSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { createWaterbody, deleteWaterbody, getWaterbody, listFish, listWaterbodies, updateWaterbody } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -253,11 +255,7 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
                     </thead>
                     <tbody>
                         {loading ? (
-                            <tr>
-                                <td colSpan={5} className="p-6 text-center text-muted-foreground">
-                                    Загрузка…
-                                </td>
-                            </tr>
+                            <TableRowsSkeleton columns={5} rows={7} />
                         ) : rows.length === 0 ? (
                             <tr>
                                 <td colSpan={5} className="p-6 text-center text-muted-foreground">
@@ -269,7 +267,7 @@ export function WaterbodyAdminPage({ currentUser, adminContext, onOpenAuthModal 
                                 <tr key={row.id} className="border-t border-border">
                                     <td className="p-3">
                                         {row.photo ? (
-                                            <img src={mediaUrl(row.photo)} alt="" className="h-10 w-10 rounded object-cover" />
+                                            <LoadingImage src={mediaUrl(row.photo)} alt={row.name} className="h-10 w-10 rounded" imageClassName="object-cover" />
                                         ) : (
                                             <span className="text-muted-foreground">—</span>
                                         )}

@@ -5,6 +5,7 @@ import { MultiCombobox } from "../components/MultiCombobox";
 import { PhotoDropzone } from "../components/PhotoDropzone";
 import { emptyPostLocation, PostLocationPicker, type PostLocationValue } from "../components/PostLocationPicker";
 import { SelectMenu } from "../components/SelectMenu";
+import { DetailSkeleton } from "../components/LoadingState";
 import { getWaterbody, listAllBaits, listFish, listWaterbodies } from "../lib/reference-api";
 import { postLocationDetailsEnabled } from "../lib/features";
 import { createPost, getPost, moderatorEditPost, toPostPayload, updatePost, uploadPostMedia } from "../lib/posts-api";
@@ -335,7 +336,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
     }
 
     if (loading) {
-        return <p className="py-10 text-center text-muted-foreground">Загрузка…</p>;
+        return <DetailSkeleton />;
     }
 
     if (loadError) {

@@ -1,5 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import { Upload } from "lucide-react";
+import { LoadingSpinner } from "./LoadingState";
 
 // File-only avatar picker. Posts the raw binary to /api/uploads/avatar; backend writes the file
 // under /uploads/avatars/<uuid>.<ext>, deletes the previous file (if it was ours), and returns
@@ -61,7 +62,7 @@ export function AvatarUploadField({ value, onChange }: AvatarUploadFieldProps) {
                     </button>
                 )}
             </div>
-            {busy && <span className="text-xs text-muted-foreground">Загрузка…</span>}
+            {busy && <LoadingSpinner label="Загрузка аватара" size={18} className="justify-self-start" />}
             {error && <span className="text-xs text-destructive">{error}</span>}
             <span className="text-xs text-muted-foreground">До 2 МБ. PNG, JPEG, WEBP или GIF.</span>
         </div>

@@ -5,6 +5,8 @@ import { useDebounce } from "use-debounce";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
+import { LoadingImage } from "../components/LoadingImage";
+import { CardGridSkeleton, TableSkeleton } from "../components/LoadingState";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { fishRarities, type Fish, type FishRarity } from "../types/fish";
@@ -82,11 +84,11 @@ export function FishCatalogPage() {
 
             <p className="text-sm text-muted-foreground">Найдено: {total.toLocaleString("ru-RU")}</p>
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-            {loading ? <p className="py-10 text-center text-muted-foreground">Загрузка…</p> : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
+            {loading ? (view === "cards" ? <CardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" /> : <TableSkeleton columns={6} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                     {rows.map((fish) => (
                         <article key={fish.id} className="grid gap-2 rounded-lg border border-border bg-card p-3">
-                            {fish.photo ? <img src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="aspect-[4/3] w-full rounded bg-muted object-contain" /> : <div className="grid aspect-[4/3] place-items-center rounded bg-muted text-xs text-muted-foreground">Нет фото</div>}
+                            {fish.photo ? <LoadingImage src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="aspect-[4/3] w-full rounded bg-muted" imageClassName="object-contain" /> : <div className="grid aspect-[4/3] place-items-center rounded bg-muted text-xs text-muted-foreground">Нет фото</div>}
                             <div className="grid gap-1">
                                 <h3 className="line-clamp-2 text-sm">{fish.name}</h3>
                                 <p className="text-xs text-muted-foreground">{fish.rarity}</p>
@@ -113,7 +115,7 @@ export function FishCatalogPage() {
                         <tbody>
                             {rows.map((fish) => (
                                 <tr key={fish.id} className="border-t border-border">
-                                    <td className="p-3">{fish.photo ? <img src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="h-12 w-16 rounded border border-border object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
+                                    <td className="p-3">{fish.photo ? <LoadingImage src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="h-12 w-16 rounded border border-border" imageClassName="object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
                                     <td className="p-3 font-medium">{fish.name}</td>
                                     <td className="p-3 text-muted-foreground">{fish.rarity}</td>
                                     <td className="whitespace-nowrap p-3 text-muted-foreground">{formatWeight(fish.trophyWeightGrams)}</td>

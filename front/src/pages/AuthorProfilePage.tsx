@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostCard } from "../components/PostCard";
 import { UserAvatar } from "../components/UserAvatar";
+import { CardGridSkeleton, Skeleton } from "../components/LoadingState";
 import { getAuthorProfile } from "../lib/posts-api";
 import type { AuthorProfile } from "../types/post";
 import { formatDate, getErrorMessage } from "../utils/admin-format";
@@ -40,7 +41,15 @@ export function AuthorProfilePage() {
         };
     }, [authorId, offset]);
 
-    if (loading) return <p className="py-10 text-center text-muted-foreground">Загрузка…</p>;
+    if (loading) return (
+        <section className="grid gap-5" aria-busy="true">
+            <div className="flex items-center gap-4 rounded-lg border border-border bg-card p-4">
+                <Skeleton className="size-16 shrink-0 rounded-full" />
+                <div className="grid flex-1 gap-2"><Skeleton className="h-7 w-48" /><Skeleton className="h-4 w-64 max-w-full" /></div>
+            </div>
+            <CardGridSkeleton count={6} />
+        </section>
+    );
 
     if (error || !data) {
         return (

@@ -5,6 +5,7 @@ import { useDebounce } from "use-debounce";
 import { MultiSelectFilter, type MultiSelectOption } from "../components/MultiSelectFilter";
 import { PageHeader } from "../components/PageHeader";
 import { PostCard } from "../components/PostCard";
+import { CardGridSkeleton, LoadingSpinner } from "../components/LoadingState";
 import { SelectMenu } from "../components/SelectMenu";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { listFeed } from "../lib/posts-api";
@@ -203,7 +204,7 @@ export function FeedPage({ currentUser }: FeedPageProps) {
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading && items.length === 0 ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <CardGridSkeleton count={6} className={gridClass[columns].replace("grid ", "")} />
             ) : !loading && items.length === 0 ? (
                 <div className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
                     <p>Постов не найдено</p>
@@ -223,7 +224,7 @@ export function FeedPage({ currentUser }: FeedPageProps) {
 
                     {/* Sentinel for infinite scroll — observed by IntersectionObserver. */}
                     <div ref={sentinelRef} className="flex items-center justify-center pt-2">
-                        {loading && items.length > 0 && <span className="text-sm text-muted-foreground">Загружаю ещё…</span>}
+                        {loading && items.length > 0 && <LoadingSpinner label="Загружаю ещё" size={16} />}
                         {!loading && items.length >= total && total > 0 && (
                             <span className="text-xs text-muted-foreground">Показано {items.length} из {total}</span>
                         )}

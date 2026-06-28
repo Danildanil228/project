@@ -5,6 +5,8 @@ import { useConfirmDialog } from "../components/ConfirmDialog";
 import { InteractiveMap, MapFixedOverlay, type MapPoint } from "../components/InteractiveMap";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { WaterbodyFishList } from "../components/WaterbodyFishList";
+import { LoadingImage } from "../components/LoadingImage";
+import { MapSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { postMapLinkingEnabled } from "../lib/features";
@@ -205,7 +207,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
         }
     }
 
-    if (loading) return <p className="py-12 text-center text-muted-foreground">Загрузка карты…</p>;
+    if (loading) return <MapSkeleton className="aspect-square min-h-72 w-full" />;
     if (!waterbody) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-destructive">{error || "Водоём не найден"}</p>;
 
     return (
@@ -292,7 +294,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                             {selected.fish.length ? <div className="flex flex-wrap gap-2">
                                 {selected.fish.map((item) => (
                                     <div key={item.id} title={item.name} className="grid w-20 gap-1 text-center">
-                                        {item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} className="h-14 w-20 rounded border border-border bg-background object-contain p-1" /> : <div className="flex h-14 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
+                                        {item.photo ? <LoadingImage src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-14 w-20 rounded border border-border bg-background" imageClassName="object-contain p-1" /> : <div className="flex h-14 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
                                         <span className="line-clamp-2 text-xs">{item.name}</span>
                                     </div>
                                 ))}
@@ -303,7 +305,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
                             {selected.baits.length ? <div className="flex flex-wrap gap-2">
                                 {selected.baits.map((item) => (
                                     <div key={item.id} title={item.name} className="grid w-20 gap-1 text-center">
-                                        {item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} className="h-16 w-20 rounded border border-border bg-background object-contain" /> : <div className="flex h-16 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
+                                        {item.photo ? <LoadingImage src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-16 w-20 rounded border border-border bg-background" imageClassName="object-contain" /> : <div className="flex h-16 w-20 items-center justify-center rounded border border-border text-xs text-muted-foreground">Нет фото</div>}
                                         <span className="line-clamp-2 text-xs">{item.name}</span>
                                     </div>
                                 ))}

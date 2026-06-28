@@ -13,6 +13,7 @@ import { formatDate } from "../utils/admin-format";
 import { postMapLinkingEnabled } from "../lib/features";
 import { installNotificationAudioUnlock, notificationSoundSettingsEvent, playNotificationSound } from "../lib/notification-sound";
 import { defaultNotificationSoundSettings, type NotificationSoundSettings } from "../types/notification-sound";
+import { ListSkeleton } from "./LoadingState";
 
 type NotificationsBellProps = {
     currentUser?: ManagedUser;
@@ -178,7 +179,7 @@ export function NotificationsBell({ currentUser }: NotificationsBellProps) {
                     </div>
                     <div className="max-h-[calc(100vh-9rem)] overflow-y-auto sm:max-h-96">
                         {loading ? (
-                            <p className="p-4 text-center text-sm text-muted-foreground">Загрузка…</p>
+                            <div className="p-2"><ListSkeleton count={4} /></div>
                         ) : items.length === 0 ? (
                             <p className="p-4 text-center text-sm text-muted-foreground">Уведомлений нет</p>
                         ) : (

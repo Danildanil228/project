@@ -12,6 +12,7 @@ import {
     type ReactNode,
 } from "react";
 import { Minus, Plus, RotateCcw } from "lucide-react";
+import { LoadingImage } from "./LoadingImage";
 
 export type MapPoint = { mapX: number; mapY: number };
 
@@ -288,7 +289,13 @@ export function InteractiveMap({
                     }}
                 >
                     {imageSrc ? (
-                        <img src={imageSrc} alt={imageAlt} className="absolute inset-0 h-full w-full select-none object-contain" draggable={false} />
+                        <LoadingImage
+                            src={imageSrc}
+                            alt={imageAlt}
+                            className="absolute inset-0 h-full w-full select-none"
+                            imageClassName="object-contain"
+                            draggable={false}
+                        />
                     ) : (
                         <div className="grid h-full place-items-center p-8 text-center text-muted-foreground">{emptyText}</div>
                     )}

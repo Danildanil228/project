@@ -7,6 +7,7 @@ import { PageHeader } from "../components/PageHeader";
 import { TelegramLinkPanel } from "../components/TelegramLinkPanel";
 import { NotificationSoundSettings } from "../components/NotificationSoundSettings";
 import { UserAvatar } from "../components/UserAvatar";
+import { ListSkeleton } from "../components/LoadingState";
 import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
 import { displayRoleText, formatDate, getErrorMessage, shortId } from "../utils/admin-format";
@@ -204,7 +205,7 @@ export function ProfileSettingsPage({ currentUser, adminContext, onSessionRefres
                             </button>
                         </div>
                     ))}
-                    {!sessions.length && <p className="empty-panel muted">{loadingSessions ? "Загрузка..." : "Активных сессий нет"}</p>}
+                    {!sessions.length && (loadingSessions ? <ListSkeleton count={3} /> : <p className="empty-panel muted">Активных сессий нет</p>)}
                 </div>
             </section>
         </section>

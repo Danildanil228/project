@@ -1,6 +1,8 @@
 import { useState, type ChangeEvent } from "react";
 import { mediaUrl } from "../lib/items-api";
 import { uploadItemMedia } from "../lib/items-admin-api";
+import { LoadingImage } from "./LoadingImage";
+import { LoadingSpinner } from "./LoadingState";
 
 type PhotoUploadFieldProps = {
     value: string;
@@ -32,9 +34,9 @@ export function PhotoUploadField({ value, onChange, label = "Фото" }: PhotoU
     return (
         <div className="grid gap-2 text-sm">
             <span className="text-muted-foreground">{label}</span>
-            {value && <img src={mediaUrl(value)} alt="" className="h-20 w-20 rounded-lg border border-border object-cover" />}
+            {value && <LoadingImage src={mediaUrl(value)} alt="" className="h-20 w-20 rounded-lg border border-border" imageClassName="object-cover" />}
             <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" onChange={handleFile} className="w-auto text-xs" />
-            {uploading && <span className="text-xs text-muted-foreground">Загрузка…</span>}
+            {uploading && <LoadingSpinner label="Загрузка фотографии" size={18} className="justify-self-start" />}
             {error && <span className="text-xs text-destructive">{error}</span>}
             {value && (
                 <button type="button" onClick={() => onChange("")} className="justify-self-start text-xs text-destructive">

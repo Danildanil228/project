@@ -5,6 +5,7 @@ import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { RangeControl } from "../components/RangeControl";
+import { DetailSkeleton } from "../components/LoadingState";
 import { currentStrength, fetchCalculatorItems, formatKg, parseStrength } from "../lib/calculator-api";
 
 export function CalculatorPage() {
@@ -60,11 +61,7 @@ export function CalculatorPage() {
     const weakLink = hasBoth ? (rodCurrent <= reelCurrent ? "rod" : "reel") : null;
 
     if (isLoading) {
-        return (
-            <section className="grid gap-5">
-                <PageHeader eyebrow="Расчёты" title="Калькулятор прочности" description="Загружаем каталог…" />
-            </section>
-        );
+        return <DetailSkeleton />;
     }
     if (error) {
         return (

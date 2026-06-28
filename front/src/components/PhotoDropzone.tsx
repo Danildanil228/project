@@ -3,6 +3,8 @@ import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, rectSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { mediaUrl } from "../lib/items-api";
+import { LoadingImage } from "./LoadingImage";
+import { LoadingSpinner } from "./LoadingState";
 
 type PhotoDropzoneProps = {
     photos: string[];
@@ -21,7 +23,7 @@ function PhotoItem({ url, index, onRemove }: { url: string; index: number; onRem
     };
     return (
         <div ref={setNodeRef} style={style} className="group relative overflow-hidden rounded-lg border border-border bg-card">
-            <img src={mediaUrl(url)} alt="" loading="lazy" className="aspect-square w-full object-cover" />
+            <LoadingImage src={mediaUrl(url)} alt="" loading="lazy" className="aspect-square w-full" imageClassName="object-cover" />
             <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 py-0.5 text-xs font-bold text-white">{index + 1}</span>
             {/* The drag handle — covers the whole image; remove button stays clickable above */}
             <button
@@ -123,7 +125,7 @@ export function PhotoDropzone({ photos, onChange, onAddFiles, uploading, maxPhot
                 </div>
             )}
 
-            {uploading && <span className="text-xs text-muted-foreground">Загрузка…</span>}
+            {uploading && <LoadingSpinner label="Загрузка фотографий" size={18} className="justify-self-start" />}
         </div>
     );
 }

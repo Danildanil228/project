@@ -5,6 +5,7 @@ import { mediaUrl } from "../lib/items-api";
 import { hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { getWaterbody } from "../lib/reference-api";
 import type { Waterbody } from "../types/waterbody";
+import { MapSkeleton } from "./LoadingState";
 
 // Read-only counterpart to PostLocationPicker. Shows the waterbody map and the marker(s) the
 // author placed when creating the post. Two markers + dashed line when this is a trolling post.
@@ -43,7 +44,7 @@ export function PostLocationView({ waterbodyId, mapX, mapY, mapX2, mapY2, gameCo
     }
 
     if (error) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">{error}</p>;
-    if (!waterbody) return <p className="rounded-lg border border-border bg-card p-3 text-sm text-muted-foreground">Загрузка карты…</p>;
+    if (!waterbody) return <MapSkeleton className="min-h-64" />;
 
     const hasPointA = mapX !== null && mapY !== null;
     const hasPointB = mapX2 !== null && mapY2 !== null;

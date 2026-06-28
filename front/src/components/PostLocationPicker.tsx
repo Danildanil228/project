@@ -7,6 +7,7 @@ import { getWaterbody, listSpots } from "../lib/reference-api";
 import type { FishingSpot } from "../types/spot";
 import type { Waterbody } from "../types/waterbody";
 import { getErrorMessage } from "../utils/admin-format";
+import { MapSkeleton } from "./LoadingState";
 
 export type PostLocationValue = {
     proposedSpotId: number | null;
@@ -158,7 +159,7 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
         setCursor({ mapX: point.mapX, mapY: point.mapY, gameX: Math.round(game.x), gameY: Math.round(game.y) });
     }
 
-    if (loading) return <div className="grid min-h-64 place-items-center rounded-lg border border-border bg-muted text-sm text-muted-foreground">Загрузка карты…</div>;
+    if (loading) return <MapSkeleton className="min-h-64" />;
     if (!waterbody) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">{error || "Водоём не найден"}</p>;
 
     const trollingActive = pendingMode === "trolling";

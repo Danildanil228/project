@@ -3,6 +3,8 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
 import { SelectMenu } from "../components/SelectMenu";
+import { LoadingImage } from "../components/LoadingImage";
+import { TableRowsSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { createFish, createFishBulk, deleteFish, listFish, listWaterbodies, updateFish } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -319,9 +321,9 @@ export function FishAdminPage({ currentUser, adminContext, onOpenAuthModal }: Fi
                 <table className="w-full text-sm">
                     <thead><tr className="text-left text-muted-foreground"><th className="p-3">Фото</th><th className="p-3">Название</th><th className="p-3">Редкость</th><th className="p-3">Трофей</th><th className="p-3">Редкий трофей</th><th className="p-3">Водоёмы</th><th className="p-3 text-right">Действия</th></tr></thead>
                     <tbody>
-                        {loading ? <tr><td colSpan={7} className="p-6 text-center text-muted-foreground">Загрузка…</td></tr> : rows.length === 0 ? <tr><td colSpan={7} className="p-6 text-center text-muted-foreground">Пока нет рыбы</td></tr> : rows.map((fish) => (
+                        {loading ? <TableRowsSkeleton columns={7} rows={8} /> : rows.length === 0 ? <tr><td colSpan={7} className="p-6 text-center text-muted-foreground">Пока нет рыбы</td></tr> : rows.map((fish) => (
                             <tr key={fish.id} className="border-t border-border">
-                                <td className="p-3">{fish.photo ? <img src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="h-12 w-16 rounded border border-border object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
+                                <td className="p-3">{fish.photo ? <LoadingImage src={mediaUrl(fish.photo)} alt={fish.name} title={fish.name} className="h-12 w-16 rounded border border-border" imageClassName="object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
                                 <td className="p-3 font-medium">{fish.name}</td>
                                 <td className="p-3 text-muted-foreground">{fish.rarity}</td>
                                 <td className="whitespace-nowrap p-3 text-muted-foreground">{formatWeight(fish.trophyWeightGrams)}</td>

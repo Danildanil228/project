@@ -1,5 +1,6 @@
 import { UserAvatar } from "../../components/UserAvatar";
 import { SelectMenu } from "../../components/SelectMenu";
+import { TableRowsSkeleton } from "../../components/LoadingState";
 import type {
     AdminSecurityContext,
     ManagedUser,
@@ -218,9 +219,9 @@ export function UserTable({
                             </tr>
                         ))}
                         {!users.length && (
-                            <tr>
-                                <td colSpan={6}>{loadingUsers ? "Загрузка..." : "Пользователи не найдены"}</td>
-                            </tr>
+                            loadingUsers
+                                ? <TableRowsSkeleton columns={6} rows={7} />
+                                : <tr><td colSpan={6}>Пользователи не найдены</td></tr>
                         )}
                     </tbody>
                 </table>

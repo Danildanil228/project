@@ -11,6 +11,7 @@ import { AuthModalProvider, useAuthModal } from "./context/AuthModalContext";
 import { AuthModal } from "./components/AuthModal";
 import { CookieBanner } from "./components/CookieBanner";
 import { postMapLinkingEnabled } from "./lib/features";
+import { PageLoader } from "./components/LoadingState";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AdminOverviewPage = lazy(() => import("./pages/AdminOverviewPage").then((module) => ({ default: module.AdminOverviewPage })));
@@ -83,12 +84,12 @@ function AppRoutes() {
     // Better Auth refetches on tab focus. For guests that temporarily sets isPending=true,
     // but the mounted route must stay alive so filters and calculator selections are preserved.
     if (isPending && !sessionInitialized) {
-        return <main className="center-screen">Загрузка...</main>;
+        return <PageLoader />;
     }
 
     return (
         <>
-            <Suspense fallback={<main className="center-screen">Загрузка...</main>}>
+            <Suspense fallback={<PageLoader />}>
                 <Routes>
                     <Route
                         element={

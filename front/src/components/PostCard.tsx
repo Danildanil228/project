@@ -7,6 +7,7 @@ import { mediaUrl } from "../lib/items-api";
 import type { FeedItem } from "../types/post";
 import { timeAgo } from "../utils/admin-format";
 import { CatchTrophyBadge } from "./CatchTrophyBadge";
+import { LoadingImage } from "./LoadingImage";
 
 type PostCardProps = {
     post: FeedItem;
@@ -46,7 +47,7 @@ export function PostCard({ post }: PostCardProps) {
                             className="block aspect-[16/9] min-w-0 overflow-hidden"
                             aria-label="Открыть главное фото"
                         >
-                            <img src={mediaUrl(post.mediaUrls[0])} alt="" loading="lazy" className="h-full w-full object-cover" />
+                            <LoadingImage src={mediaUrl(post.mediaUrls[0])} alt="" loading="lazy" className="h-full w-full" imageClassName="object-cover" />
                             {post.mediaUrls.length > 1 && (
                                 <span className="absolute right-2 top-2 rounded bg-black/65 px-2 py-1 text-xs font-bold text-white sm:hidden">1 / {post.mediaUrls.length}</span>
                             )}
@@ -64,7 +65,7 @@ export function PostCard({ post }: PostCardProps) {
                                             className={`relative h-20 min-w-0 overflow-hidden ${index >= 2 ? "hidden lg:block" : "block"}`}
                                             aria-label={`Открыть фото ${index + 2}`}
                                         >
-                                            <img src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full object-cover" />
+                                            <LoadingImage src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full" imageClassName="object-cover" />
                                             {tabletHiddenCount > 0 && <span className="absolute inset-0 grid place-items-center bg-black/55 text-lg font-bold text-white lg:hidden">+{tabletHiddenCount}</span>}
                                             {desktopHiddenCount > 0 && <span className="absolute inset-0 hidden place-items-center bg-black/55 text-lg font-bold text-white lg:grid">+{desktopHiddenCount}</span>}
                                         </button>

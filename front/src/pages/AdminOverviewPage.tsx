@@ -12,6 +12,7 @@ import {
     Users,
 } from "lucide-react";
 import { PageHeader } from "../components/PageHeader";
+import { ListSkeleton, Skeleton } from "../components/LoadingState";
 import { getAdminOverviewData, type AdminOverview } from "../lib/admin-api";
 import type { AdminSecurityContext, ManagedAuditLog, ManagedUser } from "../types/admin";
 import { auditActionText, auditSummary } from "../utils/audit-format";
@@ -106,7 +107,7 @@ export function AdminOverviewPage({ currentUser, adminContext, onOpenAuthModal }
                 </header>
 
                 {loading ? (
-                    <p className="text-sm text-muted-foreground">Загрузка…</p>
+                    <ListSkeleton count={4} />
                 ) : !data || data.recentActions.length === 0 ? (
                     <p className="text-sm text-muted-foreground">Действий пока нет.</p>
                 ) : (
@@ -137,10 +138,10 @@ function StatTile({ icon: Icon, label, value, loading, accent, warn, danger }: {
         <div className="grid gap-2 rounded-2xl border border-border bg-card p-4">
             <div className="flex items-center justify-between">
                 <span className={`grid size-9 place-items-center rounded-lg ${tone}`}><Icon size={16} /></span>
-                {loading && <span className="text-[10px] uppercase tracking-wider text-muted-foreground">…</span>}
+                {loading && <Skeleton className="h-3 w-10" />}
             </div>
             <div className="grid leading-tight">
-                <strong className="text-2xl tabular-nums">{value}</strong>
+                {loading ? <Skeleton className="h-7 w-20" /> : <strong className="text-2xl tabular-nums">{value}</strong>}
                 <span className="text-xs text-muted-foreground">{label}</span>
             </div>
         </div>

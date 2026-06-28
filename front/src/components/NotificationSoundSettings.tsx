@@ -14,6 +14,7 @@ import {
 import { defaultNotificationSoundSettings, type NotificationSoundKey, type NotificationSoundSettings as Settings } from "../types/notification-sound";
 import { getErrorMessage } from "../utils/admin-format";
 import { RangeControl } from "./RangeControl";
+import { Skeleton } from "./LoadingState";
 
 const maxSoundBytes = 2 * 1024 * 1024;
 
@@ -101,7 +102,7 @@ export function NotificationSoundSettings() {
         void playNotificationSound({ ...settings, enabled: true, sound }, true);
     }
 
-    if (loading) return <section className="panel"><p className="muted">Загрузка настроек звука…</p></section>;
+    if (loading) return <section className="panel grid gap-3" aria-busy="true"><Skeleton className="h-6 w-56" /><Skeleton className="h-10 w-full" /><Skeleton className="h-3 w-full" /></section>;
 
     return (
         <section className="panel settings-card" data-testid="notification-sound-settings">

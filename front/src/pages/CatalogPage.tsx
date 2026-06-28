@@ -7,6 +7,7 @@ import { ItemCard } from "../components/ItemCard";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
+import { CardGridSkeleton } from "../components/LoadingState";
 import { ItemDataTable } from "../features/items/ItemDataTable";
 import { fetchItems, itemCategories, typeLabels, type CatalogItem, type ItemType } from "../lib/items-api";
 
@@ -107,7 +108,7 @@ export function CatalogPage({ initialType }: CatalogPageProps) {
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {view === "cards" ? (
-                loading ? <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                loading ? <CardGridSkeleton count={8} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" />
                     : items.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p>
                         : <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">{items.map((item) => <ItemCard key={item.id} type={type} item={item} />)}</div>
             ) : (

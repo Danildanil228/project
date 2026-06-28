@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ListSkeleton } from "../components/LoadingState";
 import { listReports, resolveReport } from "../lib/engagement-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import type { ReportRow, ReportStatus } from "../types/post";
@@ -124,7 +125,7 @@ export function ReportsPage({ currentUser, adminContext, onOpenAuthModal }: Repo
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <ListSkeleton count={6} />
             ) : items.length === 0 ? (
                 <p className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">Жалоб нет.</p>
             ) : (

@@ -3,6 +3,8 @@ import { itemFields, type ItemFieldDef } from "../../lib/item-fields";
 import { mediaUrl, type ItemType } from "../../lib/items-api";
 import { uploadItemMedia } from "../../lib/items-admin-api";
 import { SelectMenu } from "../../components/SelectMenu";
+import { LoadingImage } from "../../components/LoadingImage";
+import { LoadingSpinner } from "../../components/LoadingState";
 
 type ItemFormProps = {
     type: ItemType;
@@ -89,7 +91,7 @@ export function ItemForm({ type, initial, submitting, error, onSubmit, onCancel 
                         ) : field.kind === "file" ? (
                             <div className="grid gap-2">
                                 {values[field.key] && field.mediaKind === "image" && (
-                                    <img src={mediaUrl(values[field.key] as string)} alt="" className="h-20 w-20 rounded-lg border border-border object-cover" />
+                                    <LoadingImage src={mediaUrl(values[field.key] as string)} alt="" className="h-20 w-20 rounded-lg border border-border" imageClassName="object-cover" />
                                 )}
                                 {values[field.key] && field.mediaKind === "model" && (
                                     <a href={mediaUrl(values[field.key] as string)} target="_blank" rel="noreferrer" className="truncate text-xs text-primary">
@@ -97,7 +99,7 @@ export function ItemForm({ type, initial, submitting, error, onSubmit, onCancel 
                                     </a>
                                 )}
                                 <input type="file" accept={field.accept} onChange={(event) => handleFile(field, event)} className="w-auto text-xs" />
-                                {uploadingKey === field.key && <span className="text-xs text-muted-foreground">Загрузка…</span>}
+                                {uploadingKey === field.key && <LoadingSpinner label="Загрузка файла" size={18} className="justify-self-start" />}
                                 {values[field.key] && (
                                     <button type="button" onClick={() => setField(field.key, "")} className="justify-self-start text-xs text-destructive">
                                         Убрать

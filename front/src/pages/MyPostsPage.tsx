@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
+import { LoadingImage } from "../components/LoadingImage";
+import { ListSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { deletePost, listMyPosts, submitPost } from "../lib/posts-api";
 import type { ManagedUser } from "../types/admin";
@@ -154,7 +156,7 @@ export function MyPostsPage({ currentUser, onOpenAuthModal }: MyPostsPageProps) 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <ListSkeleton count={6} leading />
             ) : items.length === 0 ? (
                 <div className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
                     <p>Постов пока нет.</p>
@@ -171,7 +173,7 @@ export function MyPostsPage({ currentUser, onOpenAuthModal }: MyPostsPageProps) 
                             <article key={row.id} className="flex gap-3 rounded-lg border border-border bg-card p-3">
                                 <div className="h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-muted">
                                     {row.coverUrl ? (
-                                        <img src={mediaUrl(row.coverUrl)} alt="" className="h-full w-full object-cover" />
+                                        <LoadingImage src={mediaUrl(row.coverUrl)} alt="" className="h-full w-full" imageClassName="object-cover" />
                                     ) : (
                                         <span className="flex h-full w-full items-center justify-center text-2xl">🎣</span>
                                     )}

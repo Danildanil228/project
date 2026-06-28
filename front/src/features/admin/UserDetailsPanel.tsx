@@ -1,6 +1,7 @@
 import { ChangePasswordForm } from "../../components/ChangePasswordForm";
 import { SelectMenu } from "../../components/SelectMenu";
 import { UserAvatar } from "../../components/UserAvatar";
+import { ListSkeleton } from "../../components/LoadingState";
 import type { BanFormState, EditUserFormState, ManagedAccount, ManagedAuditLog, ManagedSession, ManagedUser } from "../../types/admin";
 import { formatDate, shortId } from "../../utils/admin-format";
 import { auditActionText, auditDetails, auditSummary } from "../../utils/audit-format";
@@ -210,7 +211,7 @@ export function UserDetailsPanel({
                             </button>
                         </div>
                         {loadingDetails ? (
-                            <p className="muted">Загрузка...</p>
+                            <ListSkeleton count={3} />
                         ) : (
                             <div className="mini-list">
                                 {sessions.map((item) => (

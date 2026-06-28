@@ -3,6 +3,8 @@ import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { PhotoUploadField } from "../components/PhotoUploadField";
 import { SelectMenu } from "../components/SelectMenu";
+import { LoadingImage } from "../components/LoadingImage";
+import { TableRowsSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { createBait, deleteBait, getBaitCatalogMeta, listBaits, updateBait } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -171,8 +173,8 @@ export function BaitAdminPage({ currentUser, adminContext, onOpenAuthModal }: Pr
 
             <div className="overflow-x-auto rounded-lg border border-border bg-card">
                 <table className="w-full text-sm"><thead><tr className="text-left text-muted-foreground"><th className="p-3">Фото</th><th className="p-3">Название</th><th className="p-3">Раздел</th><th className="p-3">Категория</th><th className="p-3">Статус</th><th className="p-3 text-right">Действия</th></tr></thead>
-                    <tbody>{loading ? <tr><td colSpan={6} className="p-6 text-center text-muted-foreground">Загрузка…</td></tr> : rows.length === 0 ? <tr><td colSpan={6} className="p-6 text-center text-muted-foreground">Ничего не найдено</td></tr> : rows.map((item) => <tr key={item.id} className="border-t border-border">
-                        <td className="p-3">{item.photo ? <img src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-14 w-14 rounded border border-border object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
+                    <tbody>{loading ? <TableRowsSkeleton columns={6} rows={8} /> : rows.length === 0 ? <tr><td colSpan={6} className="p-6 text-center text-muted-foreground">Ничего не найдено</td></tr> : rows.map((item) => <tr key={item.id} className="border-t border-border">
+                        <td className="p-3">{item.photo ? <LoadingImage src={mediaUrl(item.photo)} alt={item.name} title={item.name} className="h-14 w-14 rounded border border-border" imageClassName="object-contain" /> : <span className="text-muted-foreground">—</span>}</td>
                         <td className="p-3 font-medium">{item.name}</td><td className="p-3">{baitDomainLabels[item.domain]}</td><td className="p-3">{item.categoryName ?? "—"}</td><td className="p-3">{item.isActive ? "Показывается" : "Скрыта"}</td>
                         <td className="p-3"><div className="flex justify-end gap-2"><button title="Изменить" onClick={() => startEdit(item)} className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border"><Pencil size={15} /></button><button title="Удалить" onClick={() => remove(item)} className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-destructive/40 text-destructive"><Trash2 size={15} /></button></div></td>
                     </tr>)}</tbody>

@@ -9,6 +9,8 @@ import { PostComments } from "../components/PostComments";
 import { PostLocationView } from "../components/PostLocationView";
 import { CatchTrophyBadge } from "../components/CatchTrophyBadge";
 import { ReportButton } from "../components/ReportButton";
+import { LoadingImage } from "../components/LoadingImage";
+import { DetailSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { getPinInfo, getPost, pinPost, recordPostView, removeModeratedPost, unpinPost } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -117,7 +119,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
         }
     }
 
-    if (loading) return <p className="py-10 text-center text-muted-foreground">Загрузка…</p>;
+    if (loading) return <DetailSkeleton />;
 
     if (error || !post) {
         return (
@@ -190,7 +192,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                 className="block aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted"
                                 aria-label="Открыть фото"
                             >
-                                <img src={mediaUrl(photos[activeImage])} alt="" className="h-full w-full object-contain" />
+                                <LoadingImage src={mediaUrl(photos[activeImage])} alt="" className="h-full w-full" imageClassName="object-contain" />
                             </button>
                             {photos.length > 1 && (
                                 <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
@@ -204,7 +206,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                             }`}
                                             aria-label={`Фото ${index + 1}`}
                                         >
-                                            <img src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full object-cover" />
+                                            <LoadingImage src={mediaUrl(url)} alt="" loading="lazy" className="h-full w-full" imageClassName="object-cover" />
                                         </button>
                                     ))}
                                 </div>
@@ -304,7 +306,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                 {version.catches.map((item) => (
                                     <div key={item.id} className="flex items-center gap-2 rounded-md bg-muted/70 px-2 py-1.5">
                                         {item.fishPhoto ? (
-                                            <img src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background object-contain" />
+                                            <LoadingImage src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background" imageClassName="object-contain" />
                                         ) : (
                                             <div className="grid h-10 w-14 shrink-0 place-items-center rounded border border-border bg-background text-[10px] text-muted-foreground">Нет фото</div>
                                         )}

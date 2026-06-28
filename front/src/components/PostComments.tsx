@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { UserAvatar } from "./UserAvatar";
+import { ListSkeleton } from "./LoadingState";
 import { addComment, deleteComment, listComments } from "../lib/engagement-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
 import type { CommentRow } from "../types/post";
@@ -84,7 +85,7 @@ export function PostComments({ postId, currentUser, adminContext, onOpenAuthModa
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading ? (
-                <p className="text-sm text-muted-foreground">Загрузка…</p>
+                <ListSkeleton count={3} leading />
             ) : comments.length === 0 ? (
                 <p className="text-sm text-muted-foreground">Пока нет комментариев — будьте первым.</p>
             ) : (

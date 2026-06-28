@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { MultiCombobox } from "../components/MultiCombobox";
 import { PostLocationPicker, type PostLocationValue } from "../components/PostLocationPicker";
+import { ListSkeleton } from "../components/LoadingState";
 import { approveMapSubmission, listMapSubmissions, rejectMapSubmission } from "../lib/map-submissions-api";
 import { getWaterbody, listBaits } from "../lib/reference-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -108,7 +109,7 @@ export function MapModerationPage({ currentUser, adminContext, onOpenAuthModal }
             <div className="flex flex-wrap gap-2">{statuses.map((item) => <button key={item.value} onClick={() => setStatus(item.value)} className={`rounded-lg px-3 py-1.5 text-sm font-bold ${status === item.value ? "bg-primary text-primary-foreground" : "bg-secondary"}`}>{item.label}</button>)}</div>
             {notice && <p className="rounded-lg border border-green-500/40 bg-green-500/10 px-3 py-2 text-sm text-green-700 dark:text-green-400">{notice}</p>}
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-            {loading ? <p className="py-10 text-center text-muted-foreground">Загрузка…</p> : items.length === 0 ? <p className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">В этой очереди заявок нет.</p> : (
+            {loading ? <ListSkeleton count={7} /> : items.length === 0 ? <p className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">В этой очереди заявок нет.</p> : (
                 <div className="grid gap-4 lg:grid-cols-[300px_minmax(0,1fr)]">
                     <div className="max-h-190 overflow-y-auto rounded-lg border border-border bg-card">{items.map((item) => <button key={item.id} onClick={() => setSelectedId(item.id)} className={`block w-full border-b border-border p-3 text-left last:border-0 ${item.id === selectedId ? "bg-muted" : "hover:bg-muted/60"}`}><span className="block font-bold">{item.waterbodyName}</span><span className="block text-sm text-muted-foreground">{item.authorName} · {item.gameCoordinateX}:{item.gameCoordinateY}</span><span className="block text-xs text-muted-foreground">{formatDate(item.createdAt)}</span></button>)}</div>
                     {selected && <div className="grid min-w-0 gap-4 rounded-lg border border-border bg-card p-4">

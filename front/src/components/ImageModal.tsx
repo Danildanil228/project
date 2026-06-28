@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import { ChevronLeft, ChevronRight, Minus, Plus, RotateCcw, X } from "lucide-react";
 import { mediaUrl } from "../lib/items-api";
+import { LoadingSpinner } from "./LoadingState";
 
 type ImageModalProps = {
     urls: string[];
@@ -34,6 +35,7 @@ export function ImageModal({ urls, index, onClose, onNavigate }: ImageModalProps
     const swipeRef = useRef<{ x: number; y: number } | null>(null);
     const movedRef = useRef(false);
     const [view, setViewState] = useState<ViewState>({ scale: 1, x: 0, y: 0 });
+    const [loadedUrl, setLoadedUrl] = useState("");
     const viewRef = useRef(view);
 
     const setView = useCallback((updater: (current: ViewState) => ViewState) => {
@@ -180,10 +182,15 @@ export function ImageModal({ urls, index, onClose, onNavigate }: ImageModalProps
     return (
         <div className="fixed inset-0 z-50 bg-black" role="dialog" aria-modal="true" aria-label="Просмотр фотографий">
             <div ref={stageRef} className="absolute inset-0 touch-none overflow-hidden" onClick={onClose}>
+                {loadedUrl !== url && (
+                    <div className="absolute inset-0 grid place-items-center"><LoadingSpinner label="Загрузка фотографии" size={32} /></div>
+                )}
                 <img
                     src={mediaUrl(url)}
                     alt={`Фото ${index + 1} из ${urls.length}`}
                     draggable={false}
+                    onLoad={() => setLoadedUrl(url)}
+                    onError={() => setLoadedUrl(url)}
                     onPointerDown={handlePointerDown}
                     onPointerMove={handlePointerMove}
                     onPointerUp={handlePointerUp}
@@ -196,7 +203,7 @@ export function ImageModal({ urls, index, onClose, onNavigate }: ImageModalProps
                         }
                         zoomAt(viewRef.current.scale === 1 ? 2 : 1, event.clientX, event.clientY);
                     }}
-                    className={`absolute inset-0 m-auto max-h-full max-w-full select-none object-contain ${view.scale > 1 ? "cursor-zoom-out" : "cursor-zoom-in"}`}
+                    className={`absolute inset-0 m-auto max-h-full max-w-full select-none object-contain transition-opacity duration-200 ${loadedUrl === url ? "opacity-100" : "opacity-0"} ${view.scale > 1 ? "cursor-zoom-out" : "cursor-zoom-in"}`}
                     style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})`, transformOrigin: "center" }}
                 />
             </div>

@@ -11,6 +11,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { itemFields, type ItemFieldDef } from "../../lib/item-fields";
 import { mediaUrl, type ItemType } from "../../lib/items-api";
+import { LoadingImage } from "../../components/LoadingImage";
+import { TableRowsSkeleton } from "../../components/LoadingState";
 
 type ItemRow = { id: number; name: string; photo?: string | null } & Record<string, unknown>;
 
@@ -43,7 +45,7 @@ function renderCell(field: ItemFieldDef, row: ItemRow, type: ItemType) {
     const value = row[field.key];
     if (field.key === "photo") {
         return row.photo
-            ? <img src={mediaUrl(row.photo)} alt={row.name} title={row.name} className="h-10 w-14 object-contain" />
+            ? <LoadingImage src={mediaUrl(row.photo)} alt={row.name} title={row.name} className="h-10 w-14" imageClassName="object-contain" />
             : <span className="text-muted-foreground">—</span>;
     }
     if (field.key === "name") {
@@ -194,7 +196,7 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, onSo
                     </thead>
                     <tbody>
                         {loading ? (
-                            <tr><td colSpan={visibleCount + 1} className="p-8 text-center text-muted-foreground">Загрузка…</td></tr>
+                            <TableRowsSkeleton columns={visibleCount + 1} rows={7} />
                         ) : rows.length === 0 ? (
                             <tr><td colSpan={visibleCount + 1} className="p-8 text-center text-muted-foreground">Ничего не найдено</td></tr>
                         ) : table.getRowModel().rows.map((row) => (

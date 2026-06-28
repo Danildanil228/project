@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
+import { LoadingImage } from "../components/LoadingImage";
+import { ListSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { approvePost, claimPost, listModerationQueue, rejectPost, releasePost, removeModeratedPost } from "../lib/posts-api";
 import { reportsOpenCount } from "../lib/engagement-api";
@@ -182,7 +184,7 @@ export function ModerationQueuePage({ currentUser, adminContext, onOpenAuthModal
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <ListSkeleton count={6} leading />
             ) : items.length === 0 ? (
                 <p className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">Очередь пуста — все посты разобраны.</p>
             ) : (
@@ -197,7 +199,7 @@ export function ModerationQueuePage({ currentUser, adminContext, onOpenAuthModal
                                 <div className="flex gap-3">
                                     <Link to={`/posts/${row.id}`} className="block h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-muted">
                                         {row.coverUrl ? (
-                                            <img src={mediaUrl(row.coverUrl)} alt="" className="h-full w-full object-cover" />
+                                            <LoadingImage src={mediaUrl(row.coverUrl)} alt="" className="h-full w-full" imageClassName="object-cover" />
                                         ) : (
                                             <span className="flex h-full w-full items-center justify-center text-2xl">🎣</span>
                                         )}

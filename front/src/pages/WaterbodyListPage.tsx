@@ -2,6 +2,8 @@ import { Map, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../components/PageHeader";
+import { LoadingImage } from "../components/LoadingImage";
+import { CardGridSkeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { listWaterbodies } from "../lib/reference-api";
 import type { WaterbodyListRow } from "../types/waterbody";
@@ -36,7 +38,7 @@ export function WaterbodyListPage() {
 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
             {loading ? (
-                <p className="py-10 text-center text-muted-foreground">Загрузка…</p>
+                <CardGridSkeleton count={6} className="sm:grid-cols-2 lg:grid-cols-3" />
             ) : items.length === 0 ? (
                 <div className="border-y border-border py-12 text-center text-muted-foreground">
                     <Map className="mx-auto mb-3" size={32} />
@@ -47,7 +49,7 @@ export function WaterbodyListPage() {
                     {items.map((item) => (
                         <Link key={item.id} to={`/waterbodies/${item.id}`} className="overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-primary">
                             {item.photo ? (
-                                <img src={mediaUrl(item.photo)} alt="" className="aspect-[16/8] w-full object-cover" />
+                                <LoadingImage src={mediaUrl(item.photo)} alt={item.name} className="aspect-[16/8] w-full" imageClassName="object-cover" />
                             ) : (
                                 <div className="grid aspect-[16/8] place-items-center bg-muted text-muted-foreground"><Map size={30} /></div>
                             )}

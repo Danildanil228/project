@@ -25,13 +25,14 @@ function isSafeAvatarSource(value?: string) {
 
 export function UserAvatar({ user, size = "md" }: UserAvatarProps) {
     const [failedImage, setFailedImage] = useState("");
+    const [loadedImage, setLoadedImage] = useState("");
     const image = user?.image?.trim();
     const shouldShowImage = Boolean(image && isSafeAvatarSource(image) && image !== failedImage);
 
     return (
-        <span className={`user-avatar user-avatar-${size}`} aria-hidden="true">
+        <span className={`user-avatar user-avatar-${size} ${shouldShowImage && loadedImage !== image ? "loading-shimmer" : ""}`} aria-hidden="true">
             {shouldShowImage ? (
-                <img src={image} alt="" onError={() => setFailedImage(image ?? "")} />
+                <img src={image} alt="" onLoad={() => setLoadedImage(image ?? "")} onError={() => setFailedImage(image ?? "")} />
             ) : (
                 <span>{getInitials(user)}</span>
             )}
