@@ -12,6 +12,7 @@ import { AuthModal } from "./components/AuthModal";
 import { CookieBanner } from "./components/CookieBanner";
 import { postMapLinkingEnabled } from "./lib/features";
 import { PageLoader } from "./components/LoadingState";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AdminOverviewPage = lazy(() => import("./pages/AdminOverviewPage").then((module) => ({ default: module.AdminOverviewPage })));
@@ -152,6 +153,7 @@ function AppRoutes() {
 function App() {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <AuthModalProvider>
                 <AppRoutes />
             </AuthModalProvider>
