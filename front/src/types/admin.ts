@@ -111,6 +111,7 @@ export type AuthApi = {
     listSessions(): Promise<AuthClientResult<ManagedSession[]> | ManagedSession[]>;
     revokeSession(input: unknown): Promise<AuthClientResult<{ status: boolean }> | { status: boolean }>;
     revokeSessions(): Promise<AuthClientResult<{ status: boolean }> | { status: boolean }>;
+    revokeOtherSessions(): Promise<AuthClientResult<{ status: boolean }> | { status: boolean }>;
 };
 
 export type SearchField = "email" | "name";

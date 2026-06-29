@@ -50,6 +50,7 @@ function AppRoutes() {
     const [adminContext, setAdminContext] = useState<AdminSecurityContext | null>(null);
     const currentUser = session?.user as ManagedUser | undefined;
     const currentUserId = session?.user?.id;
+    const currentSessionToken = (session?.session as { token?: string } | undefined)?.token;
     const isImpersonating = Boolean((session?.session as { impersonatedBy?: string } | undefined)?.impersonatedBy);
     const { setOpen } = useAuthModal();
 
@@ -126,7 +127,7 @@ function AppRoutes() {
                     {postMapLinkingEnabled && <Route path="moderation/map" element={<MapModerationPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />}
                     <Route path="moderation/reports" element={<ReportsPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="profile" element={<ProfilePage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
-                    <Route path="profile/settings" element={<ProfileSettingsPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
+                    <Route path="profile/settings" element={<ProfileSettingsPage currentUser={currentUser} currentSessionToken={currentSessionToken} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin" element={<AdminOverviewPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/users" element={<AdminPage currentUser={currentUser} adminContext={adminContext} onSessionRefresh={refetch} onOpenAuthModal={() => setOpen(true)} />} />
                     <Route path="admin/audit" element={<AdminAuditPage currentUser={currentUser} adminContext={adminContext} onOpenAuthModal={() => setOpen(true)} />} />
