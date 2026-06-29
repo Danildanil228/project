@@ -5,7 +5,7 @@ import { PageHeader } from "../components/PageHeader";
 import { UserAvatar } from "../components/UserAvatar";
 import { getAuthorProfile } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
-import { displayRoleText, formatDate, getErrorMessage } from "../utils/admin-format";
+import { displayRoleText, formatDate, getErrorMessage, hasElevatedUserAccess } from "../utils/admin-format";
 import { MyPostsPage } from "./MyPostsPage";
 
 type Props = {
@@ -85,7 +85,9 @@ export function ProfilePage({ currentUser, adminContext, onOpenAuthModal }: Prop
                                 </span>
                             )}
                         </p>
-                        <p className="text-xs text-muted-foreground">Роль: <span className="text-foreground">{displayRoleText(currentUser, adminContext)}</span></p>
+                        {hasElevatedUserAccess(currentUser, adminContext) && (
+                            <p className="text-xs text-muted-foreground">Роль: <span className="text-foreground">{displayRoleText(currentUser, adminContext)}</span></p>
+                        )}
                     </div>
                 </div>
             </article>

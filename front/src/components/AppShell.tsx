@@ -218,7 +218,9 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                                         <div className="border-b border-border px-4 py-3">
                                             <p className="truncate text-sm font-semibold">{currentUser.name || "Пользователь"}</p>
                                             <p className="truncate text-xs text-muted-foreground">{currentUser.email}</p>
-                                            <p className="mt-1 text-xs text-muted-foreground">Роль: <span className="text-foreground">{displayRoleText(currentUser, adminContext)}</span></p>
+                                            {hasElevatedUserAccess(currentUser, adminContext) && (
+                                                <p className="mt-1 text-xs text-muted-foreground">Роль: <span className="text-foreground">{displayRoleText(currentUser, adminContext)}</span></p>
+                                            )}
                                         </div>
                                         <NavLink
                                             to="/profile"
