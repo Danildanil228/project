@@ -23,7 +23,17 @@ function readProvider(idKey: string, secretKey: string): ProviderCreds | undefin
 }
 
 const discord = readProvider("DISCORD_CLIENT_ID", "DISCORD_CLIENT_SECRET");
-const vk = readProvider("VK_CLIENT_ID", "VK_CLIENT_SECRET");
+const vkCredentials = readProvider("VK_CLIENT_ID", "VK_CLIENT_SECRET");
+const vk = vkCredentials
+    ? {
+        ...vkCredentials,
+        // A successful VK ID OAuth flow proves control of the VK account. Treat the email
+        // returned by VK as verified so social sign-up does not require a second OTP check.
+        mapProfileToUser: (profile: { user: { email?: string } }) => ({
+            emailVerified: Boolean(profile.user.email),
+        }),
+    }
+    : undefined;
 
 export const enabledSocialProviders = {
     discord: Boolean(discord),

@@ -10,7 +10,7 @@ import { UserAvatar } from "../components/UserAvatar";
 import { ListSkeleton } from "../components/LoadingState";
 import { authApi } from "../lib/auth-api";
 import type { AdminSecurityContext, ManagedSession, ManagedUser } from "../types/admin";
-import { displayRoleText, formatDate, getErrorMessage, shortId } from "../utils/admin-format";
+import { displayRoleText, formatDate, getErrorMessage, hasElevatedUserAccess, shortId } from "../utils/admin-format";
 import { unwrapAuthResult } from "../utils/auth-client-result";
 
 type Props = {
@@ -139,7 +139,9 @@ export function ProfileSettingsPage({ currentUser, adminContext, onSessionRefres
                             />
                             <div>
                                 <h3>{currentUser?.email}</h3>
-                                <p className="muted">Роль: {displayRoleText(currentUser, adminContext)}</p>
+                                {hasElevatedUserAccess(currentUser, adminContext) && (
+                                    <p className="muted">Роль: {displayRoleText(currentUser, adminContext)}</p>
+                                )}
                             </div>
                         </div>
 
