@@ -10,7 +10,7 @@ import { PostLocationView } from "../components/PostLocationView";
 import { CatchTrophyBadge } from "../components/CatchTrophyBadge";
 import { ReportButton } from "../components/ReportButton";
 import { LoadingImage } from "../components/LoadingImage";
-import { DetailSkeleton } from "../components/LoadingState";
+import { PostDetailSkeleton } from "../components/PageSkeletons";
 import { mediaUrl } from "../lib/items-api";
 import { getPinInfo, getPost, pinPost, recordPostView, removeModeratedPost, unpinPost } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
@@ -121,7 +121,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
         }
     }
 
-    if (loading) return <DetailSkeleton />;
+    if (loading) return <PostDetailSkeleton />;
 
     if (error || !post) {
         return (

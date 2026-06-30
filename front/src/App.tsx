@@ -12,6 +12,7 @@ import { AuthModal } from "./components/AuthModal";
 import { CookieBanner } from "./components/CookieBanner";
 import { postMapLinkingEnabled } from "./lib/features";
 import { PageLoader } from "./components/LoadingState";
+import { AuthPageSkeleton } from "./components/PageSkeletons";
 import { ScrollToTop } from "./components/ScrollToTop";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
@@ -142,7 +143,7 @@ function AppRoutes() {
                     <Route path="legal/rules" element={<RulesPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                     </Route>
-                    <Route path="reset-password" element={<ResetPasswordPage />} />
+                    <Route path="reset-password" element={<Suspense fallback={<AuthPageSkeleton />}><ResetPasswordPage /></Suspense>} />
                 </Routes>
             </Suspense>
             <AuthModal onSuccess={refetch} />

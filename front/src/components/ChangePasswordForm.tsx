@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { confirmPasswordChange, getPasswordChangePending, hasPasswordCredential, requestPasswordChange } from "../lib/account-api";
+import { Skeleton } from "./LoadingState";
 
 // Two-step password change for the signed-in user.
 // Step 1 — submit current + new password → server emails (or logs to console) a 6-digit code.
@@ -33,7 +34,9 @@ export function ChangePasswordForm() {
         return () => { cancelled = true; };
     }, []);
 
-    if (hasPassword === null) return null;
+    if (hasPassword === null) {
+        return <section className="subsection grid gap-3" aria-busy="true"><Skeleton className="h-5 w-36" /><Skeleton className="h-12 w-full" /><Skeleton className="h-12 w-full" /><Skeleton className="h-10 w-32" /></section>;
+    }
     if (!hasPassword) return null; // OAuth-only — no password to change.
 
     async function onRequest(event: React.FormEvent) {

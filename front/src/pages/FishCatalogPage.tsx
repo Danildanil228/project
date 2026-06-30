@@ -6,7 +6,8 @@ import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
 import { LoadingImage } from "../components/LoadingImage";
-import { CardGridSkeleton, TableSkeleton } from "../components/LoadingState";
+import { TableSkeleton } from "../components/LoadingState";
+import { CatalogCardGridSkeleton } from "../components/PageSkeletons";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { fishRarities, type Fish, type FishRarity } from "../types/fish";
@@ -84,7 +85,7 @@ export function FishCatalogPage() {
 
             <p className="text-sm text-muted-foreground">Найдено: {total.toLocaleString("ru-RU")}</p>
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-            {loading ? (view === "cards" ? <CardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" /> : <TableSkeleton columns={6} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
+            {loading ? (view === "cards" ? <CatalogCardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" variant="fish" /> : <TableSkeleton columns={6} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                     {rows.map((fish) => (
                         <article key={fish.id} className="grid gap-2 rounded-lg border border-border bg-card p-3">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PageHeader } from "../components/PageHeader";
 import { LoadingImage } from "../components/LoadingImage";
-import { CardGridSkeleton } from "../components/LoadingState";
+import { CatalogCardGridSkeleton } from "../components/PageSkeletons";
 import { mediaUrl } from "../lib/items-api";
 import { listWaterbodies } from "../lib/reference-api";
 import type { WaterbodyListRow } from "../types/waterbody";
@@ -38,7 +38,7 @@ export function WaterbodyListPage() {
 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
             {loading ? (
-                <CardGridSkeleton count={6} className="sm:grid-cols-2 lg:grid-cols-3" />
+                <CatalogCardGridSkeleton count={6} className="sm:grid-cols-2 lg:grid-cols-3" variant="waterbody" />
             ) : items.length === 0 ? (
                 <div className="border-y border-border py-12 text-center text-muted-foreground">
                     <Map className="mx-auto mb-3" size={32} />

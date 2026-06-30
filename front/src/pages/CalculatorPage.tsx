@@ -5,7 +5,7 @@ import { Combobox, type ComboboxOption } from "../components/Combobox";
 import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { RangeControl } from "../components/RangeControl";
-import { DetailSkeleton } from "../components/LoadingState";
+import { CalculatorPageSkeleton } from "../components/PageSkeletons";
 import { currentStrength, fetchCalculatorItems, formatKg, parseStrength } from "../lib/calculator-api";
 
 export function CalculatorPage() {
@@ -61,7 +61,7 @@ export function CalculatorPage() {
     const weakLink = hasBoth ? (rodCurrent <= reelCurrent ? "rod" : "reel") : null;
 
     if (isLoading) {
-        return <DetailSkeleton />;
+        return <CalculatorPageSkeleton />;
     }
     if (error) {
         return (

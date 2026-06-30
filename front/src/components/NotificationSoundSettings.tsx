@@ -102,7 +102,14 @@ export function NotificationSoundSettings() {
         void playNotificationSound({ ...settings, enabled: true, sound }, true);
     }
 
-    if (loading) return <section className="panel grid gap-3" aria-busy="true"><Skeleton className="h-6 w-56" /><Skeleton className="h-10 w-full" /><Skeleton className="h-3 w-full" /></section>;
+    if (loading) return (
+        <section className="panel grid gap-4" aria-busy="true">
+            <div className="flex items-start justify-between gap-3"><div className="grid flex-1 gap-2"><Skeleton className="h-6 w-56" /><Skeleton className="h-4 w-80 max-w-full" /></div><Skeleton className="h-10 w-36" /></div>
+            <div className="overflow-hidden rounded-lg border border-border">{Array.from({ length: 4 }, (_, index) => <div key={index} className="flex items-center gap-3 border-b border-border p-3 last:border-0"><Skeleton className="size-4 rounded-full" /><div className="grid flex-1 gap-2"><Skeleton className="h-4 w-32" /><Skeleton className="h-3 w-56 max-w-full" /></div><Skeleton className="size-9" /></div>)}</div>
+            <Skeleton className="h-12 w-full" />
+            <div className="flex justify-between gap-3"><Skeleton className="h-10 w-44" /><Skeleton className="h-10 w-28" /></div>
+        </section>
+    );
 
     return (
         <section className="panel settings-card" data-testid="notification-sound-settings">

@@ -3,6 +3,7 @@ import { getReactions, setReaction } from "../lib/engagement-api";
 import type { ManagedUser } from "../types/admin";
 import type { ReactionSummary } from "../types/post";
 import { getErrorMessage } from "../utils/admin-format";
+import { Skeleton } from "./LoadingState";
 
 type PostReactionsProps = {
     postId: number;
@@ -13,15 +14,18 @@ type PostReactionsProps = {
 export function PostReactions({ postId, currentUser, onOpenAuthModal }: PostReactionsProps) {
     const [summary, setSummary] = useState<ReactionSummary>({ likes: 0, dislikes: 0, mine: 0 });
     const [busy, setBusy] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
     useEffect(() => {
         let ignore = false;
+        setLoading(true);
         getReactions(postId)
             .then((data) => {
                 if (!ignore) setSummary(data);
             })
-            .catch(() => undefined);
+            .catch(() => undefined)
+            .finally(() => { if (!ignore) setLoading(false); });
         return () => {
             ignore = true;
         };
@@ -42,6 +46,10 @@ export function PostReactions({ postId, currentUser, onOpenAuthModal }: PostReac
         } finally {
             setBusy(false);
         }
+    }
+
+    if (loading) {
+        return <div className="flex items-center gap-3" aria-busy="true"><Skeleton className="h-9 w-16" /><Skeleton className="h-9 w-16" /></div>;
     }
 
     return (

@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
     BookOpen,
     Calculator,
@@ -26,6 +26,7 @@ import { canManageCatalog, displayRoleText, hasElevatedUserAccess } from "../uti
 import { UserAvatar } from "./UserAvatar";
 import { ModeToggle } from "./mode-toggle";
 import { NotificationsBell } from "./NotificationsBell";
+import { RoutePageSkeleton } from "./PageSkeletons";
 
 type AppShellProps = {
     currentUser?: ManagedUser;
@@ -260,7 +261,9 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
 
                 {/* Content */}
                 <main className="mx-auto w-full max-w-[1400px] px-4 py-6 sm:px-6 lg:px-8">
-                    <Outlet />
+                    <Suspense fallback={<RoutePageSkeleton pathname={location.pathname} />}>
+                        <Outlet />
+                    </Suspense>
                 </main>
 
                 {/* Footer */}

@@ -62,9 +62,7 @@ export function TableSkeleton({ columns = 5, rows = 7 }: { columns?: number; row
 export function TableRowsSkeleton({ columns, rows = 6 }: { columns: number; rows?: number }) {
     return Array.from({ length: rows }, (_, row) => (
         <tr key={row} className="border-t border-border" aria-hidden="true">
-            {Array.from({ length: columns }, (_, column) => (
-                <td key={column} className="p-3"><Skeleton className={`h-5 ${column === 0 ? "w-16" : "w-full"}`} /></td>
-            ))}
+            {Array.from({ length: columns }, (_, column) => <td key={column} className="p-3"><Skeleton className={`h-5 ${column === 0 ? "w-16" : "w-full"}`} /></td>)}
         </tr>
     ));
 }
@@ -75,30 +73,9 @@ export function ListSkeleton({ count = 5, leading = false }: { count?: number; l
             {Array.from({ length: count }, (_, index) => (
                 <div key={index} className="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
                     {leading && <Skeleton className="size-11 shrink-0 rounded-lg" />}
-                    <div className="grid min-w-0 flex-1 gap-2">
-                        <Skeleton className="h-4 w-2/5" />
-                        <Skeleton className="h-3 w-4/5" />
-                    </div>
+                    <div className="grid min-w-0 flex-1 gap-2"><Skeleton className="h-4 w-2/5" /><Skeleton className="h-3 w-4/5" /></div>
                 </div>
             ))}
-        </div>
-    );
-}
-
-export function DetailSkeleton() {
-    return (
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]" aria-busy="true">
-            <Skeleton className="aspect-square w-full rounded-lg" />
-            <div className="grid content-start gap-4">
-                <Skeleton className="h-3 w-24" />
-                <Skeleton className="h-8 w-2/3" />
-                {Array.from({ length: 8 }, (_, index) => (
-                    <div key={index} className="grid grid-cols-2 gap-4 border-b border-border pb-2">
-                        <Skeleton className="h-4 w-3/4" />
-                        <Skeleton className="h-4 w-full" />
-                    </div>
-                ))}
-            </div>
         </div>
     );
 }
@@ -113,9 +90,5 @@ export function MapSkeleton({ className = "min-h-72" }: { className?: string }) 
 }
 
 export function LoadingOverlay({ children }: { children?: ReactNode }) {
-    return (
-        <div className="absolute inset-0 z-10 grid place-items-center bg-background/75 backdrop-blur-[1px]">
-            {children ?? <LoadingSpinner size={24} />}
-        </div>
-    );
+    return <div className="absolute inset-0 z-10 grid place-items-center bg-background/75 backdrop-blur-[1px]">{children ?? <LoadingSpinner size={24} />}</div>;
 }

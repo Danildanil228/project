@@ -4,7 +4,8 @@ import { ArrowLeft, Box, Image } from "lucide-react";
 import { fetchItem, mediaUrl, type ItemType } from "../lib/items-api";
 import type { Reel } from "../types/reel";
 import type { Rod } from "../types/rod";
-import { DetailSkeleton, LoadingSpinner } from "../components/LoadingState";
+import { LoadingSpinner } from "../components/LoadingState";
+import { ItemDetailSkeleton } from "../components/PageSkeletons";
 import { LoadingImage } from "../components/LoadingImage";
 
 const ModelViewerPanel = lazy(() => import("../components/ModelViewerPanel").then((module) => ({ default: module.ModelViewerPanel })));
@@ -97,7 +98,7 @@ export function ItemDetailPage() {
             </Link>
 
             {loading ? (
-                <DetailSkeleton />
+                <ItemDetailSkeleton />
             ) : error ? (
                 <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>
             ) : item ? (

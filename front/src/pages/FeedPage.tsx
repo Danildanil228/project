@@ -5,7 +5,8 @@ import { useDebounce } from "use-debounce";
 import { MultiSelectFilter, type MultiSelectOption } from "../components/MultiSelectFilter";
 import { PageHeader } from "../components/PageHeader";
 import { PostCard } from "../components/PostCard";
-import { CardGridSkeleton, LoadingSpinner } from "../components/LoadingState";
+import { LoadingSpinner } from "../components/LoadingState";
+import { PostGridSkeleton } from "../components/PageSkeletons";
 import { SelectMenu } from "../components/SelectMenu";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { listFeed } from "../lib/posts-api";
@@ -198,7 +199,7 @@ export function FeedPage({ currentUser }: FeedPageProps) {
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
             {loading && items.length === 0 ? (
-                <CardGridSkeleton count={6} className={gridClass[columns].replace("grid ", "")} />
+                <PostGridSkeleton count={6} className={gridClass[columns].replace("grid ", "")} />
             ) : !loading && items.length === 0 ? (
                 <div className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
                     <p>Постов не найдено</p>

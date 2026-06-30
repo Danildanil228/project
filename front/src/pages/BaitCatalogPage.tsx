@@ -6,7 +6,8 @@ import { PageHeader } from "../components/PageHeader";
 import { SelectMenu } from "../components/SelectMenu";
 import { CatalogViewToggle, useCatalogView } from "../components/CatalogViewToggle";
 import { LoadingImage } from "../components/LoadingImage";
-import { CardGridSkeleton, TableSkeleton } from "../components/LoadingState";
+import { TableSkeleton } from "../components/LoadingState";
+import { CatalogCardGridSkeleton } from "../components/PageSkeletons";
 import { getBaitCatalogMeta, listBaits } from "../lib/reference-api";
 import { mediaUrl } from "../lib/items-api";
 import { baitDomainLabels, type Bait, type BaitCatalogMeta, type BaitDomain } from "../types/bait";
@@ -81,7 +82,7 @@ export function BaitCatalogPage() {
             </div>
 
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
-            {loading ? (view === "cards" ? <CardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" /> : <TableSkeleton columns={4} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
+            {loading ? (view === "cards" ? <CatalogCardGridSkeleton count={10} className="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" variant="bait" /> : <TableSkeleton columns={4} rows={8} />) : rows.length === 0 ? <p className="py-10 text-center text-muted-foreground">Ничего не найдено</p> : view === "cards" ? (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
                     {rows.map((item) => (
                         <article key={item.id} className="grid gap-2 rounded-lg border border-border bg-card p-3">

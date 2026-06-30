@@ -233,7 +233,9 @@ export function UserDetailsPanel({
 
                     <section className="subsection">
                         <h3>Аккаунты</h3>
-                        <div className="mini-list">
+                        {loadingDetails ? (
+                            <ListSkeleton count={2} />
+                        ) : <div className="mini-list">
                             {accounts.map((account) => (
                                 <div className="mini-card" key={account.id}>
                                     <div>
@@ -248,7 +250,7 @@ export function UserDetailsPanel({
                                 </div>
                             ))}
                             {!accounts.length && <p className="muted">Связанных аккаунтов нет</p>}
-                        </div>
+                        </div>}
                     </section>
 
                     <section className="subsection">
