@@ -16,6 +16,7 @@
     "reel-models:import": "tsx scripts/rf4-reel-models.ts",
     "rods:import": "tsx scripts/rf4-rods-import.ts",
     "verify:admin-api": "tsx scripts/verify-admin-api.ts",
+    "email:test": "tsx scripts/test-email.ts",
     "dev": "tsx watch src/index.ts"
   },
   "keywords": [],
@@ -27,14 +28,16 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "nodemailer": "^9.0.3",
     "pg": "^8.21.0",
-    "zod": "^4.4.3",
-    "tsx": "^4.22.3"
+    "tsx": "^4.22.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.9.1",
+    "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.20.0",
     "typescript": "^6.0.3"
   }

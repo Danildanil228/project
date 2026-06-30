@@ -8,7 +8,8 @@ import { auth } from "../lib/auth";
 import { hasElevatedAccess } from "../lib/admin-roles";
 import { superAdminUserIds } from "../lib/admin-auth";
 import { pool } from "../lib/db";
-import { logAuthEmail, writeAuditLog } from "../lib/audit-log";
+import { writeAuditLog } from "../lib/audit-log";
+import { sendAuthEmail } from "../lib/email";
 import { getUpdates, telegramBotUsername, telegramConfigured } from "../lib/telegram";
 
 export const accountRouter = Router();
@@ -101,7 +102,7 @@ accountRouter.get("/has-password", async (req, res, next) => {
 });
 
 // Step 1: verify the old password, stash the new one, send a 6-digit code to the user's email.
-// We log the code via logAuthEmail (which goes to stdout in dev — same as verification / password-reset emails).
+// Delivery uses the configured email transport (console locally, SMTP in production).
 accountRouter.post("/password/request", async (req, res, next) => {
     try {
         const session = await auth.api.getSession({ headers: fromNodeHeaders(req.headers) });
@@ -134,15 +135,15 @@ accountRouter.post("/password/request", async (req, res, next) => {
 
         cleanupExpired();
         const code = generateCode();
-        pending.set(session.user.id, {
+        const pendingChange = {
             code,
             currentPassword,
             newPassword,
             expiresAt: Date.now() + 10 * 60 * 1000,
-        });
+        };
 
-        // Code lands in server logs (same channel as the existing verification emails).
-        await logAuthEmail("password-change-code", session.user.email, code);
+        await sendAuthEmail("password-change-code", session.user.email, code);
+        pending.set(session.user.id, pendingChange);
 
         res.json({ success: true, expiresIn: 600 });
     } catch (error) {
@@ -368,7 +369,7 @@ accountRouter.get("/email-verify/pending", async (req, res, next) => {
 });
 
 // Signup email-OTP — no session required (user just signed up but isn't verified yet).
-// Body: { email }. Generates a 6-digit code, stashes for 10 min, logs via stdout (dev).
+// Body: { email }. Generates a 6-digit code, stores it for 10 min and sends it by email.
 accountRouter.post("/email-verify/send", async (req, res, next) => {
     try {
         const raw = (req.body as { email?: unknown })?.email;
@@ -402,8 +403,8 @@ accountRouter.post("/email-verify/send", async (req, res, next) => {
 
         cleanupExpired();
         const code = generateCode();
+        await sendAuthEmail("signup-otp", email, code);
         signupOtps.set(email, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
-        await logAuthEmail("signup-otp", email, code);
         // resendInSeconds tells the UI how long the "Отправить ещё раз" button must stay disabled.
         // Matches the same throttle window enforced on subsequent /send calls.
         res.json({ success: true, expiresIn: 600, resendInSeconds: 30 });

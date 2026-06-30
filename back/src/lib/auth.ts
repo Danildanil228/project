@@ -1,10 +1,11 @@
 import { betterAuth } from "better-auth";
 import { admin } from "better-auth/plugins";
 import dotenv from "dotenv";
-import { adminAuditPlugin, logAuthEmail, writeAuditLog } from "./audit-log";
+import { adminAuditPlugin, writeAuditLog } from "./audit-log";
 import { adminAccessControlRoles, adminHierarchyGuard, elevatedRoles } from "./admin-roles";
 import { pool } from "./db";
 import { deleteUploadedMedia } from "./uploads";
+import { sendAuthEmail } from "./email";
 
 dotenv.config();
 
@@ -48,7 +49,7 @@ export const auth = betterAuth({
         revokeSessionsOnPasswordReset: true,
         resetPasswordTokenExpiresIn: 60 * 60,
         sendResetPassword: async ({ user, url }) => {
-            await logAuthEmail("password-reset", user.email, url);
+            await sendAuthEmail("password-reset", user.email, url);
         },
         onPasswordReset: async ({ user }) => {
             await writeAuditLog({
@@ -66,7 +67,7 @@ export const auth = betterAuth({
         sendOnSignIn: false,
         autoSignInAfterVerification: true,
         sendVerificationEmail: async ({ user, url }) => {
-            await logAuthEmail("verification", user.email, url);
+            await sendAuthEmail("verification", user.email, url);
         },
         afterEmailVerification: async (user) => {
             await writeAuditLog({

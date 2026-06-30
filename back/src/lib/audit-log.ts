@@ -232,17 +232,3 @@ export function adminAuditPlugin(): BetterAuthPlugin {
         },
     };
 }
-
-export async function logAuthEmail(type: "verification" | "password-reset" | "password-change-code" | "signup-otp", email: string, url: string) {
-    console.info(`[auth-email:${type}] ${email}: ${url}`);
-
-    await writeAuditLog({
-        action: `email.${type}.sent`,
-        targetEmail: email,
-        metadata: {
-            delivery: "console",
-        },
-    }).catch((error) => {
-        console.warn("Failed to write auth email audit log", error);
-    });
-}

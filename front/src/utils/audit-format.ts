@@ -39,8 +39,14 @@ const actionLabels: Record<string, string> = {
     "better-auth.admin.stop-impersonating": "Завершение входа от имени пользователя",
     "better-auth.change-password": "Смена пароля",
     "better-auth.update-user": "Обновление профиля",
+    "email.verification": "Отправка подтверждения email",
     "email.verification.sent": "Отправка подтверждения email",
+    "email.password-reset": "Отправка ссылки сброса пароля",
     "email.password-reset.sent": "Отправка ссылки сброса пароля",
+    "email.password-change-code": "Отправка кода смены пароля",
+    "email.password-change-code.sent": "Отправка кода смены пароля",
+    "email.signup-otp": "Отправка кода регистрации",
+    "email.signup-otp.sent": "Отправка кода регистрации",
     "user.email.verified": "Подтверждение email",
     "user.password.reset": "Сброс пароля",
     "post.create-draft": "Создание черновика",
@@ -203,8 +209,14 @@ export function auditSummary(log: ManagedAuditLog) {
         case "auth.password.reset-complete":
         case "user.password.reset": return `Система завершила сброс пароля для ${targetLabel(log)}`;
         case "auth.email.verification-request":
-        case "email.verification.sent": return `Система отправила подтверждение email для ${targetLabel(log)}`;
-        case "email.password-reset.sent": return `Система отправила ссылку сброса пароля для ${targetLabel(log)}`;
+        case "email.verification.sent":
+        case "email.verification": return failed ? `Система не смогла отправить подтверждение email для ${targetLabel(log)}` : `Система отправила подтверждение email для ${targetLabel(log)}`;
+        case "email.password-reset.sent":
+        case "email.password-reset": return failed ? `Система не смогла отправить ссылку сброса пароля для ${targetLabel(log)}` : `Система отправила ссылку сброса пароля для ${targetLabel(log)}`;
+        case "email.password-change-code.sent":
+        case "email.password-change-code": return failed ? `Система не смогла отправить код смены пароля для ${targetLabel(log)}` : `Система отправила код смены пароля для ${targetLabel(log)}`;
+        case "email.signup-otp.sent":
+        case "email.signup-otp": return failed ? `Система не смогла отправить код регистрации для ${targetLabel(log)}` : `Система отправила код регистрации для ${targetLabel(log)}`;
         case "user.email.verified": return `${targetLabel(log)} подтвердил email`;
         case "auth.session.revoke": return `${actor} отозвал выбранную сессию`;
         case "auth.sessions.revoke-all": return `${actor} отозвал все свои сессии`;
