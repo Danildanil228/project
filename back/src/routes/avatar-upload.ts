@@ -5,7 +5,7 @@ import express, { Router } from "express";
 import { fromNodeHeaders } from "better-auth/node";
 import { auth } from "../lib/auth";
 import { requireAuth, requireRole } from "../lib/admin-auth";
-import { deleteUploadedMedia, itemMediaRoot, postMediaRoot, uploadsRoot } from "../lib/uploads";
+import { deleteUploadedMedia, itemMediaRoot, storeUserMedia } from "../lib/uploads";
 import { writeAuditLog } from "../lib/audit-log";
 import type { SessionUser } from "../lib/admin-auth";
 
@@ -15,8 +15,6 @@ const maxAvatarBytes = 2 * 1024 * 1024;
 const maxItemImageBytes = 10 * 1024 * 1024;
 const maxItemModelBytes = 30 * 1024 * 1024;
 const maxPostImageBytes = 5 * 1024 * 1024;
-const avatarUploadsRoot = join(uploadsRoot, "avatars");
-
 const imageTypes = new Map([
     ["image/png", "png"],
     ["image/jpeg", "jpg"],
@@ -76,19 +74,18 @@ router.post(
                 return;
             }
 
-            await mkdir(avatarUploadsRoot, { recursive: true });
+            const url = await storeUserMedia({
+                folder: "avatars",
+                body,
+                extension,
+                contentType,
+            });
 
-            const fileName = `${randomUUID()}.${extension}`;
-            await writeFile(join(avatarUploadsRoot, fileName), body, { flag: "wx" });
-
-            // Remove the previous avatar file. deleteUploadedMedia only touches /uploads/avatars/ —
-            // OAuth-provider CDN URLs (discord/vk) won't be matched, so we never delete files we
-            // don't own.
+            // OAuth provider URLs are ignored; only local uploads and objects owned by our S3
+            // bucket can be removed.
             const previousImage = (session.user as { image?: string | null }).image;
             if (previousImage) await deleteUploadedMedia(previousImage);
 
-            const publicBaseUrl = process.env.PUBLIC_API_URL ?? process.env.BETTER_AUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`;
-            const url = `${publicBaseUrl.replace(/\/$/, "")}/uploads/avatars/${fileName}`;
             await writeAuditLog({
                 actor: session.user as SessionUser,
                 action: "upload.avatar",
@@ -196,12 +193,12 @@ router.post(
                 return;
             }
 
-            await mkdir(postMediaRoot, { recursive: true });
-            const fileName = `${randomUUID()}.${extension}`;
-            await writeFile(join(postMediaRoot, fileName), body, { flag: "wx" });
-
-            // Store a same-origin path so uploads remain valid across local, staging and production hosts.
-            const url = `/uploads/posts/${fileName}`;
+            const url = await storeUserMedia({
+                folder: "posts",
+                body,
+                extension,
+                contentType,
+            });
             await writeAuditLog({
                 actor: session.user as SessionUser,
                 action: "upload.post-image",

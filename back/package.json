@@ -17,6 +17,7 @@
     "rods:import": "tsx scripts/rf4-rods-import.ts",
     "verify:admin-api": "tsx scripts/verify-admin-api.ts",
     "email:test": "tsx scripts/test-email.ts",
+    "storage:test": "tsx scripts/test-storage.ts",
     "dev": "tsx watch src/index.ts"
   },
   "keywords": [],
@@ -24,6 +25,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1076.0",
     "better-auth": "^1.6.11",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
