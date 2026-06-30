@@ -10,7 +10,7 @@ import { SelectMenu } from "../components/SelectMenu";
 import { listFish, listWaterbodies } from "../lib/reference-api";
 import { listFeed } from "../lib/posts-api";
 import type { AdminSecurityContext, ManagedUser } from "../types/admin";
-import { fishingMethods, type FeedItem, type FeedSort, type FeedTrophyFilter, type FishingMethod } from "../types/post";
+import { fishingMethods, type FeedItem, type FeedSort, type FishingMethod } from "../types/post";
 import { getErrorMessage } from "../utils/admin-format";
 
 type FeedPageProps = {
@@ -36,7 +36,6 @@ export function FeedPage({ currentUser }: FeedPageProps) {
     const [fishIds, setFishIds] = useState<number[]>([]);
     const [waterbodyIds, setWaterbodyIds] = useState<number[]>([]);
     const [method, setMethod] = useState<FishingMethod | "">("");
-    const [trophyType, setTrophyType] = useState<FeedTrophyFilter>("");
     const [sortBy, setSortBy] = useState<FeedSort>("date");
     const [columns, setColumns] = useState<Columns>(3);
 
@@ -61,7 +60,7 @@ export function FeedPage({ currentUser }: FeedPageProps) {
     }, []);
 
     // Stable filter key — used to reset accumulated items when filters change.
-    const filterKey = JSON.stringify({ debouncedSearch, fishIds, waterbodyIds, method, trophyType, sortBy });
+    const filterKey = JSON.stringify({ debouncedSearch, fishIds, waterbodyIds, method, sortBy });
 
     const fetchPage = useCallback(
         async (currentOffset: number, replace: boolean) => {
@@ -73,7 +72,6 @@ export function FeedPage({ currentUser }: FeedPageProps) {
                     fishIds,
                     waterbodyIds,
                     fishingMethod: method,
-                    trophyType,
                     sortBy,
                     limit: pageSize,
                     offset: currentOffset,
@@ -86,7 +84,7 @@ export function FeedPage({ currentUser }: FeedPageProps) {
                 setLoading(false);
             }
         },
-        [debouncedSearch, fishIds, waterbodyIds, method, trophyType, sortBy],
+        [debouncedSearch, fishIds, waterbodyIds, method, sortBy],
     );
 
     // Whenever filters change: clear list and fetch page 1.
@@ -118,12 +116,11 @@ export function FeedPage({ currentUser }: FeedPageProps) {
         setFishIds([]);
         setWaterbodyIds([]);
         setMethod("");
-        setTrophyType("");
         setSortBy("date");
     }
 
     const hasActiveFilters =
-        debouncedSearch || fishIds.length > 0 || waterbodyIds.length > 0 || method !== "" || trophyType !== "" || sortBy !== "date";
+        debouncedSearch || fishIds.length > 0 || waterbodyIds.length > 0 || method !== "" || sortBy !== "date";
 
     return (
         <section className="grid gap-5">
@@ -142,22 +139,10 @@ export function FeedPage({ currentUser }: FeedPageProps) {
             />
 
             <div className="grid gap-3 rounded-lg border border-border bg-card p-4">
-                <div className="grid gap-3 md:grid-cols-2 md:items-end xl:grid-cols-[minmax(16rem,1fr)_11rem_11rem_12rem]">
+                <div className="grid gap-3 md:grid-cols-2 md:items-end xl:grid-cols-[minmax(16rem,1fr)_11rem_14rem]">
                     <label className="grid gap-1 text-sm">
                         <span className="text-muted-foreground">Поиск — по описанию, точке, водоёму, рыбе</span>
                         <input value={searchInput} onChange={(event) => setSearchInput(event.target.value)} placeholder="Например, трофей пикша" />
-                    </label>
-                    <label className="grid gap-1 text-sm">
-                        <span className="text-muted-foreground">Трофейность</span>
-                        <SelectMenu
-                            value={trophyType}
-                            onChange={(value) => setTrophyType(value as FeedTrophyFilter)}
-                            options={[
-                                { value: "", label: "Любой улов" },
-                                { value: "trophy", label: "Трофей" },
-                                { value: "rare_trophy", label: "Супертрофей" },
-                            ]}
-                        />
                     </label>
                     <label className="grid gap-1 text-sm">
                         <span className="text-muted-foreground">Вид ловли</span>
@@ -165,7 +150,16 @@ export function FeedPage({ currentUser }: FeedPageProps) {
                     </label>
                     <label className="grid gap-1 text-sm">
                         <span className="text-muted-foreground">Сортировка</span>
-                        <SelectMenu value={sortBy} onChange={(value) => setSortBy(value as FeedSort)} options={[{ value: "date", label: "Сначала новые" }, { value: "incomePerHour", label: "По заработку в час" }]} />
+                        <SelectMenu
+                            value={sortBy}
+                            onChange={(value) => setSortBy(value as FeedSort)}
+                            options={[
+                                { value: "date", label: "Сначала новые" },
+                                { value: "rareTrophy", label: "Сначала редкие трофеи" },
+                                { value: "trophy", label: "Сначала трофеи" },
+                                { value: "incomePerHour", label: "По заработку в час" },
+                            ]}
+                        />
                     </label>
                 </div>
 

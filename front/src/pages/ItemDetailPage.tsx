@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ArrowLeft, Box, Image } from "lucide-react";
 import { fetchItem, mediaUrl, type ItemType } from "../lib/items-api";
 import type { Reel } from "../types/reel";
 import type { Rod } from "../types/rod";
-import { DetailSkeleton } from "../components/LoadingState";
+import { DetailSkeleton, LoadingSpinner } from "../components/LoadingState";
 import { LoadingImage } from "../components/LoadingImage";
-import { ModelViewerPanel } from "../components/ModelViewerPanel";
+
+const ModelViewerPanel = lazy(() => import("../components/ModelViewerPanel").then((module) => ({ default: module.ModelViewerPanel })));
 
 const reelFields: [keyof Reel, string][] = [
     ["brend", "Бренд"],
@@ -53,6 +55,7 @@ export function ItemDetailPage() {
     const [item, setItem] = useState<Reel | Rod | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [mediaMode, setMediaMode] = useState<"photo" | "model">("photo");
 
     const isValidType = type === "reels" || type === "rods";
 
@@ -65,6 +68,7 @@ export function ItemDetailPage() {
         let ignore = false;
         setLoading(true);
         setError("");
+        setMediaMode("photo");
         fetchItem(type as ItemType, Number(id))
             .then((response) => {
                 if (!ignore) setItem(response.item);
@@ -83,11 +87,13 @@ export function ItemDetailPage() {
     const fields = type === "reels" ? reelFields : rodFields;
     const model = item && type === "reels" ? (item as Reel).model : null;
     const photo = item ? ((item as Record<string, unknown>).photo as string | null) : null;
+    const catalogPath = type === "reels" ? "/catalog/reels" : "/catalog/rods";
+    const catalogLabel = type === "reels" ? "К катушкам" : "К удилищам";
 
     return (
         <section className="grid gap-5">
-            <Link to="/catalog" className="text-sm font-medium text-primary">
-                ← К каталогу
+            <Link to={catalogPath} className="inline-flex w-fit items-center gap-1 text-sm font-medium text-primary hover:underline">
+                <ArrowLeft size={15} /> {catalogLabel}
             </Link>
 
             {loading ? (
@@ -96,14 +102,38 @@ export function ItemDetailPage() {
                 <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>
             ) : item ? (
                 <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-                    <div className="overflow-hidden rounded-lg border border-border bg-card">
-                        {model ? (
-                            <ModelViewerPanel src={model} alt={item.name} poster={photo} />
-                        ) : photo ? (
-                            <LoadingImage src={mediaUrl(photo)} alt={item.name} title={item.name} className="h-[360px] w-full" imageClassName="object-contain" />
-                        ) : (
-                            <div className="flex h-[360px] items-center justify-center bg-muted text-muted-foreground">Нет изображения</div>
+                    <div className="grid content-start gap-2">
+                        {model && (
+                            <div className="inline-flex w-fit rounded-lg border border-border bg-card p-1" aria-label="Вид снасти">
+                                <button
+                                    type="button"
+                                    onClick={() => setMediaMode("photo")}
+                                    aria-pressed={mediaMode === "photo"}
+                                    className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${mediaMode === "photo" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                                >
+                                    <Image size={15} /> Фото
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setMediaMode("model")}
+                                    aria-pressed={mediaMode === "model"}
+                                    className={`inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm font-medium ${mediaMode === "model" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                                >
+                                    <Box size={15} /> 3D-модель
+                                </button>
+                            </div>
                         )}
+                        <div className="overflow-hidden rounded-lg border border-border bg-card">
+                            {mediaMode === "model" && model ? (
+                                <Suspense fallback={<div className="grid h-[360px] place-items-center bg-muted"><LoadingSpinner label="Подготовка 3D-модели" size={24} /></div>}>
+                                    <ModelViewerPanel src={model} alt={item.name} poster={photo} />
+                                </Suspense>
+                            ) : photo ? (
+                                <LoadingImage src={mediaUrl(photo)} alt={item.name} title={item.name} className="h-[360px] w-full" imageClassName="object-contain" />
+                            ) : (
+                                <div className="flex h-[360px] items-center justify-center bg-muted text-muted-foreground">Нет изображения</div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="grid content-start gap-3">

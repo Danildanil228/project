@@ -267,6 +267,7 @@ function GearBlock({
                 <label className="grid gap-1.5 text-xs">
                     <span className="text-muted-foreground">Модель</span>
                     <Combobox
+                        key={selectedId ?? "no-selection"}
                         options={options}
                         value={selectedId}
                         onChange={onSelect}

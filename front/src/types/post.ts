@@ -130,8 +130,7 @@ export type CreatePostInput = PostContentInput & {
     curatedLabel?: string | null;
 };
 
-export type FeedSort = "date" | "incomePerHour";
-export type FeedTrophyFilter = "" | Exclude<CatchTrophyType, "normal">;
+export type FeedSort = "date" | "incomePerHour" | "rareTrophy" | "trophy";
 
 export type FeedCatch = {
     fishId: number;

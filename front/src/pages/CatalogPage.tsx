@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useDebounce } from "use-debounce";
@@ -17,33 +17,72 @@ type CatalogPageProps = {
     initialType: ItemType;
 };
 
+type StoredCatalogState = {
+    searchInput: string;
+    category: string;
+    sortBy: string;
+    sortDirection: SortDirection;
+    offset: number;
+};
+
+const defaultCatalogState: StoredCatalogState = {
+    searchInput: "",
+    category: "",
+    sortBy: "name",
+    sortDirection: "asc",
+    offset: 0,
+};
+
+function readCatalogState(type: ItemType): StoredCatalogState {
+    try {
+        const stored = sessionStorage.getItem(`catalog-state-${type}`);
+        return stored ? { ...defaultCatalogState, ...JSON.parse(stored) as Partial<StoredCatalogState> } : defaultCatalogState;
+    } catch {
+        return defaultCatalogState;
+    }
+}
+
 export function CatalogPage({ initialType }: CatalogPageProps) {
+    const [initialState] = useState(() => readCatalogState(initialType));
     const [type, setType] = useState<ItemType>(initialType);
     const [view, setView] = useCatalogView();
-    const [searchInput, setSearchInput] = useState("");
+    const [searchInput, setSearchInput] = useState(initialState.searchInput);
     const [debouncedSearch] = useDebounce(searchInput.trim(), 300);
-    const [category, setCategory] = useState("");
-    const [sortBy, setSortBy] = useState("name");
-    const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-    const [offset, setOffset] = useState(0);
+    const [category, setCategory] = useState(initialState.category);
+    const [sortBy, setSortBy] = useState(initialState.sortBy);
+    const [sortDirection, setSortDirection] = useState<SortDirection>(initialState.sortDirection);
+    const [offset, setOffset] = useState(initialState.offset);
     const pageSize = view === "cards" ? 24 : 50;
+    const previousView = useRef(view);
+    const previousSearch = useRef(debouncedSearch);
 
     useEffect(() => {
-        setOffset(0);
+        if (previousView.current !== view) setOffset(0);
+        previousView.current = view;
     }, [view]);
 
     useEffect(() => {
+        const stored = readCatalogState(initialType);
         setType(initialType);
-        setCategory("");
-        setSearchInput("");
-        setSortBy("name");
-        setSortDirection("asc");
-        setOffset(0);
+        setCategory(stored.category);
+        setSearchInput(stored.searchInput);
+        setSortBy(stored.sortBy);
+        setSortDirection(stored.sortDirection);
+        setOffset(stored.offset);
     }, [initialType]);
 
     useEffect(() => {
-        setOffset(0);
+        if (previousSearch.current !== debouncedSearch) setOffset(0);
+        previousSearch.current = debouncedSearch;
     }, [debouncedSearch]);
+
+    useEffect(() => {
+        try {
+            sessionStorage.setItem(`catalog-state-${type}`, JSON.stringify({ searchInput, category, sortBy, sortDirection, offset }));
+        } catch {
+            // Navigation still works when storage is unavailable; only restoration is skipped.
+        }
+    }, [category, offset, searchInput, sortBy, sortDirection, type]);
 
     // react-query dedupes identical concurrent fetches (StrictMode mounts share the cache),
     // keeps previous data while a new page loads (no flicker on pagination), and caches results for 30s.

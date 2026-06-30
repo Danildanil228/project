@@ -28,6 +28,11 @@ export function Combobox({ options, value, onChange, placeholder = "Выбери
 
     const selected = useMemo(() => options.find((option) => option.id === value), [options, value]);
 
+    function choose(next: number | null) {
+        setOpen(false);
+        onChange(next);
+    }
+
     return (
         <div ref={containerRef} className="relative">
             <button
@@ -49,10 +54,7 @@ export function Combobox({ options, value, onChange, placeholder = "Выбери
                                 {value !== null && (
                                     <CommandItem
                                         value="__clear__"
-                                        onSelect={() => {
-                                            onChange(null);
-                                            setOpen(false);
-                                        }}
+                                        onSelect={() => choose(null)}
                                         className="cursor-pointer px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted aria-selected:bg-muted"
                                     >
                                         ✕ Очистить
@@ -62,10 +64,7 @@ export function Combobox({ options, value, onChange, placeholder = "Выбери
                                     <CommandItem
                                         key={option.id}
                                         value={option.name}
-                                        onSelect={() => {
-                                            onChange(option.id);
-                                            setOpen(false);
-                                        }}
+                                        onSelect={() => choose(option.id)}
                                         className={`flex cursor-pointer items-center justify-between gap-2 px-3 py-1.5 hover:bg-muted aria-selected:bg-muted ${
                                             option.id === value ? "font-bold" : ""
                                         }`}

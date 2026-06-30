@@ -99,7 +99,7 @@ export const feedQuerySchema = z.object({
     waterbodyIds: z.preprocess(toNumberArray, z.array(z.coerce.number().int().positive()).max(50)),
     fishingMethod: z.enum(fishingMethods).or(z.literal("")).optional().default(""),
     trophyType: z.enum(["trophy", "rare_trophy"]).or(z.literal("")).optional().default(""),
-    sortBy: z.enum(["date", "incomePerHour"]).optional().default("date"),
+    sortBy: z.enum(["date", "incomePerHour", "rareTrophy", "trophy"]).optional().default("date"),
     limit: z.coerce.number().int().min(1).max(50).default(20),
     offset: z.coerce.number().int().min(0).default(0),
 });

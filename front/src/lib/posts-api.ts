@@ -3,7 +3,6 @@ import type {
     CreatePostInput,
     FeedItem,
     FeedSort,
-    FeedTrophyFilter,
     FishingMethod,
     ModerationQueueRow,
     MyPostRow,
@@ -70,7 +69,6 @@ export type FeedParams = {
     fishIds?: number[];
     waterbodyIds?: number[];
     fishingMethod?: FishingMethod | "";
-    trophyType?: FeedTrophyFilter;
     sortBy?: FeedSort;
     limit?: number;
     offset?: number;
@@ -82,7 +80,6 @@ export function listFeed(params: FeedParams = {}) {
     if (params.fishIds?.length) query.set("fishIds", params.fishIds.join(","));
     if (params.waterbodyIds?.length) query.set("waterbodyIds", params.waterbodyIds.join(","));
     if (params.fishingMethod) query.set("fishingMethod", params.fishingMethod);
-    if (params.trophyType) query.set("trophyType", params.trophyType);
     if (params.sortBy) query.set("sortBy", params.sortBy);
     query.set("limit", String(params.limit ?? 20));
     query.set("offset", String(params.offset ?? 0));

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createPostSchema, incomePerHour, parseFeedSearch } from "./post-schemas";
+import { createPostSchema, feedQuerySchema, incomePerHour, parseFeedSearch } from "./post-schemas";
 
 test("incomePerHour computes silver per hour, or null when data is missing", () => {
     assert.equal(incomePerHour(6000, 120), 3000);
@@ -54,6 +54,11 @@ test("parseFeedSearch extracts trophy markers and keeps the fish query", () => {
     assert.deepEqual(parseFeedSearch("супер трофей пикша"), { text: "пикша", trophyType: "rare_trophy" });
     assert.deepEqual(parseFeedSearch("редкий трофей палтус"), { text: "палтус", trophyType: "rare_trophy" });
     assert.deepEqual(parseFeedSearch("Ладожское озеро"), { text: "Ладожское озеро", trophyType: null });
+});
+
+test("feed sorting accepts trophy-first modes", () => {
+    assert.equal(feedQuerySchema.parse({ sortBy: "rareTrophy" }).sortBy, "rareTrophy");
+    assert.equal(feedQuerySchema.parse({ sortBy: "trophy" }).sortBy, "trophy");
 });
 
 test("createPostSchema requires a complete map location", () => {

@@ -6,7 +6,7 @@ import { InteractiveMap, MapFixedOverlay, type MapPoint } from "../components/In
 import { MultiCombobox } from "../components/MultiCombobox";
 import { WaterbodyFishList } from "../components/WaterbodyFishList";
 import { LoadingImage } from "../components/LoadingImage";
-import { MapSkeleton } from "../components/LoadingState";
+import { MapSkeleton, Skeleton } from "../components/LoadingState";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { postMapLinkingEnabled } from "../lib/features";
@@ -41,6 +41,36 @@ function optionalNumber(value: string) {
 
 function fishCountLabel(count: number) {
     return `Рыб: ${count}`;
+}
+
+function WaterbodyPageSkeleton() {
+    return (
+        <section className="grid gap-5" aria-busy="true">
+            <div className="grid gap-2">
+                <Skeleton className="h-4 w-28" />
+                <Skeleton className="h-8 w-72 max-w-full" />
+                <Skeleton className="h-4 w-[28rem] max-w-full" />
+            </div>
+            <div className="grid w-full min-w-0 grid-cols-1 items-start justify-between gap-5 lg:grid-cols-[minmax(360px,500px)_minmax(420px,1fr)]">
+                <MapSkeleton className="aspect-square min-h-56 w-full max-w-[500px] justify-self-start sm:min-h-72" />
+                <div className="grid min-w-0 gap-3 rounded-lg border border-border bg-card p-4">
+                    <Skeleton className="h-6 w-32" />
+                    {Array.from({ length: 4 }, (_, index) => (
+                        <div key={index} className="flex items-center justify-between gap-4 border-t border-border pt-3">
+                            <Skeleton className="h-4 w-2/5" />
+                            <Skeleton className="h-3 w-16" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="grid gap-4 rounded-lg border border-border bg-card p-4">
+                <Skeleton className="h-6 w-48" />
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {Array.from({ length: 6 }, (_, index) => <Skeleton key={index} className="h-20 w-full" />)}
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
@@ -207,7 +237,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
         }
     }
 
-    if (loading) return <MapSkeleton className="aspect-square min-h-72 w-full" />;
+    if (loading) return <WaterbodyPageSkeleton />;
     if (!waterbody) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-destructive">{error || "Водоём не найден"}</p>;
 
     return (
@@ -224,12 +254,12 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
             {notice && <p className="rounded-lg border border-green-500/40 bg-green-500/10 px-3 py-2 text-sm text-green-700 dark:text-green-400">{notice}</p>}
             {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>}
 
-            <div className="mx-auto grid w-full max-w-4xl min-w-0 items-start gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
+            <div className="grid w-full min-w-0 grid-cols-1 items-start justify-between gap-5 lg:grid-cols-[minmax(360px,500px)_minmax(420px,1fr)]">
                 <InteractiveMap
                     imageSrc={waterbody.photo ? mediaUrl(waterbody.photo) : null}
                     imageAlt={`Карта водоёма ${waterbody.name}`}
                     emptyText="Загрузите изображение карты в справочнике водоёмов"
-                    className="aspect-square min-h-56 w-full sm:min-h-72"
+                    className="aspect-square min-h-56 w-full max-w-[500px] justify-self-start sm:min-h-72"
                     onMapClick={chooseMarker}
                     onMapPointerMove={trackCoordinate}
                     onMapPointerLeave={() => setCursorCoordinate(null)}

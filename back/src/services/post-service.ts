@@ -495,6 +495,14 @@ export async function listFeed(query: FeedQuery) {
     const orderSql =
         query.sortBy === "incomePerHour"
             ? `p.pinned_at DESC NULLS LAST, (pv.income::numeric * 60 / NULLIF(pv.fishing_minutes, 0)) DESC NULLS LAST, p.published_at DESC`
+            : query.sortBy === "rareTrophy"
+                ? `p.pinned_at DESC NULLS LAST,
+                   CASE WHEN EXISTS (SELECT 1 FROM catch sorted_catch WHERE sorted_catch.post_version_id = pv.id AND sorted_catch.trophy_type = 'rare_trophy') THEN 0 ELSE 1 END,
+                   p.published_at DESC, p.id DESC`
+                : query.sortBy === "trophy"
+                    ? `p.pinned_at DESC NULLS LAST,
+                       CASE WHEN EXISTS (SELECT 1 FROM catch sorted_catch WHERE sorted_catch.post_version_id = pv.id AND sorted_catch.trophy_type = 'trophy') THEN 0 ELSE 1 END,
+                       p.published_at DESC, p.id DESC`
             : `p.pinned_at DESC NULLS LAST, p.published_at DESC, p.id DESC`;
 
     const countResult = await pool.query<{ count: number }>(

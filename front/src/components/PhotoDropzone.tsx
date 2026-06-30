@@ -1,4 +1,4 @@
-import { useRef, type ChangeEvent } from "react";
+import { useEffect, useRef, type ChangeEvent } from "react";
 import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, rectSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -46,6 +46,25 @@ function PhotoItem({ url, index, onRemove }: { url: string; index: number; onRem
 
 export function PhotoDropzone({ photos, onChange, onAddFiles, uploading, maxPhotos }: PhotoDropzoneProps) {
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const canAddMore = photos.length < maxPhotos;
+
+    useEffect(() => {
+        if (!canAddMore || uploading) return;
+
+        function handlePaste(event: ClipboardEvent) {
+            const files = Array.from(event.clipboardData?.items ?? [])
+                .filter((item) => item.kind === "file" && item.type.startsWith("image/"))
+                .map((item) => item.getAsFile())
+                .filter((file): file is File => Boolean(file));
+
+            if (!files.length) return;
+            event.preventDefault();
+            void onAddFiles(files);
+        }
+
+        window.addEventListener("paste", handlePaste);
+        return () => window.removeEventListener("paste", handlePaste);
+    }, [canAddMore, onAddFiles, uploading]);
 
     const sensors = useSensors(
         useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
@@ -81,8 +100,6 @@ export function PhotoDropzone({ photos, onChange, onAddFiles, uploading, maxPhot
         event.preventDefault();
     }
 
-    const canAddMore = photos.length < maxPhotos;
-
     return (
         <div className="grid gap-3">
             {photos.length > 0 && (
@@ -104,7 +121,8 @@ export function PhotoDropzone({ photos, onChange, onAddFiles, uploading, maxPhot
                     onDragEnter={preventDefault}
                     className="flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border bg-card p-6 text-center transition-colors hover:border-primary"
                 >
-                    <p className="text-sm text-muted-foreground">Перетащите фотографии сюда</p>
+                    <p className="text-sm text-muted-foreground">Перетащите фотографии сюда или вставьте из буфера</p>
+                    <p className="text-xs font-medium text-foreground">Ctrl+V</p>
                     <p className="text-xs text-muted-foreground">или</p>
                     <button
                         type="button"

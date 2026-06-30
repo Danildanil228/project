@@ -373,6 +373,7 @@ export function PostEditorPage({ currentUser, adminContext, onOpenAuthModal, mod
                             <label className="grid gap-1 text-sm">
                                 <span className="text-muted-foreground">Водоём *</span>
                                 <Combobox
+                                    key={waterbodyId ?? "no-waterbody"}
                                     options={waterbodyOptions}
                                     value={waterbodyId}
                                     onChange={changeWaterbody}

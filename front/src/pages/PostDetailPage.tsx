@@ -303,27 +303,31 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                         <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
                             <h3 className="text-sm font-bold">Улов</h3>
                             <div className="grid gap-1.5">
-                                {version.catches.map((item) => (
-                                    <div key={item.id} className="flex items-center gap-2 rounded-md bg-muted/70 px-2 py-1.5">
-                                        {item.fishPhoto ? (
-                                            <LoadingImage src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background" imageClassName="object-contain" />
-                                        ) : (
-                                            <div className="grid h-10 w-14 shrink-0 place-items-center rounded border border-border bg-background text-[10px] text-muted-foreground">Нет фото</div>
-                                        )}
-                                        <div className="min-w-0 text-sm">
-                                            <div className="flex flex-wrap items-center gap-1.5">
-                                                <strong className="truncate">{item.fishName}</strong>
-                                                <CatchTrophyBadge type={item.trophyType} />
-                                                <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground">{item.rarity}</span>
-                                            </div>
-                                            {item.baits.length > 0 && (
-                                                <p className="truncate text-xs text-muted-foreground">
-                                                    {item.baits.map((bait) => bait.name).join(", ")}
-                                                </p>
+                                {version.catches.map((item) => {
+                                    const catchBaits = version.baitMode === "common" ? version.commonBaits : item.baits;
+                                    return (
+                                        <div key={item.id} className="flex items-center gap-2 rounded-md bg-muted/70 px-2 py-1.5">
+                                            {item.fishPhoto ? (
+                                                <LoadingImage src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background" imageClassName="object-contain" />
+                                            ) : (
+                                                <div className="grid h-10 w-14 shrink-0 place-items-center rounded border border-border bg-background text-[10px] text-muted-foreground">Нет фото</div>
                                             )}
+                                            <div className="min-w-0 text-sm">
+                                                <div className="flex flex-wrap items-center gap-1.5">
+                                                    <strong className="truncate">{item.fishName}</strong>
+                                                    <CatchTrophyBadge type={item.trophyType} />
+                                                    <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground">{item.rarity}</span>
+                                                </div>
+                                                {catchBaits.length > 0 && (
+                                                    <p className="line-clamp-2 text-xs text-muted-foreground" title={catchBaits.map((bait) => bait.name).join(", ")}>
+                                                        <span className="font-medium text-foreground/80">Наживка или приманка:</span>{" "}
+                                                        {catchBaits.map((bait) => bait.name).join(", ")}
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     ) : null}
