@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useConfirmDialog } from "../components/ConfirmDialog";
 import { ImageModal } from "../components/ImageModal";
-import { Newspaper } from "lucide-react";
+import { ChevronDown, ChevronUp, Newspaper } from "lucide-react";
 import { UserAvatar } from "../components/UserAvatar";
 import { PostReactions } from "../components/PostReactions";
 import { PostComments } from "../components/PostComments";
@@ -39,6 +39,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
     // Image gallery state.
     const [activeImage, setActiveImage] = useState(0);
     const [modalIndex, setModalIndex] = useState<number | null>(null);
+    const [catchesExpanded, setCatchesExpanded] = useState(false);
 
     // Pin tier info (used / limit) — only fetched for moderators.
     const [pinInfo, setPinInfo] = useState<{ used: number; limit: number } | null>(null);
@@ -53,6 +54,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                 if (!ignore) {
                     setPost(response.post);
                     setActiveImage(0);
+                    setCatchesExpanded(false);
                 }
             })
             .catch((caught) => {
@@ -183,7 +185,7 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
             {/* Two-column layout: gallery left, info right */}
             <div className="grid items-start gap-4 lg:grid-cols-[1.4fr_1fr]">
                 {/* Gallery */}
-                <div className="grid content-start gap-2">
+                <div className="grid content-start gap-3">
                     {photos.length > 0 ? (
                         <>
                             <button
@@ -215,6 +217,13 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                     ) : (
                         <div className="flex aspect-[4/3] w-full items-center justify-center rounded-lg border border-border bg-muted text-5xl">
                             🎣
+                        </div>
+                    )}
+
+                    {version?.description && (
+                        <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
+                            <h3 className="text-sm font-bold">Описание</h3>
+                            <p className="whitespace-pre-wrap text-sm">{version.description}</p>
                         </div>
                     )}
                 </div>
@@ -301,12 +310,15 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                     {/* Catches as badges */}
                     {version?.catches.length ? (
                         <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
-                            <h3 className="text-sm font-bold">Улов</h3>
+                            <div className="flex items-center justify-between gap-2">
+                                <h3 className="text-sm font-bold">Улов</h3>
+                                <span className="text-xs text-muted-foreground">{version.catches.length}</span>
+                            </div>
                             <div className="grid gap-1.5">
-                                {version.catches.map((item) => {
+                                {(catchesExpanded ? version.catches : version.catches.slice(0, 2)).map((item) => {
                                     const catchBaits = version.baitMode === "common" ? version.commonBaits : item.baits;
                                     return (
-                                        <div key={item.id} className="flex items-center gap-2 rounded-md bg-muted/70 px-2 py-1.5">
+                                        <div key={item.id} className="flex items-start gap-2 rounded-md bg-muted/70 px-2 py-1.5">
                                             {item.fishPhoto ? (
                                                 <LoadingImage src={mediaUrl(item.fishPhoto)} alt={item.fishName} title={item.fishName} className="h-10 w-14 shrink-0 rounded border border-border bg-background" imageClassName="object-contain" />
                                             ) : (
@@ -319,26 +331,48 @@ export function PostDetailPage({ currentUser, adminContext, onOpenAuthModal }: P
                                                     <span className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-secondary-foreground">{item.rarity}</span>
                                                 </div>
                                                 {catchBaits.length > 0 && (
-                                                    <p className="line-clamp-2 text-xs text-muted-foreground" title={catchBaits.map((bait) => bait.name).join(", ")}>
-                                                        <span className="font-medium text-foreground/80">Наживка или приманка:</span>{" "}
-                                                        {catchBaits.map((bait) => bait.name).join(", ")}
-                                                    </p>
+                                                    <div className="mt-1.5 flex flex-wrap gap-1.5">
+                                                        {catchBaits.map((bait) => (
+                                                            <div
+                                                                key={bait.id}
+                                                                title={bait.name}
+                                                                className="flex min-w-0 max-w-full items-center gap-1.5 rounded-md border border-border bg-background px-1.5 py-1"
+                                                            >
+                                                                {bait.photo ? (
+                                                                    <LoadingImage
+                                                                        src={mediaUrl(bait.photo)}
+                                                                        alt={bait.name}
+                                                                        className="h-7 w-9 shrink-0 rounded bg-muted"
+                                                                        imageClassName="object-contain p-0.5"
+                                                                    />
+                                                                ) : (
+                                                                    <span className="grid h-7 w-9 shrink-0 place-items-center rounded bg-muted text-[9px] text-muted-foreground">
+                                                                        Нет фото
+                                                                    </span>
+                                                                )}
+                                                                <span className="max-w-40 truncate text-xs font-medium">{bait.name}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                 )}
                                             </div>
                                         </div>
                                     );
                                 })}
                             </div>
+                            {version.catches.length > 2 && (
+                                <button
+                                    type="button"
+                                    onClick={() => setCatchesExpanded((expanded) => !expanded)}
+                                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-xs font-bold hover:border-primary"
+                                    aria-expanded={catchesExpanded}
+                                >
+                                    {catchesExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                                    {catchesExpanded ? "Свернуть улов" : `Показать весь улов (${version.catches.length})`}
+                                </button>
+                            )}
                         </div>
                     ) : null}
-
-                    {/* Description */}
-                    {version?.description && (
-                        <div className="grid gap-2 rounded-lg border border-border bg-card p-3">
-                            <h3 className="text-sm font-bold">Описание</h3>
-                            <p className="whitespace-pre-wrap text-sm">{version.description}</p>
-                        </div>
-                    )}
 
                     {/* Moderator actions */}
                     {(canEdit || moderator) && (

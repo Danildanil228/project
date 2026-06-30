@@ -377,7 +377,7 @@ export async function getPostById(id: number) {
         [version.id],
     );
     const media = await pool.query(`SELECT id, url, order_index AS "orderIndex" FROM post_media WHERE post_version_id = $1 ORDER BY order_index, id`, [version.id]);
-    const baits = await pool.query(`SELECT pvb.fish_id AS "fishId", b.id, b.name, b.kind FROM post_version_bait pvb JOIN bait b ON b.id=pvb.bait_id WHERE pvb.post_version_id=$1 ORDER BY b.name`, [version.id]);
+    const baits = await pool.query(`SELECT pvb.fish_id AS "fishId", b.id, b.name, b.kind, b.photo FROM post_version_bait pvb JOIN bait b ON b.id=pvb.bait_id WHERE pvb.post_version_id=$1 ORDER BY b.name`, [version.id]);
 
     return {
         ...post,

@@ -19,6 +19,13 @@ export const postStatusLabels: Record<PostStatus, string> = {
     deleted: "Удалён",
 };
 
+export type PostBait = {
+    id: number;
+    name: string;
+    kind: string;
+    photo: string | null;
+};
+
 export type CatchRow = {
     id: number;
     fishId: number;
@@ -26,7 +33,7 @@ export type CatchRow = {
     fishPhoto: string | null;
     rarity: string;
     trophyType: CatchTrophyType;
-    baits: Array<{ id: number; name: string; kind: string }>;
+    baits: PostBait[];
 };
 
 export type MediaRow = {
@@ -57,7 +64,7 @@ export type PostVersion = {
     gameCoordinateX2: number | null;
     gameCoordinateY2: number | null;
     baitMode: "common" | "per_fish";
-    commonBaits: Array<{ id: number; name: string; kind: string }>;
+    commonBaits: PostBait[];
     catches: CatchRow[];
     media: MediaRow[];
 };
