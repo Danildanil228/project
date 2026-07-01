@@ -28,6 +28,7 @@ import { UserAvatar } from "./UserAvatar";
 import { ModeToggle } from "./mode-toggle";
 import { NotificationsBell } from "./NotificationsBell";
 import { useComparison } from "../context/ComparisonContext";
+import { RoutePageSkeleton } from "./PageSkeletons";
 
 type AppShellProps = {
     currentUser?: ManagedUser;

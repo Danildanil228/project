@@ -27,6 +27,7 @@ import {
 } from "../types/spot";
 import type { Waterbody } from "../types/waterbody";
 import { canManageCatalog, getErrorMessage } from "../utils/admin-format";
+import { WaterbodyDetailSkeleton } from "../components/PageSkeletons";
 
 type Props = { currentUser?: ManagedUser; adminContext?: AdminSecurityContext | null };
 type VariantForm = SpotVariantInput & { clientId: number };
