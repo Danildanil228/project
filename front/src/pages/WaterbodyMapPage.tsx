@@ -27,7 +27,6 @@ import {
 } from "../types/spot";
 import type { Waterbody } from "../types/waterbody";
 import { canManageCatalog, getErrorMessage } from "../utils/admin-format";
-import { WaterbodyDetailSkeleton } from "../components/PageSkeletons";
 
 type Props = { currentUser?: ManagedUser; adminContext?: AdminSecurityContext | null };
 type VariantForm = SpotVariantInput & { clientId: number };
@@ -405,7 +404,7 @@ export function WaterbodyMapPage({ currentUser, adminContext }: Props) {
         catch (caught) { setError(getErrorMessage(caught)); }
     }
 
-    if (loading) return <WaterbodyDetailSkeleton />;
+    if (loading) return <WaterbodyPageSkeleton />;
     if (!waterbody) return <p className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-destructive">{error || "Водоём не найден"}</p>;
 
     const trollingVertices = form.trollingArea ?? [];
