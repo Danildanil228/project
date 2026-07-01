@@ -1,0 +1,1 @@
+ALTER TABLE spot_variant DROP COLUMN IF EXISTS name;

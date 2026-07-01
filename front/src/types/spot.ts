@@ -18,6 +18,31 @@ export type SpotPost = {
     targets: Array<{ fishId: number; fishName: string; baits: SpotBait[] }>;
 };
 
+export const spotFishingMethods = ["Поплавок", "Донка", "Спиннинг", "Морская", "Троллинг"] as const;
+export type SpotFishingMethod = (typeof spotFishingMethods)[number];
+export type SpotGeometryType = "point" | "trolling";
+export type SpotMapPoint = { mapX: number; mapY: number };
+
+export type SpotVariant = {
+    id: number;
+    fishingMethod: SpotFishingMethod | null;
+    description: string | null;
+    depth: number | null;
+    clipDistance: number | null;
+    orderIndex: number;
+    fish: SpotFish[];
+    baits: SpotBait[];
+};
+
+export type SpotVariantInput = {
+    fishingMethod: SpotFishingMethod;
+    description: string | null;
+    depth: number | null;
+    clipDistance: number | null;
+    fishIds: number[];
+    baitIds: number[];
+};
+
 export type FishingSpot = {
     id: number;
     waterbodyId: number;
@@ -27,13 +52,12 @@ export type FishingSpot = {
     mapY: number;
     gameCoordinateX: number | null;
     gameCoordinateY: number | null;
-    depth: number | null;
-    clipDistance: number | null;
+    geometryType: SpotGeometryType;
+    trollingArea: SpotMapPoint[] | null;
     isActive: boolean;
     createdAt: string;
     updatedAt: string;
-    fish: SpotFish[];
-    baits: SpotBait[];
+    variants: SpotVariant[];
     posts: SpotPost[];
 };
 
@@ -45,9 +69,8 @@ export type SpotInput = {
     mapY: number;
     gameCoordinateX: number | null;
     gameCoordinateY: number | null;
-    depth: number | null;
-    clipDistance: number | null;
-    fishIds: number[];
-    baitIds: number[];
+    geometryType: SpotGeometryType;
+    trollingArea: SpotMapPoint[] | null;
+    variants: SpotVariantInput[];
     isActive: boolean;
 };

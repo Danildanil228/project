@@ -3,11 +3,12 @@ import type { SessionUser } from "../lib/admin-auth";
 import { writeAuditLog } from "../lib/audit-log";
 import { pool } from "../lib/db";
 import { translateDbError } from "../lib/db-errors";
-import { invalidWaterbodyFishIds, type spotCreateSchema, type spotUpdateSchema } from "../lib/spot-schemas";
+import { invalidWaterbodyFishIds, type spotCreateSchema, type spotUpdateSchema, type spotVariantsCreateSchema } from "../lib/spot-schemas";
 import { postMapLinkingEnabled } from "../lib/features";
 
 type SpotCreate = z.infer<typeof spotCreateSchema>;
 type SpotUpdate = z.infer<typeof spotUpdateSchema>;
+type SpotVariantsCreate = z.infer<typeof spotVariantsCreateSchema>;
 
 const selectFields = `
     s.id::int AS id,
@@ -18,8 +19,8 @@ const selectFields = `
     s.map_y::float AS "mapY",
     s.game_coordinate_x::float AS "gameCoordinateX",
     s.game_coordinate_y::float AS "gameCoordinateY",
-    s.depth::float AS depth,
-    s.clip_distance AS "clipDistance",
+    s.geometry_type AS "geometryType",
+    s.trolling_area AS "trollingArea",
     s.is_active AS "isActive",
     s.created_at AS "createdAt",
     s.updated_at AS "updatedAt"
@@ -28,22 +29,33 @@ const selectFields = `
 async function attachRelations<T extends { id: number }>(spots: T[]) {
     if (!spots.length) return [];
     const ids = spots.map((spot) => spot.id);
+    const variants = await pool.query(
+        `SELECT sv.id::int AS id, sv.spot_id AS "spotId",
+                sv.fishing_method AS "fishingMethod", sv.description,
+                sv.depth::float AS depth, sv.clip_distance AS "clipDistance",
+                sv.order_index AS "orderIndex"
+         FROM spot_variant sv
+         WHERE sv.spot_id = ANY($1::bigint[])
+         ORDER BY sv.spot_id, sv.order_index, sv.id`,
+        [ids],
+    );
+    const variantIds = variants.rows.map((variant) => Number(variant.id));
     const [fish, baits, posts] = await Promise.all([
-        pool.query(
-            `SELECT sf.spot_id AS "spotId", f.id, f.name, f.rarity, f.photo
-             FROM spot_fish sf JOIN fish f ON f.id = sf.fish_id
-             WHERE sf.spot_id = ANY($1::bigint[]) ORDER BY f.name`,
-            [ids],
-        ),
-        pool.query(
-            `SELECT sb.spot_id AS "spotId", b.id, b.name, b.kind, b.photo, b.domain,
+        variantIds.length ? pool.query(
+            `SELECT svf.variant_id AS "variantId", f.id, f.name, f.rarity, f.photo
+             FROM spot_variant_fish svf JOIN fish f ON f.id = svf.fish_id
+             WHERE svf.variant_id = ANY($1::bigint[]) ORDER BY f.name`,
+            [variantIds],
+        ) : Promise.resolve({ rows: [] }),
+        variantIds.length ? pool.query(
+            `SELECT svb.variant_id AS "variantId", b.id, b.name, b.kind, b.photo, b.domain,
                     b.category_code AS "categoryCode", bc.name_ru AS "categoryName"
-             FROM spot_bait sb
-             JOIN bait b ON b.id = sb.bait_id
+             FROM spot_variant_bait svb
+             JOIN bait b ON b.id = svb.bait_id
              LEFT JOIN bait_category bc ON bc.code = b.category_code
-             WHERE sb.spot_id = ANY($1::bigint[]) ORDER BY b.name`,
-            [ids],
-        ),
+             WHERE svb.variant_id = ANY($1::bigint[]) ORDER BY b.name`,
+            [variantIds],
+        ) : Promise.resolve({ rows: [] }),
         postMapLinkingEnabled ? pool.query(
             `SELECT sp.spot_id AS "spotId", p.id::int AS "postId", p.published_at AS "publishedAt",
                     u.name AS "authorName", ms.id::int AS "submissionId"
@@ -74,16 +86,26 @@ async function attachRelations<T extends { id: number }>(spots: T[]) {
         [submissionIds],
     ) : { rows: [] };
 
-    const fishBySpot = new Map<number, Record<string, unknown>[]>();
-    const baitsBySpot = new Map<number, Record<string, unknown>[]>();
+    const fishByVariant = new Map<number, Record<string, unknown>[]>();
+    const baitsByVariant = new Map<number, Record<string, unknown>[]>();
+    const variantsBySpot = new Map<number, Record<string, unknown>[]>();
     const postsBySpot = new Map<number, Record<string, unknown>[]>();
-    for (const { spotId, ...item } of fish.rows) {
-        const key = Number(spotId);
-        fishBySpot.set(key, [...(fishBySpot.get(key) ?? []), item]);
+    for (const { variantId, ...item } of fish.rows) {
+        const key = Number(variantId);
+        fishByVariant.set(key, [...(fishByVariant.get(key) ?? []), item]);
     }
-    for (const { spotId, ...item } of baits.rows) {
+    for (const { variantId, ...item } of baits.rows) {
+        const key = Number(variantId);
+        baitsByVariant.set(key, [...(baitsByVariant.get(key) ?? []), item]);
+    }
+    for (const { spotId, ...variant } of variants.rows) {
         const key = Number(spotId);
-        baitsBySpot.set(key, [...(baitsBySpot.get(key) ?? []), item]);
+        const variantId = Number(variant.id);
+        variantsBySpot.set(key, [...(variantsBySpot.get(key) ?? []), {
+            ...variant,
+            fish: fishByVariant.get(variantId) ?? [],
+            baits: baitsByVariant.get(variantId) ?? [],
+        }]);
     }
     for (const { spotId, submissionId, ...item } of posts.rows) {
         const key = Number(spotId);
@@ -97,8 +119,7 @@ async function attachRelations<T extends { id: number }>(spots: T[]) {
 
     return spots.map((spot) => ({
         ...spot,
-        fish: fishBySpot.get(Number(spot.id)) ?? [],
-        baits: baitsBySpot.get(Number(spot.id)) ?? [],
+        variants: variantsBySpot.get(Number(spot.id)) ?? [],
         posts: postsBySpot.get(Number(spot.id)) ?? [],
     }));
 }
@@ -119,10 +140,38 @@ export async function getSpot(id: number) {
     return (await attachRelations(rows))[0];
 }
 
-async function replaceRelations(client: import("pg").PoolClient, spotId: number, table: "spot_fish" | "spot_bait", column: "fish_id" | "bait_id", ids: number[]) {
-    await client.query(`DELETE FROM ${table} WHERE spot_id = $1`, [spotId]);
-    if (ids.length) {
-        await client.query(`INSERT INTO ${table} (spot_id, ${column}) SELECT $1, UNNEST($2::int[])`, [spotId, ids]);
+async function insertVariants(client: import("pg").PoolClient, spotId: number, variants: SpotCreate["variants"], startIndex = 0) {
+    for (const [index, variant] of variants.entries()) {
+        const result = await client.query<{ id: string }>(
+            `INSERT INTO spot_variant (
+                spot_id, fishing_method, description, depth, clip_distance, order_index
+             ) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id`,
+            [spotId, variant.fishingMethod, variant.description, variant.depth, variant.clipDistance, startIndex + index],
+        );
+        const variantId = Number(result.rows[0].id);
+        if (variant.fishIds.length) {
+            await client.query(
+                `INSERT INTO spot_variant_fish (variant_id, fish_id) SELECT $1, UNNEST($2::int[])`,
+                [variantId, variant.fishIds],
+            );
+        }
+        if (variant.baitIds.length) {
+            await client.query(
+                `INSERT INTO spot_variant_bait (variant_id, bait_id) SELECT $1, UNNEST($2::int[])`,
+                [variantId, variant.baitIds],
+            );
+        }
+    }
+}
+
+function assertVariantGeometry(geometryType: "point" | "trolling", variants: SpotCreate["variants"]) {
+    const invalid = geometryType === "trolling"
+        ? variants.some((variant) => variant.fishingMethod !== "Троллинг")
+        : variants.some((variant) => variant.fishingMethod === "Троллинг");
+    if (invalid) {
+        throw Object.assign(new Error(geometryType === "trolling"
+            ? "В троллинговую зону можно добавить только троллинговый способ ловли"
+            : "Троллинг нужно добавлять в отдельную зону"), { statusCode: 400 });
     }
 }
 
@@ -141,19 +190,19 @@ export async function createSpot(data: SpotCreate, actor: SessionUser) {
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
+        const fishIds = [...new Set(data.variants.flatMap((variant) => variant.fishIds))];
+        await assertWaterbodyFish(client, data.waterbodyId, fishIds);
         const { rows } = await client.query(
             `INSERT INTO spot (
                 waterbody_id, name, description, map_x, map_y, game_coordinate_x,
-                game_coordinate_y, depth, clip_distance, is_active, created_by
-             ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING id`,
-            [data.waterbodyId, data.name, data.description, data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY, data.depth, data.clipDistance, data.isActive, actor.id],
+                game_coordinate_y, geometry_type, trolling_area, is_active, created_by
+             ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10,$11) RETURNING id`,
+            [data.waterbodyId, data.name, data.description, data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY, data.geometryType, data.trollingArea ? JSON.stringify(data.trollingArea) : null, data.isActive, actor.id],
         );
         const spotId = Number(rows[0].id);
-        await assertWaterbodyFish(client, data.waterbodyId, data.fishIds);
-        await replaceRelations(client, spotId, "spot_fish", "fish_id", data.fishIds);
-        await replaceRelations(client, spotId, "spot_bait", "bait_id", data.baitIds);
+        await insertVariants(client, spotId, data.variants);
         await client.query("COMMIT");
-        await writeAuditLog({ actor, action: "admin.spot.create", metadata: { id: spotId, waterbodyId: data.waterbodyId, name: data.name } });
+        await writeAuditLog({ actor, action: "admin.spot.create", metadata: { id: spotId, waterbodyId: data.waterbodyId, name: data.name, geometryType: data.geometryType, variantCount: data.variants.length } });
         return getSpot(spotId);
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);
@@ -164,17 +213,6 @@ export async function createSpot(data: SpotCreate, actor: SessionUser) {
 }
 
 export async function updateSpot(id: number, data: SpotUpdate, actor: SessionUser) {
-    const columns = {
-        name: "name",
-        description: "description",
-        mapX: "map_x",
-        mapY: "map_y",
-        gameCoordinateX: "game_coordinate_x",
-        gameCoordinateY: "game_coordinate_y",
-        depth: "depth",
-        clipDistance: "clip_distance",
-        isActive: "is_active",
-    } as const;
     const client = await pool.connect();
     try {
         await client.query("BEGIN");
@@ -186,32 +224,56 @@ export async function updateSpot(id: number, data: SpotUpdate, actor: SessionUse
             await client.query("ROLLBACK");
             return null;
         }
-        const fields: string[] = [];
-        const values: unknown[] = [];
-        for (const [key, column] of Object.entries(columns)) {
-            if (key in data) {
-                values.push((data as Record<string, unknown>)[key] ?? null);
-                fields.push(`${column} = $${values.length}`);
-            }
-        }
-
-        if (fields.length) {
-            values.push(id);
-            const updated = await client.query(`UPDATE spot SET ${fields.join(", ")}, updated_at = NOW() WHERE id = $${values.length} RETURNING id`, values);
-            if (!updated.rowCount) {
-                await client.query("ROLLBACK");
-                return null;
-            }
-        }
-
-        if (data.fishIds) {
-            await assertWaterbodyFish(client, Number(existing.rows[0].waterbodyId), data.fishIds);
-            await replaceRelations(client, id, "spot_fish", "fish_id", data.fishIds);
-        }
-        if (data.baitIds) await replaceRelations(client, id, "spot_bait", "bait_id", data.baitIds);
+        const fishIds = [...new Set(data.variants.flatMap((variant) => variant.fishIds))];
+        await assertWaterbodyFish(client, Number(existing.rows[0].waterbodyId), fishIds);
+        await client.query(
+            `UPDATE spot SET name=$1, description=$2, map_x=$3, map_y=$4,
+                    game_coordinate_x=$5, game_coordinate_y=$6, geometry_type=$7,
+                    trolling_area=$8::jsonb, is_active=$9, depth=NULL, clip_distance=NULL,
+                    updated_at=NOW()
+             WHERE id=$10`,
+            [data.name, data.description, data.mapX, data.mapY, data.gameCoordinateX, data.gameCoordinateY, data.geometryType, data.trollingArea ? JSON.stringify(data.trollingArea) : null, data.isActive, id],
+        );
+        await client.query(`DELETE FROM spot_fish WHERE spot_id=$1`, [id]);
+        await client.query(`DELETE FROM spot_bait WHERE spot_id=$1`, [id]);
+        await client.query(`DELETE FROM spot_variant WHERE spot_id=$1`, [id]);
+        await insertVariants(client, id, data.variants);
         await client.query("COMMIT");
         const spot = await getSpot(id);
-        await writeAuditLog({ actor, action: "admin.spot.update", metadata: { id, name: spot?.name, fields: Object.keys(data) } });
+        await writeAuditLog({ actor, action: "admin.spot.update", metadata: { id, name: spot?.name, geometryType: data.geometryType, variantCount: data.variants.length } });
+        return spot;
+    } catch (error) {
+        await client.query("ROLLBACK").catch(() => undefined);
+        translateDbError(error);
+    } finally {
+        client.release();
+    }
+}
+
+export async function addSpotVariants(id: number, data: SpotVariantsCreate, actor: SessionUser) {
+    const client = await pool.connect();
+    try {
+        await client.query("BEGIN");
+        const existing = await client.query<{ waterbodyId: number; geometryType: "point" | "trolling" }>(
+            `SELECT waterbody_id AS "waterbodyId", geometry_type AS "geometryType" FROM spot WHERE id=$1 FOR UPDATE`,
+            [id],
+        );
+        if (!existing.rows[0]) {
+            await client.query("ROLLBACK");
+            return null;
+        }
+        assertVariantGeometry(existing.rows[0].geometryType, data.variants);
+        const fishIds = [...new Set(data.variants.flatMap((variant) => variant.fishIds))];
+        await assertWaterbodyFish(client, Number(existing.rows[0].waterbodyId), fishIds);
+        const order = await client.query<{ nextIndex: number }>(
+            `SELECT COALESCE(MAX(order_index) + 1, 0)::int AS "nextIndex" FROM spot_variant WHERE spot_id=$1`,
+            [id],
+        );
+        await insertVariants(client, id, data.variants, order.rows[0].nextIndex);
+        await client.query(`UPDATE spot SET updated_at=NOW() WHERE id=$1`, [id]);
+        await client.query("COMMIT");
+        const spot = await getSpot(id);
+        await writeAuditLog({ actor, action: "admin.spot.update", metadata: { id, name: spot?.name, addedMethods: data.variants.map((variant) => variant.fishingMethod) } });
         return spot;
     } catch (error) {
         await client.query("ROLLBACK").catch(() => undefined);

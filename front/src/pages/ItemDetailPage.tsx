@@ -125,7 +125,7 @@ export function ItemDetailPage() {
                         )}
                         <div className="overflow-hidden rounded-lg border border-border bg-card">
                             {mediaMode === "model" && model ? (
-                                <Suspense fallback={<div className="grid h-[360px] place-items-center bg-muted"><LoadingSpinner label="Подготовка 3D-модели" size={24} /></div>}>
+                                <Suspense fallback={<div className="grid h-[360px] place-items-center bg-muted"><LoadingSpinner label="Подготовка 3D-модели. Модель может визуально отличаться от реального объекта." size={24} /></div>}>
                                     <ModelViewerPanel src={model} alt={item.name} poster={photo} />
                                 </Suspense>
                             ) : photo ? (

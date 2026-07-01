@@ -14,6 +14,7 @@ import {
     Map as MapIcon,
     Menu,
     Newspaper,
+    Scale,
     Settings,
     ShieldCheck,
     User as UserIcon,
@@ -26,6 +27,7 @@ import { canManageCatalog, displayRoleText, hasElevatedUserAccess } from "../uti
 import { UserAvatar } from "./UserAvatar";
 import { ModeToggle } from "./mode-toggle";
 import { NotificationsBell } from "./NotificationsBell";
+import { useComparison } from "../context/ComparisonContext";
 
 type AppShellProps = {
     currentUser?: ManagedUser;
@@ -40,6 +42,7 @@ type NavItem = { to: string; label: string; icon: typeof Home; end?: boolean; re
 type NavGroup = { title: string; items: NavItem[] };
 
 export function AppShell({ currentUser, adminContext, isImpersonating, onLogout, onStopImpersonating, onOpenAuthModal }: AppShellProps) {
+    const comparison = useComparison();
     const location = useLocation();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -55,6 +58,7 @@ export function AppShell({ currentUser, adminContext, isImpersonating, onLogout,
                 { to: "/", label: "Главная", icon: Home, end: true },
                 { to: "/feed", label: "Лента", icon: Newspaper },
                 { to: "/catalog", label: "Каталог", icon: BookOpen },
+                { to: "/comparison", label: comparison.ids.length ? `Сравнение (${comparison.ids.length})` : "Сравнение", icon: Scale },
                 { to: "/calculator", label: "Прочность", icon: Calculator },
                 { to: "/waterbodies", label: "Водоёмы", icon: MapIcon },
             ],

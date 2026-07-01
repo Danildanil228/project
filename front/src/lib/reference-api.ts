@@ -134,6 +134,10 @@ export function updateSpot(id: number, data: Omit<SpotInput, "waterbodyId">) {
     return requestJson<{ item: FishingSpot }>(`/api/spots/${id}`, withBody("PATCH", data));
 }
 
+export function addSpotVariants(id: number, variants: SpotInput["variants"]) {
+    return requestJson<{ item: FishingSpot }>(`/api/spots/${id}/variants`, withBody("POST", { variants }));
+}
+
 export function deleteSpot(id: number) {
     return requestJson<{ deleted: { id: number; name: string; waterbodyId: number } }>(`/api/spots/${id}`, { method: "DELETE" });
 }
