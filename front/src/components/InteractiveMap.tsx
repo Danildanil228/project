@@ -37,6 +37,14 @@ type MapFixedOverlayProps = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
     style?: CSSProperties;
 };
 
+type MapAreaOverlayProps = {
+    points: MapPoint[];
+    selected?: boolean;
+    draft?: boolean;
+    label?: string;
+    onSelect?: () => void;
+};
+
 type ViewState = { scale: number; x: number; y: number };
 type PinchState = {
     startDistance: number;
@@ -76,6 +84,33 @@ export function MapFixedOverlay({ mapX, mapY, transform = "translate(-50%, -100%
                 transformOrigin: "0 0",
             }}
         />
+    );
+}
+
+/** A map-relative polygon/polyline. Its outline stays thin while the map is zoomed. */
+export function MapAreaOverlay({ points, selected, draft, label, onSelect }: MapAreaOverlayProps) {
+    if (points.length < 2) return null;
+    const value = points.map((point) => `${point.mapX},${point.mapY}`).join(" ");
+    const shapeClass = draft
+        ? "fill-primary/15 stroke-primary"
+        : selected
+            ? "fill-primary/25 stroke-primary"
+            : "fill-foreground/10 stroke-foreground/70";
+
+    return (
+        <svg className="pointer-events-none absolute inset-0 z-[5] size-full overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none" aria-label={label}>
+            {points.length >= 3 ? (
+                <polygon
+                    points={value}
+                    vectorEffect="non-scaling-stroke"
+                    strokeWidth={selected || draft ? 1.5 : 1}
+                    className={`${shapeClass} ${onSelect ? "pointer-events-auto cursor-pointer" : ""}`}
+                    onClick={(event) => { event.stopPropagation(); onSelect?.(); }}
+                />
+            ) : (
+                <polyline points={value} vectorEffect="non-scaling-stroke" strokeWidth={1.5} className="fill-none stroke-primary" />
+            )}
+        </svg>
     );
 }
 

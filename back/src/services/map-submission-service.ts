@@ -58,7 +58,11 @@ export async function approveMapSubmission(id:number,reviewer:SessionUser,input:
  await client.query(`UPDATE spot SET is_active=TRUE,updated_at=NOW() WHERE id=$1`,[spotId]);
  await client.query(`UPDATE post_version SET proposed_spot_id=$2 WHERE id=$1`,[submission.post_version_id,spotId]);
  await client.query(`INSERT INTO spot_post(spot_id,post_id,submission_id) VALUES($1,$2,$3) ON CONFLICT(post_id) DO UPDATE SET spot_id=EXCLUDED.spot_id,submission_id=EXCLUDED.submission_id,approved_at=NOW()`,[spotId,submission.post_id,id]);
- await client.query(`INSERT INTO spot_fish(spot_id,fish_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[spotId,fishIds]);const baitIds=[...new Set(input.targets.flatMap((target)=>target.baitIds))];if(baitIds.length)await client.query(`INSERT INTO spot_bait(spot_id,bait_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[spotId,baitIds]);
+ const baitIds=[...new Set(input.targets.flatMap((target)=>target.baitIds))];
+ const variant=await client.query<{id:number}>(`INSERT INTO spot_variant(spot_id,order_index) SELECT $1,COALESCE(MAX(order_index)+1,0) FROM spot_variant WHERE spot_id=$1 RETURNING id`,[spotId]);
+ await client.query(`INSERT INTO spot_variant_fish(variant_id,fish_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[variant.rows[0].id,fishIds]);
+ if(baitIds.length)await client.query(`INSERT INTO spot_variant_bait(variant_id,bait_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[variant.rows[0].id,baitIds]);
+ await client.query(`INSERT INTO spot_fish(spot_id,fish_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[spotId,fishIds]);if(baitIds.length)await client.query(`INSERT INTO spot_bait(spot_id,bait_id) SELECT $1,UNNEST($2::int[]) ON CONFLICT DO NOTHING`,[spotId,baitIds]);
  await client.query(`UPDATE map_submission SET status='approved',resolved_spot_id=$2,reviewed_by=$3,reviewed_at=NOW() WHERE id=$1`,[id,spotId,reviewer.id]);await client.query("COMMIT");await writeAuditLog({actor:reviewer,action:"map-submission.approve",targetUserId:submission.authorId,metadata:{submissionId:id,postId:submission.post_id,spotId}});await createNotification({userId:submission.authorId,type:"map_submission_approved",postId:submission.post_id,actorId:reviewer.id,data:{spotId}});return {status:"ok" as const,spotId};}catch(error){await client.query("ROLLBACK").catch(()=>undefined);translateDbError(error);}finally{client.release();}
 }
 

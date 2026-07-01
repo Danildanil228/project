@@ -1,6 +1,6 @@
 import { MapPin, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { InteractiveMap, MapFixedOverlay, type MapPoint } from "./InteractiveMap";
+import { InteractiveMap, MapAreaOverlay, MapFixedOverlay, type MapPoint } from "./InteractiveMap";
 import { mediaUrl } from "../lib/items-api";
 import { gameToMapPercent, hasCoordinateBounds, mapPercentToGame } from "../lib/map-coordinates";
 import { getWaterbody, listSpots } from "../lib/reference-api";
@@ -212,7 +212,11 @@ export function PostLocationPicker({ waterbodyId, value, onChange }: Props) {
                     </svg>
                 )}
 
-                {spots.map((spot) => (
+                {spots.filter((spot) => spot.geometryType === "trolling" && spot.trollingArea).map((spot) => (
+                    <MapAreaOverlay key={`area-${spot.id}`} points={spot.trollingArea ?? []} label={`Зона троллинга: ${spot.name}`} />
+                ))}
+
+                {spots.filter((spot) => spot.geometryType === "point").map((spot) => (
                     <MapFixedOverlay
                         key={spot.id}
                         mapX={spot.mapX}

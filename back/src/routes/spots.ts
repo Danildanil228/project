@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { requireRole, type SessionUser } from "../lib/admin-auth";
-import { spotCreateSchema, spotIdParamsSchema, spotListQuerySchema, spotUpdateSchema } from "../lib/spot-schemas";
+import { spotCreateSchema, spotIdParamsSchema, spotListQuerySchema, spotUpdateSchema, spotVariantsCreateSchema } from "../lib/spot-schemas";
 import { parseOrSend } from "../lib/validation";
-import { createSpot, deleteSpot, getSpot, listSpots, updateSpot } from "../services/spot-service";
+import { addSpotVariants, createSpot, deleteSpot, getSpot, listSpots, updateSpot } from "../services/spot-service";
 
 const router = Router();
 const managerRoles = ["admin"];
@@ -53,6 +53,21 @@ router.patch("/:id", async (req, res, next) => {
         const item = await updateSpot(params.id, data, session.user as SessionUser);
         if (!item) return res.status(404).json({ message: "Точка не найдена" });
         res.json({ item });
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.post("/:id/variants", async (req, res, next) => {
+    try {
+        const session = await requireRole(req, res, managerRoles);
+        if (!session) return;
+        const params = parseOrSend(spotIdParamsSchema, req.params, res);
+        const data = parseOrSend(spotVariantsCreateSchema, req.body, res);
+        if (!params || !data) return;
+        const item = await addSpotVariants(params.id, data, session.user as SessionUser);
+        if (!item) return res.status(404).json({ message: "Точка не найдена" });
+        res.status(201).json({ item });
     } catch (error) {
         next(error);
     }

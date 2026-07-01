@@ -6,15 +6,17 @@ import {
     type SortingState,
     type VisibilityState,
 } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ArrowUpDown, ExternalLink, Settings2 } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Settings2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { itemFields, type ItemFieldDef } from "../../lib/item-fields";
 import { mediaUrl, type ItemType } from "../../lib/items-api";
 import { LoadingImage } from "../../components/LoadingImage";
 import { TableRowsSkeleton } from "../../components/LoadingState";
+import { CompareToggle } from "../../components/CompareToggle";
+import type { CatalogItem } from "../../lib/items-api";
 
-type ItemRow = { id: number; name: string; photo?: string | null } & Record<string, unknown>;
+type ItemRow = CatalogItem & Record<string, unknown>;
 
 type Props = {
     type: ItemType;
@@ -190,7 +192,7 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, onSo
                                         </th>
                                     );
                                 })}
-                                <th className="sticky right-0 z-20 bg-muted px-3 py-2 text-right">Открыть</th>
+                                <th className="sticky right-0 z-20 bg-muted px-3 py-2 text-center">Сравнить</th>
                             </tr>
                         ))}
                     </thead>
@@ -210,9 +212,7 @@ export function ItemDataTable({ type, rows, loading, sortBy, sortDirection, onSo
                                         </td>
                                     );
                                 })}
-                                <td className="sticky right-0 z-10 bg-card px-3 py-2 text-right">
-                                    <Link to={`/catalog/${type}/${row.original.id}`} title={`Открыть ${row.original.name}`} className="inline-grid size-8 place-items-center rounded-lg border border-border hover:border-primary hover:text-primary"><ExternalLink size={15} /></Link>
-                                </td>
+                                <td className="sticky right-0 z-10 bg-card px-3 py-2 text-center"><CompareToggle type={type} item={row.original} compact /></td>
                             </tr>
                         ))}
                     </tbody>

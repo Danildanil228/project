@@ -14,6 +14,7 @@ import { postMapLinkingEnabled } from "./lib/features";
 import { PageLoader } from "./components/LoadingState";
 import { AuthPageSkeleton } from "./components/PageSkeletons";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { ComparisonProvider } from "./context/ComparisonContext";
 
 const AdminPage = lazy(() => import("./pages/AdminPage").then((module) => ({ default: module.AdminPage })));
 const AdminOverviewPage = lazy(() => import("./pages/AdminOverviewPage").then((module) => ({ default: module.AdminOverviewPage })));
@@ -25,6 +26,7 @@ const AuthorProfilePage = lazy(() => import("./pages/AuthorProfilePage").then((m
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage").then((module) => ({ default: module.CalculatorPage })));
 const CatalogPage = lazy(() => import("./pages/CatalogPage").then((module) => ({ default: module.CatalogPage })));
 const CatalogHomePage = lazy(() => import("./pages/CatalogHomePage").then((module) => ({ default: module.CatalogHomePage })));
+const ComparisonPage = lazy(() => import("./pages/ComparisonPage").then((module) => ({ default: module.ComparisonPage })));
 const BaitCatalogPage = lazy(() => import("./pages/BaitCatalogPage").then((module) => ({ default: module.BaitCatalogPage })));
 const FishCatalogPage = lazy(() => import("./pages/FishCatalogPage").then((module) => ({ default: module.FishCatalogPage })));
 const FeedPage = lazy(() => import("./pages/FeedPage").then((module) => ({ default: module.FeedPage })));
@@ -113,6 +115,7 @@ function AppRoutes() {
                     <Route path="catalog/baits" element={<BaitCatalogPage />} />
                     <Route path="catalog/fish" element={<FishCatalogPage />} />
                     <Route path="catalog/:type/:id" element={<ItemDetailPage />} />
+                    <Route path="comparison" element={<ComparisonPage />} />
                     <Route path="calculator" element={<CalculatorPage />} />
                     <Route path="waterbodies" element={<WaterbodyListPage />} />
                     <Route path="waterbodies/:id" element={<WaterbodyMapPage currentUser={currentUser} adminContext={adminContext} />} />
@@ -156,9 +159,11 @@ function App() {
     return (
         <BrowserRouter>
             <ScrollToTop />
-            <AuthModalProvider>
-                <AppRoutes />
-            </AuthModalProvider>
+            <ComparisonProvider>
+                <AuthModalProvider>
+                    <AppRoutes />
+                </AuthModalProvider>
+            </ComparisonProvider>
         </BrowserRouter>
     );
 }
